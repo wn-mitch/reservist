@@ -16,8 +16,9 @@ from engine.catalog_slice import (
     freeze_catalog_slice,
     load_catalog_slice,
 )
-from engine.clock import ScheduledEvent, SimulationClock
+from engine.clock import ScheduledEvent, SimulationClock, parse_time
 from engine.cognition.participant import LimitedParticipant
+from engine.cognition.revision import revise_from_assessment
 from engine.execution.desk import DeskExecutor
 from engine.initialization import InitializationBundle, initialization_content_hash
 from engine.legal import LegalRegistry
@@ -45,6 +46,10 @@ from engine.state.institutions import InstitutionalStateOwner, PublishedFomcCale
 from engine.state.market import TreasuryMarketStateOwner
 from engine.state.registry import CanonicalRegistry, StateOwner, TypedTransition
 from engine.settlement.envelope import SettlementEnvelope, SettlementResult, SettlementStatus
+from engine.staff.analytical_task import AnalyticalTask, RequestMode, TaskStatus
+from engine.staff.assessment import Assessment, AssessmentBuilder
+from engine.staff.capacity import DeliverableStatus
+from engine.staff.units import StaffDirectory
 from engine.witness import WitnessLedger
 
 
@@ -72,6 +77,7 @@ def authority_content(scenario_dir: Path) -> dict[str, Any]:
     return {
         "cast": load_json(scenario_dir / "cast/fomc_2006.json"),
         "legal": [load_json(path) for path in sorted((scenario_dir / "legal").glob("*.json"))],
+        "staff": load_json(scenario_dir / "staff/work_2006.json"),
     }
 
 
@@ -171,15 +177,21 @@ class RunResult:
 
 
 class ScenarioRuntime:
-    def __init__(self, scenario: ValidatedScenario, package_id: str = "MEASURED_FIRMING") -> None:
+    def __init__(
+        self,
+        scenario: ValidatedScenario,
+        package_id: str = "MEASURED_FIRMING",
+        request_mode: RequestMode | str | None = None,
+    ) -> None:
         if package_id not in PACKAGES:
             raise ValueError(f"unknown policy package: {package_id}")
         self.scenario = scenario
         self.package_id = package_id
+        self.request_mode = RequestMode(request_mode) if request_mode is not None else None
         self.ledger = WitnessLedger()
         player_id = scenario.initialization.value["player_id"]
         access_profile = scenario.manifest.value["observation_and_access_profile"]
-        self.player_records = PlayerRecordStore(player_id, access_profile)
+        self.player_records = PlayerRecordStore(player_id, access_profile, self._record_player_read)
         self.observations = ObservationSystem()
         self.registry = self._build_registry()
         self.legal = LegalRegistry.load(scenario.scenario_dir / "legal")
@@ -188,6 +200,10 @@ class ScenarioRuntime:
         self.participants = tuple(
             LimitedParticipant.from_dict(row) for row in cast["participants"]
         )
+        self.staff = StaffDirectory.from_dict(scenario.authority_content["staff"])
+        self.assessment_builder = AssessmentBuilder()
+        self.tasks: dict[str, AnalyticalTask] = {}
+        self.assessments: dict[str, Assessment] = {}
         self.fomc = FomcBody(
             self.legal,
             chair_id=cast["chair_id"],
@@ -260,6 +276,224 @@ class ScenarioRuntime:
                 "seed": scenario.initialization.value["seed"],
             },
         )
+
+    def _record_player_read(self, record_id: str, record: Any) -> None:
+        self.ledger.append(
+            completion_time=self.clock.current_time.isoformat(),
+            transition_kind="player_record_read",
+            responsible_owner=self.scenario.initialization.value["player_id"],
+            payload={
+                "record_id": record_id,
+                "record_kind": record["item"].get("record_kind", "Observation"),
+            },
+            observation_policy="profile.chair_scoped",
+            causal_parent=record["delivery"].get("delivery_witness"),
+        )
+
+    def request_follow_up(self, mode: RequestMode | str = RequestMode.NORMAL) -> AnalyticalTask:
+        request_mode = RequestMode(mode)
+        task_id = "task.markets.dealer_capacity_follow_up"
+        if task_id in self.tasks:
+            raise ValueError("the bounded Markets follow-up has already been requested")
+        source_record_id = self._latest_player_observation_id()
+        task = AnalyticalTask.markets_follow_up(
+            requested_at=self.clock.current_time.isoformat(),
+            requester_id=self.scenario.initialization.value["player_id"],
+            source_record_id=source_record_id,
+            mode=request_mode,
+        )
+        requested = self.ledger.append(
+            completion_time=task.requested_at,
+            transition_kind="analytical_task_requested",
+            responsible_owner=task.requester_id,
+            payload={"task": task.to_dict()},
+            observation_policy="profile.chair_scoped",
+        )
+        if request_mode == RequestMode.DECLINED:
+            declined = self.ledger.append(
+                completion_time=task.requested_at,
+                transition_kind="analytical_task_declined",
+                responsible_owner=task.assigned_unit_id,
+                causal_parent=requested.event_id,
+                payload={
+                    "reason": "The unit declines work whose accepted scope cannot meet the requested decision use.",
+                    "task_id": task.task_id,
+                },
+                observation_policy="profile.chair_scoped",
+            )
+            task = task.with_result(TaskStatus.DECLINED, declined.event_id)
+            self.tasks[task.task_id] = task
+            return task
+
+        unit = self.staff.unit(task.assigned_unit_id)
+        displaced = unit.capacity.reserve(
+            task.task_id,
+            task.capacity_units,
+            task.requested_at,
+            displace_id=task.displaced_deliverable_id,
+            revised_due_time=task.displaced_revised_due_time,
+        )
+        task = task.with_status(TaskStatus.ASSIGNED)
+        assigned = self.ledger.append(
+            completion_time=task.requested_at,
+            transition_kind="analytical_task_assigned",
+            responsible_owner=task.assigned_unit_id,
+            causal_parent=requested.event_id,
+            payload={
+                "capacity_after_assignment": unit.capacity.snapshot_for_hash(),
+                "task": task.to_dict(),
+            },
+            observation_policy="profile.chair_scoped",
+        )
+        if displaced is not None:
+            displacement = self.ledger.append(
+                completion_time=task.requested_at,
+                transition_kind="staff_work_displaced",
+                responsible_owner=task.assigned_unit_id,
+                causal_parent=assigned.event_id,
+                payload={"deliverable": displaced.to_dict(), "task_id": task.task_id},
+                observation_policy="profile.chair_scoped",
+            )
+            if displaced.status == DeliverableStatus.MISSED:
+                self.ledger.append(
+                    completion_time=task.requested_at,
+                    transition_kind="staff_deliverable_missed",
+                    responsible_owner=task.assigned_unit_id,
+                    causal_parent=displacement.event_id,
+                    payload={
+                        "decision_deadline": displaced.decision_deadline,
+                        "deliverable_id": displaced.deliverable_id,
+                        "revised_due_time": displaced.due_time,
+                    },
+                    observation_policy="profile.chair_scoped",
+                )
+        self.tasks[task.task_id] = task
+        self.clock.schedule(
+            ScheduledEvent(
+                due_time=task.expected_completion,
+                phase_priority=25,
+                stable_sequence=100,
+                stable_id="scheduled.staff.markets.dealer_capacity_follow_up",
+                responsible_owner=task.assigned_unit_id,
+                work_kind="staff.complete_analytical_task",
+                payload={"task_id": task.task_id},
+                causal_parent=assigned.event_id,
+            )
+        )
+        return task
+
+    def _latest_player_observation_id(self) -> str:
+        observations = [
+            record["item"]["observation_id"]
+            for record in self.player_records.list_delivered()
+            if "observation_id" in record["item"]
+        ]
+        if not observations:
+            raise ValueError("the Chair must receive evidence before requesting follow-up work")
+        return observations[-1]
+
+    def _complete_analytical_task(self, scheduled: ScheduledEvent) -> None:
+        task = self.tasks[scheduled.payload["task_id"]]
+        unit = self.staff.unit(task.assigned_unit_id)
+        if parse_time(scheduled.due_time) > parse_time(task.decision_deadline):
+            unit.capacity.release(task.task_id)
+            missed = self.ledger.append(
+                completion_time=scheduled.due_time,
+                transition_kind="analytical_task_missed",
+                responsible_owner=task.assigned_unit_id,
+                causal_parent=scheduled.causal_parent,
+                payload={
+                    "decision_deadline": task.decision_deadline,
+                    "task_id": task.task_id,
+                },
+                observation_policy="profile.chair_scoped",
+            )
+            self.tasks[task.task_id] = task.with_result(TaskStatus.MISSED, missed.event_id)
+            return
+
+        assessment = self.assessment_builder.build(
+            task,
+            self.player_records,
+            unit,
+            scheduled.due_time,
+        )
+        assessment_event = self.ledger.append(
+            completion_time=scheduled.due_time,
+            transition_kind="assessment_authored",
+            responsible_owner=assessment.authoring_unit_id,
+            causal_parent=scheduled.causal_parent,
+            payload={"assessment": assessment.to_dict()},
+            observation_policy="profile.chair_scoped",
+        )
+        self.assessments[assessment.record_id] = assessment
+        self._deliver_assessment_to_player(assessment, assessment_event.event_id)
+        for participant in self.participants:
+            delivery_event = self.ledger.append(
+                completion_time=scheduled.due_time,
+                transition_kind="assessment_delivered",
+                responsible_owner=participant.participant_id,
+                causal_parent=assessment_event.event_id,
+                payload={
+                    "assessment_id": assessment.record_id,
+                    "recipient_id": participant.participant_id,
+                },
+                observation_policy="PARTICIPANT_PRIVATE",
+            )
+            for revision in revise_from_assessment(participant, assessment, scheduled.due_time):
+                self.ledger.append(
+                    completion_time=scheduled.due_time,
+                    transition_kind="belief_revised",
+                    responsible_owner=participant.participant_id,
+                    causal_parent=delivery_event.event_id,
+                    payload={"revision": revision.to_dict()},
+                    observation_policy="PARTICIPANT_PRIVATE",
+                )
+        reservation = unit.capacity.release(task.task_id)
+        completed = self.ledger.append(
+            completion_time=scheduled.due_time,
+            transition_kind="analytical_task_completed",
+            responsible_owner=task.assigned_unit_id,
+            causal_parent=assessment_event.event_id,
+            payload={
+                "assessment_id": assessment.record_id,
+                "released_capacity": reservation.to_dict(),
+                "task_id": task.task_id,
+            },
+            observation_policy="profile.chair_scoped",
+        )
+        self.tasks[task.task_id] = task.with_result(TaskStatus.COMPLETED, completed.event_id)
+
+    def _deliver_assessment_to_player(self, assessment: Assessment, causal_parent: str) -> None:
+        delivery = {
+            "access_scope": "profile.chair_scoped",
+            "delivery_id": f"delivery.{assessment.record_id}",
+            "delivery_time": assessment.as_of_time,
+            "delivery_witness": self.ledger.next_event_id,
+            "item_id": assessment.record_id,
+            "provenance": causal_parent,
+            "recipient_id": self.scenario.initialization.value["player_id"],
+        }
+        delivery_event = self.ledger.append(
+            completion_time=assessment.as_of_time,
+            transition_kind="assessment_delivered",
+            responsible_owner=delivery["recipient_id"],
+            causal_parent=causal_parent,
+            payload={"delivery": delivery},
+            observation_policy=delivery["access_scope"],
+        )
+        delivery["delivery_witness"] = delivery_event.event_id
+        self.player_records.deliver_artifact(delivery, assessment.to_dict())
+
+    def routing_account(self) -> dict[str, Any]:
+        markets = self.staff.unit("staff.us.federal_reserve.markets")
+        return {
+            "displaced_work": sum(
+                item.status in {DeliverableStatus.DISPLACED, DeliverableStatus.MISSED}
+                for item in markets.capacity.deliverables.values()
+            ),
+            "pending_tasks": sum(task.status == TaskStatus.ASSIGNED for task in self.tasks.values()),
+            "unread_items": self.player_records.unread_count,
+        }
 
     def _build_registry(self) -> CanonicalRegistry:
         contracts: dict[str, set[str]] = {}
@@ -662,6 +896,11 @@ class ScenarioRuntime:
             self._deliver_observation(
                 observation, publication_event.event_id, scheduled.due_time
             )
+            if self.request_mode is not None and not self.tasks:
+                self.request_follow_up(self.request_mode)
+            return
+        if scheduled.work_kind == "staff.complete_analytical_task":
+            self._complete_analytical_task(scheduled)
             return
         if scheduled.work_kind == "repo.process_non_roll":
             maturity = self.repo.process_non_roll(
@@ -706,7 +945,13 @@ class ScenarioRuntime:
                 "dealer_cohort": self.dealers.snapshot_for_hash(),
                 "external_buyer": self.external_buyer.snapshot_for_hash(),
                 "leveraged_funds": self.leveraged_funds.snapshot_for_hash(),
+                "participants": [participant.snapshot_for_hash() for participant in self.participants],
                 "repo_agreement": self.repo.snapshot_for_hash(),
+                "staff": self.staff.snapshot_for_hash(),
+                "staff_assessments": {
+                    key: self.assessments[key].to_dict() for key in sorted(self.assessments)
+                },
+                "staff_tasks": {key: self.tasks[key].to_dict() for key in sorted(self.tasks)},
                 "treasury_market": self.market.snapshot_for_hash(),
             }
         )

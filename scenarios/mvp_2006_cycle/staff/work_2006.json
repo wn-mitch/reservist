@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "units": [
+    {
+      "unit_id": "staff.us.federal_reserve.markets",
+      "display_name": "Division of Markets",
+      "access_scopes": [
+        "profile.chair_scoped",
+        "scope.staff.markets.confidential"
+      ],
+      "methods": [
+        "dealer_inventory_comparison",
+        "financing_capacity_assessment"
+      ],
+      "capacity_units": 2,
+      "standing_deliverables": [
+        {
+          "deliverable_id": "deliverable.markets.foreign_demand_appendix",
+          "title": "Foreign-demand appendix",
+          "due_time": "2006-03-28T08:00:00-05:00",
+          "decision_deadline": "2006-03-28T08:30:00-05:00",
+          "capacity_units": 1
+        }
+      ]
+    },
+    {
+      "unit_id": "staff.us.federal_reserve.monetary_affairs",
+      "display_name": "Division of Monetary Affairs",
+      "access_scopes": [
+        "profile.chair_scoped",
+        "scope.staff.monetary_affairs.internal"
+      ],
+      "methods": [
+        "inflation_persistence_forecast",
+        "policy_alternative_assessment"
+      ],
+      "capacity_units": 2,
+      "standing_deliverables": []
+    },
+    {
+      "unit_id": "staff.us.federal_reserve.communications",
+      "display_name": "Division of Communications",
+      "access_scopes": [
+        "profile.chair_scoped",
+        "scope.staff.communications.internal"
+      ],
+      "methods": [
+        "statement_consistency_review",
+        "audience_risk_assessment"
+      ],
+      "capacity_units": 1,
+      "standing_deliverables": []
+    }
+  ],
+  "evidence_deliveries": [
+    {
+      "delivery": {
+        "delivery_id": "delivery.staff.markets.dealer_capacity.refundings",
+        "recipient_id": "staff.us.federal_reserve.markets",
+        "item_id": "evidence.markets.dealer_capacity.refundings",
+        "delivery_time": "2006-03-27T07:15:00-05:00",
+        "access_scope": "scope.staff.markets.confidential",
+        "provenance": "record.markets.dealer_submissions.2006_03",
+        "delivery_witness": "scenario.staff.opening_delivery"
+      },
+      "item": {
+        "item_id": "evidence.markets.dealer_capacity.refundings",
+        "proposition": "Dealer inventory and financing capacity are tighter than during the prior four refundings.",
+        "source": "staff.us.federal_reserve.markets",
+        "reference_period": "2005-11/2006-03",
+        "observed_value": {
+          "coverage": "9 of 11 selected dealers",
+          "direction": "tighter",
+          "comparison_window": "last four refundings"
+        },
+        "uncertainty": [
+          {
+            "kind": "measurement",
+            "description": "Two dealer inventory submissions are one business day stale."
+          },
+          {
+            "kind": "strategic",
+            "description": "Dealers may frame balance-sheet capacity conservatively."
+          }
+        ]
+      }
+    }
+  ]
+}

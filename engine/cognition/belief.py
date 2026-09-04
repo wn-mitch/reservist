@@ -1,17 +1,9 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from enum import StrEnum
 from typing import Any
 
-
-class UncertaintyKind(StrEnum):
-    MEASUREMENT = "measurement"
-    MODEL = "model"
-    STRATEGIC = "strategic"
-    INSTITUTIONAL = "institutional"
-    ALEATORY = "aleatory"
-    REFLEXIVE = "reflexive"
+from engine.uncertainty import UncertaintyKind
 
 
 @dataclass(frozen=True)
@@ -98,10 +90,22 @@ class BeliefLedger:
         except KeyError as exc:
             raise ValueError(f"missing participant belief: {proposition}") from exc
 
+    def maybe_estimate(self, proposition: str) -> BoundedEstimate | None:
+        return self._estimates.get(proposition)
+
+    def revise(self, estimate: BoundedEstimate) -> None:
+        self._estimates[estimate.proposition] = estimate
+
     def provenance(self, propositions: tuple[str, ...]) -> dict[str, list[dict[str, Any]]]:
         return {
             proposition: [
                 source.to_dict() for source in self.estimate(proposition).source_ledger
             ]
             for proposition in propositions
+        }
+
+    def snapshot_for_hash(self) -> dict[str, Any]:
+        return {
+            proposition: self._estimates[proposition].to_dict()
+            for proposition in sorted(self._estimates)
         }

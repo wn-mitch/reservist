@@ -56,6 +56,15 @@ class SimulationClock:
     def next_event(self) -> ScheduledEvent | None:
         return self._events[0] if self._events else None
 
+    def schedule(self, event: ScheduledEvent) -> None:
+        if event.sort_key[0] < self.current_time:
+            raise ValueError("cannot schedule an event in the simulation past")
+        if any(queued.stable_id == event.stable_id for queued in self._events):
+            raise ValueError(f"duplicate scheduled event id: {event.stable_id}")
+        if any(queued.stable_sequence == event.stable_sequence for queued in self._events):
+            raise ValueError(f"duplicate scheduled event sequence: {event.stable_sequence}")
+        heapq.heappush(self._events, event)
+
     def advance_to(
         self,
         target_time: str,

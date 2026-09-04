@@ -8,9 +8,11 @@ from pathlib import Path
 from engine.harness.fomc_room import FomcRoomHarness
 from engine.harness.office import OfficeHarness
 from engine.harness.operations_room import OperationsRoomHarness
+from engine.harness.request import RequestHarness
 from engine.manifest import ManifestValidationError
 from engine.packages import PACKAGES
 from engine.scenario import ScenarioRuntime, seal_scenario, validate_scenario
+from engine.staff.analytical_task import RequestMode
 
 
 DEFAULT_SCENARIO = Path("scenarios/mvp_2006_cycle")
@@ -34,7 +36,9 @@ def freeze_command(args: argparse.Namespace) -> int:
 
 def run_command(args: argparse.Namespace) -> int:
     runtime = ScenarioRuntime(
-        validate_scenario(_scenario(args.scenario)), package_id=args.package
+        validate_scenario(_scenario(args.scenario)),
+        package_id=args.package,
+        request_mode=args.request,
     )
     result = runtime.run_all()
     if args.transcript:
@@ -67,8 +71,8 @@ def run_command(args: argparse.Namespace) -> int:
 
 def replay_command(args: argparse.Namespace) -> int:
     scenario = validate_scenario(_scenario(args.scenario))
-    first = ScenarioRuntime(scenario).run_all()
-    second = ScenarioRuntime(scenario).run_all()
+    first = ScenarioRuntime(scenario, request_mode=RequestMode.NORMAL).run_all()
+    second = ScenarioRuntime(scenario, request_mode=RequestMode.NORMAL).run_all()
     if first != second:
         print("replay mismatch", file=sys.stderr)
         return 1
@@ -92,12 +96,12 @@ def play_command(args: argparse.Namespace) -> int:
         validate_scenario(_scenario(args.scenario)), package_id=args.package
     )
     runtime.run_until_first_delivery()
-    harness = OfficeHarness(runtime.player_records, runtime.advance_next)
+    harness = OfficeHarness(runtime.player_records, runtime.advance_next, runtime.routing_account)
     print(harness.render_morning_book())
     if not sys.stdin.isatty():
         return 0
     print(
-        "\nCommands: inspect <number> | advance | book | verbs | fomc | "
+        "\nCommands: inspect <number> | ask markets [accelerated] | advance | book | verbs | fomc | "
         "propose <package> | operations | quit"
     )
     while True:
@@ -115,6 +119,19 @@ def play_command(args: argparse.Namespace) -> int:
             print(FomcRoomHarness(runtime.participants, runtime.fomc_decision).render())
         elif command == "operations":
             print(OperationsRoomHarness(tuple(runtime.receipts)).render())
+        elif command in {"ask markets", "ask markets accelerated"}:
+            mode = (
+                RequestMode.ACCELERATED
+                if command.endswith("accelerated")
+                else RequestMode.NORMAL
+            )
+            try:
+                task = runtime.request_follow_up(mode)
+            except ValueError as exc:
+                print(f"request rejected: {exc}")
+                continue
+            unit = runtime.staff.unit(task.assigned_unit_id)
+            print(RequestHarness().render(task, unit.display_name))
         elif command.startswith("propose "):
             package = command.split(maxsplit=1)[1]
             if package not in PACKAGES:
@@ -136,7 +153,7 @@ def play_command(args: argparse.Namespace) -> int:
                 print(f"invalid inspect command: {exc}")
         else:
             print(
-                "Commands: inspect <number> | advance | book | verbs | fomc | "
+                "Commands: inspect <number> | ask markets [accelerated] | advance | book | verbs | fomc | "
                 "propose <package> | operations | quit"
             )
     return 0
@@ -164,6 +181,12 @@ def parser() -> argparse.ArgumentParser:
     run.add_argument("--transcript")
     run.add_argument("--report-endogeneity", action="store_true")
     run.add_argument("--package", choices=tuple(PACKAGES), default="MEASURED_FIRMING")
+    run.add_argument(
+        "--request",
+        type=str.upper,
+        choices=tuple(mode.value for mode in RequestMode),
+        default=RequestMode.NORMAL.value,
+    )
     run.set_defaults(handler=run_command)
     return result
 

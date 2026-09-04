@@ -52,8 +52,21 @@ class LimitedParticipant:
     def position_for(self, package_id: str, has_language_commitment: bool) -> ParticipantPosition:
         inflation = self.beliefs.estimate("inflation_persistence")
         housing = self.beliefs.estimate("housing_credit_sensitivity")
-        propositions = ("inflation_persistence", "housing_credit_sensitivity")
-        if package_id == "FIRMING_BIAS" and has_language_commitment and housing.estimate >= 0.7:
+        financial_conditions = self.beliefs.maybe_estimate("financial_condition_sensitivity")
+        propositions = ["inflation_persistence", "housing_credit_sensitivity"]
+        if financial_conditions is not None:
+            propositions.append("financial_condition_sensitivity")
+        if (
+            package_id == "MEASURED_FIRMING"
+            and financial_conditions is not None
+            and financial_conditions.estimate >= 0.8
+        ):
+            position = PositionKind.OPPOSE
+            basis = (
+                "The Markets follow-up indicates that another firming step could amplify "
+                "interest-sensitive financial conditions beyond the participant's tolerance."
+            )
+        elif package_id == "FIRMING_BIAS" and has_language_commitment and housing.estimate >= 0.7:
             position = PositionKind.NARROW_LANGUAGE
             basis = (
                 "Supports the standard firming step but finds the forward language too restrictive "
@@ -73,5 +86,13 @@ class LimitedParticipant:
             office_id=self.office_id,
             position=position,
             stated_basis=basis,
-            belief_provenance=self.beliefs.provenance(propositions),
+            belief_provenance=self.beliefs.provenance(tuple(propositions)),
         )
+
+    def snapshot_for_hash(self) -> dict[str, Any]:
+        return {
+            "beliefs": self.beliefs.snapshot_for_hash(),
+            "display_name": self.display_name,
+            "office_id": self.office_id,
+            "participant_id": self.participant_id,
+        }
