@@ -22,4 +22,22 @@ class OperationsRoomHarness:
                     f"  Scope: {receipt.epistemic_scope}",
                 ]
             )
+            clearing = receipt.details.get("clearing_result")
+            if clearing is not None:
+                lines.extend(
+                    [
+                        f"  Price: {clearing['price']}",
+                        f"  Filled: {clearing['filled_quantity']}",
+                        f"  Residual: buy={clearing['residual']['BUY']} "
+                        f"sell={clearing['residual']['SELL']}",
+                        f"  Market source: {clearing['source_kind']}",
+                    ]
+                )
+            if "market_settlement" in receipt.details:
+                market = receipt.details["market_settlement"]
+                repo = receipt.details["repo_settlement"]
+                lines.append(
+                    f"  Treasury settlement: {market['status'] if market else 'NOT_ATTEMPTED'}"
+                )
+                lines.append(f"  Repo settlement: {repo['status'] if repo else 'NOT_ATTEMPTED'}")
         return "\n".join(lines)

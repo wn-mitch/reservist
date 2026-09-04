@@ -1,11 +1,13 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from decimal import Decimal
 from pathlib import Path
 from typing import Any
 
-from engine.adapters.treasury_demand import TreasuryDemandAdapter
-from engine.authority import ActionStatus, AuthorityResolver
+from engine.accounting.ledger import AccountingLedger
+from engine.agreements.repo import BilateralRepoAgreement
+from engine.authority import ActionResult, ActionStatus, AuthorityResolver
 from engine.bodies.fomc import FomcBody, FomcDecision
 from engine.canon import load_json, sha256, write_canonical_json
 from engine.catalog_slice import (
@@ -24,13 +26,25 @@ from engine.manifest import (
     ScenarioManifest,
     manifest_content_hash,
 )
+from engine.markets.treasury_secondary import (
+    ClearingResult,
+    OrderSide,
+    TreasuryFill,
+    TreasuryOrder,
+    TreasurySecondaryMarket,
+)
 from engine.observation import EvidenceDelivery, ObservationSystem
 from engine.packages import PACKAGES, package_by_id
+from engine.participants.dealer_cohort import DealerCohort
+from engine.participants.external_buyer import ExternalBuyerResidual
+from engine.participants.leveraged_fund import LeveragedFundCohort
 from engine.player.records import PlayerRecordStore
 from engine.records import ReceiptStage, StageReceipt
 from engine.state.macro_adapter import MacroAdapterOwner, PublishedReferenceOwner
 from engine.state.institutions import InstitutionalStateOwner, PublishedFomcCalendar
+from engine.state.market import TreasuryMarketStateOwner
 from engine.state.registry import CanonicalRegistry, StateOwner, TypedTransition
+from engine.settlement.envelope import SettlementEnvelope, SettlementResult, SettlementStatus
 from engine.witness import WitnessLedger
 
 
@@ -153,6 +167,7 @@ class RunResult:
     player_records: tuple[dict[str, Any], ...]
     package_id: str
     receipts: tuple[dict[str, Any], ...]
+    endogeneity_report: tuple[dict[str, str], ...]
 
 
 class ScenarioRuntime:
@@ -182,7 +197,45 @@ class ScenarioRuntime:
             threshold=cast["affirmative_threshold"],
         )
         self.desk = DeskExecutor(self.legal)
-        self.treasury_adapter = TreasuryDemandAdapter()
+        self.accounting = AccountingLedger.from_opening_state(
+            scenario.initialization.value["opening_state"]
+        )
+        market_state = self._opening_value(
+            "market.us.treasury.secondary",
+            "state.market.us.treasury.secondary.clearing",
+        )
+        self.market = TreasurySecondaryMarket(
+            market_state["bucket_id"], int(market_state["max_iterations"])
+        )
+        self.dealers = DealerCohort.from_state(
+            "cohort.us.dealer.primary",
+            self._opening_value(
+                "cohort.us.dealer.primary", "state.cohort.us.dealer.primary.capacity"
+            ),
+        )
+        self.leveraged_funds = LeveragedFundCohort.from_state(
+            "inst.us.leveraged_funds",
+            self._opening_value(
+                "inst.us.leveraged_funds", "state.inst.us.leveraged_funds.behavior"
+            ),
+        )
+        self.external_buyer = ExternalBuyerResidual.from_state(
+            "adapter.market.us.treasury.external_buyer",
+            self._opening_value(
+                "adapter.market.us.treasury.external_buyer",
+                "state.adapter.market.us.treasury.external_buyer.demand",
+            ),
+        )
+        self.repo = BilateralRepoAgreement(
+            "agreement.us.repo.bilateral",
+            self._opening_value(
+                "agreement.us.repo.bilateral",
+                "state.agreement.us.repo.bilateral.contract",
+            ),
+        )
+        self.latest_market_result: ClearingResult | None = None
+        self.latest_market_settlement: SettlementResult | None = None
+        self.latest_repo_settlement: SettlementResult | None = None
         calendar_state = self._opening_value(
             "schedule.us.federal_reserve.fomc",
             "state.schedule.us.federal_reserve.fomc.calendar",
@@ -217,6 +270,9 @@ class ScenarioRuntime:
                 )
         opening_by_owner: dict[str, dict[str, Any]] = {}
         for row in self.scenario.initialization.value["opening_state"]:
+            storage = row.get("value", {}).get("storage")
+            if storage not in (None, "canonical_registry"):
+                continue
             opening_by_owner.setdefault(row["owner_id"], {})[row["state_id"]] = {
                 "currency": row["currency"],
                 "unit": row["unit"],
@@ -235,6 +291,8 @@ class ScenarioRuntime:
                 "record.us.federal_reserve.policy_package",
             }:
                 owner_class = InstitutionalStateOwner
+            elif owner_id == TreasurySecondaryMarket.MARKET_ID:
+                owner_class = TreasuryMarketStateOwner
             else:
                 owner_class = StateOwner
             registry.register(owner_class(owner_id, opening_by_owner[owner_id], contracts[owner_id]))
@@ -366,37 +424,203 @@ class ScenarioRuntime:
             ),
             execution_event.event_id,
         )
-        self._record_receipt(
-            StageReceipt(
-                receipt_id=f"receipt.settlement.{package.package_id.lower()}",
-                stage=ReceiptStage.SETTLEMENT,
-                owner_id="adapter.market.us.treasury_demand.phase2",
-                timestamp=scheduled.due_time,
-                status="PENDING_PHASE_3",
-                source_record_id=execution_event.event_id,
-                epistemic_scope="profile.chair_scoped",
-                details={"note": "No fill or settlement is implied by Desk execution."},
-            ),
-            execution_event.event_id,
-        )
-        effects = [
-            self.treasury_adapter.project(result)
+        self._run_market_cycle(action_results, scheduled, execution_event.event_id)
+
+    def _desk_market_order(
+        self,
+        action_results: tuple[ActionResult, ...],
+        source_witness: str,
+    ) -> TreasuryOrder:
+        realized = {
+            result.realized_effect
             for result in action_results
             if result.status == ActionStatus.EXECUTED
-        ]
+        }
+        if "desk.raise_target_range_25bp" in realized:
+            return TreasuryOrder(
+                order_id="order.new_york_desk.firming",
+                participant_id=DeskExecutor.OWNER_ID,
+                bucket_id=self.market.bucket_id,
+                side=OrderSide.SELL,
+                quantity=Decimal("5"),
+                limit_price=Decimal("0.9860"),
+                source_witness=source_witness,
+            )
+        return TreasuryOrder(
+            order_id="order.new_york_desk.maintenance",
+            participant_id=DeskExecutor.OWNER_ID,
+            bucket_id=self.market.bucket_id,
+            side=OrderSide.BUY,
+            quantity=Decimal("5"),
+            limit_price=Decimal("0.9900"),
+            source_witness=source_witness,
+        )
+
+    def _account_map(self) -> dict[str, dict[str, str]]:
+        return {
+            self.dealers.participant_id: {
+                "cash": self.dealers.cash_account,
+                "treasury": self.dealers.treasury_account,
+            },
+            self.leveraged_funds.participant_id: {
+                "cash": self.leveraged_funds.cash_account,
+                "treasury": self.leveraged_funds.treasury_account,
+            },
+            self.external_buyer.participant_id: {
+                "cash": self.external_buyer.cash_account,
+                "treasury": self.external_buyer.treasury_account,
+            },
+            DeskExecutor.OWNER_ID: {
+                "cash": "state.inst.us.federal_reserve.new_york.cash",
+                "treasury": "state.inst.us.federal_reserve.new_york.treasury",
+            },
+        }
+
+    def _run_market_cycle(
+        self,
+        action_results: tuple[ActionResult, ...],
+        scheduled: ScheduledEvent,
+        execution_witness: str,
+    ) -> None:
+        orders = (
+            self.dealers.order(self.accounting, self.market.bucket_id, execution_witness),
+            self.leveraged_funds.order(self.accounting, self.market.bucket_id),
+            self.external_buyer.order(self.market.bucket_id, execution_witness),
+            self._desk_market_order(action_results, execution_witness),
+        )
+        for order in orders:
+            self.ledger.append(
+                completion_time=scheduled.due_time,
+                transition_kind="treasury_order_submitted",
+                responsible_owner=order.participant_id,
+                causal_parent=order.source_witness,
+                payload={"order": order.to_dict()},
+            )
+        clearing = self.market.clear(
+            orders,
+            {self.dealers.participant_id: self.dealers.capacity},
+        )
+        self.latest_market_result = clearing
+        market_event = self.registry.apply(
+            TreasurySecondaryMarket.MARKET_ID,
+            TypedTransition(
+                transition_kind="record_market_clearing",
+                effective_time=scheduled.due_time,
+                payload={"clearing_result": clearing.to_dict()},
+                causal_parent=execution_witness,
+            ),
+            self.ledger,
+        )
+        market_settlement = None
+        repo_settlement = None
+        if clearing.fills:
+            envelope = self._treasury_settlement_envelope(
+                clearing.fills, scheduled.due_time, market_event.event_id
+            )
+            prepared = envelope.prepare(self.accounting, self.ledger)
+            market_settlement = (
+                envelope.commit(self.accounting, self.ledger)
+                if prepared.status == SettlementStatus.PREPARED
+                else prepared
+            )
+            self.latest_market_settlement = market_settlement
+            if market_settlement.status == SettlementStatus.COMMITTED:
+                repo_envelope = self.repo.settlement_envelope(
+                    scheduled.due_time, market_settlement.transaction_id
+                )
+                repo_prepared = repo_envelope.prepare(self.accounting, self.ledger)
+                repo_settlement = (
+                    repo_envelope.commit(self.accounting, self.ledger)
+                    if repo_prepared.status == SettlementStatus.PREPARED
+                    else repo_prepared
+                )
+                self.latest_repo_settlement = repo_settlement
+                if repo_settlement.status == SettlementStatus.COMMITTED:
+                    self.repo.mark_settled()
+
         self._record_receipt(
             StageReceipt(
-                receipt_id=f"receipt.observed_effect.{package.package_id.lower()}",
-                stage=ReceiptStage.OBSERVED_EFFECT,
-                owner_id=TreasuryDemandAdapter.ADAPTER_ID,
+                receipt_id=f"receipt.settlement.{self.package_id.lower()}",
+                stage=ReceiptStage.SETTLEMENT,
+                owner_id=TreasurySecondaryMarket.MARKET_ID,
                 timestamp=scheduled.due_time,
-                status="ADAPTER_SOURCED",
-                source_record_id=execution_event.event_id,
+                status=(
+                    "COMMITTED"
+                    if market_settlement is not None
+                    and market_settlement.status == SettlementStatus.COMMITTED
+                    and repo_settlement is not None
+                    and repo_settlement.status == SettlementStatus.COMMITTED
+                    else "FAILED"
+                ),
+                source_record_id=market_event.event_id,
                 epistemic_scope="profile.chair_scoped",
-                details={"adapter_results": [effect.to_dict() for effect in effects]},
+                details={
+                    "market_settlement": (
+                        market_settlement.to_dict() if market_settlement else None
+                    ),
+                    "repo_settlement": repo_settlement.to_dict() if repo_settlement else None,
+                },
             ),
-            execution_event.event_id,
+            market_event.event_id,
         )
+        observation = self.observations.produce_market_clearing(market_event)
+        self._deliver_observation(observation, market_event.event_id, scheduled.due_time)
+        self._record_receipt(
+            StageReceipt(
+                receipt_id=f"receipt.observed_effect.{self.package_id.lower()}",
+                stage=ReceiptStage.OBSERVED_EFFECT,
+                owner_id=TreasurySecondaryMarket.MARKET_ID,
+                timestamp=scheduled.due_time,
+                status="ENDOGENOUS_MARKET_SOURCED",
+                source_record_id=market_event.event_id,
+                epistemic_scope="profile.chair_scoped",
+                details={"clearing_result": clearing.to_dict()},
+            ),
+            market_event.event_id,
+        )
+
+    def _treasury_settlement_envelope(
+        self, fills: tuple[TreasuryFill, ...], effective_time: str, causal_parent: str
+    ) -> SettlementEnvelope:
+        return SettlementEnvelope.for_treasury_fills(
+            "treasury.secondary.cycle",
+            fills,
+            self._account_map(),
+            effective_time,
+            causal_parent,
+        )
+
+    def _deliver_observation(
+        self, observation: Any, causal_parent: str, delivery_time: str
+    ) -> None:
+        observation_dict = observation.to_dict()
+        self.ledger.append(
+            completion_time=delivery_time,
+            transition_kind="observation_produced",
+            responsible_owner=observation.source,
+            causal_parent=causal_parent,
+            payload={"observation": observation_dict},
+            observation_policy=observation.access_scope.value,
+        )
+        delivery = EvidenceDelivery(
+            delivery_id=f"delivery.{observation.observation_id}",
+            recipient_id=self.scenario.initialization.value["player_id"],
+            observation_id=observation.observation_id,
+            delivery_time=delivery_time,
+            access_scope=observation.access_scope,
+            provenance=causal_parent,
+            delivery_witness=self.ledger.next_event_id,
+        )
+        delivery_dict = delivery.to_dict()
+        self.ledger.append(
+            completion_time=delivery_time,
+            transition_kind="evidence_delivered",
+            responsible_owner=delivery.recipient_id,
+            causal_parent=causal_parent,
+            payload={"delivery": delivery_dict},
+            observation_policy=delivery.access_scope.value,
+        )
+        self.player_records.deliver(delivery_dict, observation_dict)
 
     def attempt_chair_only_market_command(self, at_time: str | None = None):
         instant = at_time or self.clock.current_time.isoformat()
@@ -435,34 +659,21 @@ class ScenarioRuntime:
             observation = self.observations.produce(publication_event)
             if observation is None:
                 return
-            observation_dict = observation.to_dict()
-            self.ledger.append(
-                completion_time=scheduled.due_time,
-                transition_kind="observation_produced",
-                responsible_owner=observation.source,
-                causal_parent=publication_event.event_id,
-                payload={"observation": observation_dict},
-                observation_policy=observation.access_scope.value,
+            self._deliver_observation(
+                observation, publication_event.event_id, scheduled.due_time
             )
-            delivery = EvidenceDelivery(
-                delivery_id=f"delivery.{observation.observation_id}",
-                recipient_id=self.scenario.initialization.value["player_id"],
-                observation_id=observation.observation_id,
-                delivery_time=scheduled.due_time,
-                access_scope=observation.access_scope,
-                provenance=publication_event.event_id,
-                delivery_witness=self.ledger.next_event_id,
+            return
+        if scheduled.work_kind == "repo.process_non_roll":
+            maturity = self.repo.process_non_roll(
+                scheduled.due_time,
+                self.accounting,
+                scheduled.stable_id,
+                self.ledger,
             )
-            delivery_dict = delivery.to_dict()
-            self.ledger.append(
-                completion_time=scheduled.due_time,
-                transition_kind="evidence_delivered",
-                responsible_owner=delivery.recipient_id,
-                causal_parent=publication_event.event_id,
-                payload={"delivery": delivery_dict},
-                observation_policy=delivery.access_scope.value,
+            self.leveraged_funds.record_liquidity_deficit(
+                maturity.liquidity_deficit,
+                self.ledger.events[-1].event_id,
             )
-            self.player_records.deliver(delivery_dict, observation_dict)
             return
         if scheduled.work_kind == "fomc.meeting":
             self._handle_fomc_meeting(scheduled)
@@ -487,12 +698,50 @@ class ScenarioRuntime:
             pass
         return self.result()
 
+    def _state_hash(self) -> str:
+        return sha256(
+            {
+                "accounting": self.accounting.snapshot_for_hash(),
+                "canonical_registry_hash": self.registry.state_hash(),
+                "dealer_cohort": self.dealers.snapshot_for_hash(),
+                "external_buyer": self.external_buyer.snapshot_for_hash(),
+                "leveraged_funds": self.leveraged_funds.snapshot_for_hash(),
+                "repo_agreement": self.repo.snapshot_for_hash(),
+                "treasury_market": self.market.snapshot_for_hash(),
+            }
+        )
+
+    def endogeneity_report(self) -> tuple[dict[str, str], ...]:
+        return (
+            {
+                "proposition": "treasury_secondary.price_and_allocation",
+                "source": TreasurySecondaryMarket.MARKET_ID,
+                "source_kind": "ENDOGENOUS_MARKET",
+            },
+            {
+                "proposition": "repo.non_roll_and_liquidity_deficit",
+                "source": self.repo.agreement_id,
+                "source_kind": "ENDOGENOUS_AGREEMENT",
+            },
+            {
+                "proposition": "treasury_secondary.external_duration_demand",
+                "source": self.external_buyer.participant_id,
+                "source_kind": "BOUNDARY_ADAPTER",
+            },
+            {
+                "proposition": "macro.release_values",
+                "source": "adapter.macro.us.broad",
+                "source_kind": "BOUNDARY_ADAPTER",
+            },
+        )
+
     def result(self) -> RunResult:
         return RunResult(
             scenario_hash=self.scenario.scenario_hash,
-            state_hash=self.registry.state_hash(),
+            state_hash=self._state_hash(),
             transcript=self.ledger.transcript_bytes(),
             player_records=self.player_records.list_delivered(),
             package_id=self.package_id,
             receipts=tuple(receipt.to_dict() for receipt in self.receipts),
+            endogeneity_report=self.endogeneity_report(),
         )

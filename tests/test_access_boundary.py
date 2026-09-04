@@ -32,8 +32,10 @@ class AccessBoundaryTest(unittest.TestCase):
         result = runtime.run_all()
         serialized = repr(result.player_records)
         self.assertIn("Core consumer prices", serialized)
+        self.assertIn("ENDOGENOUS_MARKET", serialized)
         self.assertNotIn("inflation_persistence", serialized)
         self.assertNotIn("housing_credit_sensitivity", serialized)
+        self.assertNotIn("repo_obligation", serialized)
 
 
 if __name__ == "__main__":

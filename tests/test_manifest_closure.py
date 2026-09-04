@@ -10,7 +10,7 @@ from tests.support import SCENARIO, copied_scenario, read_json, write_json
 class ManifestClosureTest(unittest.TestCase):
     def test_bounded_slice_closes(self) -> None:
         scenario = validate_scenario(SCENARIO)
-        self.assertEqual(24, len(scenario.manifest.selected_ids))
+        self.assertEqual(28, len(scenario.manifest.selected_ids))
         self.assertEqual(
             scenario.manifest.selected_ids,
             frozenset(entry["catalog_id"] for entry in scenario.catalog_slice["entries"]),

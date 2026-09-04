@@ -7,6 +7,7 @@ from engine.legal import LegalRegistry, LegalResolutionError
 
 class DeskExecutor:
     OWNER_ID = "inst.us.federal_reserve.new_york"
+    MARKET_ID = "market.us.treasury.secondary"
 
     def __init__(self, legal: LegalRegistry) -> None:
         self._legal = legal
@@ -82,7 +83,7 @@ class DeskExecutor:
         if not all(
             clause.permits(
                 requesting_subject=self.OWNER_ID,
-                target_owner="adapter.market.us.treasury_demand.phase2",
+                target_owner=self.MARKET_ID,
                 proposed_effect=requested_effect,
                 at_time=at_time,
                 has_certified_fomc_decision=True,
@@ -105,7 +106,7 @@ class DeskExecutor:
             status=ActionStatus.EXECUTED,
             realized_effect=requested_effect,
             failure_stage=None,
-            reason="The Desk transmitted the authorized operation to the declared market boundary.",
+            reason="The Desk submitted the authorized operation to the Treasury market.",
             witness_refs=(directive.directive_id,),
         )
 

@@ -81,3 +81,35 @@ class ObservationSystem:
             measurement_error=payload["measurement_error"],
             source_event_id=event.event_id,
         )
+
+    def produce_market_clearing(self, event: DomainEvent) -> Observation:
+        if event.transition_kind != "market_clearing_recorded":
+            raise ValueError("market observation requires a clearing transition")
+        clearing = event.payload["clearing_result"]
+        if clearing["source_kind"] != "ENDOGENOUS_MARKET":
+            raise ValueError("market observation requires an endogenous clearing witness")
+        price = clearing["price"]
+        displayed = None if price is None else f"{float(price) * 100:.3f}"
+        return Observation(
+            observation_id=f"observation.{event.sequence:06d}",
+            proposition="Treasury secondary-market 5-10 year clearing result",
+            observed_value={
+                "allocation": clearing["allocation"],
+                "display_value": displayed,
+                "filled_quantity": clearing["filled_quantity"],
+                "price": price,
+                "residual": clearing["residual"],
+                "source_kind": clearing["source_kind"],
+                "status": clearing["status"],
+            },
+            observation_time=event.completion_time,
+            publication_time=event.completion_time,
+            reference_period=event.completion_time,
+            revision_status="FINAL_CLEARING",
+            source=event.responsible_owner,
+            access_scope=AccessScope.CHAIR_SCOPED,
+            measurement_error={
+                "description": "Bounded order-book depth and dealer capacity are explicit in residuals."
+            },
+            source_event_id=event.event_id,
+        )

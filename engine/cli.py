@@ -48,6 +48,20 @@ def run_command(args: argparse.Namespace) -> int:
             f"receipt={receipt['stage']} status={receipt['status']} "
             f"owner={receipt['owner_id']}"
         )
+        clearing = receipt["details"].get("clearing_result")
+        if clearing is not None:
+            print(
+                f"market_price={clearing['price']} filled={clearing['filled_quantity']} "
+                f"residual_buy={clearing['residual']['BUY']} "
+                f"residual_sell={clearing['residual']['SELL']} "
+                f"source={clearing['source_kind']}"
+            )
+    if args.report_endogeneity:
+        for row in result.endogeneity_report:
+            print(
+                f"endogeneity={row['proposition']} source_kind={row['source_kind']} "
+                f"source={row['source']}"
+            )
     return 0
 
 
@@ -148,6 +162,7 @@ def parser() -> argparse.ArgumentParser:
     run = subcommands.add_parser("run")
     run.add_argument("scenario", nargs="?")
     run.add_argument("--transcript")
+    run.add_argument("--report-endogeneity", action="store_true")
     run.add_argument("--package", choices=tuple(PACKAGES), default="MEASURED_FIRMING")
     run.set_defaults(handler=run_command)
     return result

@@ -16,15 +16,24 @@ class AdapterClearingResult:
     allocation: None
     note: str
 
-    def to_dict(self) -> dict[str, Any]:
+    def to_boundary_dict(self) -> dict[str, Any]:
         return {
-            "adapter_id": self.adapter_id,
-            "allocation": self.allocation,
-            "note": self.note,
-            "operation": self.operation,
+            "allocation": {},
+            "filled_quantity": "0",
+            "input_quantity": {"BUY": "0", "SELL": "0"},
             "price": self.price,
+            "provider_id": self.adapter_id,
+            "residual": {"BUY": "0", "SELL": "0"},
             "source_kind": self.source_kind,
             "status": self.status,
+        }
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            **self.to_boundary_dict(),
+            "adapter_id": self.adapter_id,
+            "note": self.note,
+            "operation": self.operation,
         }
 
 

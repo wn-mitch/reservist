@@ -8,7 +8,7 @@
       "effective_from": "1935-08-23T00:00:00-05:00",
       "effective_until": "2100-01-01T00:00:00-05:00",
       "authorized_subjects": ["inst.us.federal_reserve.new_york"],
-      "target_owners": ["adapter.market.us.treasury_demand.phase2"],
+      "target_owners": ["market.us.treasury.secondary"],
       "permitted_effects": [
         "desk.maintain_target_range",
         "desk.raise_target_range_25bp"
