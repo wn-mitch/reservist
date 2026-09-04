@@ -9,6 +9,8 @@ from engine.harness.fomc_room import FomcRoomHarness
 from engine.harness.office import OfficeHarness
 from engine.harness.operations_room import OperationsRoomHarness
 from engine.harness.request import RequestHarness
+from engine.harness.statement import StatementHarness
+from engine.harness.wire import WorldWireHarness
 from engine.manifest import ManifestValidationError
 from engine.packages import PACKAGES
 from engine.scenario import ScenarioRuntime, seal_scenario, validate_scenario
@@ -102,7 +104,7 @@ def play_command(args: argparse.Namespace) -> int:
         return 0
     print(
         "\nCommands: inspect <number> | ask markets [accelerated] | advance | book | verbs | fomc | "
-        "propose <package> | operations | quit"
+        "propose <package> | operations | statement | wire | quit"
     )
     while True:
         try:
@@ -116,9 +118,27 @@ def play_command(args: argparse.Namespace) -> int:
         elif command == "verbs":
             print("Available: " + " | ".join(runtime.available_verbs()))
         elif command == "fomc":
-            print(FomcRoomHarness(runtime.participants, runtime.fomc_decision).render())
+            print(
+                FomcRoomHarness(
+                    runtime.participants,
+                    runtime.fomc_decision,
+                    runtime.participant_labels,
+                ).render()
+            )
         elif command == "operations":
             print(OperationsRoomHarness(tuple(runtime.receipts)).render())
+        elif command == "statement":
+            statement = StatementHarness()
+            if runtime.communication_acts:
+                print(statement.render_published(runtime.communication_acts[-1]))
+            else:
+                print(statement.render_preview(runtime.authorized_statement_claims()))
+        elif command == "wire":
+            print(
+                WorldWireHarness(
+                    tuple(runtime.reports), runtime.population_views
+                ).render()
+            )
         elif command in {"ask markets", "ask markets accelerated"}:
             mode = (
                 RequestMode.ACCELERATED
@@ -143,7 +163,13 @@ def play_command(args: argparse.Namespace) -> int:
             runtime.package_id = package
             while runtime.fomc_decision is None and runtime.advance_next():
                 pass
-            print(FomcRoomHarness(runtime.participants, runtime.fomc_decision).render())
+            print(
+                FomcRoomHarness(
+                    runtime.participants,
+                    runtime.fomc_decision,
+                    runtime.participant_labels,
+                ).render()
+            )
         elif command == "advance":
             print(harness.advance())
         elif command.startswith("inspect "):
@@ -154,7 +180,7 @@ def play_command(args: argparse.Namespace) -> int:
         else:
             print(
                 "Commands: inspect <number> | ask markets [accelerated] | advance | book | verbs | fomc | "
-                "propose <package> | operations | quit"
+                "propose <package> | operations | statement | wire | quit"
             )
     return 0
 

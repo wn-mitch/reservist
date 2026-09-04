@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from datetime import timedelta
 from decimal import Decimal
 from pathlib import Path
 from typing import Any
@@ -17,8 +18,11 @@ from engine.catalog_slice import (
     load_catalog_slice,
 )
 from engine.clock import ScheduledEvent, SimulationClock, parse_time
+from engine.claims import ClaimRegistry
+from engine.communication import CommunicationAct, authorized_claim_ids
 from engine.cognition.participant import LimitedParticipant
 from engine.cognition.revision import revise_from_assessment
+from engine.delivery import AudienceReception, DirectAudienceRouter
 from engine.execution.desk import DeskExecutor
 from engine.initialization import InitializationBundle, initialization_content_hash
 from engine.legal import LegalRegistry
@@ -34,16 +38,21 @@ from engine.markets.treasury_secondary import (
     TreasuryOrder,
     TreasurySecondaryMarket,
 )
+from engine.media.loonberg import LoonbergOutlet, Report
 from engine.observation import EvidenceDelivery, ObservationSystem
 from engine.packages import PACKAGES, package_by_id
 from engine.participants.dealer_cohort import DealerCohort
 from engine.participants.external_buyer import ExternalBuyerResidual
 from engine.participants.leveraged_fund import LeveragedFundCohort
 from engine.player.records import PlayerRecordStore
+from engine.population.household_cohorts import HouseholdCohorts
+from engine.population.person_cells import PersonPopulation
+from engine.population.pop_lens import PopLensDefinition, PopLensProjector, PopulationView
 from engine.records import ReceiptStage, StageReceipt
 from engine.state.macro_adapter import MacroAdapterOwner, PublishedReferenceOwner
 from engine.state.institutions import InstitutionalStateOwner, PublishedFomcCalendar
 from engine.state.market import TreasuryMarketStateOwner
+from engine.state.media import OutletStateOwner
 from engine.state.registry import CanonicalRegistry, StateOwner, TypedTransition
 from engine.settlement.envelope import SettlementEnvelope, SettlementResult, SettlementStatus
 from engine.staff.analytical_task import AnalyticalTask, RequestMode, TaskStatus
@@ -174,6 +183,14 @@ class RunResult:
     package_id: str
     receipts: tuple[dict[str, Any], ...]
     endogeneity_report: tuple[dict[str, str], ...]
+    communication_acts: tuple[dict[str, Any], ...]
+    reports: tuple[dict[str, Any], ...]
+    audience_receptions: tuple[dict[str, Any], ...]
+    population_views: tuple[dict[str, Any], ...]
+
+
+class PublicationInvariantError(RuntimeError):
+    pass
 
 
 class ScenarioRuntime:
@@ -197,6 +214,9 @@ class ScenarioRuntime:
         self.legal = LegalRegistry.load(scenario.scenario_dir / "legal")
         self.authority = AuthorityResolver(self.legal)
         cast = scenario.authority_content["cast"]
+        self.participant_labels = {
+            row["participant_id"]: row["display_name"] for row in cast["participants"]
+        }
         self.participants = tuple(
             LimitedParticipant.from_dict(row) for row in cast["participants"]
         )
@@ -249,6 +269,49 @@ class ScenarioRuntime:
                 "state.agreement.us.repo.bilateral.contract",
             ),
         )
+        self.population = PersonPopulation.from_state(
+            self._opening_value(
+                "population.us.person.cells",
+                "state.population.us.person.cells.mass",
+            )
+        )
+        self.households = HouseholdCohorts.from_state(
+            self._opening_value(
+                "household.us.cohorts",
+                "state.household.us.cohorts.allocations",
+            ),
+            self.population,
+        )
+        projector = PopLensProjector(self.population, self.households)
+        self.population_views = projector.project_all(
+            (
+                PopLensDefinition(
+                    "pop.us.workers.by.sector",
+                    "Workers sensitive to labor risk",
+                    ("cell.us.employment_exposed",),
+                    "employment mandate",
+                ),
+                PopLensDefinition(
+                    "pop.us.fixed.rate.homeowners.by.mortgage.vintage",
+                    "Households sensitive to borrowing costs",
+                    ("cell.us.mortgage_exposed",),
+                    "housing and credit transmission",
+                ),
+            )
+        )
+        self.claims = ClaimRegistry()
+        self.audience_router = DirectAudienceRouter.from_manifest(
+            scenario.manifest.value,
+            int(scenario.initialization.value["seed"]),
+        )
+        self.loonberg = LoonbergOutlet()
+        self.communication_acts: list[CommunicationAct] = []
+        self.reports: list[Report] = []
+        self.audience_receptions: list[AudienceReception] = []
+        self._dynamic_event_sequence = 1000
+        self._publication_order_witnesses: dict[str, dict[str, str]] = {}
+        self._completed_publication_market_artifacts: set[str] = set()
+        self.latest_publication_market_result: ClearingResult | None = None
         self.latest_market_result: ClearingResult | None = None
         self.latest_market_settlement: SettlementResult | None = None
         self.latest_repo_settlement: SettlementResult | None = None
@@ -527,6 +590,8 @@ class ScenarioRuntime:
                 owner_class = InstitutionalStateOwner
             elif owner_id == TreasurySecondaryMarket.MARKET_ID:
                 owner_class = TreasuryMarketStateOwner
+            elif owner_id == LoonbergOutlet.OUTLET_ID:
+                owner_class = OutletStateOwner
             else:
                 owner_class = StateOwner
             registry.register(owner_class(owner_id, opening_by_owner[owner_id], contracts[owner_id]))
@@ -621,6 +686,7 @@ class ScenarioRuntime:
                 ),
                 decision_event.event_id,
             )
+            self._schedule_statement_publication(decision, decision_event.event_id)
             return
 
         action_results = tuple(
@@ -659,6 +725,355 @@ class ScenarioRuntime:
             execution_event.event_id,
         )
         self._run_market_cycle(action_results, scheduled, execution_event.event_id)
+        self._schedule_statement_publication(decision, execution_event.event_id)
+
+    def _schedule_statement_publication(
+        self, decision: FomcDecision, causal_parent: str
+    ) -> None:
+        self.clock.schedule(
+            ScheduledEvent(
+                due_time=self.fomc_calendar.statement_time(decision.meeting_id),
+                phase_priority=50,
+                stable_sequence=50,
+                stable_id=f"scheduled.statement.{decision.meeting_id.rsplit('.', 1)[-1]}",
+                responsible_owner=FomcBody.BODY_ID,
+                work_kind="communication.publish_fomc_statement",
+                payload={"authorization_id": decision.authorization.authorization_id},
+                causal_parent=causal_parent,
+            )
+        )
+
+    def authorized_statement_claims(self) -> tuple[str, ...]:
+        if self.fomc_decision is None:
+            return ()
+        return authorized_claim_ids(self.fomc_decision)
+
+    def _material_state_hash(self) -> str:
+        return sha256(
+            {
+                "accounting": self.accounting.snapshot_for_hash(),
+                "canonical_registry": self.registry.state_hash(),
+                "households": self.households.snapshot_for_hash(),
+                "population": self.population.snapshot_for_hash(),
+                "treasury_market": self.market.snapshot_for_hash(),
+            }
+        )
+
+    def _schedule_dynamic_event(
+        self,
+        *,
+        due_time: str,
+        phase_priority: int,
+        stable_id: str,
+        responsible_owner: str,
+        work_kind: str,
+        payload: dict[str, Any],
+        causal_parent: str,
+    ) -> None:
+        sequence = self._dynamic_event_sequence
+        self._dynamic_event_sequence += 1
+        self.clock.schedule(
+            ScheduledEvent(
+                due_time=due_time,
+                phase_priority=phase_priority,
+                stable_sequence=sequence,
+                stable_id=stable_id,
+                responsible_owner=responsible_owner,
+                work_kind=work_kind,
+                payload=payload,
+                causal_parent=causal_parent,
+            )
+        )
+
+    def _schedule_receptions(
+        self,
+        receptions: tuple[AudienceReception, ...],
+        causal_parent: str,
+    ) -> None:
+        for reception in sorted(receptions, key=lambda row: (row.delivery_time, row.edge_id)):
+            self._schedule_dynamic_event(
+                due_time=reception.delivery_time,
+                phase_priority=60,
+                stable_id=f"scheduled.{reception.delivery_id}",
+                responsible_owner=reception.recipient_id,
+                work_kind="audience.receive_artifact",
+                payload={"reception": reception.to_dict()},
+                causal_parent=causal_parent,
+            )
+
+    def _handle_audience_reception(self, scheduled: ScheduledEvent) -> None:
+        reception = AudienceReception.from_dict(scheduled.payload["reception"])
+        material_before = (
+            self._material_state_hash() if reception.artifact_kind == "REPORT" else None
+        )
+        self.audience_receptions.append(reception)
+        exposed = self.ledger.append(
+            completion_time=scheduled.due_time,
+            transition_kind="audience_exposed",
+            responsible_owner=reception.recipient_id,
+            causal_parent=scheduled.causal_parent,
+            payload={"reception": reception.to_dict()},
+            observation_policy=reception.access_scope,
+        )
+        parent = exposed.event_id
+        if reception.attended:
+            attended = self.ledger.append(
+                completion_time=scheduled.due_time,
+                transition_kind="audience_attended",
+                responsible_owner=reception.recipient_id,
+                causal_parent=parent,
+                payload={"delivery_id": reception.delivery_id},
+                observation_policy=reception.access_scope,
+            )
+            parent = attended.event_id
+        if reception.belief_revised:
+            revised = self.ledger.append(
+                completion_time=scheduled.due_time,
+                transition_kind="audience_belief_revised",
+                responsible_owner=reception.recipient_id,
+                causal_parent=parent,
+                payload={
+                    "claim_ids": list(reception.claim_ids),
+                    "policy_path_estimate": reception.policy_path_estimate,
+                },
+                observation_policy=reception.access_scope,
+            )
+            parent = revised.event_id
+            if reception.recipient_id == self.dealers.participant_id:
+                self.dealers.revise_from_publication(reception, revised.event_id)
+            elif reception.recipient_id == self.leveraged_funds.participant_id:
+                self.leveraged_funds.revise_from_publication(reception, revised.event_id)
+        self.audience_router.beliefs.record(reception)
+        if reception.order_intended:
+            intended = self.ledger.append(
+                completion_time=scheduled.due_time,
+                transition_kind="audience_order_intended",
+                responsible_owner=reception.recipient_id,
+                causal_parent=parent,
+                payload={"delivery_id": reception.delivery_id},
+            )
+            witnesses = self._publication_order_witnesses.setdefault(
+                reception.artifact_id, {}
+            )
+            witnesses[reception.recipient_id] = intended.event_id
+            required = {
+                self.dealers.participant_id,
+                self.leveraged_funds.participant_id,
+            }
+            if (
+                set(witnesses) == required
+                and reception.artifact_id not in self._completed_publication_market_artifacts
+            ):
+                self._run_publication_market_cycle(
+                    witnesses,
+                    scheduled.causal_parent or exposed.event_id,
+                    scheduled.due_time,
+                )
+                self._completed_publication_market_artifacts.add(reception.artifact_id)
+        if (
+            reception.artifact_kind == "STATEMENT"
+            and reception.recipient_id == LoonbergOutlet.OUTLET_ID
+            and reception.attended
+        ):
+            report_time = (
+                parse_time(scheduled.due_time) + timedelta(minutes=1)
+            ).isoformat()
+            self._schedule_dynamic_event(
+                due_time=report_time,
+                phase_priority=55,
+                stable_id=f"scheduled.report.loonberg.{reception.artifact_id.rsplit('.', 1)[-1]}",
+                responsible_owner=LoonbergOutlet.OUTLET_ID,
+                work_kind="media.publish_loonberg_report",
+                payload={"communication_id": reception.artifact_id},
+                causal_parent=parent,
+            )
+        if (
+            reception.artifact_kind == "REPORT"
+            and reception.recipient_id
+            == self.scenario.initialization.value["player_id"]
+        ):
+            report = next(
+                row for row in self.reports if row.report_id == reception.artifact_id
+            )
+            delivery = {
+                "access_scope": "profile.chair_scoped",
+                "delivery_id": reception.delivery_id,
+                "delivery_time": scheduled.due_time,
+                "delivery_witness": exposed.event_id,
+                "item_id": report.report_id,
+                "provenance": scheduled.causal_parent,
+                "recipient_id": reception.recipient_id,
+            }
+            self.player_records.deliver_artifact(delivery, report.to_dict())
+        if material_before is not None and self._material_state_hash() != material_before:
+            raise PublicationInvariantError(
+                "report audience interpretation mutated canonical material state"
+            )
+
+    def _publish_fomc_statement(self, scheduled: ScheduledEvent) -> None:
+        if self.fomc_decision is None:
+            raise PublicationInvariantError("statement publication requires an FOMC decision")
+        material_before = self._material_state_hash()
+        statement_edges = tuple(
+            edge
+            for edge in self.audience_router.edges
+            if edge.source_id == FomcBody.BODY_ID and edge.artifact_kind == "STATEMENT"
+        )
+        communication = CommunicationAct.from_decision(
+            self.fomc_decision,
+            scheduled.due_time,
+            self.claims,
+            intended_audiences=(edge.recipient_id for edge in statement_edges),
+        )
+        self.communication_acts.append(communication)
+        statement_event = self.ledger.append(
+            completion_time=scheduled.due_time,
+            transition_kind="communication_act_published",
+            responsible_owner=FomcBody.BODY_ID,
+            causal_parent=scheduled.causal_parent,
+            payload={"communication": communication.to_dict()},
+            observation_policy="PUBLIC",
+        )
+        statement_receptions = self.audience_router.plan_deliveries(
+            source_id=FomcBody.BODY_ID,
+            artifact_kind="STATEMENT",
+            artifact_id=communication.communication_id,
+            published_at=scheduled.due_time,
+            claims=(claim.to_dict() for claim in communication.claims),
+        )
+        self._schedule_receptions(statement_receptions, statement_event.event_id)
+        if self._material_state_hash() != material_before:
+            raise PublicationInvariantError(
+                "statement publication or audience interpretation mutated canonical material state"
+            )
+        if not any(
+            reception.recipient_id == LoonbergOutlet.OUTLET_ID
+            for reception in statement_receptions
+        ):
+            raise PublicationInvariantError("Loonberg did not receive the FOMC statement")
+
+    def _publish_loonberg_report(self, scheduled: ScheduledEvent) -> None:
+        communication = next(
+            row
+            for row in self.communication_acts
+            if row.communication_id == scheduled.payload["communication_id"]
+        )
+        report_targets = tuple(
+            edge.recipient_id
+            for edge in self.audience_router.edges
+            if edge.source_id == LoonbergOutlet.OUTLET_ID and edge.artifact_kind == "REPORT"
+        )
+        report_material_before = self._material_state_hash()
+        report = self.loonberg.publish(communication, scheduled.due_time, report_targets)
+        if self._material_state_hash() != report_material_before:
+            raise PublicationInvariantError(
+                "report publication mutated canonical material state"
+            )
+        self.reports.append(report)
+        report_event = self.registry.apply(
+            LoonbergOutlet.OUTLET_ID,
+            TypedTransition(
+                transition_kind="record_report_publication",
+                effective_time=scheduled.due_time,
+                payload={"report": report.to_dict()},
+                causal_parent=scheduled.causal_parent,
+            ),
+            self.ledger,
+        )
+        material_after_publication = self._material_state_hash()
+        report_receptions = self.audience_router.plan_deliveries(
+            source_id=LoonbergOutlet.OUTLET_ID,
+            artifact_kind="REPORT",
+            artifact_id=report.report_id,
+            published_at=scheduled.due_time,
+            claims=report.selected_claims,
+        )
+        self._schedule_receptions(report_receptions, report_event.event_id)
+        if self._material_state_hash() != material_after_publication:
+            raise PublicationInvariantError(
+                "report delivery planning mutated canonical material state"
+            )
+
+    def _run_publication_market_cycle(
+        self,
+        order_witnesses: dict[str, str],
+        source_event_id: str,
+        effective_time: str,
+    ) -> None:
+        orders = (
+            self.dealers.publication_order(
+                self.accounting,
+                self.market.bucket_id,
+                order_witnesses[self.dealers.participant_id],
+            ),
+            self.leveraged_funds.publication_order(
+                self.accounting,
+                self.market.bucket_id,
+                order_witnesses[self.leveraged_funds.participant_id],
+            ),
+            self.external_buyer.order(self.market.bucket_id, source_event_id),
+        )
+        for order in orders:
+            self.ledger.append(
+                completion_time=effective_time,
+                transition_kind="treasury_order_submitted",
+                responsible_owner=order.participant_id,
+                causal_parent=order.source_witness,
+                payload={"order": order.to_dict(), "source_stage": "publication_response"},
+            )
+        clearing = self.market.clear(
+            orders,
+            {self.dealers.participant_id: self.dealers.capacity},
+        )
+        self.latest_publication_market_result = clearing
+        market_event = self.registry.apply(
+            TreasurySecondaryMarket.MARKET_ID,
+            TypedTransition(
+                transition_kind="record_market_clearing",
+                effective_time=effective_time,
+                payload={
+                    "clearing_result": clearing.to_dict(),
+                    "source_stage": "publication_response",
+                },
+                causal_parent=source_event_id,
+            ),
+            self.ledger,
+        )
+        settlement = None
+        if clearing.fills:
+            envelope = SettlementEnvelope.for_treasury_fills(
+                "treasury.secondary.publication",
+                clearing.fills,
+                self._account_map(),
+                effective_time,
+                market_event.event_id,
+            )
+            prepared = envelope.prepare(self.accounting, self.ledger)
+            settlement = (
+                envelope.commit(self.accounting, self.ledger)
+                if prepared.status == SettlementStatus.PREPARED
+                else prepared
+            )
+        self._record_receipt(
+            StageReceipt(
+                receipt_id=f"receipt.publication_market.{self.package_id.lower()}",
+                stage=ReceiptStage.OBSERVED_EFFECT,
+                owner_id=TreasurySecondaryMarket.MARKET_ID,
+                timestamp=effective_time,
+                status="PUBLICATION_RESPONSE_" + clearing.status.value,
+                source_record_id=source_event_id,
+                epistemic_scope="profile.chair_scoped",
+                details={
+                    "clearing_result": clearing.to_dict(),
+                    "settlement": settlement.to_dict() if settlement else None,
+                },
+            ),
+            market_event.event_id,
+        )
+        observation = self.observations.produce_market_clearing(market_event)
+        self._deliver_observation(
+            observation, market_event.event_id, effective_time
+        )
 
     def _desk_market_order(
         self,
@@ -917,6 +1332,15 @@ class ScenarioRuntime:
         if scheduled.work_kind == "fomc.meeting":
             self._handle_fomc_meeting(scheduled)
             return
+        if scheduled.work_kind == "communication.publish_fomc_statement":
+            self._publish_fomc_statement(scheduled)
+            return
+        if scheduled.work_kind == "audience.receive_artifact":
+            self._handle_audience_reception(scheduled)
+            return
+        if scheduled.work_kind == "media.publish_loonberg_report":
+            self._publish_loonberg_report(scheduled)
+            return
         self.ledger.append(
             completion_time=scheduled.due_time,
             transition_kind="scheduled_event_handled",
@@ -946,6 +1370,12 @@ class ScenarioRuntime:
                 "external_buyer": self.external_buyer.snapshot_for_hash(),
                 "leveraged_funds": self.leveraged_funds.snapshot_for_hash(),
                 "participants": [participant.snapshot_for_hash() for participant in self.participants],
+                "audience_delivery": self.audience_router.snapshot_for_hash(),
+                "communication_acts": [row.to_dict() for row in self.communication_acts],
+                "households": self.households.snapshot_for_hash(),
+                "population": self.population.snapshot_for_hash(),
+                "population_views": [row.to_dict() for row in self.population_views],
+                "reports": [row.to_dict() for row in self.reports],
                 "repo_agreement": self.repo.snapshot_for_hash(),
                 "staff": self.staff.snapshot_for_hash(),
                 "staff_assessments": {
@@ -989,4 +1419,10 @@ class ScenarioRuntime:
             package_id=self.package_id,
             receipts=tuple(receipt.to_dict() for receipt in self.receipts),
             endogeneity_report=self.endogeneity_report(),
+            communication_acts=tuple(row.to_dict() for row in self.communication_acts),
+            reports=tuple(row.to_dict() for row in self.reports),
+            audience_receptions=tuple(
+                row.to_dict() for row in self.audience_receptions
+            ),
+            population_views=tuple(row.to_dict() for row in self.population_views),
         )

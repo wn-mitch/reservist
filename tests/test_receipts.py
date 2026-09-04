@@ -21,6 +21,7 @@ class ReceiptTest(unittest.TestCase):
                 ReceiptStage.EXECUTION.value,
                 ReceiptStage.SETTLEMENT.value,
                 ReceiptStage.OBSERVED_EFFECT.value,
+                ReceiptStage.OBSERVED_EFFECT.value,
             ],
         )
         owners = [receipt["owner_id"] for receipt in self.result.receipts]
@@ -30,6 +31,7 @@ class ReceiptTest(unittest.TestCase):
                 "office.us.federal_reserve.fomc_chair",
                 "body.us.federal_reserve.fomc",
                 "inst.us.federal_reserve.new_york",
+                "market.us.treasury.secondary",
                 "market.us.treasury.secondary",
                 "market.us.treasury.secondary",
             ],

@@ -34,7 +34,6 @@ class ParticipantPosition:
 @dataclass(frozen=True)
 class LimitedParticipant:
     participant_id: str
-    display_name: str
     office_id: str
     beliefs: BeliefLedger
 
@@ -42,7 +41,6 @@ class LimitedParticipant:
     def from_dict(cls, value: dict[str, Any]) -> "LimitedParticipant":
         return cls(
             participant_id=value["participant_id"],
-            display_name=value["display_name"],
             office_id=value["office_id"],
             beliefs=BeliefLedger(
                 [BoundedEstimate.from_dict(row) for row in value["beliefs"]]
@@ -92,7 +90,6 @@ class LimitedParticipant:
     def snapshot_for_hash(self) -> dict[str, Any]:
         return {
             "beliefs": self.beliefs.snapshot_for_hash(),
-            "display_name": self.display_name,
             "office_id": self.office_id,
             "participant_id": self.participant_id,
         }

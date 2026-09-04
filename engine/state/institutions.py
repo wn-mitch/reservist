@@ -45,3 +45,9 @@ class PublishedFomcCalendar:
         if self.in_blackout(at_time):
             verbs.remove("Communicate")
         return tuple(verbs)
+
+    def statement_time(self, meeting_id: str) -> str:
+        for occurrence in self._state["published_occurrences"]:
+            if occurrence["meeting_id"] == meeting_id:
+                return str(occurrence["statement_time"])
+        raise ValueError(f"meeting has no published statement time: {meeting_id}")

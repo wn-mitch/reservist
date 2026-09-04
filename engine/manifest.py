@@ -68,6 +68,61 @@ class ScenarioManifest:
                 raise ManifestValidationError("missing_fallback", f"catalog disallows fail-closed fallback for {catalog_id}")
         if set(catalog_entries) != self.selected_ids:
             raise ManifestValidationError("manifest_closure", "frozen slice and selection differ")
+        self._validate_delivery_edges(catalog_entries)
+
+    def _validate_delivery_edges(self, catalog_entries: dict[str, dict[str, Any]]) -> None:
+        edges = self.value.get("delivery_edges")
+        if not isinstance(edges, list) or not edges:
+            raise ManifestValidationError(
+                "manifest_closure", "manifest declares no direct audience delivery edges"
+            )
+        edge_ids = [row.get("edge_id") for row in edges]
+        if len(edge_ids) != len(set(edge_ids)):
+            raise ManifestValidationError(
+                "manifest_closure", "audience delivery edge identifiers are not unique"
+            )
+        for row in edges:
+            for field in ("edge_id", "framing", "access_scope"):
+                if not isinstance(row.get(field), str) or not row[field]:
+                    raise ManifestValidationError(
+                        "manifest_closure",
+                        f"delivery edge has invalid {field}: {row.get('edge_id')}",
+                    )
+            for endpoint in ("source_id", "recipient_id"):
+                if row.get(endpoint) not in catalog_entries:
+                    raise ManifestValidationError(
+                        "referential_integrity",
+                        f"delivery edge references unselected {endpoint}: {row.get(endpoint)}",
+                    )
+            if row.get("artifact_kind") not in {"STATEMENT", "REPORT"}:
+                raise ManifestValidationError(
+                    "manifest_closure", f"invalid delivery artifact kind: {row.get('artifact_kind')}"
+                )
+            if not isinstance(row.get("delay_minutes"), int) or row["delay_minutes"] < 0:
+                raise ManifestValidationError(
+                    "manifest_closure", f"invalid delivery delay: {row.get('edge_id')}"
+                )
+            for field in (
+                "attention_probability",
+                "revision_probability",
+                "order_probability",
+            ):
+                probability = row.get(field)
+                if not isinstance(probability, (int, float)) or not 0 <= probability <= 1:
+                    raise ManifestValidationError(
+                        "manifest_closure",
+                        f"invalid {field} on delivery edge {row.get('edge_id')}",
+                    )
+        network_entries = [
+            entry_id
+            for entry_id, entry in catalog_entries.items()
+            if entry["identity_clade"] == "Network"
+        ]
+        if network_entries:
+            raise ManifestValidationError(
+                "manifest_closure",
+                f"MVP direct delivery slice cannot select Network entries: {network_entries}",
+            )
 
     def validate_hash(self) -> None:
         expected = manifest_content_hash(self.value)

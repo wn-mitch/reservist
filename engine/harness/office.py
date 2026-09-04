@@ -37,6 +37,15 @@ class OfficeHarness:
                         f"    Dissent: {item['dissent'][0]['dissenting_unit_id']}",
                     ]
                 )
+            elif item.get("record_kind") == "Report":
+                lines.extend(
+                    [
+                        f"[{index}] {item['headline']}",
+                        f"    Outlet: {item['outlet_id']}",
+                        f"    Published: {item['publication_time']}",
+                        f"    Framing: {item['framing']}",
+                    ]
+                )
             else:
                 value = item["observed_value"]
                 lines.extend(
@@ -92,6 +101,19 @@ class OfficeHarness:
                     f"Unavailable or stale: {stale}",
                     f"Dissent: {dissent}",
                     f"Expected next information: {item['expected_next_information']}",
+                ]
+            )
+        if item.get("record_kind") == "Report":
+            return "\n".join(
+                [
+                    f"RECORD {item_id}",
+                    f"Outlet: {item['outlet_id']}",
+                    f"Headline: {item['headline']}",
+                    f"Published: {item['publication_time']}",
+                    f"Framing: {item['framing']}",
+                    "Claims: "
+                    + ", ".join(claim["claim_id"] for claim in item["selected_claims"]),
+                    f"Omissions: {'; '.join(item['omissions'])}",
                 ]
             )
         return "\n".join(
