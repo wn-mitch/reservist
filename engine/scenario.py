@@ -19,7 +19,9 @@ from engine.catalog_slice import (
 )
 from engine.clock import ScheduledEvent, SimulationClock, parse_time
 from engine.claims import ClaimRegistry
+from engine.commitments import Commitment, CommitmentBook, CommitmentStatus
 from engine.communication import CommunicationAct, authorized_claim_ids
+from engine.compression import CompressionStep, IntermeetingCompressor, IntermeetingRealization
 from engine.cognition.participant import LimitedParticipant
 from engine.cognition.revision import revise_from_assessment
 from engine.delivery import AudienceReception, DirectAudienceRouter
@@ -39,6 +41,7 @@ from engine.markets.treasury_secondary import (
     TreasurySecondaryMarket,
 )
 from engine.media.loonberg import LoonbergOutlet, Report
+from engine.monitoring import MonitoringBook, MonitoringStatus
 from engine.observation import EvidenceDelivery, ObservationSystem
 from engine.packages import PACKAGES, package_by_id
 from engine.participants.dealer_cohort import DealerCohort
@@ -48,6 +51,7 @@ from engine.player.records import PlayerRecordStore
 from engine.population.household_cohorts import HouseholdCohorts
 from engine.population.person_cells import PersonPopulation
 from engine.population.pop_lens import PopLensDefinition, PopLensProjector, PopulationView
+from engine.postmortem import NextMorningBook, PostmortemBuilder, StaffReview
 from engine.records import ReceiptStage, StageReceipt
 from engine.state.macro_adapter import MacroAdapterOwner, PublishedReferenceOwner
 from engine.state.institutions import InstitutionalStateOwner, PublishedFomcCalendar
@@ -187,6 +191,11 @@ class RunResult:
     reports: tuple[dict[str, Any], ...]
     audience_receptions: tuple[dict[str, Any], ...]
     population_views: tuple[dict[str, Any], ...]
+    commitments: tuple[dict[str, Any], ...]
+    monitoring_obligations: tuple[dict[str, Any], ...]
+    intermeeting_realizations: tuple[dict[str, Any], ...]
+    next_morning_book: dict[str, Any] | None
+    staff_review: dict[str, Any] | None
 
 
 class PublicationInvariantError(RuntimeError):
@@ -222,6 +231,14 @@ class ScenarioRuntime:
         )
         self.staff = StaffDirectory.from_dict(scenario.authority_content["staff"])
         self.assessment_builder = AssessmentBuilder()
+        self.commitments = CommitmentBook.from_state(
+            FomcBody.BODY_ID,
+            self._opening_value(
+                FomcBody.BODY_ID,
+                "state.body.us.federal_reserve.fomc.commitments",
+            ),
+        )
+        self.monitoring = MonitoringBook(self.staff)
         self.tasks: dict[str, AnalyticalTask] = {}
         self.assessments: dict[str, Assessment] = {}
         self.fomc = FomcBody(
@@ -315,6 +332,10 @@ class ScenarioRuntime:
         self.latest_market_result: ClearingResult | None = None
         self.latest_market_settlement: SettlementResult | None = None
         self.latest_repo_settlement: SettlementResult | None = None
+        self.next_morning_book: NextMorningBook | None = None
+        self.staff_review: StaffReview | None = None
+        self._policy_commitment_id: str | None = None
+        self._communication_commitment_id: str | None = None
         calendar_state = self._opening_value(
             "schedule.us.federal_reserve.fomc",
             "state.schedule.us.federal_reserve.fomc.calendar",
@@ -330,7 +351,10 @@ class ScenarioRuntime:
             )
         ]
         self.clock = SimulationClock(scenario.initialization.value["clock_start"], events)
-        self.ledger.append(
+        self.compression = IntermeetingCompressor(
+            self.clock, int(scenario.initialization.value["seed"])
+        )
+        started = self.ledger.append(
             completion_time=scenario.initialization.value["clock_start"],
             transition_kind="run_started",
             responsible_owner=player_id,
@@ -338,6 +362,27 @@ class ScenarioRuntime:
                 "scenario_hash": scenario.scenario_hash,
                 "seed": scenario.initialization.value["seed"],
             },
+        )
+        path = self.ledger.append(
+            completion_time=scenario.initialization.value["clock_start"],
+            transition_kind="aleatory_path_registered",
+            responsible_owner="adapter.macro.us.broad",
+            causal_parent=started.event_id,
+            payload={
+                "draw_bounds": {"annualized_core_inflation": [2.95, 3.9]},
+                "mechanism_class": IntermeetingCompressor.MECHANISM_CLASS,
+                "path_id": IntermeetingCompressor.PATH_ID,
+            },
+            observation_policy="profile.chair_scoped",
+        )
+        self.monitoring.register_contingent(
+            obligation_id="monitoring.contingent.failed_settlement_review",
+            commitment_id="commitment.contingent.failed_settlement",
+            responsible_unit_id="staff.us.federal_reserve.markets",
+            question="Review any failed settlement and nominate remediation work.",
+            due_time="2006-05-09T07:30:00-04:00",
+            activation_condition="settlement_failure",
+            source_witness=path.event_id,
         )
 
     def _record_player_read(self, record_id: str, record: Any) -> None:
@@ -725,7 +770,39 @@ class ScenarioRuntime:
             execution_event.event_id,
         )
         self._run_market_cycle(action_results, scheduled, execution_event.event_id)
+        self._activate_policy_commitment(decision, execution_event.event_id, scheduled.due_time)
         self._schedule_statement_publication(decision, execution_event.event_id)
+
+    def _activate_policy_commitment(
+        self, decision: FomcDecision, source_witness: str, at_time: str
+    ) -> None:
+        if decision.directive is None or self._policy_commitment_id is not None:
+            return
+        commitment = Commitment(
+            commitment_id=f"commitment.policy.{self.package_id.lower()}",
+            responsible_owner=FomcBody.BODY_ID,
+            commitment_kind="POLICY_OPERATION",
+            promised_state=(
+                "Maintain the authorized operating stance through the declared review horizon."
+            ),
+            created_at=at_time,
+            expires_at="2006-04-28T17:00:00-04:00",
+            reserved_resource="institutional_policy_capacity",
+            reserved_units=1,
+            source_refs=(decision.authorization.authorization_id, source_witness),
+            contingent_obligations=("monitoring.policy_market_transmission",),
+        )
+        activated = self.commitments.create(commitment, self.ledger)
+        self._policy_commitment_id = commitment.commitment_id
+        self._schedule_dynamic_event(
+            due_time=commitment.expires_at,
+            phase_priority=80,
+            stable_id=f"scheduled.expiry.{commitment.commitment_id}",
+            responsible_owner=commitment.responsible_owner,
+            work_kind="commitment.expire",
+            payload={"commitment_id": commitment.commitment_id},
+            causal_parent=activated.event_id,
+        )
 
     def _schedule_statement_publication(
         self, decision: FomcDecision, causal_parent: str
@@ -934,6 +1011,9 @@ class ScenarioRuntime:
             payload={"communication": communication.to_dict()},
             observation_policy="PUBLIC",
         )
+        self._activate_publication_commitment(
+            communication, statement_event.event_id, scheduled.due_time
+        )
         statement_receptions = self.audience_router.plan_deliveries(
             source_id=FomcBody.BODY_ID,
             artifact_kind="STATEMENT",
@@ -951,6 +1031,70 @@ class ScenarioRuntime:
             for reception in statement_receptions
         ):
             raise PublicationInvariantError("Loonberg did not receive the FOMC statement")
+
+    def _activate_publication_commitment(
+        self, communication: CommunicationAct, source_witness: str, at_time: str
+    ) -> None:
+        if self._communication_commitment_id is not None:
+            return
+        commitment = Commitment(
+            commitment_id=f"commitment.communication.{self.package_id.lower()}",
+            responsible_owner=FomcBody.BODY_ID,
+            commitment_kind="PUBLIC_COMMUNICATION",
+            promised_state=(
+                "Carry the authorized statement claims and their conditions into the next Committee review."
+            ),
+            created_at=at_time,
+            expires_at="2006-05-10T14:15:00-04:00",
+            reserved_resource="institutional_credibility_exposure",
+            reserved_units=1,
+            source_refs=(communication.authorization_ref, source_witness),
+            contingent_obligations=("monitoring.communication_follow_through",),
+        )
+        activated = self.commitments.create(commitment, self.ledger)
+        self._communication_commitment_id = commitment.commitment_id
+        if self._policy_commitment_id is not None:
+            policy = self.commitments.commitment(self._policy_commitment_id)
+            policy_monitor = self.monitoring.attach(
+                obligation_id="monitoring.policy_market_transmission",
+                commitment=policy,
+                responsible_unit_id="staff.us.federal_reserve.markets",
+                question="Review Treasury clearing, funding, and settlement after the authorized operation.",
+                due_time="2006-04-17T09:00:00-04:00",
+                capacity_units=1,
+                at_time=at_time,
+                source_witness=policy.history[0].witness_id,
+                ledger=self.ledger,
+            )
+            self._schedule_dynamic_event(
+                due_time="2006-04-17T09:00:00-04:00",
+                phase_priority=70,
+                stable_id="scheduled.monitoring.policy_market_transmission",
+                responsible_owner="staff.us.federal_reserve.markets",
+                work_kind="monitoring.review",
+                payload={"obligation_id": "monitoring.policy_market_transmission"},
+                causal_parent=policy_monitor.event_id,
+            )
+        communication_monitor = self.monitoring.attach(
+            obligation_id="monitoring.communication_follow_through",
+            commitment=commitment,
+            responsible_unit_id="staff.us.federal_reserve.communications",
+            question="Review public interpretation against the statement's authorized conditions.",
+            due_time="2006-05-08T08:35:00-04:00",
+            capacity_units=1,
+            at_time=at_time,
+            source_witness=activated.event_id,
+            ledger=self.ledger,
+        )
+        self._schedule_dynamic_event(
+            due_time=communication_monitor.payload["obligation"]["due_time"],
+            phase_priority=70,
+            stable_id="scheduled.monitoring.communication_follow_through",
+            responsible_owner="staff.us.federal_reserve.communications",
+            work_kind="monitoring.review",
+            payload={"obligation_id": "monitoring.communication_follow_through"},
+            causal_parent=communication_monitor.event_id,
+        )
 
     def _publish_loonberg_report(self, scheduled: ScheduledEvent) -> None:
         communication = next(
@@ -1271,6 +1415,191 @@ class ScenarioRuntime:
         )
         self.player_records.deliver(delivery_dict, observation_dict)
 
+    def _handle_monitoring_review(self, scheduled: ScheduledEvent) -> None:
+        evidence_refs = tuple(
+            str(record["item"].get("observation_id") or record["item"].get("record_id"))
+            for record in self.player_records.list_delivered()
+        )
+        self.monitoring.review(
+            scheduled.payload["obligation_id"],
+            scheduled.due_time,
+            evidence_refs,
+            self.ledger,
+        )
+
+    def _handle_commitment_expiry(self, scheduled: ScheduledEvent) -> None:
+        commitment_id = scheduled.payload["commitment_id"]
+        expired = self.commitments.expire(commitment_id, scheduled.due_time, self.ledger)
+        self.monitoring.close_for_commitment(
+            commitment_id,
+            scheduled.due_time,
+            expired.event_id,
+            self.ledger,
+        )
+
+    def _handle_intermeeting_release(self, scheduled: ScheduledEvent) -> None:
+        realization = self.compression.realize(self.package_id)
+        realized = self.ledger.append(
+            completion_time=scheduled.due_time,
+            transition_kind="aleatory_path_realized",
+            responsible_owner=scheduled.responsible_owner,
+            causal_parent=scheduled.causal_parent,
+            payload={"realization": realization.to_dict()},
+            observation_policy="profile.chair_scoped",
+        )
+        measurement_event = self.registry.apply(
+            scheduled.responsible_owner,
+            TypedTransition(
+                transition_kind="publish_release",
+                effective_time=scheduled.due_time,
+                payload={
+                    **scheduled.payload,
+                    "observed_value_override": {
+                        "display": (
+                            f"{realization.annualized_core_inflation:.1f}% annualized over the latest quarter"
+                        ),
+                        "label": "Core CPI trend",
+                        "unit": "annualized_percent_change",
+                    },
+                },
+                causal_parent=realized.event_id,
+            ),
+            self.ledger,
+        )
+        publication_event = self.registry.apply(
+            measurement_event.payload["source"],
+            TypedTransition(
+                transition_kind="publish_reference",
+                effective_time=scheduled.due_time,
+                payload=measurement_event.payload,
+                causal_parent=measurement_event.event_id,
+            ),
+            self.ledger,
+        )
+        observation = self.observations.produce(publication_event)
+        if observation is not None:
+            self._deliver_observation(
+                observation, publication_event.event_id, scheduled.due_time
+            )
+
+    def _deliver_player_record(
+        self, record: dict[str, Any], at_time: str, causal_parent: str
+    ) -> str:
+        record_id = record["record_id"]
+        delivery = {
+            "access_scope": "profile.chair_scoped",
+            "delivery_id": f"delivery.{record_id}",
+            "delivery_time": at_time,
+            "delivery_witness": self.ledger.next_event_id,
+            "item_id": record_id,
+            "provenance": causal_parent,
+            "recipient_id": self.scenario.initialization.value["player_id"],
+        }
+        delivered = self.ledger.append(
+            completion_time=at_time,
+            transition_kind="institutional_record_delivered",
+            responsible_owner=delivery["recipient_id"],
+            causal_parent=causal_parent,
+            payload={"delivery": delivery, "record_kind": record["record_kind"]},
+            observation_policy="profile.chair_scoped",
+        )
+        delivery["delivery_witness"] = delivered.event_id
+        self.player_records.deliver_artifact(delivery, record)
+        return delivered.event_id
+
+    def _handle_next_morning_book(self, scheduled: ScheduledEvent) -> None:
+        if self.fomc_decision is None:
+            raise ValueError("next Morning Book requires a completed FOMC decision")
+        market = self.latest_publication_market_result or self.latest_market_result
+        if market is None:
+            raise ValueError("next Morning Book requires a witnessed market outcome")
+        markets = self.staff.unit("staff.us.federal_reserve.markets")
+        displaced = tuple(
+            item.to_dict()
+            for item in markets.capacity.deliverables.values()
+            if item.status in {DeliverableStatus.DISPLACED, DeliverableStatus.MISSED}
+        )
+        claim_ids = tuple(
+            claim.claim_id
+            for communication in self.communication_acts
+            for claim in communication.claims
+        )
+        outstanding = tuple(row.to_dict() for row in self.monitoring.outstanding())
+        vote_summaries = [
+            {
+                "choice": vote.choice.value,
+                "participant_id": vote.participant_id,
+                "stated_basis": vote.stated_basis,
+            }
+            for vote in self.fomc_decision.votes
+        ]
+        dissent_summaries = tuple(
+            {
+                "choice": vote.choice.value,
+                "participant_id": vote.participant_id,
+                "stated_basis": vote.stated_basis,
+            }
+            for vote in self.fomc_decision.dissents
+        )
+        book = NextMorningBook(
+            record_id="record.morning_book.2006_05",
+            created_at=scheduled.due_time,
+            prior_vote={
+                "authorization_id": self.fomc_decision.authorization.authorization_id,
+                "status": self.fomc_decision.authorization.status.value,
+                "votes": vote_summaries,
+            },
+            prior_dissent=dissent_summaries,
+            displaced_work=displaced,
+            market_outcome={
+                "price": str(market.price) if market.price is not None else None,
+                "source_kind": market.to_boundary_dict()["source_kind"],
+                "status": market.status.value,
+                "witness": next(
+                    event.event_id
+                    for event in reversed(self.ledger.events)
+                    if event.transition_kind == "market_clearing_recorded"
+                ),
+            },
+            prior_claim_ids=claim_ids,
+            outstanding_monitoring=outstanding,
+            unresolved_effects=(
+                "The next policy decision remains open.",
+                "Intermeeting mandate effects remain observed with lag and model disagreement.",
+            ),
+        )
+        authored = self.ledger.append(
+            completion_time=scheduled.due_time,
+            transition_kind="next_morning_book_authored",
+            responsible_owner="staff.us.federal_reserve.monetary_affairs",
+            causal_parent=book.market_outcome["witness"],
+            payload={"record": book.to_dict()},
+            observation_policy="profile.chair_scoped",
+        )
+        self.next_morning_book = book
+        self._deliver_player_record(book.to_dict(), scheduled.due_time, authored.event_id)
+        review = PostmortemBuilder().build(
+            events=self.ledger.events,
+            player_records=self.player_records.list_delivered(),
+            decision_time=self.fomc_decision.authorization.effective_time,
+            created_at=scheduled.due_time,
+            package_id=self.package_id,
+            accepted_risk=self.fomc_decision.original_package.known_downside,
+            outstanding_monitoring_ids=tuple(
+                row.obligation_id for row in self.monitoring.outstanding()
+            ),
+        )
+        review_event = self.ledger.append(
+            completion_time=scheduled.due_time,
+            transition_kind="staff_review_authored",
+            responsible_owner="staff.us.federal_reserve.monetary_affairs",
+            causal_parent=authored.event_id,
+            payload={"record": review.to_dict()},
+            observation_policy="profile.chair_scoped",
+        )
+        self.staff_review = review
+        self._deliver_player_record(review.to_dict(), scheduled.due_time, review_event.event_id)
+
     def attempt_chair_only_market_command(self, at_time: str | None = None):
         instant = at_time or self.clock.current_time.isoformat()
         command = self.desk.chair_only_command(instant)
@@ -1314,6 +1643,9 @@ class ScenarioRuntime:
             if self.request_mode is not None and not self.tasks:
                 self.request_follow_up(self.request_mode)
             return
+        if scheduled.work_kind == "macro.publish_intermeeting_release":
+            self._handle_intermeeting_release(scheduled)
+            return
         if scheduled.work_kind == "staff.complete_analytical_task":
             self._complete_analytical_task(scheduled)
             return
@@ -1341,6 +1673,15 @@ class ScenarioRuntime:
         if scheduled.work_kind == "media.publish_loonberg_report":
             self._publish_loonberg_report(scheduled)
             return
+        if scheduled.work_kind == "monitoring.review":
+            self._handle_monitoring_review(scheduled)
+            return
+        if scheduled.work_kind == "commitment.expire":
+            self._handle_commitment_expiry(scheduled)
+            return
+        if scheduled.work_kind == "morning_book.next_cycle":
+            self._handle_next_morning_book(scheduled)
+            return
         self.ledger.append(
             completion_time=scheduled.due_time,
             transition_kind="scheduled_event_handled",
@@ -1350,7 +1691,37 @@ class ScenarioRuntime:
         )
 
     def advance_next(self) -> bool:
-        return self.clock.advance_next(self._handle) is not None
+        event, _ = self.compression.advance_next(
+            self._handle, self._record_compression_step
+        )
+        return event is not None
+
+    def advance_to_next_consequential_event(self) -> bool:
+        before = self._player_checkpoint()
+        advanced = False
+        while self.advance_next():
+            advanced = True
+            if self._player_checkpoint() != before:
+                break
+        return advanced
+
+    def _player_checkpoint(self) -> tuple[int, int, int, int, bool]:
+        return (
+            len(self.player_records.list_delivered()),
+            len(self.receipts),
+            len(self.communication_acts),
+            len(self.reports),
+            self.fomc_decision is not None,
+        )
+
+    def _record_compression_step(self, step: CompressionStep) -> None:
+        self.ledger.append(
+            completion_time=step.from_time,
+            transition_kind="intermeeting_time_compressed",
+            responsible_owner=self.scenario.initialization.value["player_id"],
+            payload={"compression": step.to_dict()},
+            observation_policy="profile.chair_scoped",
+        )
 
     def run_until_first_delivery(self) -> None:
         while not self.player_records.list_delivered() and self.advance_next():
@@ -1372,9 +1743,15 @@ class ScenarioRuntime:
                 "participants": [participant.snapshot_for_hash() for participant in self.participants],
                 "audience_delivery": self.audience_router.snapshot_for_hash(),
                 "communication_acts": [row.to_dict() for row in self.communication_acts],
+                "commitments": self.commitments.snapshot_for_hash(),
+                "compression": self.compression.snapshot_for_hash(),
                 "households": self.households.snapshot_for_hash(),
                 "population": self.population.snapshot_for_hash(),
                 "population_views": [row.to_dict() for row in self.population_views],
+                "monitoring": self.monitoring.snapshot_for_hash(),
+                "next_morning_book": (
+                    self.next_morning_book.to_dict() if self.next_morning_book else None
+                ),
                 "reports": [row.to_dict() for row in self.reports],
                 "repo_agreement": self.repo.snapshot_for_hash(),
                 "staff": self.staff.snapshot_for_hash(),
@@ -1382,6 +1759,7 @@ class ScenarioRuntime:
                     key: self.assessments[key].to_dict() for key in sorted(self.assessments)
                 },
                 "staff_tasks": {key: self.tasks[key].to_dict() for key in sorted(self.tasks)},
+                "staff_review": self.staff_review.to_dict() if self.staff_review else None,
                 "treasury_market": self.market.snapshot_for_hash(),
             }
         )
@@ -1425,4 +1803,15 @@ class ScenarioRuntime:
                 row.to_dict() for row in self.audience_receptions
             ),
             population_views=tuple(row.to_dict() for row in self.population_views),
+            commitments=tuple(row.to_dict() for row in self.commitments.all()),
+            monitoring_obligations=tuple(
+                row.to_dict() for row in self.monitoring.outstanding()
+            ),
+            intermeeting_realizations=tuple(
+                row.to_dict() for row in self.compression.realizations
+            ),
+            next_morning_book=(
+                self.next_morning_book.to_dict() if self.next_morning_book else None
+            ),
+            staff_review=self.staff_review.to_dict() if self.staff_review else None,
         )

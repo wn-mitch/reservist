@@ -9,6 +9,7 @@ from engine.harness.fomc_room import FomcRoomHarness
 from engine.harness.office import OfficeHarness
 from engine.harness.operations_room import OperationsRoomHarness
 from engine.harness.request import RequestHarness
+from engine.harness.review import ReviewHarness
 from engine.harness.statement import StatementHarness
 from engine.harness.wire import WorldWireHarness
 from engine.manifest import ManifestValidationError
@@ -73,23 +74,32 @@ def run_command(args: argparse.Namespace) -> int:
 
 def replay_command(args: argparse.Namespace) -> int:
     scenario = validate_scenario(_scenario(args.scenario))
-    first = ScenarioRuntime(scenario, request_mode=RequestMode.NORMAL).run_all()
-    second = ScenarioRuntime(scenario, request_mode=RequestMode.NORMAL).run_all()
-    if first != second:
-        print("replay mismatch", file=sys.stderr)
-        return 1
-    with tempfile.TemporaryDirectory() as directory:
-        first_path = Path(directory) / "first.jsonl"
-        second_path = Path(directory) / "second.jsonl"
-        first_path.write_bytes(first.transcript)
-        second_path.write_bytes(second.transcript)
-        if first_path.read_bytes() != second_path.read_bytes():
-            print("transcript byte mismatch", file=sys.stderr)
+    replay_rows = []
+    for package_id in PACKAGES:
+        first = ScenarioRuntime(
+            scenario, package_id=package_id, request_mode=RequestMode.NORMAL
+        ).run_all()
+        second = ScenarioRuntime(
+            scenario, package_id=package_id, request_mode=RequestMode.NORMAL
+        ).run_all()
+        if first != second:
+            print(f"replay mismatch: {package_id}", file=sys.stderr)
             return 1
-    print(
-        f"replay passed: {first.scenario_hash}; "
-        f"state={first.state_hash}; transcript_bytes={len(first.transcript)}"
-    )
+        with tempfile.TemporaryDirectory() as directory:
+            first_path = Path(directory) / "first.jsonl"
+            second_path = Path(directory) / "second.jsonl"
+            first_path.write_bytes(first.transcript)
+            second_path.write_bytes(second.transcript)
+            if first_path.read_bytes() != second_path.read_bytes():
+                print(f"transcript byte mismatch: {package_id}", file=sys.stderr)
+                return 1
+        replay_rows.append(
+            f"{package_id}: state={first.state_hash}; "
+            f"transcript_bytes={len(first.transcript)}"
+        )
+    print(f"replay passed: {scenario.scenario_hash}")
+    for row in replay_rows:
+        print(row)
     return 0
 
 
@@ -98,13 +108,17 @@ def play_command(args: argparse.Namespace) -> int:
         validate_scenario(_scenario(args.scenario)), package_id=args.package
     )
     runtime.run_until_first_delivery()
-    harness = OfficeHarness(runtime.player_records, runtime.advance_next, runtime.routing_account)
+    harness = OfficeHarness(
+        runtime.player_records,
+        runtime.advance_to_next_consequential_event,
+        runtime.routing_account,
+    )
     print(harness.render_morning_book())
     if not sys.stdin.isatty():
         return 0
     print(
         "\nCommands: inspect <number> | ask markets [accelerated] | advance | book | verbs | fomc | "
-        "propose <package> | operations | statement | wire | quit"
+        "propose <package> | operations | statement | wire | review | quit"
     )
     while True:
         try:
@@ -139,6 +153,11 @@ def play_command(args: argparse.Namespace) -> int:
                     tuple(runtime.reports), runtime.population_views
                 ).render()
             )
+        elif command == "review":
+            review = ReviewHarness(runtime.next_morning_book, runtime.staff_review)
+            print(review.render_next_morning_book())
+            print()
+            print(review.render_staff_review())
         elif command in {"ask markets", "ask markets accelerated"}:
             mode = (
                 RequestMode.ACCELERATED
@@ -180,7 +199,7 @@ def play_command(args: argparse.Namespace) -> int:
         else:
             print(
                 "Commands: inspect <number> | ask markets [accelerated] | advance | book | verbs | fomc | "
-                "propose <package> | operations | statement | wire | quit"
+                "propose <package> | operations | statement | wire | review | quit"
             )
     return 0
 

@@ -22,6 +22,21 @@ class MacroAdapterOwner(StateOwner):
         self._state["state.adapter.macro.us.broad.hidden_state"]["value"]["last_release_id"] = release_id
         self._state["state.adapter.macro.us.broad.hidden_state"]["value"]["release_count"] += 1
         public_payload = deepcopy(release)
+        override = transition.payload.get("observed_value_override")
+        if override is not None:
+            if not release.get("keyed_variation"):
+                raise StateMutationError(
+                    f"release does not permit a keyed observed-value override: {release_id}"
+                )
+            public_payload["observed_value"] = deepcopy(override)
+            self._state["state.adapter.macro.us.broad.hidden_state"]["value"].setdefault(
+                "realizations", []
+            ).append(
+                {
+                    "observed_value": deepcopy(override),
+                    "release_id": release_id,
+                }
+            )
         public_payload["release_id"] = release_id
         return "macro_release_measured", public_payload, "NONE"
 

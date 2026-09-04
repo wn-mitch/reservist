@@ -131,4 +131,8 @@ class OfficeHarness:
         )
 
     def advance(self) -> str:
-        return "Advanced to next scheduled event." if self._advance() else "No scheduled events remain."
+        return (
+            "Advanced to next consequential event."
+            if self._advance()
+            else "No scheduled events remain."
+        )

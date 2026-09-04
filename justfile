@@ -5,6 +5,9 @@ catalog_dir := ".humanlayer/tasks/federal-reserve-chair-crisis-management-simula
 test:
     {{python}} -m unittest discover -s tests -v
 
+gates:
+    {{python}} -m unittest discover -s tests/acceptance -p "test_*.py" -v
+
 catalog-test:
     {{python}} {{catalog_dir}}/catalog/test_catalog.py
 
