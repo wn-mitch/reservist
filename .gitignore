@@ -1,1 +1,3 @@
 .humanlayer/tasks/
+__pycache__/
+*.py[cod]
