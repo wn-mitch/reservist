@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import ast
 import unittest
-from pathlib import Path
 
 from engine.scenario import ScenarioRuntime, validate_scenario
 from tests.support import PROJECT_ROOT, SCENARIO

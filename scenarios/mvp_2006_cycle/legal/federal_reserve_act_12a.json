@@ -1,0 +1,19 @@
+{
+  "instrument_id": "legal.us.federal_reserve.act.section_12a",
+  "title": "Federal Reserve Act section 12A",
+  "source_url": "https://www.federalreserve.gov/aboutthefed/section12a.htm",
+  "clauses": [
+    {
+      "clause_id": "clause.fra.12a.fomc_direction",
+      "effective_from": "1935-08-23T00:00:00-05:00",
+      "effective_until": "2100-01-01T00:00:00-05:00",
+      "authorized_subjects": ["body.us.federal_reserve.fomc"],
+      "target_owners": ["inst.us.federal_reserve.new_york"],
+      "permitted_effects": [
+        "desk.maintain_target_range",
+        "desk.raise_target_range_25bp"
+      ],
+      "requires_certified_fomc_decision": true
+    }
+  ]
+}

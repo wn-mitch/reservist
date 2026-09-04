@@ -8,6 +8,10 @@ test:
 catalog-test:
     {{python}} {{catalog_dir}}/catalog/test_catalog.py
 
+catalog-generate:
+    {{python}} {{catalog_dir}}/catalog/catalog.py import
+    {{python}} {{catalog_dir}}/catalog/catalog.py generate
+
 validate:
     {{python}} -m engine.cli validate {{scenario}}
 

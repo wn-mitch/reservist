@@ -4,6 +4,9 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
+from engine.adapters.treasury_demand import TreasuryDemandAdapter
+from engine.authority import ActionStatus, AuthorityResolver
+from engine.bodies.fomc import FomcBody, FomcDecision
 from engine.canon import load_json, sha256, write_canonical_json
 from engine.catalog_slice import (
     CatalogSliceError,
@@ -12,15 +15,21 @@ from engine.catalog_slice import (
     load_catalog_slice,
 )
 from engine.clock import ScheduledEvent, SimulationClock
+from engine.cognition.participant import LimitedParticipant
+from engine.execution.desk import DeskExecutor
 from engine.initialization import InitializationBundle, initialization_content_hash
+from engine.legal import LegalRegistry
 from engine.manifest import (
     ManifestValidationError,
     ScenarioManifest,
     manifest_content_hash,
 )
 from engine.observation import EvidenceDelivery, ObservationSystem
+from engine.packages import PACKAGES, package_by_id
 from engine.player.records import PlayerRecordStore
+from engine.records import ReceiptStage, StageReceipt
 from engine.state.macro_adapter import MacroAdapterOwner, PublishedReferenceOwner
+from engine.state.institutions import InstitutionalStateOwner, PublishedFomcCalendar
 from engine.state.registry import CanonicalRegistry, StateOwner, TypedTransition
 from engine.witness import WitnessLedger
 
@@ -45,6 +54,17 @@ def scenario_hash(
     )
 
 
+def authority_content(scenario_dir: Path) -> dict[str, Any]:
+    return {
+        "cast": load_json(scenario_dir / "cast/fomc_2006.json"),
+        "legal": [load_json(path) for path in sorted((scenario_dir / "legal").glob("*.json"))],
+    }
+
+
+def authority_content_hash(scenario_dir: Path) -> str:
+    return sha256(authority_content(scenario_dir))
+
+
 @dataclass(frozen=True)
 class ValidatedScenario:
     scenario_dir: Path
@@ -52,6 +72,7 @@ class ValidatedScenario:
     manifest: ScenarioManifest
     initialization: InitializationBundle
     tape: dict[str, Any]
+    authority_content: dict[str, Any]
     scenario_hash: str
 
 
@@ -66,6 +87,9 @@ def validate_scenario(scenario_dir: Path) -> ValidatedScenario:
     expected_tape_hash = release_tape_hash(tape)
     if tape.get("release_tape_hash") != expected_tape_hash:
         raise ManifestValidationError("hash_mismatch", "release tape hash mismatch")
+    authority = authority_content(scenario_dir)
+    if manifest.value.get("authority_content_hash") != sha256(authority):
+        raise ManifestValidationError("hash_mismatch", "authority content hash mismatch")
     manifest.validate_catalog(catalog_slice)
     manifest.validate_hash()
     initialization.validate(manifest, catalog_slice, tape.get("events", []))
@@ -83,6 +107,7 @@ def validate_scenario(scenario_dir: Path) -> ValidatedScenario:
         manifest=manifest,
         initialization=initialization,
         tape=tape,
+        authority_content=authority,
         scenario_hash=expected_scenario_hash,
     )
 
@@ -106,6 +131,7 @@ def seal_scenario(
     initialization = load_json(initialization_path)
     initialization["initialization_hash"] = initialization_content_hash(initialization)
     write_canonical_json(initialization_path, initialization)
+    manifest_value["authority_content_hash"] = authority_content_hash(scenario_dir)
     manifest_value["catalog_definition_hash"] = catalog_slice["catalog_definition_hash"]
     manifest_value["manifest_content_hash"] = manifest_content_hash(manifest_value)
     manifest_value["replay_hash"] = scenario_hash(
@@ -125,17 +151,45 @@ class RunResult:
     state_hash: str
     transcript: bytes
     player_records: tuple[dict[str, Any], ...]
+    package_id: str
+    receipts: tuple[dict[str, Any], ...]
 
 
 class ScenarioRuntime:
-    def __init__(self, scenario: ValidatedScenario) -> None:
+    def __init__(self, scenario: ValidatedScenario, package_id: str = "MEASURED_FIRMING") -> None:
+        if package_id not in PACKAGES:
+            raise ValueError(f"unknown policy package: {package_id}")
         self.scenario = scenario
+        self.package_id = package_id
         self.ledger = WitnessLedger()
         player_id = scenario.initialization.value["player_id"]
         access_profile = scenario.manifest.value["observation_and_access_profile"]
         self.player_records = PlayerRecordStore(player_id, access_profile)
         self.observations = ObservationSystem()
         self.registry = self._build_registry()
+        self.legal = LegalRegistry.load(scenario.scenario_dir / "legal")
+        self.authority = AuthorityResolver(self.legal)
+        cast = scenario.authority_content["cast"]
+        self.participants = tuple(
+            LimitedParticipant.from_dict(row) for row in cast["participants"]
+        )
+        self.fomc = FomcBody(
+            self.legal,
+            chair_id=cast["chair_id"],
+            chair_office=cast["chair_office"],
+            participants=list(self.participants),
+            quorum=cast["quorum"],
+            threshold=cast["affirmative_threshold"],
+        )
+        self.desk = DeskExecutor(self.legal)
+        self.treasury_adapter = TreasuryDemandAdapter()
+        calendar_state = self._opening_value(
+            "schedule.us.federal_reserve.fomc",
+            "state.schedule.us.federal_reserve.fomc.calendar",
+        )
+        self.fomc_calendar = PublishedFomcCalendar(calendar_state)
+        self.receipts: list[StageReceipt] = []
+        self.fomc_decision: FomcDecision | None = None
         events = [
             ScheduledEvent.from_dict(row)
             for row in (
@@ -175,10 +229,186 @@ class ScenarioRuntime:
                 owner_class = MacroAdapterOwner
             elif owner_id == "reference.us.bls.cpi":
                 owner_class = PublishedReferenceOwner
+            elif owner_id in {
+                "body.us.federal_reserve.fomc",
+                "inst.us.federal_reserve.new_york",
+                "record.us.federal_reserve.policy_package",
+            }:
+                owner_class = InstitutionalStateOwner
             else:
                 owner_class = StateOwner
             registry.register(owner_class(owner_id, opening_by_owner[owner_id], contracts[owner_id]))
         return registry
+
+    def _opening_value(self, owner_id: str, state_id: str) -> dict[str, Any]:
+        for row in self.scenario.initialization.value["opening_state"]:
+            if row["owner_id"] == owner_id and row["state_id"] == state_id:
+                return row["value"]
+        raise ValueError(f"missing opening state: {state_id}")
+
+    def available_verbs(self, at_time: str | None = None) -> tuple[str, ...]:
+        return self.fomc_calendar.available_verbs(
+            at_time or self.clock.current_time.isoformat()
+        )
+
+    def _record_receipt(self, receipt: StageReceipt, causal_parent: str | None) -> None:
+        self.receipts.append(receipt)
+        self.ledger.append(
+            completion_time=receipt.timestamp,
+            transition_kind="stage_receipt_recorded",
+            responsible_owner=receipt.owner_id,
+            causal_parent=causal_parent,
+            payload={"receipt": receipt.to_dict()},
+            observation_policy=receipt.epistemic_scope,
+        )
+
+    def _handle_fomc_meeting(self, scheduled: ScheduledEvent) -> None:
+        package = package_by_id(self.package_id)
+        package_record_id = f"record.package.{package.package_id.lower()}"
+        proposal_event = self.registry.apply(
+            "record.us.federal_reserve.policy_package",
+            TypedTransition(
+                transition_kind="record_policy_package",
+                effective_time=scheduled.due_time,
+                payload={"package": package.to_dict(), "record_id": package_record_id},
+                causal_parent=scheduled.stable_id,
+            ),
+            self.ledger,
+        )
+        self._record_receipt(
+            StageReceipt(
+                receipt_id=f"receipt.proposal.{package.package_id.lower()}",
+                stage=ReceiptStage.PROPOSAL,
+                owner_id=package.proposing_subject,
+                timestamp=scheduled.due_time,
+                status="SUBMITTED",
+                source_record_id=package_record_id,
+                epistemic_scope="profile.chair_scoped",
+                details={"package_id": package.package_id, "known_downside": package.known_downside},
+            ),
+            proposal_event.event_id,
+        )
+
+        decision = self.fomc.conduct(package, scheduled.due_time)
+        self.fomc_decision = decision
+        decision_event = self.registry.apply(
+            FomcBody.BODY_ID,
+            TypedTransition(
+                transition_kind="record_fomc_decision",
+                effective_time=scheduled.due_time,
+                payload=decision.to_dict(),
+                causal_parent=proposal_event.event_id,
+            ),
+            self.ledger,
+        )
+        self._record_receipt(
+            StageReceipt(
+                receipt_id=f"receipt.authorization.{package.package_id.lower()}",
+                stage=ReceiptStage.AUTHORIZATION,
+                owner_id=FomcBody.BODY_ID,
+                timestamp=scheduled.due_time,
+                status=decision.authorization.status.value,
+                source_record_id=decision.authorization.authorization_id,
+                epistemic_scope="profile.chair_scoped",
+                details=decision.authorization.to_dict(),
+            ),
+            decision_event.event_id,
+        )
+
+        if decision.directive is None:
+            self._record_receipt(
+                StageReceipt(
+                    receipt_id=f"receipt.execution.{package.package_id.lower()}",
+                    stage=ReceiptStage.EXECUTION,
+                    owner_id=DeskExecutor.OWNER_ID,
+                    timestamp=scheduled.due_time,
+                    status=ActionStatus.AUTHORIZED_NOT_EXECUTED.value,
+                    source_record_id=decision.authorization.authorization_id,
+                    epistemic_scope="profile.chair_scoped",
+                    details={"reason": "No directive was issued."},
+                ),
+                decision_event.event_id,
+            )
+            return
+
+        action_results = tuple(
+            self.desk.execute(decision.directive, effect, scheduled.due_time)
+            for effect in decision.directive.authorized_effects
+        )
+        execution_event = self.registry.apply(
+            DeskExecutor.OWNER_ID,
+            TypedTransition(
+                transition_kind="record_desk_execution",
+                effective_time=scheduled.due_time,
+                payload={
+                    "directive": decision.directive.to_dict(),
+                    "results": [result.to_dict() for result in action_results],
+                },
+                causal_parent=decision_event.event_id,
+            ),
+            self.ledger,
+        )
+        execution_status = (
+            ActionStatus.EXECUTED.value
+            if all(result.status == ActionStatus.EXECUTED for result in action_results)
+            else ActionStatus.PARTIALLY_EXECUTED.value
+        )
+        self._record_receipt(
+            StageReceipt(
+                receipt_id=f"receipt.execution.{package.package_id.lower()}",
+                stage=ReceiptStage.EXECUTION,
+                owner_id=DeskExecutor.OWNER_ID,
+                timestamp=scheduled.due_time,
+                status=execution_status,
+                source_record_id=decision.directive.directive_id,
+                epistemic_scope="profile.chair_scoped",
+                details={"results": [result.to_dict() for result in action_results]},
+            ),
+            execution_event.event_id,
+        )
+        self._record_receipt(
+            StageReceipt(
+                receipt_id=f"receipt.settlement.{package.package_id.lower()}",
+                stage=ReceiptStage.SETTLEMENT,
+                owner_id="adapter.market.us.treasury_demand.phase2",
+                timestamp=scheduled.due_time,
+                status="PENDING_PHASE_3",
+                source_record_id=execution_event.event_id,
+                epistemic_scope="profile.chair_scoped",
+                details={"note": "No fill or settlement is implied by Desk execution."},
+            ),
+            execution_event.event_id,
+        )
+        effects = [
+            self.treasury_adapter.project(result)
+            for result in action_results
+            if result.status == ActionStatus.EXECUTED
+        ]
+        self._record_receipt(
+            StageReceipt(
+                receipt_id=f"receipt.observed_effect.{package.package_id.lower()}",
+                stage=ReceiptStage.OBSERVED_EFFECT,
+                owner_id=TreasuryDemandAdapter.ADAPTER_ID,
+                timestamp=scheduled.due_time,
+                status="ADAPTER_SOURCED",
+                source_record_id=execution_event.event_id,
+                epistemic_scope="profile.chair_scoped",
+                details={"adapter_results": [effect.to_dict() for effect in effects]},
+            ),
+            execution_event.event_id,
+        )
+
+    def attempt_chair_only_market_command(self, at_time: str | None = None):
+        instant = at_time or self.clock.current_time.isoformat()
+        command = self.desk.chair_only_command(instant)
+        result = self.authority.resolve_direct_command(command)
+        self.ledger.append(
+            completion_time=instant,
+            transition_kind="command_rejected",
+            responsible_owner=result.responsible_owner,
+            payload={"command": command.to_dict(), "result": result.to_dict()},
+        )
+        return result
 
     def _handle(self, scheduled: ScheduledEvent) -> None:
         if scheduled.work_kind == "macro.publish_release":
@@ -234,6 +464,9 @@ class ScenarioRuntime:
             )
             self.player_records.deliver(delivery_dict, observation_dict)
             return
+        if scheduled.work_kind == "fomc.meeting":
+            self._handle_fomc_meeting(scheduled)
+            return
         self.ledger.append(
             completion_time=scheduled.due_time,
             transition_kind="scheduled_event_handled",
@@ -260,4 +493,6 @@ class ScenarioRuntime:
             state_hash=self.registry.state_hash(),
             transcript=self.ledger.transcript_bytes(),
             player_records=self.player_records.list_delivered(),
+            package_id=self.package_id,
+            receipts=tuple(receipt.to_dict() for receipt in self.receipts),
         )
