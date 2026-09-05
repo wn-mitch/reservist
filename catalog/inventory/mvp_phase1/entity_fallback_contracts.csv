@@ -1,0 +1,6 @@
+catalog_id,preserves_or_loses,boundary_item,provenance
+adapter.macro.us.broad,lose,scenario.fallback.FAIL,12-structure-outline-bernankey-mvp-cycle.md:128-143
+office.us.federal_reserve.board_chair,lose,scenario.fallback.FAIL,12-structure-outline-bernankey-mvp-cycle.md:128-143
+office.us.federal_reserve.fomc_chair,lose,scenario.fallback.FAIL,12-structure-outline-bernankey-mvp-cycle.md:128-143
+person.us.ben_bernankey,lose,scenario.fallback.FAIL,12-structure-outline-bernankey-mvp-cycle.md:128-143
+reference.us.bls.cpi,lose,scenario.fallback.FAIL,12-structure-outline-bernankey-mvp-cycle.md:128-143

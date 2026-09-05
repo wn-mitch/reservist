@@ -1,0 +1,74 @@
+state_id,transition_kind,provenance
+account.burrow.cash_reserves_collateral,accounting; collateral pledge; lending transaction; settlement,07-design-discussion-burrow-composition-probe.md:121
+account.burrow.deposits,accepted account instruction; settlement,06-design-discussion-representation-catalog.md:830-833
+account.burrow.equity,issuance; repurchase; income; revaluation; loss,06-design-discussion-representation-catalog.md:838-841
+account.burrow.funding,contract; draw; repayment; revaluation; loss,06-design-discussion-representation-catalog.md:834-837
+account.burrow.loans,origination; repayment; transfer; impairment; writeoff,06-design-discussion-representation-catalog.md:822-825
+account.burrow.securities,trade; settlement; maturity; pledge; release; loss,06-design-discussion-representation-catalog.md:826-829
+commitment.burrow.remediation,commitment creation; revision; performance; breach; expiry; settlement,06-design-discussion-representation-catalog.md:850-853
+queue.burrow.payment_requests,acceptance; cancellation; processing; settlement; rejection; failure,06-design-discussion-representation-catalog.md:846-849
+record.burrow.accounting_classification,authorized accounting-classification transition; revaluation,07-design-discussion-burrow-composition-probe.md:118
+state.adapter.macro.us.broad.hidden_state,publish_release,12-structure-outline-bernankey-mvp-cycle.md:157-172
+state.adapter.market.us.treasury.external_buyer.cash,accounting_entry,12-structure-outline-bernankey-mvp-cycle.md:299-319
+state.adapter.market.us.treasury.external_buyer.demand,submit_order,12-structure-outline-bernankey-mvp-cycle.md:299-319
+state.adapter.market.us.treasury.external_buyer.treasury,accounting_entry,12-structure-outline-bernankey-mvp-cycle.md:299-319
+state.adapter.market.us.treasury_demand.phase2.boundary,initialize_boundary,12-structure-outline-bernankey-mvp-cycle.md:260-264
+state.agreement.us.repo.bilateral.contract,record_non_roll,12-structure-outline-bernankey-mvp-cycle.md:299-319
+state.agreement.us.repo.bilateral.contract,settle_repo,12-structure-outline-bernankey-mvp-cycle.md:299-319
+state.body.us.federal_reserve.fomc.commitments,activate_commitment,12-structure-outline-bernankey-mvp-cycle.md:551-615
+state.body.us.federal_reserve.fomc.commitments,breach_commitment,12-structure-outline-bernankey-mvp-cycle.md:551-615
+state.body.us.federal_reserve.fomc.commitments,expire_commitment,12-structure-outline-bernankey-mvp-cycle.md:551-615
+state.body.us.federal_reserve.fomc.commitments,initialize_commitments,12-structure-outline-bernankey-mvp-cycle.md:551-615
+state.body.us.federal_reserve.fomc.commitments,settle_commitment,12-structure-outline-bernankey-mvp-cycle.md:551-615
+state.body.us.federal_reserve.fomc.procedure,record_fomc_decision,12-structure-outline-bernankey-mvp-cycle.md:246-259
+state.burrow.operating_capacity,authorized investment; reservation; damage; repair; release,06-design-discussion-representation-catalog.md:842-845
+state.cohort.us.dealer.primary.capacity,submit_order,12-structure-outline-bernankey-mvp-cycle.md:299-319
+state.cohort.us.dealer.primary.cash,accounting_entry,12-structure-outline-bernankey-mvp-cycle.md:299-319
+state.cohort.us.dealer.primary.collateral_control,accounting_entry,12-structure-outline-bernankey-mvp-cycle.md:299-319
+state.cohort.us.dealer.primary.repo_claim,accounting_entry,12-structure-outline-bernankey-mvp-cycle.md:299-319
+state.cohort.us.dealer.primary.treasury,accounting_entry,12-structure-outline-bernankey-mvp-cycle.md:299-319
+state.household.us.cohorts.allocations,initialize_household_allocations,12-structure-outline-bernankey-mvp-cycle.md:465-543
+state.inst.us.federal_reserve.board.governance,initialize_governance,12-structure-outline-bernankey-mvp-cycle.md:195-205
+state.inst.us.federal_reserve.new_york.cash,accounting_entry,12-structure-outline-bernankey-mvp-cycle.md:299-319
+state.inst.us.federal_reserve.new_york.desk_authority,record_desk_execution,12-structure-outline-bernankey-mvp-cycle.md:260-264
+state.inst.us.federal_reserve.new_york.treasury,accounting_entry,12-structure-outline-bernankey-mvp-cycle.md:299-319
+state.inst.us.leveraged_funds.behavior,record_liquidity_deficit,12-structure-outline-bernankey-mvp-cycle.md:299-319
+state.inst.us.leveraged_funds.behavior,submit_order,12-structure-outline-bernankey-mvp-cycle.md:299-319
+state.inst.us.leveraged_funds.cash,accounting_entry,12-structure-outline-bernankey-mvp-cycle.md:299-319
+state.inst.us.leveraged_funds.collateral_encumbrance,accounting_entry,12-structure-outline-bernankey-mvp-cycle.md:299-319
+state.inst.us.leveraged_funds.repo_obligation,accounting_entry,12-structure-outline-bernankey-mvp-cycle.md:299-319
+state.inst.us.leveraged_funds.treasury,accounting_entry,12-structure-outline-bernankey-mvp-cycle.md:299-319
+state.legal.us.federal_reserve.act.section_12a.effective_clauses,initialize_effective_clauses,12-structure-outline-bernankey-mvp-cycle.md:195-205
+state.legal.us.federal_reserve.act.section_14.effective_clauses,initialize_effective_clauses,12-structure-outline-bernankey-mvp-cycle.md:195-205
+state.legal.us.federal_reserve.domestic_authorization.2006.effective_clauses,initialize_effective_clauses,12-structure-outline-bernankey-mvp-cycle.md:195-205
+state.legal.us.federal_reserve.fomc_rules.section_3.effective_clauses,initialize_effective_clauses,12-structure-outline-bernankey-mvp-cycle.md:195-205
+state.market.us.treasury.secondary.clearing,record_market_clearing,12-structure-outline-bernankey-mvp-cycle.md:299-319
+state.office.us.federal_reserve.board_chair.tenure,legal_transition,12-structure-outline-bernankey-mvp-cycle.md:146-155
+state.office.us.federal_reserve.chief_of_staff.tenure,initialize_tenure,12-structure-outline-bernankey-mvp-cycle.md:226-232
+state.office.us.federal_reserve.fomc_chair.tenure,legal_transition,12-structure-outline-bernankey-mvp-cycle.md:146-155
+state.office.us.federal_reserve.governor.mvp_roster,initialize_roster,12-structure-outline-bernankey-mvp-cycle.md:226-232
+state.outlet.media.loonberg.publication,record_report_publication,12-structure-outline-bernankey-mvp-cycle.md:465-543
+state.person.us.ben_bernankey.cognition,evidence_integration,12-structure-outline-bernankey-mvp-cycle.md:157-172
+state.population.us.person.cells.mass,initialize_person_mass,12-structure-outline-bernankey-mvp-cycle.md:465-543
+state.record.us.federal_reserve.analytical_task.records,record_assignment,12-structure-outline-bernankey-mvp-cycle.md:388-457
+state.record.us.federal_reserve.analytical_task.records,record_request,12-structure-outline-bernankey-mvp-cycle.md:388-457
+state.record.us.federal_reserve.analytical_task.records,record_task_result,12-structure-outline-bernankey-mvp-cycle.md:388-457
+state.record.us.federal_reserve.assessment.records,record_assessment,12-structure-outline-bernankey-mvp-cycle.md:388-457
+state.record.us.federal_reserve.assessment.records,record_delivery,12-structure-outline-bernankey-mvp-cycle.md:388-457
+state.record.us.federal_reserve.assessment.records,record_dissent,12-structure-outline-bernankey-mvp-cycle.md:388-457
+state.record.us.federal_reserve.policy_package.records,record_policy_package,12-structure-outline-bernankey-mvp-cycle.md:233-245
+state.reference.us.bls.cpi.publication,publish_reference,12-structure-outline-bernankey-mvp-cycle.md:146-155
+state.role_holder.fomc.governor_1.cognition,integrate_evidence,12-structure-outline-bernankey-mvp-cycle.md:226-232
+state.role_holder.fomc.governor_2.cognition,integrate_evidence,12-structure-outline-bernankey-mvp-cycle.md:226-232
+state.schedule.us.federal_reserve.blackout.current,initialize_schedule,12-structure-outline-bernankey-mvp-cycle.md:278-285
+state.schedule.us.federal_reserve.fomc.calendar,initialize_schedule,12-structure-outline-bernankey-mvp-cycle.md:278-285
+state.staff.us.federal_reserve.communications.work,release_capacity,12-structure-outline-bernankey-mvp-cycle.md:397-415
+state.staff.us.federal_reserve.communications.work,reserve_capacity,12-structure-outline-bernankey-mvp-cycle.md:397-415
+state.staff.us.federal_reserve.markets.evidence,integrate_scoped_delivery,12-structure-outline-bernankey-mvp-cycle.md:388-457
+state.staff.us.federal_reserve.markets.work,displace_work,12-structure-outline-bernankey-mvp-cycle.md:388-457
+state.staff.us.federal_reserve.markets.work,record_deadline_result,12-structure-outline-bernankey-mvp-cycle.md:388-457
+state.staff.us.federal_reserve.markets.work,release_capacity,12-structure-outline-bernankey-mvp-cycle.md:388-457
+state.staff.us.federal_reserve.markets.work,reserve_capacity,12-structure-outline-bernankey-mvp-cycle.md:388-457
+state.staff.us.federal_reserve.monetary_affairs.work,record_dissent,12-structure-outline-bernankey-mvp-cycle.md:388-457
+state.staff.us.federal_reserve.monetary_affairs.work,release_capacity,12-structure-outline-bernankey-mvp-cycle.md:388-457
+state.staff.us.federal_reserve.monetary_affairs.work,reserve_capacity,12-structure-outline-bernankey-mvp-cycle.md:388-457

@@ -1,0 +1,11 @@
+bucket_id,instrument_code,display_name,research_status,uncertainty_notes,provenance
+bucket.deposits.first_slice,type.instrument_family.deposits,Deposits first-slice archetype,researched,Structural archetype only; numeric thresholds remain initializer inputs.,Representation Catalog lines 1168-1195.
+bucket.equity.first_slice,type.instrument_family.equity,Equity first-slice archetype,researched,Structural archetype only; numeric thresholds remain initializer inputs.,Representation Catalog lines 1168-1195.
+bucket.futures.first_slice,type.instrument_family.futures,Futures first-slice archetype,researched,Structural archetype only; numeric thresholds remain initializer inputs.,Representation Catalog lines 1168-1195.
+bucket.loans.first_slice,type.instrument_family.loans,Loans first-slice archetype,researched,Structural archetype only; numeric thresholds remain initializer inputs.,Representation Catalog lines 1168-1195.
+bucket.money_fund_share.first_slice,type.instrument_family.money_fund_share,Money-fund shares first-slice archetype,researched,Structural archetype only; numeric thresholds remain initializer inputs.,Representation Catalog lines 1168-1195.
+bucket.repo.first_slice,type.instrument_family.repo,Repo first-slice archetype,researched,Structural archetype only; numeric thresholds remain initializer inputs.,Representation Catalog lines 1168-1195.
+bucket.reserves.first_slice,type.instrument_family.reserves,Reserves first-slice archetype,researched,Structural archetype only; numeric thresholds remain initializer inputs.,Representation Catalog lines 1168-1195.
+bucket.treasury_bill.first_slice,type.instrument_family.treasury_bill,Treasury bills first-slice archetype,researched,Structural archetype only; numeric thresholds remain initializer inputs.,Representation Catalog lines 1168-1195.
+bucket.treasury_bond.first_slice,type.instrument_family.treasury_bond,Treasury bonds first-slice archetype,researched,Structural archetype only; numeric thresholds remain initializer inputs.,Representation Catalog lines 1168-1195.
+bucket.treasury_note.first_slice,type.instrument_family.treasury_note,Treasury notes first-slice archetype,researched,Structural archetype only; numeric thresholds remain initializer inputs.,Representation Catalog lines 1168-1195.

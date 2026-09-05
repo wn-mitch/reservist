@@ -1,0 +1,215 @@
+severity,category,record_id,issue
+error,endpoint,tx.measurement.us_consumer_prices.cpi_pce_references,transmission fallback behavior is unresolved
+error,endpoint,tx.measurement.us_consumer_prices.pce_reference,transmission fallback behavior is unresolved
+error,endpoint,tx.media.aftv.mass_public_belief,transmission fallback behavior is unresolved
+error,endpoint,tx.media.aftv.mass_public_belief,unresolved instance endpoint consuming_entry_id=UNKNOWN
+error,endpoint,tx.media.aftv.mass_public_belief,unresolved instance endpoint transformation_owner_id=UNKNOWN
+error,endpoint,tx.media.gnbc.mass_public_belief,transmission fallback behavior is unresolved
+error,endpoint,tx.media.gnbc.mass_public_belief,unresolved instance endpoint consuming_entry_id=UNKNOWN
+error,endpoint,tx.media.gnbc.mass_public_belief,unresolved instance endpoint transformation_owner_id=UNKNOWN
+error,endpoint,tx.media.honkbox.aftv,transmission fallback behavior is unresolved
+error,endpoint,tx.media.honkbox.gnbc,transmission fallback behavior is unresolved
+error,endpoint,tx.media.loonberg.honkbox,transmission fallback behavior is unresolved
+error,endpoint,tx.media.the_herd.loonberg,transmission fallback behavior is unresolved
+error,relationship,rel.belongs_to.media.aftv_anchor_chair.aftv,missing effective_period
+error,relationship,rel.belongs_to.media.aftv_anchor_chair.aftv,missing lifecycle_and_exit
+error,relationship,rel.belongs_to.media.aftv_anchor_chair.aftv,missing observability
+error,relationship,rel.belongs_to.media.aftv_anchor_chair.aftv,missing witness_kind
+error,relationship,rel.belongs_to.media.gnbc_anchor_chair.gnbc,missing effective_period
+error,relationship,rel.belongs_to.media.gnbc_anchor_chair.gnbc,missing lifecycle_and_exit
+error,relationship,rel.belongs_to.media.gnbc_anchor_chair.gnbc,missing observability
+error,relationship,rel.belongs_to.media.gnbc_anchor_chair.gnbc,missing witness_kind
+error,relationship,rel.belongs_to.media.wsj_fed_beat.wsj,missing effective_period
+error,relationship,rel.belongs_to.media.wsj_fed_beat.wsj,missing lifecycle_and_exit
+error,relationship,rel.belongs_to.media.wsj_fed_beat.wsj,missing observability
+error,relationship,rel.belongs_to.media.wsj_fed_beat.wsj,missing witness_kind
+error,relationship,rel.holds.media.aftv_host.aftv_anchor_chair,missing effective_period
+error,relationship,rel.holds.media.aftv_host.aftv_anchor_chair,missing lifecycle_and_exit
+error,relationship,rel.holds.media.aftv_host.aftv_anchor_chair,missing observability
+error,relationship,rel.holds.media.aftv_host.aftv_anchor_chair,missing witness_kind
+error,relationship,rel.holds.media.gnbc_anchor.gnbc_anchor_chair,missing effective_period
+error,relationship,rel.holds.media.gnbc_anchor.gnbc_anchor_chair,missing lifecycle_and_exit
+error,relationship,rel.holds.media.gnbc_anchor.gnbc_anchor_chair,missing observability
+error,relationship,rel.holds.media.gnbc_anchor.gnbc_anchor_chair,missing witness_kind
+error,relationship,rel.holds.media.wsj_fed_reporter.wsj_fed_beat,missing effective_period
+error,relationship,rel.holds.media.wsj_fed_reporter.wsj_fed_beat,missing lifecycle_and_exit
+error,relationship,rel.holds.media.wsj_fed_reporter.wsj_fed_beat,missing observability
+error,relationship,rel.holds.media.wsj_fed_reporter.wsj_fed_beat,missing witness_kind
+error,relationship,rel.operates.media.aftv_company.aftv,missing effective_period
+error,relationship,rel.operates.media.aftv_company.aftv,missing lifecycle_and_exit
+error,relationship,rel.operates.media.aftv_company.aftv,missing observability
+error,relationship,rel.operates.media.aftv_company.aftv,missing witness_kind
+error,relationship,rel.operates.media.gnbc_company.gnbc,missing effective_period
+error,relationship,rel.operates.media.gnbc_company.gnbc,missing lifecycle_and_exit
+error,relationship,rel.operates.media.gnbc_company.gnbc,missing observability
+error,relationship,rel.operates.media.gnbc_company.gnbc,missing witness_kind
+error,relationship,rel.operates.media.honkbox_platform.honkbox_network,missing effective_period
+error,relationship,rel.operates.media.honkbox_platform.honkbox_network,missing lifecycle_and_exit
+error,relationship,rel.operates.media.honkbox_platform.honkbox_network,missing observability
+error,relationship,rel.operates.media.honkbox_platform.honkbox_network,missing witness_kind
+error,relationship,rel.operates.media.loonberg_company.loonberg,missing effective_period
+error,relationship,rel.operates.media.loonberg_company.loonberg,missing lifecycle_and_exit
+error,relationship,rel.operates.media.loonberg_company.loonberg,missing observability
+error,relationship,rel.operates.media.loonberg_company.loonberg,missing witness_kind
+error,relationship,rel.operates.media.wool_street_journal_company.wool_street_journal,missing effective_period
+error,relationship,rel.operates.media.wool_street_journal_company.wool_street_journal,missing lifecycle_and_exit
+error,relationship,rel.operates.media.wool_street_journal_company.wool_street_journal,missing observability
+error,relationship,rel.operates.media.wool_street_journal_company.wool_street_journal,missing witness_kind
+error,relationship,rel.projects.media.honkbox_posting_population.honkbox,missing effective_period
+error,relationship,rel.projects.media.honkbox_posting_population.honkbox,missing lifecycle_and_exit
+error,relationship,rel.projects.media.honkbox_posting_population.honkbox,missing observability
+error,relationship,rel.projects.media.honkbox_posting_population.honkbox,missing witness_kind
+error,relationship,rel.projects.media.honkbox_posting_population.honkbox,unresolved instance endpoint canonical_owner_id=UNKNOWN
+error,relationship,rel.publishes.market.credit_rating_agencies.credit_ratings,missing effective_period
+error,relationship,rel.publishes.market.credit_rating_agencies.credit_ratings,missing lifecycle_and_exit
+error,relationship,rel.publishes.market.credit_rating_agencies.credit_ratings,missing observability
+error,relationship,rel.publishes.market.credit_rating_agencies.credit_ratings,missing witness_kind
+error,relationship,rel.publishes.us.bea.pce,missing effective_period
+error,relationship,rel.publishes.us.bea.pce,missing lifecycle_and_exit
+error,relationship,rel.publishes.us.bea.pce,missing observability
+error,relationship,rel.publishes.us.bea.pce,missing witness_kind
+error,relationship,rel.publishes.us.bls.cpi,missing effective_period
+error,relationship,rel.publishes.us.bls.cpi,missing lifecycle_and_exit
+error,relationship,rel.publishes.us.bls.cpi,missing observability
+error,relationship,rel.publishes.us.bls.cpi,missing witness_kind
+error,relationship,rel.publishes.us.new_york_fed.sofr,missing effective_period
+error,relationship,rel.publishes.us.new_york_fed.sofr,missing lifecycle_and_exit
+error,relationship,rel.publishes.us.new_york_fed.sofr,missing observability
+error,relationship,rel.publishes.us.new_york_fed.sofr,missing witness_kind
+error,relationship,rel.sources.media.goose_margin_call.goosetogetherstrong,missing effective_period
+error,relationship,rel.sources.media.goose_margin_call.goosetogetherstrong,missing lifecycle_and_exit
+error,relationship,rel.sources.media.goose_margin_call.goosetogetherstrong,missing observability
+error,relationship,rel.sources.media.goose_margin_call.goosetogetherstrong,missing witness_kind
+error,relationship,rel.sources.media.herd_cutting_10s.the_herd,missing effective_period
+error,relationship,rel.sources.media.herd_cutting_10s.the_herd,missing lifecycle_and_exit
+error,relationship,rel.sources.media.herd_cutting_10s.the_herd,missing observability
+error,relationship,rel.sources.media.herd_cutting_10s.the_herd,missing witness_kind
+error,relationship,rel.sources.media.loonberg_auction_tail.loonberg,missing effective_period
+error,relationship,rel.sources.media.loonberg_auction_tail.loonberg,missing lifecycle_and_exit
+error,relationship,rel.sources.media.loonberg_auction_tail.loonberg,missing observability
+error,relationship,rel.sources.media.loonberg_auction_tail.loonberg,missing witness_kind
+error,schema,relationships.csv:10:effective_period,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:10:lifecycle_and_exit,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:10:observability,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:10:witness_kind,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:11:effective_period,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:11:lifecycle_and_exit,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:11:observability,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:11:witness_kind,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:12:effective_period,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:12:lifecycle_and_exit,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:12:observability,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:12:witness_kind,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:13:effective_period,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:13:lifecycle_and_exit,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:13:observability,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:13:witness_kind,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:14:effective_period,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:14:lifecycle_and_exit,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:14:observability,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:14:witness_kind,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:15:effective_period,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:15:lifecycle_and_exit,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:15:observability,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:15:witness_kind,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:20:canonical_owner_id,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:20:effective_period,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:20:lifecycle_and_exit,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:20:observability,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:20:witness_kind,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:21:effective_period,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:21:lifecycle_and_exit,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:21:observability,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:21:witness_kind,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:22:effective_period,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:22:lifecycle_and_exit,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:22:observability,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:22:witness_kind,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:23:effective_period,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:23:lifecycle_and_exit,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:23:observability,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:23:witness_kind,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:24:effective_period,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:24:lifecycle_and_exit,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:24:observability,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:24:witness_kind,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:2:effective_period,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:2:lifecycle_and_exit,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:2:observability,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:2:witness_kind,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:3:effective_period,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:3:lifecycle_and_exit,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:3:observability,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:3:witness_kind,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:4:effective_period,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:4:lifecycle_and_exit,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:4:observability,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:4:witness_kind,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:86:effective_period,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:86:lifecycle_and_exit,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:86:observability,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:86:witness_kind,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:87:effective_period,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:87:lifecycle_and_exit,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:87:observability,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:87:witness_kind,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:88:effective_period,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:88:lifecycle_and_exit,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:88:observability,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:88:witness_kind,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:8:effective_period,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:8:lifecycle_and_exit,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:8:observability,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:8:witness_kind,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:9:effective_period,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:9:lifecycle_and_exit,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:9:observability,UNKNOWN is not allowed in this field
+error,schema,relationships.csv:9:witness_kind,UNKNOWN is not allowed in this field
+error,schema,transmissions.csv:46:capacity_ref,UNKNOWN is not allowed in this field
+error,schema,transmissions.csv:46:fallback_behavior,UNKNOWN is not allowed in this field
+error,schema,transmissions.csv:46:unit,UNKNOWN is not allowed in this field
+error,schema,transmissions.csv:47:capacity_ref,UNKNOWN is not allowed in this field
+error,schema,transmissions.csv:47:fallback_behavior,UNKNOWN is not allowed in this field
+error,schema,transmissions.csv:47:unit,UNKNOWN is not allowed in this field
+error,schema,transmissions.csv:48:capacity_ref,UNKNOWN is not allowed in this field
+error,schema,transmissions.csv:48:consuming_entry_id,UNKNOWN is not allowed in this field
+error,schema,transmissions.csv:48:effective_delay,UNKNOWN is not allowed in this field
+error,schema,transmissions.csv:48:fallback_behavior,UNKNOWN is not allowed in this field
+error,schema,transmissions.csv:48:persistence_or_expiry,UNKNOWN is not allowed in this field
+error,schema,transmissions.csv:48:transformation_owner_id,UNKNOWN is not allowed in this field
+error,schema,transmissions.csv:48:unit,UNKNOWN is not allowed in this field
+error,schema,transmissions.csv:49:capacity_ref,UNKNOWN is not allowed in this field
+error,schema,transmissions.csv:49:consuming_entry_id,UNKNOWN is not allowed in this field
+error,schema,transmissions.csv:49:effective_delay,UNKNOWN is not allowed in this field
+error,schema,transmissions.csv:49:fallback_behavior,UNKNOWN is not allowed in this field
+error,schema,transmissions.csv:49:persistence_or_expiry,UNKNOWN is not allowed in this field
+error,schema,transmissions.csv:49:transformation_owner_id,UNKNOWN is not allowed in this field
+error,schema,transmissions.csv:49:unit,UNKNOWN is not allowed in this field
+error,schema,transmissions.csv:50:capacity_ref,UNKNOWN is not allowed in this field
+error,schema,transmissions.csv:50:effective_delay,UNKNOWN is not allowed in this field
+error,schema,transmissions.csv:50:fallback_behavior,UNKNOWN is not allowed in this field
+error,schema,transmissions.csv:50:persistence_or_expiry,UNKNOWN is not allowed in this field
+error,schema,transmissions.csv:50:unit,UNKNOWN is not allowed in this field
+error,schema,transmissions.csv:51:capacity_ref,UNKNOWN is not allowed in this field
+error,schema,transmissions.csv:51:effective_delay,UNKNOWN is not allowed in this field
+error,schema,transmissions.csv:51:fallback_behavior,UNKNOWN is not allowed in this field
+error,schema,transmissions.csv:51:persistence_or_expiry,UNKNOWN is not allowed in this field
+error,schema,transmissions.csv:51:unit,UNKNOWN is not allowed in this field
+error,schema,transmissions.csv:52:capacity_ref,UNKNOWN is not allowed in this field
+error,schema,transmissions.csv:52:effective_delay,UNKNOWN is not allowed in this field
+error,schema,transmissions.csv:52:fallback_behavior,UNKNOWN is not allowed in this field
+error,schema,transmissions.csv:52:persistence_or_expiry,UNKNOWN is not allowed in this field
+error,schema,transmissions.csv:52:unit,UNKNOWN is not allowed in this field
+error,schema,transmissions.csv:53:capacity_ref,UNKNOWN is not allowed in this field
+error,schema,transmissions.csv:53:effective_delay,UNKNOWN is not allowed in this field
+error,schema,transmissions.csv:53:fallback_behavior,UNKNOWN is not allowed in this field
+error,schema,transmissions.csv:53:persistence_or_expiry,UNKNOWN is not allowed in this field
+error,schema,transmissions.csv:53:unit,UNKNOWN is not allowed in this field
+error,unit,tx.measurement.us_consumer_prices.cpi_pce_references,transmission unit is unresolved
+error,unit,tx.measurement.us_consumer_prices.pce_reference,transmission unit is unresolved
+error,unit,tx.media.aftv.mass_public_belief,transmission unit is unresolved
+error,unit,tx.media.gnbc.mass_public_belief,transmission unit is unresolved
+error,unit,tx.media.honkbox.aftv,transmission unit is unresolved
+error,unit,tx.media.honkbox.gnbc,transmission unit is unresolved
+error,unit,tx.media.loonberg.honkbox,transmission unit is unresolved
+error,unit,tx.media.the_herd.loonberg,transmission unit is unresolved

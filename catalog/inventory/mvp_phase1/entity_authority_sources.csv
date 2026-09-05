@@ -1,0 +1,5 @@
+catalog_id,authority_source_id,authority_source_kind,provenance
+adapter.macro.us.broad,profile.early_2006.bernankey,scenario_boundary_contract,12-structure-outline-bernankey-mvp-cycle.md:174-177
+office.us.federal_reserve.board_chair,NONE,non_authorizing_phase_1_identity,12-structure-outline-bernankey-mvp-cycle.md:174-177
+office.us.federal_reserve.fomc_chair,NONE,non_authorizing_phase_1_identity,12-structure-outline-bernankey-mvp-cycle.md:174-177
+reference.us.bls.cpi,institution.us.bls,publishing_institution,12-structure-outline-bernankey-mvp-cycle.md:174-177

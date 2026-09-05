@@ -1,0 +1,4 @@
+state_id,transition_kind,provenance
+state.household.us.cohorts.allocations,initialize_household_allocations,12-structure-outline-bernankey-mvp-cycle.md:465-543
+state.outlet.media.loonberg.publication,record_report_publication,12-structure-outline-bernankey-mvp-cycle.md:465-543
+state.population.us.person.cells.mass,initialize_person_mass,12-structure-outline-bernankey-mvp-cycle.md:465-543

@@ -1,0 +1,6 @@
+state_id,owner_id,state_kind,value_domain,unit,conserved,witness_kind,completeness_state,provenance
+state.adapter.macro.us.broad.hidden_state,adapter.macro.us.broad,condition,hidden inflation labor housing and release configuration,NONE,false,typed adapter transition and release witness,probe_complete,12-structure-outline-bernankey-mvp-cycle.md:81-84
+state.office.us.federal_reserve.board_chair.tenure,office.us.federal_reserve.board_chair,authority,holder term and access identity,NONE,false,effective office-holding witness,probe_complete,12-structure-outline-bernankey-mvp-cycle.md:174-177
+state.office.us.federal_reserve.fomc_chair.tenure,office.us.federal_reserve.fomc_chair,authority,holder term and access identity,NONE,false,effective office-holding witness,probe_complete,12-structure-outline-bernankey-mvp-cycle.md:174-177
+state.person.us.ben_bernankey.cognition,person.us.ben_bernankey,record,private belief memory goal and plan ledger,NONE,false,recipient-owned cognition transition witness,probe_complete,12-structure-outline-bernankey-mvp-cycle.md:174-177
+state.reference.us.bls.cpi.publication,reference.us.bls.cpi,publication,current value and publication revision history,index_points,false,measurement and publication witness,probe_complete,12-structure-outline-bernankey-mvp-cycle.md:81-84

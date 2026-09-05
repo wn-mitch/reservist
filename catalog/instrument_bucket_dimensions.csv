@@ -1,0 +1,66 @@
+bucket_id,bucket_dimension,bucket_value,calibration_requirement,provenance
+bucket.deposits.first_slice,account_term,demand|notice|term,NONE,Representation Catalog lines 1176-1195.
+bucket.deposits.first_slice,currency,USD,NONE,Representation Catalog lines 1176-1195.
+bucket.deposits.first_slice,demandability,par|notice|gated|fee_bearing|term_locked,NONE,Representation Catalog lines 1176-1195.
+bucket.deposits.first_slice,issuer_class,bank_or_cohort,NONE,Representation Catalog lines 1176-1195.
+bucket.deposits.first_slice,legal_conditions,account_level,NONE,Representation Catalog lines 1176-1195.
+bucket.deposits.first_slice,owner_class,typed_account_owner,NONE,Representation Catalog lines 1176-1195.
+bucket.deposits.first_slice,payment_access,named_rail,NONE,Representation Catalog lines 1176-1195.
+bucket.deposits.first_slice,repricing_band,fixed|floating|administered,Initializer must provide effective-period numeric cutoffs.,Representation Catalog lines 1176-1195.
+bucket.equity.first_slice,claim_form,tradable|accounting_equity,NONE,Representation Catalog lines 1176-1195.
+bucket.equity.first_slice,claim_rank,common|preferred,NONE,Representation Catalog lines 1176-1195.
+bucket.equity.first_slice,issuer_cohort,modeled_institution,NONE,Representation Catalog lines 1176-1195.
+bucket.equity.first_slice,liquidity_class,market_or_nonmarket,NONE,Representation Catalog lines 1176-1195.
+bucket.equity.first_slice,maturity,null,NONE,Representation Catalog lines 1176-1195.
+bucket.futures.first_slice,basis_exposure,cash_futures,NONE,Representation Catalog lines 1176-1195.
+bucket.futures.first_slice,clearing_exposure,ccp_and_member,NONE,Representation Catalog lines 1176-1195.
+bucket.futures.first_slice,deliverability_class,aggregate_basket,NONE,Representation Catalog lines 1176-1195.
+bucket.futures.first_slice,expiry_window,near|deferred,Initializer must provide effective-period numeric cutoffs.,Representation Catalog lines 1176-1195.
+bucket.futures.first_slice,liquidity_limit_class,standard,NONE,Representation Catalog lines 1176-1195.
+bucket.futures.first_slice,margin_regime,initial_and_variation,NONE,Representation Catalog lines 1176-1195.
+bucket.futures.first_slice,underlying_duration_bucket,treasury_duration,NONE,Representation Catalog lines 1176-1195.
+bucket.loans.first_slice,borrower_class,sector_or_cohort,NONE,Representation Catalog lines 1176-1195.
+bucket.loans.first_slice,claim_rank,contractual,NONE,Representation Catalog lines 1176-1195.
+bucket.loans.first_slice,collateral_class,typed_or_none,NONE,Representation Catalog lines 1176-1195.
+bucket.loans.first_slice,credit_state,performing|delinquent|nonperforming|defaulted|restructured,NONE,Representation Catalog lines 1176-1195.
+bucket.loans.first_slice,currency,USD,NONE,Representation Catalog lines 1176-1195.
+bucket.loans.first_slice,rate_form,fixed|floating,NONE,Representation Catalog lines 1176-1195.
+bucket.loans.first_slice,remaining_maturity_band,short|intermediate|long,Initializer must provide effective-period numeric cutoffs.,Representation Catalog lines 1176-1195.
+bucket.loans.first_slice,security_class,secured|unsecured,NONE,Representation Catalog lines 1176-1195.
+bucket.money_fund_share.first_slice,currency,USD,NONE,Representation Catalog lines 1176-1195.
+bucket.money_fund_share.first_slice,fund_class,named_or_residual_cohort,NONE,Representation Catalog lines 1176-1195.
+bucket.money_fund_share.first_slice,gate_window,none|active,NONE,Representation Catalog lines 1176-1195.
+bucket.money_fund_share.first_slice,investor_class,typed,NONE,Representation Catalog lines 1176-1195.
+bucket.money_fund_share.first_slice,nav_terms,floating_or_stable,NONE,Representation Catalog lines 1176-1195.
+bucket.money_fund_share.first_slice,portfolio_liquidity_cohort,typed,NONE,Representation Catalog lines 1176-1195.
+bucket.money_fund_share.first_slice,redemption_horizon,on_demand|notice,Initializer must provide effective-period numeric cutoffs.,Representation Catalog lines 1176-1195.
+bucket.repo.first_slice,cash_counterparty_class,lender|borrower,NONE,Representation Catalog lines 1176-1195.
+bucket.repo.first_slice,collateral_bucket,treasury_bucket,NONE,Representation Catalog lines 1176-1195.
+bucket.repo.first_slice,counterparty_class,named_or_residual_cohort,NONE,Representation Catalog lines 1176-1195.
+bucket.repo.first_slice,funding_term,overnight|open|term,Initializer must provide effective-period numeric cutoffs.,Representation Catalog lines 1176-1195.
+bucket.repo.first_slice,haircut_source,named_schedule,NONE,Representation Catalog lines 1176-1195.
+bucket.repo.first_slice,margin_regime,contractual_marking,NONE,Representation Catalog lines 1176-1195.
+bucket.repo.first_slice,settlement_path,bilateral|tri_party|sponsored|gcf_cleared,NONE,Representation Catalog lines 1176-1195.
+bucket.reserves.first_slice,account_eligibility,eligible_holder,NONE,Representation Catalog lines 1176-1195.
+bucket.reserves.first_slice,balance_availability,available|reserved,NONE,Representation Catalog lines 1176-1195.
+bucket.reserves.first_slice,currency,USD,NONE,Representation Catalog lines 1176-1195.
+bucket.reserves.first_slice,remuneration_class,administered,NONE,Representation Catalog lines 1176-1195.
+bucket.reserves.first_slice,settlement_system,federal_reserve,NONE,Representation Catalog lines 1176-1195.
+bucket.reserves.first_slice,settlement_term,current_balance,NONE,Representation Catalog lines 1176-1195.
+bucket.treasury_bill.first_slice,currency,USD,NONE,Representation Catalog lines 1176-1195.
+bucket.treasury_bill.first_slice,liquidity_cohort,benchmark_or_seasoned,NONE,Representation Catalog lines 1176-1195.
+bucket.treasury_bill.first_slice,rate_exposure,short_rate_reinvestment,NONE,Representation Catalog lines 1176-1195.
+bucket.treasury_bill.first_slice,remaining_maturity_band,short,Initializer must provide effective-period numeric cutoffs.,Representation Catalog lines 1176-1195.
+bucket.treasury_bill.first_slice,repo_collateral_class,general_collateral,NONE,Representation Catalog lines 1176-1195.
+bucket.treasury_bond.first_slice,basis_role,cash_bond_futures_basis,NONE,Representation Catalog lines 1176-1195.
+bucket.treasury_bond.first_slice,currency,USD,NONE,Representation Catalog lines 1176-1195.
+bucket.treasury_bond.first_slice,key_rate_duration,long_curve,NONE,Representation Catalog lines 1176-1195.
+bucket.treasury_bond.first_slice,liquidity_cohort,on_the_run|off_the_run,NONE,Representation Catalog lines 1176-1195.
+bucket.treasury_bond.first_slice,remaining_maturity_band,long,Initializer must provide effective-period numeric cutoffs.,Representation Catalog lines 1176-1195.
+bucket.treasury_bond.first_slice,repo_collateral_class,treasury_bond,NONE,Representation Catalog lines 1176-1195.
+bucket.treasury_note.first_slice,basis_role,cash_note_futures_basis,NONE,Representation Catalog lines 1176-1195.
+bucket.treasury_note.first_slice,currency,USD,NONE,Representation Catalog lines 1176-1195.
+bucket.treasury_note.first_slice,key_rate_duration,note_curve,NONE,Representation Catalog lines 1176-1195.
+bucket.treasury_note.first_slice,liquidity_cohort,on_the_run|off_the_run,NONE,Representation Catalog lines 1176-1195.
+bucket.treasury_note.first_slice,remaining_maturity_band,short|intermediate|long,Initializer must provide effective-period numeric cutoffs.,Representation Catalog lines 1176-1195.
+bucket.treasury_note.first_slice,repo_collateral_class,treasury_note,NONE,Representation Catalog lines 1176-1195.

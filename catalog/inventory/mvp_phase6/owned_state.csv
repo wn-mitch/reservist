@@ -1,0 +1,2 @@
+state_id,owner_id,state_kind,value_domain,unit,conserved,witness_kind,completeness_state,provenance
+state.body.us.federal_reserve.fomc.commitments,body.us.federal_reserve.fomc,obligation,policy and communication commitments reservations contingent obligations monitoring links expiry breach and settlement history,institutional_capacity_units,false,commitment lifecycle and reservation witness,probe_complete,12-structure-outline-bernankey-mvp-cycle.md:551-615

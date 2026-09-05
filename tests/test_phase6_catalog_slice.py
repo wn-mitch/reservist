@@ -5,13 +5,11 @@ import json
 import unittest
 from pathlib import Path
 
-from tests.support import PROJECT_ROOT, SCENARIO
+from engine.catalog_slice import DEFAULT_CATALOG_DIR
+from tests.support import SCENARIO
 
 
-CATALOG = (
-    PROJECT_ROOT
-    / ".humanlayer/tasks/federal-reserve-chair-crisis-management-simulator/catalog"
-)
+CATALOG = DEFAULT_CATALOG_DIR
 PHASE6_INVENTORY = CATALOG / "inventory/mvp_phase6"
 
 

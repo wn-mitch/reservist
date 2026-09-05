@@ -1,6 +1,6 @@
 python := "python3"
 scenario := "scenarios/mvp_2006_cycle"
-catalog_dir := ".humanlayer/tasks/federal-reserve-chair-crisis-management-simulator"
+catalog_dir := "."
 
 test:
     {{python}} -m unittest discover -s tests -v

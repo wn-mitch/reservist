@@ -1,0 +1,27 @@
+composition_probe_id,architecture_probe_id,catalog_id,gate,required_status,provenance
+probe.composition.burrow_bank,probe.type_instance_compatibility,inst.us.bank.burrow,catalog_contract,covered,Representation Catalog composition-probe contract.
+probe.composition.burrow_bank,probe.owner_witness_chain,inst.us.bank.burrow,catalog_contract,covered,Representation Catalog composition-probe contract.
+probe.composition.burrow_bank,probe.fallback_parity,cohort.us.bank.regional_cre_concentrated,catalog_contract,covered,Representation Catalog composition-probe contract.
+probe.composition.burrow_bank,probe.instrument_account_contract,mechanism.us.bank.regional_aggregate,catalog_contract,covered,Representation Catalog composition-probe contract.
+probe.composition.burrow_bank,probe.legal_information_path,type.legal_instrument.deposit_insurance_condition,catalog_contract,covered,Representation Catalog composition-probe contract.
+probe.composition.burrow_bank,init.period_content,inst.us.bank.burrow,runtime_initialization,blocked,Representation Catalog documented runtime blocker.
+probe.composition.burrow_bank,init.legal_content,inst.us.bank.burrow,runtime_initialization,blocked,Representation Catalog documented runtime blocker.
+probe.composition.burrow_bank,init.opening_accounts,inst.us.bank.burrow,runtime_initialization,blocked,Representation Catalog documented runtime blocker.
+probe.composition.burrow_bank,init.residual_values,inst.us.bank.burrow,runtime_initialization,blocked,Representation Catalog documented runtime blocker.
+probe.composition.burrow_bank,init.calibration,inst.us.bank.burrow,runtime_initialization,blocked,Representation Catalog documented runtime blocker.
+probe.composition.treasury_basis_trade,probe.treasury_basis_graph,market.us.treasury.secondary,catalog_contract,covered,Representation Catalog composition-probe contract.
+probe.composition.treasury_basis_trade,probe.settlement_and_clearing,inst.us.clearing.ficc,catalog_contract,covered,Representation Catalog composition-probe contract.
+probe.composition.treasury_basis_trade,probe.instrument_account_contract,mechanism.us.repo.tri_party,catalog_contract,covered,Representation Catalog composition-probe contract.
+probe.composition.treasury_basis_trade,probe.binding_publication,reference.us.nyfed.sofr,catalog_contract,covered,Representation Catalog composition-probe contract.
+probe.composition.treasury_basis_trade,init.opening_positions,inst.us.treasury,runtime_initialization,blocked,Representation Catalog documented runtime blocker.
+probe.composition.treasury_basis_trade,init.counterparty_content,inst.us.treasury,runtime_initialization,blocked,Representation Catalog documented runtime blocker.
+probe.composition.treasury_basis_trade,init.market_parameters,inst.us.treasury,runtime_initialization,blocked,Representation Catalog documented runtime blocker.
+probe.composition.treasury_basis_trade,init.calibration,inst.us.treasury,runtime_initialization,blocked,Representation Catalog documented runtime blocker.
+probe.composition.amazon_region_replacement,probe.region_process_separation,region.sa.amazon_basin,catalog_contract,covered,Representation Catalog composition-probe contract.
+probe.composition.amazon_region_replacement,probe.product_conservation,process.climate_agriculture.amazon_basin,catalog_contract,covered,Representation Catalog composition-probe contract.
+probe.composition.amazon_region_replacement,probe.named_residual_replacement,adapter.external.external_world,catalog_contract,covered,Representation Catalog composition-probe contract.
+probe.composition.amazon_region_replacement,probe.no_magic_price,market.product.global.timber,catalog_contract,covered,Representation Catalog composition-probe contract.
+probe.composition.amazon_region_replacement,init.opening_physical_state,region.sa.amazon_basin,runtime_initialization,blocked,Representation Catalog documented runtime blocker.
+probe.composition.amazon_region_replacement,init.regional_shares,region.sa.amazon_basin,runtime_initialization,blocked,Representation Catalog documented runtime blocker.
+probe.composition.amazon_region_replacement,init.process_parameters,region.sa.amazon_basin,runtime_initialization,blocked,Representation Catalog documented runtime blocker.
+probe.composition.amazon_region_replacement,init.calibration,region.sa.amazon_basin,runtime_initialization,blocked,Representation Catalog documented runtime blocker.

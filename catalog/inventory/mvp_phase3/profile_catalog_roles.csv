@@ -1,0 +1,2 @@
+profile_id,catalog_id,profile_role,candidate_provider_entry_id,activation_requirement,rationale,provenance
+profile.early_2006.bernankey,adapter.market.us.treasury.external_buyer,boundary_candidate,adapter.market.us.treasury.external_buyer,External duration demand residual is required.,Supplies outside demand without owning the domestic clearing price.,12-structure-outline-bernankey-mvp-cycle.md:299-319

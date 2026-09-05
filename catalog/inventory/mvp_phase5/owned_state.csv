@@ -1,0 +1,4 @@
+state_id,owner_id,state_kind,value_domain,unit,conserved,witness_kind,completeness_state,provenance
+state.household.us.cohorts.allocations,household.us.cohorts,record,two household summaries member allocations tenure and borrowing-cost exposure,person_count,false,household allocation reconciliation witness,probe_complete,12-structure-outline-bernankey-mvp-cycle.md:465-543
+state.outlet.media.loonberg.publication,outlet.media.loonberg,publication,editorial selection framing publication queue omissions and direct audience targets,NONE,false,outlet publication witness,probe_complete,12-structure-outline-bernankey-mvp-cycle.md:465-543
+state.population.us.person.cells.mass,population.us.person.cells,stock,two scenario-bounded cells with employment and housing exposure,person_count,true,person mass reconciliation witness,probe_complete,12-structure-outline-bernankey-mvp-cycle.md:465-543

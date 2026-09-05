@@ -9,10 +9,7 @@ from engine.canon import load_json, sha256, write_canonical_json
 
 SLICE_SCHEMA_VERSION = 1
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_CATALOG_DIR = (
-    PROJECT_ROOT
-    / ".humanlayer/tasks/federal-reserve-chair-crisis-management-simulator/catalog"
-)
+DEFAULT_CATALOG_DIR = PROJECT_ROOT / "catalog"
 
 
 class CatalogSliceError(ValueError):

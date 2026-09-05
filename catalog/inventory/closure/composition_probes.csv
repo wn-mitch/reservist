@@ -1,0 +1,4 @@
+composition_probe_id,display_name,purpose,provenance
+probe.composition.burrow_bank,Burrow bank replacement,"Compare named bank, regional cohort, and aggregate mechanism while exercising institutional, legal, settlement, account, and information paths.",07-design-discussion-burrow-composition-probe.md
+probe.composition.treasury_basis_trade,Treasury basis trade,"Exercise cash Treasury, repo, futures, reserve, equity, clearing, account, Fed-system, and publication contracts.",Representation Catalog Treasury-duration dependency cut.
+probe.composition.amazon_region_replacement,Amazon region replacement,"Exercise scope, generator, process, product stages, named-plus-residual replacement, conservation, and no-magic-price behavior.",Representation Catalog worked Amazon chain.

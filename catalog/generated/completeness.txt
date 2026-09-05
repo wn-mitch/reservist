@@ -1,0 +1,19 @@
+catalog completeness
+identity inventory:
+  typed-subject coverage: 492/492 (100.0%)
+  identity inventory is not runtime readiness
+catalog contract:
+  catalog-eligible instances: 13/492
+  early-2006 profile assignment: 492/492
+  slice-candidate catalog closure: 0/23
+  external channels with one residual: 7/7
+  external provider/interface rows: 34
+  probe-referenced product source + destination/market coverage: 7/7
+  instrument-family closure: 15/15
+  active Core + Circuit bucket-family closure: 10/10
+  composition-probe contract closure: 3/3
+  composition-probe runtime blocked: 3/3
+runtime boundary:
+  scenario representation manifest remains unauthored
+  required manifest contents: identity clades; owner classes; fidelity tiers; residual mappings; protected population dimensions; permitted cell transitions; boundary-interface versions; adapter status; initialization reconciliation; fallbacks; replay hash
+  no geographic-completeness percentage is defined

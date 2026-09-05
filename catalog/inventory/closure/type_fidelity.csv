@@ -1,0 +1,67 @@
+type_id,fidelity_tier,is_default,provenance
+type.adapter.resource_boundary,MECHANICAL_OR_ADAPTER,true,05-design-discussion-representation-bible.md:189
+type.adapter.typed_boundary,MECHANICAL_OR_ADAPTER,true,06-design-discussion-representation-catalog.md:416
+type.generator.regional_climate_hazard,MECHANICAL_OR_ADAPTER,true,06-design-discussion-representation-catalog.md:409
+type.industry.regional_product,MECHANICAL_OR_ADAPTER,true,06-design-discussion-representation-catalog.md:411
+type.industry.resource_production,MECHANICAL_OR_ADAPTER,true,05-design-discussion-representation-bible.md:172
+type.institution.regional_bank,MECHANICAL_OR_ADAPTER,true,06-design-discussion-representation-catalog.md:900
+type.instrument_family.deposits,MECHANICAL_OR_ADAPTER,true,06-design-discussion-representation-catalog.md:352;06-design-discussion-representation-catalog.md:1097;06-design-discussion-representation-catalog.md:1184;06-design-discussion-representation-catalog.md:1215
+type.instrument_family.equity,MECHANICAL_OR_ADAPTER,true,06-design-discussion-representation-catalog.md:352;06-design-discussion-representation-catalog.md:1103;06-design-discussion-representation-catalog.md:1186;06-design-discussion-representation-catalog.md:1214
+type.instrument_family.futures,MECHANICAL_OR_ADAPTER,true,06-design-discussion-representation-catalog.md:352;06-design-discussion-representation-catalog.md:1105;06-design-discussion-representation-catalog.md:1181;06-design-discussion-representation-catalog.md:1212
+type.instrument_family.loans,MECHANICAL_OR_ADAPTER,true,06-design-discussion-representation-catalog.md:352;06-design-discussion-representation-catalog.md:1100;06-design-discussion-representation-catalog.md:1187;06-design-discussion-representation-catalog.md:1217
+type.instrument_family.money_fund_share,MECHANICAL_OR_ADAPTER,true,06-design-discussion-representation-catalog.md:352;06-design-discussion-representation-catalog.md:1098;06-design-discussion-representation-catalog.md:1185;06-design-discussion-representation-catalog.md:1216
+type.instrument_family.repo,MECHANICAL_OR_ADAPTER,true,06-design-discussion-representation-catalog.md:352;06-design-discussion-representation-catalog.md:1099;06-design-discussion-representation-catalog.md:1182;06-design-discussion-representation-catalog.md:1211
+type.instrument_family.reserves,MECHANICAL_OR_ADAPTER,true,06-design-discussion-representation-catalog.md:352;06-design-discussion-representation-catalog.md:1096;06-design-discussion-representation-catalog.md:1183;06-design-discussion-representation-catalog.md:1213
+type.instrument_family.tips,MECHANICAL_OR_ADAPTER,true,06-design-discussion-representation-catalog.md:352;06-design-discussion-representation-catalog.md:1095;06-design-discussion-representation-catalog.md:1218
+type.instrument_family.treasury_bill,MECHANICAL_OR_ADAPTER,true,06-design-discussion-representation-catalog.md:352;06-design-discussion-representation-catalog.md:1092;06-design-discussion-representation-catalog.md:1208
+type.instrument_family.treasury_bond,MECHANICAL_OR_ADAPTER,true,06-design-discussion-representation-catalog.md:352;06-design-discussion-representation-catalog.md:1094;06-design-discussion-representation-catalog.md:1180;06-design-discussion-representation-catalog.md:1210
+type.instrument_family.treasury_note,MECHANICAL_OR_ADAPTER,true,06-design-discussion-representation-catalog.md:352;06-design-discussion-representation-catalog.md:1093;06-design-discussion-representation-catalog.md:1179;06-design-discussion-representation-catalog.md:1209
+type.legal.resource_rights,MECHANICAL_OR_ADAPTER,true,05-design-discussion-representation-bible.md:180
+type.market.product,MECHANICAL_OR_ADAPTER,true,06-design-discussion-representation-catalog.md:415
+type.mechanical.bank.regional_aggregate,MECHANICAL_OR_ADAPTER,true,06-design-discussion-representation-catalog.md:900;06-design-discussion-representation-catalog.md:925-928
+type.mechanical.product_demand,MECHANICAL_OR_ADAPTER,true,06-design-discussion-representation-catalog.md:413
+type.mechanical.product_flow,MECHANICAL_OR_ADAPTER,true,06-design-discussion-representation-catalog.md:412
+type.mechanical.regional_sector,MECHANICAL_OR_ADAPTER,true,06-design-discussion-representation-catalog.md:414
+type.mechanical.resource_operation,MECHANICAL_OR_ADAPTER,true,05-design-discussion-representation-bible.md:177
+type.organization_cohort.regional_bank,MECHANICAL_OR_ADAPTER,true,06-design-discussion-representation-catalog.md:900
+type.process.ecological_stock,MECHANICAL_OR_ADAPTER,true,05-design-discussion-representation-bible.md:188
+type.process.regional_climate_agriculture,MECHANICAL_OR_ADAPTER,true,06-design-discussion-representation-catalog.md:410
+type.process.regional_resource_system,MECHANICAL_OR_ADAPTER,true,05-design-discussion-representation-bible.md:188;user-request:strategic-resource-regions
+type.region.aggregate_scope,MECHANICAL_OR_ADAPTER,true,06-design-discussion-representation-catalog.md:408
+type.region.ecological_scope,MECHANICAL_OR_ADAPTER,true,05-design-discussion-representation-bible.md:175
+type.region.resource_macroregion,MECHANICAL_OR_ADAPTER,true,05-design-discussion-representation-bible.md:175;user-request:strategic-resource-regions
+type.sovereign.jurisdiction_scope,MECHANICAL_OR_ADAPTER,true,05-design-discussion-representation-bible.md:174
+type.person.default,NAMED_COGNITION,true,Representation Bible identity-clade contract.
+type.office.default,MECHANICAL_OR_ADAPTER,true,Representation Bible identity-clade contract.
+type.institution.default,MECHANICAL_OR_ADAPTER,true,Representation Bible identity-clade contract.
+type.decision_body.default,MECHANICAL_OR_ADAPTER,true,Representation Bible identity-clade contract.
+type.staff_unit.default,MECHANICAL_OR_ADAPTER,true,Representation Bible identity-clade contract.
+type.person_population_cell.default,MECHANICAL_OR_ADAPTER,true,Representation Bible identity-clade contract.
+type.household_cohort.default,MECHANICAL_OR_ADAPTER,true,Representation Bible identity-clade contract.
+type.pop_lens.default,MECHANICAL_OR_ADAPTER,true,Representation Bible identity-clade contract.
+type.organization_cohort.default,MECHANICAL_OR_ADAPTER,true,Representation Bible identity-clade contract.
+type.named_firm.default,MECHANICAL_OR_ADAPTER,true,Representation Bible identity-clade contract.
+type.industry_cohort.default,MECHANICAL_OR_ADAPTER,true,Representation Bible identity-clade contract.
+type.coalition.default,MECHANICAL_OR_ADAPTER,true,Representation Bible identity-clade contract.
+type.sovereign_system.default,MECHANICAL_OR_ADAPTER,true,Representation Bible identity-clade contract.
+type.region.default,MECHANICAL_OR_ADAPTER,true,Representation Bible identity-clade contract.
+type.market.default,MECHANICAL_OR_ADAPTER,true,Representation Bible identity-clade contract.
+type.mechanical_system.default,MECHANICAL_OR_ADAPTER,true,Representation Bible identity-clade contract.
+type.generator.default,MECHANICAL_OR_ADAPTER,true,Representation Bible identity-clade contract.
+type.agreement.default,MECHANICAL_OR_ADAPTER,true,Representation Bible identity-clade contract.
+type.legal_instrument.default,MECHANICAL_OR_ADAPTER,true,Representation Bible identity-clade contract.
+type.federated_system.default,MECHANICAL_OR_ADAPTER,true,Representation Bible identity-clade contract.
+type.facility.default,MECHANICAL_OR_ADAPTER,true,Representation Bible identity-clade contract.
+type.published_reference.default,MECHANICAL_OR_ADAPTER,true,Representation Bible identity-clade contract.
+type.outlet.default,MECHANICAL_OR_ADAPTER,true,Representation Bible identity-clade contract.
+type.network.default,MECHANICAL_OR_ADAPTER,true,Representation Bible identity-clade contract.
+type.scheduled_process.default,MECHANICAL_OR_ADAPTER,true,Representation Bible identity-clade contract.
+type.record.default,MECHANICAL_OR_ADAPTER,true,Representation Bible identity-clade contract.
+type.stateful_external_process.default,MECHANICAL_OR_ADAPTER,true,Representation Bible identity-clade contract.
+type.boundary_adapter.default,MECHANICAL_OR_ADAPTER,true,Representation Bible identity-clade contract.
+type.boundary_adapter.channel_provider,MECHANICAL_OR_ADAPTER,true,Channel-first external candidate atlas.
+type.region.non_owning_scope,MECHANICAL_OR_ADAPTER,true,Channel-first external candidate atlas.
+type.instrument_family.agency_mbs,MECHANICAL_OR_ADAPTER,true,Representation Catalog normative family inventory.
+type.instrument_family.corporate_bonds,MECHANICAL_OR_ADAPTER,true,Representation Catalog normative family inventory.
+type.instrument_family.swaps,MECHANICAL_OR_ADAPTER,true,Representation Catalog normative family inventory.
+type.instrument_family.guarantees_credit_lines,MECHANICAL_OR_ADAPTER,true,Representation Catalog normative family inventory.

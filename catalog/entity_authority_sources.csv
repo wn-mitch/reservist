@@ -1,0 +1,25 @@
+catalog_id,authority_source_id,authority_source_kind,provenance
+adapter.macro.us.broad,profile.early_2006.bernankey,scenario_boundary_contract,12-structure-outline-bernankey-mvp-cycle.md:174-177
+agreement.us.repo.bilateral,agreement.us.repo.bilateral,contract,12-structure-outline-bernankey-mvp-cycle.md:299-319
+body.us.federal_reserve.fomc,legal.us.federal_reserve.act.section_12a,statute,Federal Reserve Act section 12A: https://www.federalreserve.gov/aboutthefed/section12a.htm
+body.us.federal_reserve.fomc,legal.us.federal_reserve.fomc_rules.section_3,rule,FOMC Rules of Organization: https://www.federalreserve.gov/monetarypolicy/files/fomc_rulesorganization.pdf
+cohort.us.dealer.primary,auth.us.primary_dealer_designation,eligibility,12-structure-outline-bernankey-mvp-cycle.md:299-319
+household.us.cohorts,profile.early_2006.bernankey,scenario_boundary_contract,12-structure-outline-bernankey-mvp-cycle.md:465-543
+inst.us.federal_reserve.new_york,legal.us.federal_reserve.act.section_14,statute,Federal Reserve Act section 14: https://www.federalreserve.gov/aboutthefed/section14.htm
+inst.us.federal_reserve.new_york,legal.us.federal_reserve.domestic_authorization.2006,delegation,Federal Reserve 2006 FOMC historical materials: https://www.federalreserve.gov/monetarypolicy/fomchistorical2006.htm
+market.us.treasury.secondary,legal.us.federal_reserve.domestic_authorization.2006,authorized_operation,12-structure-outline-bernankey-mvp-cycle.md:299-319
+office.us.federal_reserve.board_chair,NONE,non_authorizing_phase_1_identity,12-structure-outline-bernankey-mvp-cycle.md:174-177
+office.us.federal_reserve.fomc_chair,NONE,non_authorizing_phase_1_identity,12-structure-outline-bernankey-mvp-cycle.md:174-177
+office.us.federal_reserve.fomc_chair,legal.us.federal_reserve.fomc_rules.section_3,rule,FOMC Rules of Organization: https://www.federalreserve.gov/monetarypolicy/files/fomc_rulesorganization.pdf
+outlet.media.loonberg,institution.media.loonberg,operating_institution,12-structure-outline-bernankey-mvp-cycle.md:465-543
+person.us.ben_bernankey,office.us.federal_reserve.board_chair,effective_office_holding,Federal Reserve History: https://www.federalreservehistory.org/people/federal-reserve-chair
+pop.us.fixed.rate.homeowners.by.mortgage.vintage,population.us.person.cells,derived_population_view,12-structure-outline-bernankey-mvp-cycle.md:465-543
+pop.us.public.low_attention_residual,population.us.person.cells,derived_population_view,12-structure-outline-bernankey-mvp-cycle.md:465-543
+pop.us.workers.by.sector,population.us.person.cells,derived_population_view,12-structure-outline-bernankey-mvp-cycle.md:465-543
+population.us.person.cells,profile.early_2006.bernankey,scenario_boundary_contract,12-structure-outline-bernankey-mvp-cycle.md:465-543
+record.us.federal_reserve.analytical_task,office.us.federal_reserve.board_chair,requesting_office,12-structure-outline-bernankey-mvp-cycle.md:388-457
+record.us.federal_reserve.assessment,staff.us.federal_reserve.markets,authoring_staff_unit,12-structure-outline-bernankey-mvp-cycle.md:388-457
+reference.us.bls.cpi,institution.us.bls,publishing_institution,12-structure-outline-bernankey-mvp-cycle.md:174-177
+staff.us.federal_reserve.communications,inst.us.federal_reserve.board,parent_institution,12-structure-outline-bernankey-mvp-cycle.md:397-415
+staff.us.federal_reserve.markets,inst.us.federal_reserve.board,parent_institution,12-structure-outline-bernankey-mvp-cycle.md:397-415
+staff.us.federal_reserve.monetary_affairs,inst.us.federal_reserve.board,parent_institution,12-structure-outline-bernankey-mvp-cycle.md:397-415
