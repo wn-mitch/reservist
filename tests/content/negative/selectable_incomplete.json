@@ -1,0 +1,10 @@
+{
+  "table": "entities.csv",
+  "key_field": "catalog_id",
+  "key": "inst.us.bank.burrow",
+  "mutations": {
+    "selectable_in_manifest": "true",
+    "completeness_state": "identity_only"
+  },
+  "category": "catalog_eligibility"
+}

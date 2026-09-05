@@ -351,6 +351,7 @@ profile.early_2006.bernankey,person.sa.sama_governor,reference,NONE,NONE,Typed i
 profile.early_2006.bernankey,person.uk.boe_governor,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,person.uk.dmo_chief,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,person.us.alan_greenspaniel,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
+profile.early_2006.bernankey,person.us.avery_agendaloon,slice_candidate,person.us.avery_agendaloon,Named chief officeholding is selected.,Provides private person cognition separately from the persistent chief-of-staff office.,docs/design/15-open-questions-decision-handoff.md:236-243
 profile.early_2006.bernankey,person.us.ben_bernankey,anchor,NONE,NONE,Player identity or required Chair office for the early-2006 profile.,Early-2006 profile planning index.
 profile.early_2006.bernankey,person.us.janet_jackrabbit,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,person.us.jerome_owl,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.

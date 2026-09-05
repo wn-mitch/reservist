@@ -1,0 +1,151 @@
+version = 1
+
+[[attribution]]
+path = "/*/quantity"
+category = "normalization"
+justification = "Decimal quantities compare by exact numeric value; trailing scale is not simulation behavior."
+
+[[attribution]]
+path = "/*/price"
+category = "normalization"
+justification = "Decimal prices compare by exact numeric value; trailing scale is not simulation behavior."
+
+[[attribution]]
+path = "/*/limit_price"
+category = "normalization"
+justification = "Decimal limit prices compare by exact numeric value."
+
+[[attribution]]
+path = "/*/filled_quantity"
+category = "normalization"
+justification = "Decimal allocations compare by exact numeric value."
+
+[[attribution]]
+path = "/*/balance"
+category = "normalization"
+justification = "Account balances compare by exact numeric value, preserving conservation."
+
+[[attribution]]
+path = "/*/reserved"
+category = "normalization"
+justification = "Reserved balances compare by exact numeric value."
+
+[[attribution]]
+path = "/*/amount"
+category = "normalization"
+justification = "Monetary and reservation amounts compare by exact numeric value."
+
+[[attribution]]
+path = "/*/delta"
+category = "normalization"
+justification = "Ledger deltas compare by exact numeric value, preserving conservation."
+
+[[attribution]]
+path = "/*/cash_amount"
+category = "normalization"
+justification = "Cash consideration compares by exact numeric value."
+
+[[attribution]]
+path = "/*/principal"
+category = "normalization"
+justification = "Repo principal compares by exact numeric value."
+
+[[attribution]]
+path = "/*/haircut"
+category = "normalization"
+justification = "Repo haircut decimals compare by exact numeric value."
+
+[[attribution]]
+path = "/*/liquidity_deficit"
+category = "normalization"
+justification = "Liquidity deficits compare by exact numeric value."
+
+[[attribution]]
+path = "/*/capacity"
+category = "normalization"
+justification = "Decimal execution capacity compares by exact numeric value."
+
+[[attribution]]
+path = "/*/residual/BUY"
+category = "normalization"
+justification = "Unfilled buy quantities compare by exact numeric value."
+
+[[attribution]]
+path = "/*/residual/SELL"
+category = "normalization"
+justification = "Unfilled sell quantities compare by exact numeric value."
+
+[[attribution]]
+path = "/cli_stdout/run/*/market_price"
+category = "normalization"
+justification = "CLI market prices preserve exact numeric value while decimal scale can differ."
+
+[[attribution]]
+path = "/cli_stdout/run/*/filled"
+category = "normalization"
+justification = "CLI filled quantities preserve exact numeric value while decimal scale can differ."
+
+[[attribution]]
+path = "/cli_stdout/run/*/residual_buy"
+category = "normalization"
+justification = "CLI residual buy quantities preserve exact numeric value while decimal scale can differ."
+
+[[attribution]]
+path = "/cli_stdout/run/*/residual_sell"
+category = "normalization"
+justification = "CLI residual sell quantities preserve exact numeric value while decimal scale can differ."
+
+# M2 contracts do not waive any comparison against the frozen M1 fixture.
+[[attribution]]
+path = "/m2/chief"
+category = "authorized_difference"
+clause = "H Chief of staff; adopted D4; WP-18"
+justification = "Named private cognition and dated officeholding replace the office-only representation. replacement_preserves_office_records_and_private_cognition proves the succession boundary."
+
+[[attribution]]
+path = "/m2/calendar"
+category = "authorized_difference"
+clause = "H Temporal cadence and Ordering and invalidation; adopted D3"
+justification = "Loading and reading are paused; explicit advance resolves dated boundaries and reservations. loading_the_adopted_scenario_does_not_advance_its_clock, staff_admission_reserves_exact_dated_capacity_across_resume, and the Godot frame-delay cases replace the M1 next-consequential-event heuristic."
+
+[[attribution]]
+path = "/m2/commands"
+category = "authorized_difference"
+clause = "H Client boundary; WP-17"
+justification = "Every command receives a witnessed, idempotent receipt. M2 command identity and resume tests prove duplicate delivery has no repeated effect and conflicting identities reject."
+
+[[attribution]]
+path = "/m2/folders"
+category = "authorized_difference"
+clause = "H Commit and submit; adopted P-01 and D2"
+justification = "Ordinary choices remain drafts until whole-slate admission. penciling_is_not_admission_and_invalid_slates_have_no_partial_effects and a_new_agenda_instruction_changes_the_prospective_vote_without_rewriting_history prove atomic admission and prospective amendment."
+
+[[attribution]]
+path = "/m2/speaking"
+category = "authorized_difference"
+clause = "Adopted D2 and P-01 speaking-commit replacement"
+justification = "Marked authored inquiries commit when selected, independently of other pencils. speaking_commits_only_the_marked_inquiry_and_survives_closing_the_draft proves delayed delivery, capacity, duplicate safety, and preserved history."
+
+[[attribution]]
+path = "/m2/routing"
+category = "authorized_difference"
+clause = "H Evidence access and reporting friction; WP-21"
+justification = "Metadata-only routing offers scoped joint work, sanitization, and authorized grants with real dated costs. M2 routing tests prove aggregate affordability, scope preservation, delayed delivery, and exact pending-work resume."
+
+[[attribution]]
+path = "/m2/scorecard"
+category = "authorized_difference"
+clause = "H Stewardship score; adopted D5 and P-04"
+justification = "scorecard_is_separate_from_the_delivered_in_world_review proves signed, authored findings alongside an unchanged institutionally bounded review. No score is exposed to actor handlers."
+
+[[attribution]]
+path = "/m2/no_proposal"
+category = "authorized_difference"
+clause = "H Commit and submit; adopted P-01"
+justification = "A constructor package or unsubmitted pencil is not an admitted proposal. M2 no-handoff tests prove there is no fabricated vote, authorization, execution, market cycle, or statement, while independent work still receives factual review."
+
+[[attribution]]
+path = "/m2/checkpoint_boundary"
+category = "new_runtime_only"
+clause = "H Rewrite and proof; plan sections 7.4 and 7.6"
+justification = "Open folders and parked pencils cannot be saved or resumed. Supported boundaries preserve committed history, pending work, interruptions, dated capacity, the command journal, and review score."

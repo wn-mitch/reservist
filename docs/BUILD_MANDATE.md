@@ -1,14 +1,18 @@
 # Reservist: Build Mandate (front door)
 
-**Status:** Proposed by `docs/review/RDR-2026-09-05-01-fable-design-review.md`, Part G. **Not authorized.** Becomes active when the owner dispositions D1–D5 and says so; the integration agent then records the dispositions here and removes this banner.
+**Status:** Authorized after acceptance of decisions D1–D6 in the design review, Part G. M1 and M2 implementation acceptance is recorded in `docs/BUILD_REVIEW.md` on jj change `mkstwyuv`. M3 and M4 remain the subsequent milestones; their runway interfaces do not count as implemented campaign or world mechanics.
 
 ## Baseline pin
+
+The original revision and interpreter rows pin the historical oracle. The fixture rows distinguish that preserved input from the adopted executable.
 
 | Item | Value |
 |---|---|
 | Repository revision | git `97fc926a` (jj `oyrstukq`), "chore: Migrate design corpus and catalog into repo"; parent `main` `8679992a` |
 | Interpreter | Python 3.14.3, zero third-party dependencies |
 | Scenario | `scenarios/mvp_2006_cycle`, hash `sha256:493ca02478ebd045bc2ab5720ef3ef65410f4557f97410570a4576a39578d066` |
+| Preserved M1 fixture | `scenarios/mvp_2006_cycle_m1`, hash `sha256:493ca02478ebd045bc2ab5720ef3ef65410f4557f97410570a4576a39578d066` |
+| M2 fixture | `scenarios/mvp_2006_cycle`, hash `sha256:d9f745b948d7cf2d76e364ff08664a0fcf3347a41485e107a18b02297bca2ce4` |
 | Oracle vectors | `just replay` transcripts for `WAIT_AND_WARN`, `MEASURED_FIRMING`, `FIRMING_BIAS` (state hashes `424bda…`, `58738b…`, `af3ee7…`); the 86 tests and 10 gates |
 | Design source | H `docs/design/15-open-questions-decision-handoff.md` plus `docs/CURRENT_DESIGN_BIBLE.md` precedence |
 
@@ -22,7 +26,7 @@
 
 **M4 — world.** Channel-specific providers with RECORDED/RESPONSIVE execution; `supported_transitions` in the manifest; asset pipeline; broader content.
 
-M1 and M2 are the authorized program once this mandate is active. M3 and M4 are authorized in principle and start after M2 acceptance unless the owner reorders (decision D4).
+The milestone order is M1 parity → M2 adopted changes → M3 succession and score → M4 providers and world (decision D4).
 
 ## Binding constraints
 
@@ -32,11 +36,11 @@ H in full. D04 causal contracts, D05 Representation Invariants, D09/D10 informat
 
 Module and crate layout; type and handler names; the named phase roster derived from `engine/clock.py` priorities; queued-work versioning and cancellation; receipt and idempotency representation; frozen-data and save formats (versioned, canonical, hashed); test organization; packaging of registry metadata for the content compiler; toolchain versions (pinned once chosen). Provisional coefficients are permitted only where H leaves them open and must be labeled provisional.
 
-## Known blockers
+## Baseline blockers (resolved)
 
-- Rust toolchain, Godot, and `godot-rust` are not present or referenced anywhere in the repository.
-- 214 catalog structural issues; 2 failing tests in `catalog/test_catalog.py`; `catalog/catalog.py:837` emits a false readiness line.
-- Owner decisions D1–D5.
+- The native workspace, locked toolchains and Godot client now build and execute. Production has no Python sidecar.
+- The global catalog validates with zero structural gaps or warnings; all 18 authoring tests pass and generated readiness names the selected manifest.
+- Executed evidence for both resolutions and all 23 work packages is in the Build Review.
 
 ## Required evidence
 

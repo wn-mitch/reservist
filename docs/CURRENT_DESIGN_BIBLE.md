@@ -1,6 +1,6 @@
 # Reservist: Current Design Bible (front door)
 
-**Status:** Routing index, pending owner disposition of decisions D1–D6 in `docs/review/RDR-2026-09-05-01-fable-design-review.md`. Not yet a consolidated bible. Until disposition, the current design is: H, then the compatible inherited chapters, read under the precedence rules below.
+**Status:** Routing index for adopted H and accepted decisions D1–D6. Not a consolidated bible. The governing design is H, its accepted dispositions, and compatible inherited chapters under the precedence rules below. `docs/BUILD_REVIEW.md` records executable evidence; `docs/FABLE_IMPLEMENTATION_PLAN.md` allocates the M1/M2 work packages.
 
 ## What Reservist is
 
@@ -8,10 +8,10 @@ A turn-based, satirical institutional crisis simulator centered on the Federal R
 
 ## Precedence
 
-1. **H** — `docs/design/15-open-questions-decision-handoff.md`. Adopted. Governs every subject it explicitly decides or supersedes.
+1. **H** — `docs/design/15-open-questions-decision-handoff.md`, as resolved by accepted D1–D6 in review Part G and their adopted amendment clauses. Governs every subject it explicitly decides or supersedes.
 2. **Compatible inherited chapters**, in their own domains: D04 causal kernel, D05 representation, D06 catalog contracts, D09 media, D10 interface, D11 MVP cut. Where a chapter conflicts with H, H wins for that proposition only; the rest of the chapter stands.
 3. **Reports** (D12, R13) describe what the Python prototype did. They never override design and never prove the new runtime.
-4. **Proposals** (amendment §5 clauses, reviewer replacement text) bind nothing until the owner accepts them. Accepted dispositions are recorded in the amendment and mirrored here.
+4. **Unaccepted proposals** bind nothing. Accepted D1–D6 dispositions are binding; remaining reviewer suggestions and historical draft questions do not override them.
 
 ## Where each system is owned
 
@@ -23,7 +23,7 @@ A turn-based, satirical institutional crisis simulator centered on the Federal R
 | Campaign end and evaluation | D04 Term, failure, and legacy (line 2160); Q16 (line 3167) | H Chair succession and campaign bounds; Stewardship score (supersede "ends the playable role" and "no single victory score") |
 | Representation kinds, fidelity tiers, invariants | D05 lines 158, 935, 1076 | H Fidelity traits; Actor growth; Identity and presentation |
 | Chief of staff | D11 Q6 (line 507) | H Chief of staff (overrides: persistent Person at NAMED_COGNITION) |
-| Catalog contracts, eligibility, manifest | D06; `catalog/schema.json`; `engine/manifest.py` | H Catalog contract binding; Catalog and scenario distinctions; Validation and fallback; Identity aliases |
+| Catalog contracts, eligibility, manifest | D06; `catalog/schema.json`; `crates/reservist-content/src/manifest.rs` | H Catalog contract binding; Catalog and scenario distinctions; Validation and fallback; Identity aliases |
 | Legal regime and temporality | D05 legal ownership; D04 | H Legal regime; Historical temporality |
 | External channels and providers | D06; `catalog/external_channel*.csv` | H External providers |
 | Media, claims, publication | D09 | H Language models (no runtime prose generation); Authored options |
@@ -43,9 +43,9 @@ A turn-based, satirical institutional crisis simulator centered on the Federal R
 | Display-only runtime LLM rendering permitted | D04 `04…kernel.md:1783`; D14 Q9 | H Language models |
 | D14 recommendations Q1, Q2, Q3, Q5, Q7, Q9 | `14…architecture.md:372-611` | H Runtime selection; Client boundary; Runtime dispatch; Repository; Asset pipeline; Language models |
 
-## Pending dispositions
+## Owner dispositions
 
-D1 terminal rule for undispositioned reviews; D2 speaking-commits in calls; D3 open-folder interruption; D4 milestone order; D5 gate 09 split; D6 delete `reservist-omni-split/`. Recommendations and consequences are in the review, Part G.
+D1–D6 were accepted as recommended on 2026-09-05. Their binding text and consequences are in the review, Part G. The Build Mandate is authorized.
 
 ## Amendment history
 

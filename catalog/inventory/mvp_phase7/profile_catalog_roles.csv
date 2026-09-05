@@ -1,0 +1,2 @@
+profile_id,catalog_id,profile_role,candidate_provider_entry_id,activation_requirement,rationale,provenance
+profile.early_2006.bernankey,person.us.avery_agendaloon,slice_candidate,person.us.avery_agendaloon,Named chief officeholding is selected.,Provides private person cognition separately from the persistent chief-of-staff office.,docs/design/15-open-questions-decision-handoff.md:236-243

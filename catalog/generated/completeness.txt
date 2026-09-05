@@ -1,11 +1,11 @@
 catalog completeness
 identity inventory:
-  typed-subject coverage: 492/492 (100.0%)
+  typed-subject coverage: 494/494 (100.0%)
   identity inventory is not runtime readiness
 catalog contract:
-  catalog-eligible instances: 13/492
-  early-2006 profile assignment: 492/492
-  slice-candidate catalog closure: 0/23
+  catalog-eligible instances: 53/494
+  early-2006 profile assignment: 494/494
+  slice-candidate catalog closure: 15/30
   external channels with one residual: 7/7
   external provider/interface rows: 34
   probe-referenced product source + destination/market coverage: 7/7
@@ -14,6 +14,7 @@ catalog contract:
   composition-probe contract closure: 3/3
   composition-probe runtime blocked: 3/3
 runtime boundary:
-  scenario representation manifest remains unauthored
+  scenario representation manifest: "manifest.mvp_2006_cycle" ("sha256:493ca02478ebd045bc2ab5720ef3ef65410f4557f97410570a4576a39578d066")
+  scenario representation manifest: "manifest.mvp_2006_cycle" ("sha256:d9f745b948d7cf2d76e364ff08664a0fcf3347a41485e107a18b02297bca2ce4")
   required manifest contents: identity clades; owner classes; fidelity tiers; residual mappings; protected population dimensions; permitted cell transitions; boundary-interface versions; adapter status; initialization reconciliation; fallbacks; replay hash
   no geographic-completeness percentage is defined

@@ -1,0 +1,12 @@
+[
+  {"name":"duplicate_contract_id","document":"catalog_slice.json","pointer":"/entries/0/owned_state_contracts","operation":"duplicate_first","category":"duplicate_contract","reseal":false},
+  {"name":"unresolved_owner","document":"initialization.json","pointer":"/opening_state/0/owner_id","operation":"set","value":"person.example.missing","category":"referential_integrity","reseal":true},
+  {"name":"unknown_handler","document":"initialization.json","pointer":"/scheduled_events/0/work_kind","operation":"set","value":"unknown.work","category":"unknown_handler","reseal":true},
+  {"name":"incompatible_schema","document":"manifest.json","pointer":"/schema_version","operation":"set","value":999,"category":"manifest_closure","reseal":true},
+  {"name":"missing_witness_kind","document":"catalog_slice.json","pointer":"/entries/0/owned_state_contracts/0/witness_kind","operation":"set","value":"","category":"missing_witness","reseal":false},
+  {"name":"invalid_period_variant","document":"manifest.json","pointer":"/selected_entries/0/period_variant","operation":"set","value":"variant.missing","category":"manifest_closure","reseal":true},
+  {"name":"unpermitted_fidelity","document":"manifest.json","pointer":"/selected_entries/0/fidelity_tier","operation":"set","value":"MECHANICAL_OR_ADAPTER","category":"fidelity_permission","reseal":true},
+  {"name":"unknown_transition","document":"manifest.json","pointer":"/supported_transitions","operation":"set","value":["unknown.transition"],"category":"unknown_transition","reseal":true},
+  {"name":"phase_feedback","document":"initialization.json","pointer":"/scheduled_events/0/phase_priority","operation":"set","value":90,"category":"phase_feedback","reseal":true},
+  {"name":"missing_named_cognition","document":"initialization.json","pointer":"/opening_state","operation":"remove_state","value":"state.person.us.ben_bernankey.cognition","category":"initialization","reseal":true}
+]

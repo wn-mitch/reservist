@@ -90,5 +90,11 @@
         }
       ]
     }
-  ]
+  ],
+  "chief_of_staff": {
+    "display_name": "Avery Agendaloon",
+    "effective_period": "2006-02-01/2006-12-31",
+    "office_id": "office.us.federal_reserve.chief_of_staff",
+    "person_id": "person.us.avery_agendaloon"
+  }
 }

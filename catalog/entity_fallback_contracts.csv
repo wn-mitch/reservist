@@ -53,6 +53,7 @@ office.us.federal_reserve.chief_of_staff,lose,scenario.fallback.FAIL,12-structur
 office.us.federal_reserve.fomc_chair,lose,scenario.fallback.FAIL,12-structure-outline-bernankey-mvp-cycle.md:128-143
 office.us.federal_reserve.governor,lose,scenario.fallback.FAIL,12-structure-outline-bernankey-mvp-cycle.md:195-285
 outlet.media.loonberg,lose,scenario.fallback.FAIL,12-structure-outline-bernankey-mvp-cycle.md:465-543
+person.us.avery_agendaloon,lose,scenario.fallback.FAIL,docs/design/15-open-questions-decision-handoff.md:236-243
 person.us.ben_bernankey,lose,scenario.fallback.FAIL,12-structure-outline-bernankey-mvp-cycle.md:128-143
 pop.us.fixed.rate.homeowners.by.mortgage.vintage,lose,scenario.fallback.FAIL,12-structure-outline-bernankey-mvp-cycle.md:465-543
 pop.us.public.low_attention_residual,lose,scenario.fallback.FAIL,12-structure-outline-bernankey-mvp-cycle.md:465-543

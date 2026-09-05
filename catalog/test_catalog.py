@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import csv
 import hashlib
+import importlib.util
 import json
 import shutil
 import subprocess
@@ -30,7 +31,8 @@ class CatalogContractTest(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.scratch = tempfile.TemporaryDirectory()
         cls.pristine = Path(cls.scratch.name) / "pristine"
-        shutil.copytree(PROJECT, cls.pristine, ignore=shutil.ignore_patterns("__pycache__"))
+        ignored = shutil.ignore_patterns(".git", ".jj", "target", ".godot", "__pycache__", ".ruff_cache")
+        shutil.copytree(PROJECT, cls.pristine, ignore=ignored)
 
     @classmethod
     def tearDownClass(cls) -> None:
@@ -266,6 +268,24 @@ class CatalogContractTest(unittest.TestCase):
         self.run_catalog("import")
         self.run_catalog("generate")
         self.assertEqual(first, checksums())
+    def test_selected_mvp_entries_have_complete_catalog_contracts(self) -> None:
+        self.run_catalog("import")
+        spec = importlib.util.spec_from_file_location("catalog_tool", self.catalog / "catalog.py")
+        assert spec and spec.loader
+        catalog_tool = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(catalog_tool)
+        tables, errors = catalog_tool.collect_errors()
+        self.assertEqual([], errors)
+        selected = {
+            row["catalog_id"]
+            for row in json.loads((self.case_dir / "scenarios/mvp_2006_cycle/manifest.json").read_text())["selected_entries"]
+        }
+        details = catalog_tool.eligibility_details(tables, ignore_declaration=True)
+        self.assertTrue(all(details[catalog_id][0] for catalog_id in selected))
+        self.assertTrue(all(
+            row["selectable_in_manifest"] == "true"
+            for row in read_rows(self.catalog / "entities.csv") if row["catalog_id"] in selected
+        ))
 
 
 if __name__ == "__main__":

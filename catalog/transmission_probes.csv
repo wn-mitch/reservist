@@ -33,3 +33,9 @@ tx.external.us_duration_demand.japan.foreign_reserves.flow,probe.external_interf
 tx.external.us_duration_demand.japan.us_duration.demand_schedule,probe.external_interface_contract,covered,External market interface contract.
 tx.external.us_duration_demand.oil_exporters.foreign_reserves.flow,probe.external_interface_contract,covered,External market interface contract.
 tx.external.us_duration_demand.oil_exporters.us_duration.demand_schedule,probe.external_interface_contract,covered,External market interface contract.
+tx.mvp.chief.office_duties,probe.mvp.chief_person_ownership,covered,crates/reservist-core/src/cognition/chief.rs replacement_preserves_office_records_and_private_cognition
+tx.mvp.market.dealer,probe.mvp_2006_cycle.replay_identity,covered,Replay oracle baseline covers market cycle.
+tx.mvp.repo.maturity,probe.mvp_2006_cycle.replay_identity,covered,Replay oracle baseline covers repo maturity.
+tx.mvp.report.chair,probe.mvp_2006_cycle.replay_identity,covered,Replay oracle baseline covers declared report delivery.
+tx.mvp.staff.markets.chair,probe.mvp_2006_cycle.replay_identity,covered,Replay oracle baseline covers staff evidence delivery.
+tx.mvp.statement.primary_dealers,probe.mvp_2006_cycle.replay_identity,covered,Replay oracle baseline covers declared statement delivery.

@@ -1,0 +1,159 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_main"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFooter"]
+bg_color = Color(0.84, 0.85, 0.8, 1)
+content_margin_left = 10.0
+content_margin_top = 6.0
+content_margin_right = 10.0
+content_margin_bottom = 6.0
+
+[sub_resource type="Theme" id="ThemeDesk"]
+Label/colors/font_color = Color(0.12, 0.14, 0.16, 1)
+RichTextLabel/colors/default_color = Color(0.12, 0.14, 0.16, 1)
+RichTextLabel/constants/outline_size = 0
+PanelContainer/styles/panel = SubResource("StyleBoxFooter")
+
+[node name="Reservist" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("ThemeDesk")
+script = ExtResource("1_main")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.91, 0.9, 0.85, 1)
+mouse_filter = 2
+
+[node name="Shell" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 24.0
+offset_right = -32.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 14
+
+[node name="Header" type="HBoxContainer" parent="Shell"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Shell/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.18, 0.25, 0.29, 1)
+theme_override_font_sizes/font_size = 30
+text = "RESERVIST"
+
+[node name="Time" type="Label" parent="Shell/Header"]
+layout_mode = 2
+horizontal_alignment = 2
+text = "Simulation time: not loaded"
+
+[node name="Hash" type="Label" parent="Shell/Header"]
+layout_mode = 2
+horizontal_alignment = 2
+text = "State: unavailable"
+
+[node name="Rule" type="HSeparator" parent="Shell"]
+layout_mode = 2
+
+[node name="Navigation" type="HBoxContainer" parent="Shell"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Book" type="Button" parent="Shell/Navigation"]
+layout_mode = 2
+text = "1 Book"
+
+[node name="Fomc" type="Button" parent="Shell/Navigation"]
+layout_mode = 2
+text = "2 FOMC"
+
+[node name="Operations" type="Button" parent="Shell/Navigation"]
+layout_mode = 2
+text = "3 Operations"
+
+[node name="Statement" type="Button" parent="Shell/Navigation"]
+layout_mode = 2
+text = "4 Statement"
+
+[node name="Wire" type="Button" parent="Shell/Navigation"]
+layout_mode = 2
+text = "5 Wire"
+
+[node name="Review" type="Button" parent="Shell/Navigation"]
+layout_mode = 2
+text = "6 Review"
+
+[node name="Request" type="Button" parent="Shell/Navigation"]
+layout_mode = 2
+text = "7 Request"
+
+[node name="Routing" type="Button" parent="Shell/Navigation"]
+layout_mode = 2
+text = "8 Routing"
+
+[node name="Calendar" type="Button" parent="Shell/Navigation"]
+layout_mode = 2
+text = "Calendar"
+
+[node name="Folder" type="Button" parent="Shell/Navigation"]
+layout_mode = 2
+text = "Folder"
+
+[node name="Scorecard" type="Button" parent="Shell/Navigation"]
+layout_mode = 2
+text = "Scorecard"
+
+[node name="Save" type="Button" parent="Shell/Navigation"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Save"
+
+[node name="Resume" type="Button" parent="Shell/Navigation"]
+layout_mode = 2
+text = "Resume"
+
+[node name="RoomHost" type="Control" parent="Shell"]
+custom_minimum_size = Vector2(0, 540)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Footer" type="PanelContainer" parent="Shell"]
+layout_mode = 2
+
+[node name="Status" type="Label" parent="Shell/Footer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.27, 0.31, 0.28, 1)
+theme_override_font_sizes/font_size = 15
+text = "Loading frozen fixture."
+autowrap_mode = 3
+size_flags_horizontal = 3
+
+[connection signal="pressed" from="Shell/Navigation/Book" to="." method="_on_book_pressed"]
+[connection signal="pressed" from="Shell/Navigation/Fomc" to="." method="_on_fomc_pressed"]
+[connection signal="pressed" from="Shell/Navigation/Operations" to="." method="_on_operations_pressed"]
+[connection signal="pressed" from="Shell/Navigation/Statement" to="." method="_on_statement_pressed"]
+[connection signal="pressed" from="Shell/Navigation/Wire" to="." method="_on_wire_pressed"]
+[connection signal="pressed" from="Shell/Navigation/Review" to="." method="_on_review_pressed"]
+[connection signal="pressed" from="Shell/Navigation/Request" to="." method="_on_request_pressed"]
+[connection signal="pressed" from="Shell/Navigation/Routing" to="." method="_on_routing_pressed"]
+[connection signal="pressed" from="Shell/Navigation/Calendar" to="." method="_on_calendar_pressed"]
+[connection signal="pressed" from="Shell/Navigation/Folder" to="." method="_on_folder_pressed"]
+[connection signal="pressed" from="Shell/Navigation/Scorecard" to="." method="_on_scorecard_pressed"]
+[connection signal="pressed" from="Shell/Navigation/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="Shell/Navigation/Resume" to="." method="_on_resume_pressed"]

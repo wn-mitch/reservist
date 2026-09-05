@@ -23,7 +23,7 @@ The review read the amendment against three things the Section 9 instructions re
    | `just catalog-test` | 17 tests, 2 failures (pre-existing) |
    | `python3 catalog/catalog.py validate` | 214 structural issues (pre-existing) |
 
-2. **The catalog and design chapters were outside the repository.** Until the migration commit named above, `engine/catalog_slice.py`, `tests/test_phase6_catalog_slice.py`, and the `justfile` pointed at a gitignored symlink (`.humanlayer/tasks/... -> ~/.humanlayer/riptide/artifacts/...`). `just freeze`, `just catalog-*`, `test_phase6_catalog_slice.py`, and `test_replay.py` (which calls `seal_scenario`) could not run from a clean clone. The migration copied all 198 artifacts byte-identically (every SHA-256 in `reservist-omni-split/00-index.md` matches) into `docs/design/` and `catalog/` and repointed the three references. This satisfies H — Repository for the sources that exist today; it does not repair the catalog's validation state.
+2. **The catalog and design chapters were outside the repository.** Until the migration commit named above, `engine/catalog_slice.py`, `tests/test_phase6_catalog_slice.py`, and the `justfile` pointed at a gitignored symlink (`.humanlayer/tasks/... -> ~/.humanlayer/riptide/artifacts/...`). `just freeze`, `just catalog-*`, `test_phase6_catalog_slice.py`, and `test_replay.py` (which calls `seal_scenario`) could not run from a clean clone. The migration copied all 198 artifacts byte-identically into `docs/design/` and `catalog/`, verified every SHA-256 against the former `reservist-omni-split/00-index.md`, and repointed the three references. D6 authorized deletion of the duplicate tree after verification. This satisfies H — Repository for the sources that exist today; it does not repair the catalog's validation state.
 
 Where a finding rests on observed execution, the table says so. Where it rests on reading source, it says "inspected". Where it rests on reading design text, it gives the chapter and line.
 
@@ -111,9 +111,9 @@ Add:
 
 The evidence-grounded eligibility interpretation is the only one consistent with H — Retrospective conclusions. Disputed attribution stays a finding with confidence and dissent attached and awards nothing until a later review establishes it; exoneration is an explicit upward compensating entry.
 
-### P-05 — requires owner decision (D1), recommendation attached
+### P-05 — accepted by owner decision D1
 
-Recommended terminal rule:
+Terminal rule:
 
 > A completed review that remains undispositioned when the next scheduled institutional review anchor of the same kind arrives is registered as "acknowledged without response" by the office that commissioned it. That registration is a witnessed institutional event, not a player action. The review's findings are evaluated and its delta posts at that moment. The Chair may still attach a response or commission a supplemental review afterward; those create new entries, never edits. Score-ledger ownership is `reservist-core`; the Godot client renders it and can neither compute nor persist it.
 
@@ -156,34 +156,33 @@ Do not edit D12 or R13; they remain reports of what Python did.
 
 ## F. Remaining register
 
-Owner decisions (the decision packet in Part G): D1 through D6. Everything else in amendment §8.1 is closed by Part C or delegated to the builder.
+Owner decisions D1 through D6 were accepted as recommended on 2026-09-05. Everything else in amendment §8.1 is closed by Part C or delegated to the builder.
 
 Mechanism, content, and research obligations from H — Still open or deferred remain as stated: calibration budgets per channel, provider state schemas and parameters, period-specific counterparties and accounts, opening-state research, transfer-learning playtest evidence, and score point bands.
 
 ## G. Agent-build readiness
 
-**Readiness.** With D1–D5 dispositioned, the accepted baseline plus this review's replacement text gives an implementing agent enough authority for M1 and M2 without further design review. The builder can decide: module layout, type names, the named phase roster, versioning of queued work, receipt and idempotency representation, serialization formats (versioned, canonical), test organization, and the packaging of registry metadata for the content compiler.
+**Readiness.** D1–D5 are dispositioned. The accepted baseline plus this review's replacement text gives an implementing agent enough authority for M1 and M2 without further design review. The builder can decide: module layout, type names, the named phase roster, versioning of queued work, receipt and idempotency representation, serialization formats (versioned, canonical), test organization, and the packaging of registry metadata for the content compiler.
 
 **Actual blockers (not design questions):**
 
 - No Rust toolchain, Godot, or `godot-rust` is present in the repo or referenced by any file. M1 starts with establishing them and pinning versions.
 - 214 catalog structural issues and 2 failing catalog tests. M1 must reach a validating global catalog or a declared, compiler-enforced quarantine of out-of-slice rows. Flag-flipping is forbidden by §7.6.
-- D1–D5 below.
 
-### Owner decision packet
+### Owner dispositions
 
-| ID | Decision | Recommendation | Blocks |
+| ID | Decision | Disposition | Consequence |
 |---|---|---|---|
-| D1 | P-05 terminal rule for an undispositioned review | Register "acknowledged without response" at the next same-kind review anchor; delta posts then (Part C, P-05) | M3 score ledger |
-| D2 | P-01: do inquiry/disclosure lines in calls commit on speaking? | Yes, marked on the practical card | M2 folder handoff for calls |
-| D3 | P-03: can an observed emergency change an open folder's decision context? | No; it enqueues an interruption and banners the open folder | M2 calendar |
-| D4 | P-06 milestone order | M1 parity → M2 adopted changes → M3 succession and score → M4 providers and world | Mandate scope |
-| D5 | F-06: keep gate 09's in-world "no universal verdict" and add a separate extradiegetic scorecard assertion | Yes | M1 test porting, M3 |
-| D6 | Delete `reservist-omni-split/` now that all 198 artifacts are restored at their original paths | Delete; `00-index.md` hashes are recorded in this review's migration note | Repo hygiene only |
+| D1 | P-05 terminal rule for an undispositioned review | Register "acknowledged without response" at the next same-kind review anchor; delta posts then (Part C, P-05) | Governs M3 score ledger |
+| D2 | P-01: do inquiry/disclosure lines in calls commit on speaking? | Yes, marked on the practical card. Regret after speaking is a consequence, unlike pre-handoff meeting deliberation. | Governs M2 folder handoff for calls |
+| D3 | P-03: can an observed emergency change an open folder's decision context? | No; it enqueues an interruption and banners the open folder | Governs M2 calendar |
+| D4 | P-06 milestone order | M1 parity → M2 adopted changes → M3 succession and score → M4 providers and world | Governs mandate order |
+| D5 | F-06: keep gate 09's in-world "no universal verdict" and add a separate extradiegetic scorecard assertion | Yes | Governs M1 test porting and M3 |
+| D6 | Delete `reservist-omni-split/` now that all 198 artifacts are restored at their original paths | Delete; `00-index.md` hashes are recorded in this review's migration note | Removes duplicate tree |
 
-### Proposed Build Mandate
+### Build Mandate
 
-Published separately as `docs/BUILD_MANDATE.md` with status "proposed, not authorized". Summary:
+Published separately as the authorized `docs/BUILD_MANDATE.md`. Summary:
 
 - **Baseline pin:** revision `97fc926a`; Python 3.14.3; scenario hash `sha256:493ca02478ebd045bc2ab5720ef3ef65410f4557f97410570a4576a39578d066`; the three `just replay` transcripts as oracle vectors.
 - **Target:** M1 complete one-way rewrite of the executable scope named in P-06 into `reservist-core`, `reservist-content`, `reservist-godot`, with the Python oracle in tests only; then M2. M3 and M4 are authorized in principle and scheduled after M2 acceptance.

@@ -22,7 +22,7 @@ Use fixed forward phases with declared inputs and outputs.
 - Declared reads and writes derive local ordering inside a phase.
 - Two handlers may not ambiguously write the same state.
 - Cross-phase feedback enters a later tick or period rather than creating an implicit within-tick cycle.
-- Changing an upstream decision invalidates affected downstream phases.
+- Changing an upstream decision invalidates affected drafts, derived projections, and unresolved future work. It never rewrites committed history; a correction or reversal is a new witnessed transition under the relevant lifecycle.
 - Presentation-only changes do not rerun mechanics.
 
 This is a deliberate scope control. It avoids a general reactive task-graph engine while preserving inspectable causality.
@@ -47,6 +47,7 @@ Use a visible calendar-board cadence modeled on *Fire Emblem: Three Houses*, not
 - Scheduled briefing cycles are the ordinary player cadence.
 - Observation events create dated institutional artifacts between briefings without necessarily stopping play.
 - Calls, emergency meetings, deadlines, and other observed or committed conditions may interrupt before the next briefing.
+- New material never silently replaces an open folder's settled decision context. An interruption banner announces its presence; the player may inspect, park, or restore that attention separately from the folder's existing choices.
 - Stop rules use institutional observations, schedules, monitoring doctrine, and commitments, never hidden canonical crisis significance.
 - Briefings show trends and accumulated changes so conditions do not jump from invisible normality to crisis merely because intermediate reports were skipped.
 - Genuine surprise remains possible when indicators were inaccessible, misleading, unmonitored, or not escalated through the institution.
@@ -392,10 +393,12 @@ Effectful player choices use a working-folder and handoff workflow.
 
 - While a meeting, call, interview, or decision folder remains open, the player may revise penciled choices freely.
 - Penciled choices do not mutate canonical simulation state.
+- Exception: an authored inquiry, question, or disclosure marked **commits on speaking** takes effect when selected and the turn passes to the counterpart. Its practical card is available before selection; its admission and subsequent delivery are separately witnessed. It cannot be penciled, secretly executed for a preview, or undone by closing the folder.
 - The open folder shows the exact practical card for each current choice and for the combined slate.
 - Closing and handing off the folder commits the complete slate atomically.
 - Once handed off, the decision is canonical and its history is never deleted.
 - A later cancellation, correction, amendment, or reversal must use the real lifecycle of the relevant instrument.
+- A pending proposal may be amended prospectively through a new folder handoff. The original folder and witnesses remain, with a linked correction record; an already resolved institutional decision cannot be replaced by a Chair proposal.
 - Navigation, inspection, filtering, and other non-effectful UI actions remain immediate.
 - Do not introduce optimistic-revision conflict as an ordinary player-facing concern; deliberation occurs against the meeting's settled decision context.
 - Do not add confirmation layers beyond the folder handoff unless an action has an unusual destructive consequence.

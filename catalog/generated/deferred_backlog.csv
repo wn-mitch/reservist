@@ -12,199 +12,190 @@ entity_scope,cohort.us.bank.regional_cre_concentrated,cohort.us.bank.regional_cr
 entity_scope,inst.us.bank.burrow,inst.us.bank.burrow->UNKNOWN,scope,Resolved typed scope endpoint.,06-design-discussion-representation-catalog.md:819; intended subject: region.us.home_district
 entity_scope,mechanism.measurement.us.consumer_prices,mechanism.measurement.us.consumer_prices->UNKNOWN,scope,Resolved typed scope endpoint.,06-design-discussion-representation-catalog.md:523
 entity_scope,region.sa.aggregate,region.sa.aggregate->adapter.external_region.latin_america,scope,Resolved typed scope endpoint.,06-design-discussion-representation-catalog.md:510
-identity_only,agreement.central_bank.swap_lines,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,agreement.foreign.information_sharing,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,agreement.foreign.liquidity_support,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,agreement.foreign.regulatory_memoranda,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,agreement.foreign.sanctions_coordination,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,agreement.us.federal_reserve.swap_lines,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,auth.us.primary_dealer_designation,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,body.jp.cabinet,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,body.opec,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,body.us.federal_reserve.reserve_bank_boards,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,coalition.il.governing_parties,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,coalition.ir.factional_networks,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,coalition.ru.elite_networks,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,coalition.uk.parties,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,cohort.foreign.central_banks,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,cohort.foreign.finance_ministries,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,cohort.foreign.sovereign_funds,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,cohort.foreign.state_banks,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,facility.central_bank.swap_lines,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,facility.fima_repo,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,facility.us.federal_reserve.fima_repo,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,facility.us.federal_reserve.rrp,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,facility.us.federal_reserve.section_13_3,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,federated.euro_area,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,generator.chokepoint_blockage,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,generator.cyber,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,generator.drought,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,generator.gaffe_leak,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,generator.geological,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,generator.outbreak,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,generator.statistical_release_failure,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,generator.technological_breakthrough,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,generator.weather,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,generator.wildfire,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,household.us.cohorts,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,inst.us.cme,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,inst.us.federal_reserve.reserve_banks_other,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,inst.us.systemically_important_banks,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,institution.bis,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,institution.imf,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,institution.us.american.bankers.association,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,institution.us.bank.policy.institute,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,institution.us.chamber.of.commerce,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,institution.us.community.reinvestment.advocates,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,institution.us.consumer.finance.advocates,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,institution.us.farm.bureau.analogue,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,institution.us.homebuilders,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,institution.us.independent.community.bankers,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,institution.us.investment.company.institute.analogue,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,institution.us.labor.federation,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,institution.us.managed.funds.association,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,institution.us.member.unions,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,institution.us.mortgage.bankers,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,institution.us.policy.institutes,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,institution.us.realtors,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,institution.us.retiree.association.aarp.analogue,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,institution.us.securities.industry.association,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,institution.us.small.business.federation,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,institution.us.think.tanks,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,instrument.cross_border.capital_controls,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,legal.us.dodd_frank,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,mechanism.us.chips,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,mechanism.us.fedwire.funds,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,mechanism.us.fedwire.securities,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,mechanism.us.nss,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,office.us.federal_reserve.division_director,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,office.us.federal_reserve.ny_president,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,office.us.federal_reserve.reserve_bank_president,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,office.us.federal_reserve.vice_chair,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,office.us.federal_reserve.vice_chair_supervision,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,office.us.treasury.secretary,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,organization.us.agricultural.producers,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,organization.us.all.banks,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,organization.us.asset.managers,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,organization.us.business.generally,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,organization.us.community.banks.credit.unions,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,organization.us.dealers.market.makers,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,organization.us.endowments,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,organization.us.hedge.funds,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,organization.us.homebuilders,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,organization.us.insurers,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,organization.us.large.banks,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,organization.us.money.market.fund.complexes,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,organization.us.money.market.mutual.funds,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,organization.us.mortgage.originators,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,organization.us.municipalities.by.rating.market.access,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,organization.us.nonprimary.broker.dealers,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,organization.us.nonprofits,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,organization.us.payroll.intermediaries,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,organization.us.pensions,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,organization.us.real.estate.agents,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,organization.us.regional.insurers,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,organization.us.small.businesses,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,organization.us.small.firms,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,organization.us.small.hedge.funds,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,person.cn.pboc_governor,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,person.cn.safe_head,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,person.cn.xi,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,person.eu.ecb_president,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,person.il.boi_governor,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,person.il.prime_minister,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,person.ir.central_bank_head,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,person.ir.irgc_head,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,person.ir.president,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,person.ir.supreme_leader,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,person.jp.boj_governor,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,person.jp.mof_international_affairs_vice_minister,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,person.sa.aramco_ceo,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,person.sa.crown,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,person.sa.pif_head,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,person.sa.sama_governor,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,person.uk.boe_governor,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,person.uk.dmo_chief,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,person.us.primary_dealer.rates_head,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,person.us.treasury.secretary,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,pop.us.affluent.homeowners,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,pop.us.college.students,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,pop.us.fixed.rate.homeowners.by.mortgage.vintage,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,pop.us.fixed.rate.owners.low.mortgage.vintages,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,pop.us.high.income.finance.professionals,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,pop.us.high.income.professionals,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,pop.us.leftist.male.college.students.georgia.tech,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,pop.us.low.income.service.workers,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,pop.us.low.income.underserved.borrowers,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,pop.us.near.retirees,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,pop.us.parents.paying.childcare,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,pop.us.renters.supply.constrained.metros,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,pop.us.retail.traders,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,pop.us.retirees,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,pop.us.small.business.owners,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,pop.us.strategic.production.workers.fab.technicians,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,pop.us.suburban.parents.childcare.costs,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,pop.us.uninsured.depositors,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,pop.us.workers.by.sector,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,pop.us.young.renters,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,population.us.person.cells,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,process.climate_agriculture.regional,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,process.epidemic,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,process.war,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,record.us.federal_reserve.analytical_task,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,record.us.federal_reserve.assessment,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,record.us.federal_reserve.case_file,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,record.us.federal_reserve.chairmanship_program,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,record.us.federal_reserve.discount_rate,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,record.us.federal_reserve.institutional_project,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,record.us.federal_reserve.iorb,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,record.us.federal_reserve.legacy_dossier,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,record.us.federal_reserve.target_range,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,record.us.treasury.esf,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,record.us.treasury.indemnification_13_3,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,reference.unknown.move_index,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,reference.unknown.vix,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,reference.us.consumer_price_index,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,reference.us.federal_reserve.effr,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,reference.us.federal_reserve.obfr,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,reference.us.personal_consumption_expenditures,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,region.cn.aggregate,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,region.cn.provinces,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,region.hormuz,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,region.middle_east.gulf,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,region.panama,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,region.suez,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,region.taiwan_strait,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,region.us.aggregate,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,region.us.census_divisions,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,region.us.federal_reserve_districts,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,region.us.metros,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,region.us.states,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,scheduled_process.unknown.call_report_calendar,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,sovereign.china,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,sovereign.france,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,sovereign.germany,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,sovereign.iran,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,sovereign.israel,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,sovereign.italy,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,sovereign.japan,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,sovereign.qatar,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,sovereign.russia,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,sovereign.saudi_arabia,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,sovereign.singapore,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,sovereign.uae,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,sovereign.united_kingdom,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,staff.us.federal_reserve.communications,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,staff.us.federal_reserve.financial_stability,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,staff.us.federal_reserve.international,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,staff.us.federal_reserve.legal,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,staff.us.federal_reserve.markets,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,staff.us.federal_reserve.monetary_affairs,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,staff.us.federal_reserve.research,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,staff.us.federal_reserve.supervision,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,staff.us.treasury.debt_management,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,staff.us.treasury.ofr,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
-identity_only,stateful.us.treasury.duration_supply,NONE,research_content,Typed structural and initialization contract.,Early-2006 profile planning index.
+identity_only,agreement.central_bank.swap_lines,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,agreement.foreign.information_sharing,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,agreement.foreign.liquidity_support,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,agreement.foreign.regulatory_memoranda,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,agreement.foreign.sanctions_coordination,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,agreement.us.federal_reserve.swap_lines,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,auth.us.primary_dealer_designation,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,body.jp.cabinet,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,body.opec,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,body.us.federal_reserve.reserve_bank_boards,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,coalition.il.governing_parties,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,coalition.ir.factional_networks,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,coalition.ru.elite_networks,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,coalition.uk.parties,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,cohort.foreign.central_banks,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,cohort.foreign.finance_ministries,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,cohort.foreign.sovereign_funds,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,cohort.foreign.state_banks,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,facility.central_bank.swap_lines,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,facility.fima_repo,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,facility.us.federal_reserve.fima_repo,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,facility.us.federal_reserve.rrp,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,facility.us.federal_reserve.section_13_3,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,federated.euro_area,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,generator.chokepoint_blockage,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,generator.cyber,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,generator.drought,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,generator.gaffe_leak,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,generator.geological,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,generator.outbreak,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,generator.statistical_release_failure,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,generator.technological_breakthrough,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,generator.weather,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,generator.wildfire,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,inst.us.cme,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,inst.us.federal_reserve.reserve_banks_other,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,inst.us.systemically_important_banks,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,institution.bis,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,institution.imf,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,institution.us.american.bankers.association,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,institution.us.bank.policy.institute,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,institution.us.chamber.of.commerce,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,institution.us.community.reinvestment.advocates,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,institution.us.consumer.finance.advocates,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,institution.us.farm.bureau.analogue,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,institution.us.homebuilders,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,institution.us.independent.community.bankers,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,institution.us.investment.company.institute.analogue,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,institution.us.labor.federation,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,institution.us.managed.funds.association,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,institution.us.member.unions,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,institution.us.mortgage.bankers,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,institution.us.policy.institutes,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,institution.us.realtors,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,institution.us.retiree.association.aarp.analogue,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,institution.us.securities.industry.association,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,institution.us.small.business.federation,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,institution.us.think.tanks,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,instrument.cross_border.capital_controls,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,legal.us.dodd_frank,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,mechanism.us.chips,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,mechanism.us.fedwire.funds,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,mechanism.us.fedwire.securities,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,mechanism.us.nss,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,office.us.federal_reserve.division_director,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,office.us.federal_reserve.ny_president,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,office.us.federal_reserve.reserve_bank_president,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,office.us.federal_reserve.vice_chair,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,office.us.federal_reserve.vice_chair_supervision,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,office.us.treasury.secretary,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,organization.us.agricultural.producers,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,organization.us.all.banks,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,organization.us.asset.managers,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,organization.us.business.generally,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,organization.us.community.banks.credit.unions,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,organization.us.dealers.market.makers,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,organization.us.endowments,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,organization.us.hedge.funds,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,organization.us.homebuilders,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,organization.us.insurers,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,organization.us.large.banks,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,organization.us.money.market.fund.complexes,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,organization.us.money.market.mutual.funds,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,organization.us.mortgage.originators,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,organization.us.municipalities.by.rating.market.access,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,organization.us.nonprimary.broker.dealers,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,organization.us.nonprofits,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,organization.us.payroll.intermediaries,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,organization.us.pensions,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,organization.us.real.estate.agents,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,organization.us.regional.insurers,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,organization.us.small.businesses,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,organization.us.small.firms,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,organization.us.small.hedge.funds,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,person.cn.pboc_governor,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,person.cn.safe_head,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,person.cn.xi,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,person.eu.ecb_president,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,person.il.boi_governor,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,person.il.prime_minister,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,person.ir.central_bank_head,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,person.ir.irgc_head,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,person.ir.president,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,person.ir.supreme_leader,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,person.jp.boj_governor,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,person.jp.mof_international_affairs_vice_minister,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,person.sa.aramco_ceo,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,person.sa.crown,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,person.sa.pif_head,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,person.sa.sama_governor,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,person.uk.boe_governor,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,person.uk.dmo_chief,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,person.us.primary_dealer.rates_head,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,person.us.treasury.secretary,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,pop.us.affluent.homeowners,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,pop.us.college.students,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,pop.us.fixed.rate.owners.low.mortgage.vintages,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,pop.us.high.income.finance.professionals,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,pop.us.high.income.professionals,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,pop.us.leftist.male.college.students.georgia.tech,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,pop.us.low.income.service.workers,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,pop.us.low.income.underserved.borrowers,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,pop.us.near.retirees,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,pop.us.parents.paying.childcare,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,pop.us.renters.supply.constrained.metros,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,pop.us.retail.traders,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,pop.us.retirees,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,pop.us.small.business.owners,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,pop.us.strategic.production.workers.fab.technicians,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,pop.us.suburban.parents.childcare.costs,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,pop.us.uninsured.depositors,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,pop.us.young.renters,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,process.climate_agriculture.regional,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,process.epidemic,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,process.war,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,record.us.federal_reserve.case_file,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,record.us.federal_reserve.chairmanship_program,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,record.us.federal_reserve.discount_rate,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,record.us.federal_reserve.institutional_project,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,record.us.federal_reserve.iorb,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,record.us.federal_reserve.legacy_dossier,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,record.us.federal_reserve.target_range,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,record.us.treasury.esf,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,record.us.treasury.indemnification_13_3,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,reference.unknown.move_index,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,reference.unknown.vix,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,reference.us.consumer_price_index,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,reference.us.federal_reserve.effr,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,reference.us.federal_reserve.obfr,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,reference.us.personal_consumption_expenditures,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,region.cn.aggregate,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,region.cn.provinces,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,region.hormuz,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,region.middle_east.gulf,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,region.panama,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,region.suez,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,region.taiwan_strait,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,region.us.aggregate,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,region.us.census_divisions,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,region.us.federal_reserve_districts,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,region.us.metros,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,region.us.states,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,scheduled_process.unknown.call_report_calendar,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,sovereign.china,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,sovereign.france,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,sovereign.germany,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,sovereign.iran,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,sovereign.israel,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,sovereign.italy,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,sovereign.japan,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,sovereign.qatar,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,sovereign.russia,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,sovereign.saudi_arabia,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,sovereign.singapore,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,sovereign.uae,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,sovereign.united_kingdom,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,staff.us.federal_reserve.financial_stability,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,staff.us.federal_reserve.international,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,staff.us.federal_reserve.legal,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,staff.us.federal_reserve.research,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,staff.us.federal_reserve.supervision,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,staff.us.treasury.debt_management,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,staff.us.treasury.ofr,NONE,research_content,NONE,Early-2006 profile planning index.
+identity_only,stateful.us.treasury.duration_supply,NONE,research_content,NONE,Early-2006 profile planning index.
 owned_state,UNKNOWN,state.external_region.aggregated_europe.commodities,state_transition,"Source-backed transition, witness, owner, and conserved unit.",04-design-discussion-minimum-simulation-kernel.md:819-837;05-design-discussion-representation-bible.md:678-690;05-design-discussion-representation-bible.md:737-771
 owned_state,UNKNOWN,state.external_region.aggregated_europe.currency,state_transition,"Source-backed transition, witness, owner, and conserved unit.",04-design-discussion-minimum-simulation-kernel.md:819-837;05-design-discussion-representation-bible.md:678-690;05-design-discussion-representation-bible.md:737-771
 owned_state,UNKNOWN,state.external_region.aggregated_europe.dollar_funding,state_transition,"Source-backed transition, witness, owner, and conserved unit.",04-design-discussion-minimum-simulation-kernel.md:819-837;05-design-discussion-representation-bible.md:678-690;05-design-discussion-representation-bible.md:737-771

@@ -83,7 +83,8 @@
     "composition_probe_members.csv": ["composition_probe_id", "catalog_id", "candidate_provider_entry_id", "selected_fidelity", "requirement", "provenance"],
     "composition_probe_requirements.csv": ["composition_probe_id", "architecture_probe_id", "catalog_id", "gate", "required_status", "provenance"],
     "composition_probe_instrument_buckets.csv": ["composition_probe_id", "bucket_id", "requirement", "provenance"],
-    "research_backlog.csv": ["backlog_id", "catalog_id", "artifact_kind", "artifact_key", "blocker_code", "required_evidence", "provenance"]
+    "research_backlog.csv": ["backlog_id", "catalog_id", "artifact_kind", "artifact_key", "blocker_code", "required_evidence", "provenance"],
+    "stewardship_findings.csv": ["finding_id", "witness_kind", "receipt_status", "minimum_matches", "points", "verdict", "provenance"]
   },
   "table_lifecycle": {
     "period_variants.csv": "deferred",
@@ -124,7 +125,8 @@
     "composition_probes.csv": "required",
     "composition_probe_members.csv": "required",
     "composition_probe_requirements.csv": "required",
-    "composition_probe_instrument_buckets.csv": "required"
+    "composition_probe_instrument_buckets.csv": "required",
+    "stewardship_findings.csv": "required"
   },
   "table_keys": {
     "types.csv": ["type_id"],
@@ -165,7 +167,8 @@
     "composition_probe_members.csv": ["composition_probe_id", "catalog_id"],
     "composition_probe_requirements.csv": ["composition_probe_id", "architecture_probe_id", "catalog_id", "gate"],
     "composition_probe_instrument_buckets.csv": ["composition_probe_id", "bucket_id"],
-    "research_backlog.csv": ["backlog_id"]
+    "research_backlog.csv": ["backlog_id"],
+    "stewardship_findings.csv": ["finding_id"]
   },
   "field_vocabularies": {
     "entities.csv.entry_class": "entry_class",

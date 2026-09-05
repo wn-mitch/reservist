@@ -1,0 +1,11 @@
+disallowed-types = [
+    { path = "std::time::Instant", reason = "Simulation time advances only through player-authorized events." },
+    { path = "std::time::SystemTime", reason = "Wall time cannot affect deterministic simulation state." },
+    { path = "std::net::TcpStream", reason = "The game has no runtime network dependency." },
+    { path = "std::net::TcpListener", reason = "The game has no runtime network dependency." },
+    { path = "std::net::UdpSocket", reason = "The game has no runtime network dependency." },
+]
+disallowed-methods = [
+    "std::time::Instant::now",
+    "std::time::SystemTime::now",
+]

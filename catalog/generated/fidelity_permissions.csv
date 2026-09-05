@@ -1,0 +1,51 @@
+tier,identity_clade,required_state,capabilities,runtime_promotion_permitted
+MECHANICAL_OR_ADAPTER,Agreement,subject-owned canonical or boundary state,deterministic_transition;observation;persistence,false
+MECHANICAL_OR_ADAPTER,BoundaryAdapter,subject-owned canonical or boundary state,deterministic_transition;observation;persistence,false
+MECHANICAL_OR_ADAPTER,Coalition,subject-owned canonical or boundary state,deterministic_transition;observation;persistence,false
+PARTICIPANT_DISTRIBUTION,DecisionBody,"procedure, governance, staff, or population participant state",distributed_deliberation;institutional_execution;procedural_decision,false
+ATTRIBUTED_MODEL,DecisionBody,"observer_owned_estimate, provenance",first_order_estimate;provenanced_observation,false
+MECHANICAL_OR_ADAPTER,DecisionBody,subject-owned canonical or boundary state,deterministic_transition;observation;persistence,false
+MECHANICAL_OR_ADAPTER,Facility,subject-owned canonical or boundary state,deterministic_transition;observation;persistence,false
+MECHANICAL_OR_ADAPTER,FederatedSystem,subject-owned canonical or boundary state,deterministic_transition;observation;persistence,false
+MECHANICAL_OR_ADAPTER,Generator,subject-owned canonical or boundary state,deterministic_transition;observation;persistence,false
+PARTICIPANT_DISTRIBUTION,HouseholdCohort,"procedure, governance, staff, or population participant state",distributed_deliberation;institutional_execution;procedural_decision,false
+POP_DISTRIBUTED_RESPONSE,HouseholdCohort,"conserved_population, exposure_distribution, realized_flows",bounded_attempt;distributional_response;flow_realization,false
+ATTRIBUTED_MODEL,HouseholdCohort,"observer_owned_estimate, provenance",first_order_estimate;provenanced_observation,false
+MECHANICAL_OR_ADAPTER,HouseholdCohort,subject-owned canonical or boundary state,deterministic_transition;observation;persistence,false
+ORGANIZATION_COHORT_RESPONSE,IndustryCohort,cohort capacity or behavior state,bounded_response;settlement;strategy_distribution,false
+MECHANICAL_OR_ADAPTER,IndustryCohort,subject-owned canonical or boundary state,deterministic_transition;observation;persistence,false
+PARTICIPANT_DISTRIBUTION,Institution,"procedure, governance, staff, or population participant state",distributed_deliberation;institutional_execution;procedural_decision,false
+ORGANIZATION_COHORT_RESPONSE,Institution,cohort capacity or behavior state,bounded_response;settlement;strategy_distribution,false
+ATTRIBUTED_MODEL,Institution,"observer_owned_estimate, provenance",first_order_estimate;provenanced_observation,false
+MECHANICAL_OR_ADAPTER,Institution,subject-owned canonical or boundary state,deterministic_transition;observation;persistence,false
+MECHANICAL_OR_ADAPTER,LegalInstrument,subject-owned canonical or boundary state,deterministic_transition;observation;persistence,false
+MECHANICAL_OR_ADAPTER,Market,subject-owned canonical or boundary state,deterministic_transition;observation;persistence,false
+MECHANICAL_OR_ADAPTER,MechanicalSystem,subject-owned canonical or boundary state,deterministic_transition;observation;persistence,false
+ORGANIZATION_COHORT_RESPONSE,NamedFirm,cohort capacity or behavior state,bounded_response;settlement;strategy_distribution,false
+ATTRIBUTED_MODEL,NamedFirm,"observer_owned_estimate, provenance",first_order_estimate;provenanced_observation,false
+MECHANICAL_OR_ADAPTER,NamedFirm,subject-owned canonical or boundary state,deterministic_transition;observation;persistence,false
+MECHANICAL_OR_ADAPTER,Network,subject-owned canonical or boundary state,deterministic_transition;observation;persistence,false
+LIMITED_ROLE_HOLDER,Office,"office tenure, role cognition, or publication role state",attributable_choice;bounded_reconsideration;role_action,false
+MECHANICAL_OR_ADAPTER,Office,subject-owned canonical or boundary state,deterministic_transition;observation;persistence,false
+ORGANIZATION_COHORT_RESPONSE,OrganizationCohort,cohort capacity or behavior state,bounded_response;settlement;strategy_distribution,false
+ATTRIBUTED_MODEL,OrganizationCohort,"observer_owned_estimate, provenance",first_order_estimate;provenanced_observation,false
+MECHANICAL_OR_ADAPTER,OrganizationCohort,subject-owned canonical or boundary state,deterministic_transition;observation;persistence,false
+LIMITED_ROLE_HOLDER,Outlet,"office tenure, role cognition, or publication role state",attributable_choice;bounded_reconsideration;role_action,false
+MECHANICAL_OR_ADAPTER,Outlet,subject-owned canonical or boundary state,deterministic_transition;observation;persistence,false
+NAMED_COGNITION,Person,"cognition(beliefs,goals,memory,plans)",attributable_choice;private_cognition;reconsiders,false
+LIMITED_ROLE_HOLDER,Person,"office tenure, role cognition, or publication role state",attributable_choice;bounded_reconsideration;role_action,false
+ATTRIBUTED_MODEL,Person,"observer_owned_estimate, provenance",first_order_estimate;provenanced_observation,false
+PARTICIPANT_DISTRIBUTION,PersonPopulationCell,"procedure, governance, staff, or population participant state",distributed_deliberation;institutional_execution;procedural_decision,false
+POP_DISTRIBUTED_RESPONSE,PersonPopulationCell,"conserved_population, exposure_distribution, realized_flows",bounded_attempt;distributional_response;flow_realization,false
+ATTRIBUTED_MODEL,PersonPopulationCell,"observer_owned_estimate, provenance",first_order_estimate;provenanced_observation,false
+MECHANICAL_OR_ADAPTER,PersonPopulationCell,subject-owned canonical or boundary state,deterministic_transition;observation;persistence,false
+POP_DISTRIBUTED_RESPONSE,PopLens,"conserved_population, exposure_distribution, realized_flows",bounded_attempt;distributional_response;flow_realization,false
+MECHANICAL_OR_ADAPTER,PopLens,subject-owned canonical or boundary state,deterministic_transition;observation;persistence,false
+MECHANICAL_OR_ADAPTER,PublishedReference,subject-owned canonical or boundary state,deterministic_transition;observation;persistence,false
+MECHANICAL_OR_ADAPTER,Record,subject-owned canonical or boundary state,deterministic_transition;observation;persistence,false
+MECHANICAL_OR_ADAPTER,Region,subject-owned canonical or boundary state,deterministic_transition;observation;persistence,false
+MECHANICAL_OR_ADAPTER,ScheduledProcess,subject-owned canonical or boundary state,deterministic_transition;observation;persistence,false
+MECHANICAL_OR_ADAPTER,SovereignSystem,subject-owned canonical or boundary state,deterministic_transition;observation;persistence,false
+PARTICIPANT_DISTRIBUTION,StaffUnit,"procedure, governance, staff, or population participant state",distributed_deliberation;institutional_execution;procedural_decision,false
+MECHANICAL_OR_ADAPTER,StaffUnit,subject-owned canonical or boundary state,deterministic_transition;observation;persistence,false
+MECHANICAL_OR_ADAPTER,StatefulExternalProcess,subject-owned canonical or boundary state,deterministic_transition;observation;persistence,false

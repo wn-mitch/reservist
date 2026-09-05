@@ -1,31 +1,76 @@
 python := "python3"
 scenario := "scenarios/mvp_2006_cycle"
-catalog_dir := "."
+catalog_dir := "catalog"
+godot := "godot"
+reservist := "cargo run --quiet --locked -p reservist-cli --"
 
 test:
-    {{python}} -m unittest discover -s tests -v
+    cargo test --workspace --locked
 
 gates:
-    {{python}} -m unittest discover -s tests/acceptance -p "test_*.py" -v
+    cargo test --workspace --locked
 
 catalog-test:
-    {{python}} {{catalog_dir}}/catalog/test_catalog.py
+    cargo test -p reservist-content --locked
+    {{python}} -m unittest discover -s catalog -p test_catalog.py -v
 
 catalog-generate:
-    {{python}} {{catalog_dir}}/catalog/catalog.py import
-    {{python}} {{catalog_dir}}/catalog/catalog.py generate
+    {{reservist}} catalog-import {{catalog_dir}}
+    {{reservist}} catalog-generate {{catalog_dir}}
 
 validate:
-    {{python}} -m engine.cli validate {{scenario}}
+    {{reservist}} validate {{scenario}}
 
 freeze:
-    {{python}} -m engine.cli freeze {{scenario}}
+    {{reservist}} freeze {{scenario}}
 
 run *args:
-    {{python}} -m engine.cli run {{scenario}} {{args}}
+    {{reservist}} run {{scenario}} {{args}}
 
 replay:
-    {{python}} -m engine.cli replay-check {{scenario}}
+    {{reservist}} replay-check {{scenario}}
 
+
+save *args:
+    {{reservist}} save {{scenario}} {{args}}
+
+resume *args:
+    {{reservist}} resume {{args}}
 play:
-    {{python}} -m engine.cli play {{scenario}}
+    {{reservist}} play {{scenario}}
+
+rust-build:
+    cargo build --workspace --locked
+
+rust-test:
+    cargo test --workspace --locked
+
+fmt:
+    cargo fmt --all --check
+
+parity:
+    {{reservist}} parity
+
+godot-test: godot-import
+    {{reservist}} boundaries godot-runtime --godot {{godot}}
+
+lint:
+    cargo clippy --workspace --all-targets --locked -- -D warnings
+    cargo clippy -p reservist-godot --all-targets --locked --no-default-features -- -D warnings
+
+deps-check:
+    {{reservist}} boundaries dependencies
+
+godot-lint:
+    {{reservist}} boundaries godot
+
+check: rust-build rust-test fmt lint deps-check parity catalog-test oracle-test validate godot-lint godot-test
+
+godot-import: rust-build
+    {{godot}} --headless --editor --path godot --import --quit
+
+oracle-test:
+    PYTHONPATH=tools/oracle {{python}} -m unittest discover -s tools/oracle/tests -t tools/oracle -v
+
+oracle-vectors:
+    {{python}} tools/oracle/export_vectors.py

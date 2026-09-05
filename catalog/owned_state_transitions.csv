@@ -48,6 +48,7 @@ state.office.us.federal_reserve.chief_of_staff.tenure,initialize_tenure,12-struc
 state.office.us.federal_reserve.fomc_chair.tenure,legal_transition,12-structure-outline-bernankey-mvp-cycle.md:146-155
 state.office.us.federal_reserve.governor.mvp_roster,initialize_roster,12-structure-outline-bernankey-mvp-cycle.md:226-232
 state.outlet.media.loonberg.publication,record_report_publication,12-structure-outline-bernankey-mvp-cycle.md:465-543
+state.person.us.avery_agendaloon.cognition,initialize_private_cognition,scenarios/mvp_2006_cycle/initialization.json
 state.person.us.ben_bernankey.cognition,evidence_integration,12-structure-outline-bernankey-mvp-cycle.md:157-172
 state.population.us.person.cells.mass,initialize_person_mass,12-structure-outline-bernankey-mvp-cycle.md:465-543
 state.record.us.federal_reserve.analytical_task.records,record_assignment,12-structure-outline-bernankey-mvp-cycle.md:388-457

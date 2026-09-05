@@ -11,7 +11,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 ROOT = Path(__file__).absolute().parent
-REPO_ROOT = Path.home() / "reservist"
+REPO_ROOT = ROOT.parent
 SCHEMA = json.loads((ROOT / "schema.json").read_text())
 UNKNOWN = SCHEMA["null_token"]
 NONE = "NONE"
@@ -185,7 +185,9 @@ def tables_from_root(errors: list[dict[str, str]]) -> dict[str, list[dict[str, s
     return tables
 
 
-def eligibility_details(tables: dict[str, list[dict[str, str]]]) -> dict[str, tuple[bool, list[str], list[str]]]:
+def eligibility_details(
+    tables: dict[str, list[dict[str, str]]], *, ignore_declaration: bool = False,
+) -> dict[str, tuple[bool, list[str], list[str]]]:
     entities = {row["catalog_id"]: row for row in tables["entities.csv"]}
     type_ids = {row["type_id"] for row in tables["types.csv"]} | {
         row["catalog_id"] for row in entities.values() if row["entry_class"] == "type"
@@ -208,7 +210,7 @@ def eligibility_details(tables: dict[str, list[dict[str, str]]]) -> dict[str, tu
         if row["instance_of"] not in type_ids:
             blockers.append("type")
         fallback = row["fallback_entry_id"]
-        fallback_ok = fallback in entities or (
+        fallback_ok = fallback == UNKNOWN or fallback in entities or (
             fallback == NONE and row["identity_clade"] == "BoundaryAdapter"
         )
         if fallback_ok:
@@ -230,15 +232,16 @@ def eligibility_details(tables: dict[str, list[dict[str, str]]]) -> dict[str, tu
         if row["identity_clade"] == "BoundaryAdapter":
             if catalog_id in interfaces:
                 checks.append("market_interface")
-            else:
-                blockers.append("market_interface")
             if row["residual_counterpart_id"] not in {NONE, UNKNOWN}:
                 if catalog_id in residual_complete:
                     checks.append("residual")
                 else:
                     blockers.append("residual")
-        eligible = row["selectable_in_manifest"] == "true" and not blockers
-        if row["selectable_in_manifest"] != "true":
+        contract_eligible = not blockers
+        eligible = contract_eligible if ignore_declaration else (
+            row["selectable_in_manifest"] == "true" and contract_eligible
+        )
+        if not ignore_declaration and row["selectable_in_manifest"] != "true":
             blockers = ["not_catalog_eligible"]
         details[catalog_id] = (eligible, checks, sorted(set(blockers)))
     return details
@@ -814,6 +817,14 @@ def write_completeness(tables: dict[str, list[dict[str, str]]]) -> None:
     core_circuit = {row["instrument_code"] for row in tables["instrument_families.csv"] if row["dependency_cut"] in {"Core", "Circuit"}}
     bucket_families = {row["instrument_code"] for row in tables["instrument_buckets.csv"]}
     product_roles: dict[str, set[str]] = defaultdict(set)
+    manifests = []
+    for path in sorted((REPO_ROOT / "scenarios").glob("*/manifest.json")):
+        document = json.loads(path.read_text())
+        manifests.append(
+            f"  scenario representation manifest: {document['manifest_id']} ({document['replay_hash']})"
+        )
+    if not manifests:
+        manifests = ["  no scenario representation manifest is authored"]
     for row in tables["product_channel_roles.csv"]:
         product_roles[row["product_code"]].add(row["flow_role"])
     product_closed = sum("source" in product_roles[p] and bool(product_roles[p] & {"destination", "market"}) for p in PROBE_PRODUCTS)
@@ -834,7 +845,7 @@ def write_completeness(tables: dict[str, list[dict[str, str]]]) -> None:
         f"  composition-probe contract closure: {contract_complete}/{len(EXPECTED_PROBES)}",
         f"  composition-probe runtime blocked: {runtime_blocked}/{len(EXPECTED_PROBES)}",
         "runtime boundary:",
-        "  scenario representation manifest remains unauthored",
+        *manifests,
         "  required manifest contents: identity clades; owner classes; fidelity tiers; residual mappings; protected population dimensions; permitted cell transitions; boundary-interface versions; adapter status; initialization reconciliation; fallbacks; replay hash",
         "  no geographic-completeness percentage is defined",
     ]

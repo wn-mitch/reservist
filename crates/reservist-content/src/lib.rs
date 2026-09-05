@@ -1,0 +1,65 @@
+#![forbid(unsafe_code)]
+//! Offline compilation of authored catalogs and frozen scenarios.
+
+pub mod authoring;
+pub mod bindings;
+pub mod catalog;
+pub mod frozen;
+pub mod generate;
+pub mod initialization;
+pub mod manifest;
+pub mod slice;
+
+#[cfg(test)]
+mod m2_dialogue_tests;
+#[cfg(test)]
+mod m2_tests;
+
+use std::collections::BTreeMap;
+
+use serde::{Deserialize, Serialize};
+
+pub type Row = BTreeMap<String, String>;
+pub type Tables = BTreeMap<String, Vec<Row>>;
+
+#[derive(Clone, Debug, Eq, PartialEq, Serialize, Deserialize)]
+pub struct Issue {
+    pub severity: String,
+    pub category: String,
+    pub record_id: String,
+    pub issue: String,
+}
+
+#[derive(Debug, thiserror::Error)]
+#[error("[{category}] {message}")]
+pub struct ContentError {
+    pub category: String,
+    pub message: String,
+}
+
+impl ContentError {
+    pub fn new(category: impl Into<String>, message: impl Into<String>) -> Self {
+        Self {
+            category: category.into(),
+            message: message.into(),
+        }
+    }
+}
+
+impl From<std::io::Error> for ContentError {
+    fn from(error: std::io::Error) -> Self {
+        Self::new("io", error.to_string())
+    }
+}
+
+impl From<serde_json::Error> for ContentError {
+    fn from(error: serde_json::Error) -> Self {
+        Self::new("schema", error.to_string())
+    }
+}
+
+impl From<reservist_core::canon::CanonError> for ContentError {
+    fn from(error: reservist_core::canon::CanonError) -> Self {
+        Self::new("schema", error.to_string())
+    }
+}
