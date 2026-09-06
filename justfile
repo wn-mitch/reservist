@@ -36,8 +36,11 @@ save *args:
 
 resume *args:
     {{reservist}} resume {{args}}
-play:
-    {{reservist}} play {{scenario}}
+play: godot-import
+    {{godot}} --path godot
+
+cli-play *args:
+    {{reservist}} play {{scenario}} {{args}}
 
 rust-build:
     cargo build --workspace --locked

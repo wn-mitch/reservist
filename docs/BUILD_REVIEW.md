@@ -4,8 +4,8 @@
 
 ## Runnable path
 
-- `just play` opens the native M2 terminal client. `just run`, `just validate`, `just freeze`, `just replay`, `just save`, and `just resume` use the native CLI.
-- `just godot-import` builds and imports the native extension; `godot --path godot` opens the playable Godot client.
+- `just play` builds, imports, and opens the default Godot client. `just cli-play` opens the retained native M2 terminal client.
+- `just run`, `just validate`, `just freeze`, `just replay`, `just save`, and `just resume` use the native CLI.
 - `just --set scenario scenarios/mvp_2006_cycle_m1 replay` selects the preserved M1 fixture. `just parity` selects M1 by default; the CLI also accepts `parity --fixture m1`.
 - `just check` runs the locked build, native tests, formatting, strict lint for both workspace/tooling and standalone Godot builds, dependency checks, parity, catalog tests, retained oracle tests, scenario validation, and Godot boundary tests.
 - Rust is pinned to 1.98.1; godot-rust to 0.5.5. Observed Godot runtime: 4.7.2, using the pinned 4.7 extension API.

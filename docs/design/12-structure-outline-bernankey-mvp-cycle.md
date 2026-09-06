@@ -23,9 +23,9 @@ closes a little further.
 
 ## Desired End State
 
-- `just play scenarios/mvp_2006_cycle` runs one early-2006 policy cycle from an inherited Morning
-  Book through the next cycle's Morning Book, in a text harness, with no canonical-state reads
-  anywhere in the presentation path.
+- `just play` opens the Godot client for one early-2006 policy cycle from an inherited Morning Book
+  through the next cycle's Morning Book. `just cli-play` retains the native text harness for
+  parity and accessibility. Neither presentation path reads canonical state directly.
 - Canonical state, observations, beliefs, staff assessments, player records, and rendered text live
   in separate modules with enforced import boundaries.
 - One Treasury maturity-bucket market and one bilateral repo agreement form prices and allocations
@@ -188,7 +188,7 @@ The two Chair offices are `identity_only` today and cannot own state until promo
 
 #### Manual Verification
 
-- [x] `just play` shows a Morning Book entry whose source, reference period, publication time, and revision status are all inspectable, and `Advance` moves to the next scheduled event
+- [x] `just play` opens the Godot Morning Book with inspectable source, reference period, publication time, and revision status; `Advance` moves to the next scheduled event. `just cli-play` exposes the same session boundary through the text harness.
 
 ---
 
