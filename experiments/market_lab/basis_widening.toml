@@ -1,0 +1,33 @@
+schema_version = "reservist.market-lab.v1"
+fixture_id = "basis_widening"
+seed = 20060328
+periods = 6
+[parameters]
+cash_price="98.60"
+futures_price="98.55"
+repo_rate="0.045"
+repo_haircut="0.02"
+margin_rate="0.04"
+basis_entry_threshold="0.20"
+fund_leverage_limit="15"
+dealer_capacity="8"
+residual_demand="6"
+price_impact="0.08"
+[initial]
+fund_cash="30"
+fund_treasuries="10"
+fund_futures="-10"
+fund_repo_principal="900"
+dealer_cash="2000"
+dealer_treasuries="20"
+residual_cash="3000"
+residual_treasuries="20"
+repo_lender_cash="2000"
+clearing_cash="1000"
+fed_cash="5000"
+fed_treasuries="0"
+[[shocks]]
+shock_id="shock.futures.sell_pressure"
+period=2
+kind="futures_sell_pressure"
+value="5"

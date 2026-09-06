@@ -1438,7 +1438,18 @@ class ScenarioRuntime:
         )
 
     def _handle_intermeeting_release(self, scheduled: ScheduledEvent) -> None:
-        realization = self.compression.realize(self.package_id)
+        execution = next(
+            (receipt for receipt in reversed(self.receipts) if receipt.stage == ReceiptStage.EXECUTION),
+            None,
+        )
+        executed_package_id = (
+            self.fomc_decision.authorized_package.package_id
+            if execution is not None
+            and execution.status == ActionStatus.EXECUTED.value
+            and self.fomc_decision is not None
+            else None
+        )
+        realization = self.compression.realize(executed_package_id)
         realized = self.ledger.append(
             completion_time=scheduled.due_time,
             transition_kind="aleatory_path_realized",

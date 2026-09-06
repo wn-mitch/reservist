@@ -83,11 +83,15 @@ class IntermeetingCompressor:
             self.steps.append(step)
         return event, step
 
-    def realize(self, package_id: str) -> IntermeetingRealization:
+    def realize(self, executed_package_id: str | None) -> IntermeetingRealization:
         draw_key = f"{self.seed}|{self.PATH_ID}|magnitude"
         digest = sha256(draw_key.encode("utf-8")).digest()
         draw = int.from_bytes(digest[:8], "big") / float(2**64)
-        policy_adjustment = 0.0 if package_id == "WAIT_AND_WARN" else -0.15
+        policy_adjustment = (
+            -0.15
+            if executed_package_id in {"MEASURED_FIRMING", "FIRMING_BIAS"}
+            else 0.0
+        )
         annualized = round(3.1 + draw * 0.8 + policy_adjustment, 3)
         realization = IntermeetingRealization(
             path_id=self.PATH_ID,
@@ -95,7 +99,7 @@ class IntermeetingCompressor:
             mechanism_class=self.MECHANISM_CLASS,
             annualized_core_inflation=annualized,
             housing_activity_direction="cooling",
-            package_id=package_id,
+            package_id=executed_package_id or "NO_EXECUTED_POLICY",
         )
         self.realizations.append(realization)
         return realization

@@ -27,6 +27,15 @@ freeze:
 run *args:
     {{reservist}} run {{scenario}} {{args}}
 
+
+market-lab fixture="experiments/market_lab/stable_baseline.toml" *args:
+    {{reservist}} market-lab run {{fixture}} {{args}}
+
+market-lab-sweep experiment="experiments/market_lab/principal_sweep.toml" *args:
+    {{reservist}} market-lab sweep {{experiment}} {{args}}
+
+market-lab-compare control treatment *args:
+    {{reservist}} market-lab compare {{control}} {{treatment}} {{args}}
 replay:
     {{reservist}} replay-check {{scenario}}
 

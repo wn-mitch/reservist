@@ -248,3 +248,34 @@ fn gate_10_routes_only_through_declared_edges() {
             .is_some_and(|edge_id| declared.contains(edge_id))
     }));
 }
+
+#[test]
+fn rejected_policy_is_recorded_but_has_no_macro_effect() {
+    let mut rejected = runtime("MEASURED_FIRMING", Some(RequestMode::Normal));
+    let rejected_result = rejected.run_all().expect("rejected cycle completes");
+    let mut control = runtime("WAIT_AND_WARN", Some(RequestMode::Normal));
+    let control_result = control.run_all().expect("control cycle completes");
+
+    let receipt = |stage| {
+        rejected_result
+            .receipts
+            .iter()
+            .find(|receipt| receipt["stage"] == stage)
+            .expect("stage receipt exists")
+    };
+    assert_eq!(receipt("PROPOSAL")["status"], "SUBMITTED");
+    assert_eq!(receipt("AUTHORIZATION")["status"], "REJECTED");
+    assert_eq!(
+        receipt("AUTHORIZATION")["details"]["reason"],
+        "The motion did not receive the required affirmative votes."
+    );
+    assert_eq!(receipt("EXECUTION")["status"], "AUTHORIZED_NOT_EXECUTED");
+    assert_eq!(
+        rejected_result.intermeeting_realizations[0]["package_id"],
+        "NO_EXECUTED_POLICY"
+    );
+    assert_eq!(
+        rejected_result.intermeeting_realizations[0]["annualized_core_inflation"],
+        control_result.intermeeting_realizations[0]["annualized_core_inflation"]
+    );
+}

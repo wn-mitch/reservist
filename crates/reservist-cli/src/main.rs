@@ -13,6 +13,7 @@ use reservist_core::{
 use serde_json::Value;
 
 mod boundary_check;
+mod market_lab;
 mod parity;
 mod persistence;
 mod play;
@@ -41,6 +42,8 @@ enum Command {
     },
     /// Run the native causal simulation.
     Run(RunArgs),
+    /// Run deterministic developer-only market experiments.
+    MarketLab(market_lab::MarketLabArgs),
     /// Verify repeat-run state and transcript identity for every package.
     ReplayCheck(ScenarioArgs),
     /// Generate handler bindings and phase flow from executable declarations.
@@ -233,6 +236,7 @@ fn execute(command: Command) -> Result<(), ContentError> {
             let count = reservist_content::authoring::generate_evidence(&catalog)?;
             println!("catalog evidence generated: {count} rows");
         }
+        Command::MarketLab(args) => market_lab::run(args).map_err(runtime_error)?,
         Command::Boundaries(args) => boundary_check::run(args)?,
         Command::Parity(args) => parity::run(args)?,
         Command::Play(args) => play::run(args)?,

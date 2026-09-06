@@ -17,5 +17,8 @@ jiff.workspace = true
 rust_decimal.workspace = true
 thiserror.workspace = true
 
+[dev-dependencies]
+toml = "1.1.5"
+
 [lints]
 workspace = true

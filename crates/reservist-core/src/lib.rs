@@ -4,6 +4,8 @@
 pub mod api;
 pub mod canon;
 pub mod fidelity;
+#[cfg(any(test, feature = "tooling"))]
+pub mod market_lab;
 pub mod phase;
 pub mod save;
 

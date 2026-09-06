@@ -114,3 +114,26 @@ Additional executed regressions cover unit mismatch, missing provider/fallback, 
 - M4 provider execution, full world fidelity coverage and broader content remain the later milestone defined by the plan. No economic calibration or player-comprehension claim follows from these implementation tests.
 
 H and the amendment now identify the accepted speaking and interruption dispositions without stale pending-decision labels. The baseline in the mandate remains historical; its additional M1/M2 fixture rows identify the executable inputs. The earlier corpus migration record belongs to repository history, not to current runtime evidence.
+
+## Developer market laboratory
+
+**Inspected:** `reservist-core::market_lab` is a tooling-only composition over the production Treasury order book, accounting ledger, and atomic settlement envelope. It adds one matching Treasury futures contract, symmetric variation margin, bilateral repo capacity and collateral control, constrained dealer and residual demand, leveraged-fund entry and forced closeout, and Desk purchases admitted only when both authorization and execution are recorded. The ordinary session and Godot projections do not expose laboratory state.
+
+The intermeeting macro realization now derives its policy input from the witnessed execution receipt and authorized package. A proposal identifier no longer supplies the inflation adjustment. Rejected and authorized-but-unexecuted proposals remain in receipts and traces but use the same macro realization as the no-execution control.
+
+Committed TOML fixtures under `experiments/market_lab/` cover stable convergence, basis widening, haircut stress, dealer constraint, residual-buyer retreat, forced fund unwind, executed/rejected/unexecuted Fed purchases with a matched control, and atomic settlement failure. `principal_sweep.toml` spans 81 combinations of leverage limit, haircut, dealer capacity, and residual demand. The coefficients are provisional qualitative parameters, not historical calibration.
+
+Executed evidence on the working change:
+
+| Command or exercise | Observed result |
+|---|---|
+| `cargo test -p reservist-core --locked` | 87 tests passed, including deterministic replay, policy causality, exact conservation, atomic failure, comparative statics, and all committed laboratory fixtures |
+| `just market-lab experiments/market_lab/stable_baseline.toml` | Six periods; stable convergence; zero forced sales, residual imbalance, settlement failure, or reconciliation failure |
+| `just market-lab experiments/market_lab/forced_fund_unwind.toml --format json --output target/market-lab-unwind.json` | Cash Treasury and matching short futures positions both contract after funding and leverage constraints bind; cash price falls through participant orders; every period reconciles |
+| Paired `market-lab compare` runs against `fed_purchase_control.toml` | Rejected and authorized-but-unexecuted cases report identical market state in every period while retaining their proposal, authorization, execution, and reason fields |
+| `just market-lab experiments/market_lab/fed_purchase_executed.toml --format json --output target/market-lab-fed-executed.json` | One Treasury unit fills against the executed Fed order; Fed cash and Treasury entries balance; no settlement failure; final reconciliation passes |
+| `just market-lab experiments/market_lab/settlement_failure.toml --format json --output target/market-lab-settlement-failure.json` | The prepared cash purchase fails for insufficient available cash; no partial mutation; `failed_settlement_atomic=true`; final conservation passes |
+| `just market-lab-sweep experiments/market_lab/principal_sweep.toml --output target/market-lab-principal-sweep.json` | 81/81 reconcile; 18 stable-convergence and 63 fire-sale-amplification cases. Haircut 0.05 contains both regimes; haircuts 0.10 and 0.15 amplify throughout this neighborhood. Leverage limit 12 amplifies throughout; limits 18 and 24 each contain nine stable cases |
+| `just check` | Passed workspace build and tests, formatting, strict Clippy, dependency boundaries, 20-vector native/oracle parity, 18 catalog tests, 86 retained oracle tests, scenario validation, and Godot boundary/runtime tests |
+
+The robust result in this bounded neighborhood is that tighter leverage and haircuts weakly increase required closeout, while dealer and residual capacity determine whether sell pressure clears or remains rationed. Exact thresholds and price magnitudes remain calibration-dependent. The smallest next package is to replace the single-price futures liquidity counterparty with explicit heterogeneous futures participants and initial-margin default-waterfall rules while retaining the same ledger and trace schema.

@@ -32,7 +32,7 @@ use crate::{
         HouseholdCohorts, PersonPopulation, PopLensDefinition, PopLensProjector, PopulationView,
     },
     postmortem::{NextMorningBook, StaffReview},
-    records::StageReceipt,
+    records::{ReceiptStage, StageReceipt},
     settlement::envelope::SettlementResult,
     staff::{AnalyticalTask, Assessment, RequestMode, StaffDirectory},
     state::{CanonicalRegistry, PublishedFomcCalendar, StateOwner, TypedTransition},
@@ -534,6 +534,17 @@ impl ScenarioRuntime {
             .as_ref()
             .map(authorized_claim_ids)
             .unwrap_or_default()
+    }
+    pub(crate) fn executed_policy_package_id(&self) -> Option<&str> {
+        let executed = self
+            .receipts
+            .iter()
+            .rev()
+            .find(|receipt| receipt.stage == ReceiptStage::Execution)?;
+        (executed.status == "EXECUTED")
+            .then_some(self.fomc_decision.as_ref())
+            .flatten()
+            .map(|decision| decision.authorized_package.package_id.as_str())
     }
     pub(crate) fn available_verbs(
         &self,

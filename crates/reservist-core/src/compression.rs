@@ -70,7 +70,7 @@ impl IntermeetingCompressor {
     pub(crate) fn steps(&self) -> &[CompressionStep] {
         &self.steps
     }
-    pub(crate) fn realize(&mut self, package_id: &str) -> IntermeetingRealization {
+    pub(crate) fn realize(&mut self, executed_package_id: Option<&str>) -> IntermeetingRealization {
         let draw_key = format!("{}|{}|magnitude", self.seed, Self::PATH_ID);
         let digest = Sha256::digest(draw_key.as_bytes());
         let draw = u64::from_be_bytes(
@@ -79,10 +79,9 @@ impl IntermeetingCompressor {
                 .expect("SHA-256 prefix has eight bytes"),
         ) as f64
             / 18_446_744_073_709_551_616.0;
-        let policy_adjustment = if package_id == "WAIT_AND_WARN" {
-            0.0
-        } else {
-            -0.15
+        let policy_adjustment = match executed_package_id {
+            Some("MEASURED_FIRMING" | "FIRMING_BIAS") => -0.15,
+            _ => 0.0,
         };
         let realization = IntermeetingRealization {
             path_id: Self::PATH_ID.into(),
@@ -90,7 +89,7 @@ impl IntermeetingCompressor {
             mechanism_class: Self::MECHANISM_CLASS.into(),
             annualized_core_inflation: python_round(3.1 + draw * 0.8 + policy_adjustment, 3),
             housing_activity_direction: "cooling".into(),
-            package_id: package_id.into(),
+            package_id: executed_package_id.unwrap_or("NO_EXECUTED_POLICY").into(),
         };
         self.realizations.push(realization.clone());
         realization
@@ -118,7 +117,7 @@ mod tests {
     fn four_seeds_vary_magnitude_without_varying_mechanism() {
         let rows: Vec<_> = [20060328, 20060329, 20060330, 20060331]
             .into_iter()
-            .map(|seed| IntermeetingCompressor::new(seed).realize("WAIT_AND_WARN"))
+            .map(|seed| IntermeetingCompressor::new(seed).realize(Some("WAIT_AND_WARN")))
             .collect();
         assert!(
             rows.iter()
@@ -137,6 +136,29 @@ mod tests {
     fn rounds_ties_as_python_does() {
         assert_eq!(python_round(3.1245, 3), 3.124);
         assert_eq!(python_round(3.1255, 3), 3.126);
+    }
+    #[test]
+    fn macro_realization_uses_execution_outcome_not_proposal_identity() {
+        let no_proposal = IntermeetingCompressor::new(20060328).realize(None);
+        let rejected_firming = IntermeetingCompressor::new(20060328).realize(None);
+        let executed_wait = IntermeetingCompressor::new(20060328).realize(Some("WAIT_AND_WARN"));
+        let executed_firming =
+            IntermeetingCompressor::new(20060328).realize(Some("MEASURED_FIRMING"));
+
+        assert_eq!(
+            no_proposal.annualized_core_inflation,
+            rejected_firming.annualized_core_inflation
+        );
+        assert_eq!(
+            no_proposal.annualized_core_inflation,
+            executed_wait.annualized_core_inflation
+        );
+        assert_eq!(
+            executed_firming.annualized_core_inflation,
+            no_proposal.annualized_core_inflation - 0.15
+        );
+        assert_eq!(rejected_firming.package_id, "NO_EXECUTED_POLICY");
+        assert_eq!(executed_firming.package_id, "MEASURED_FIRMING");
     }
     #[test]
     fn recorded_steps_remain_in_their_observed_order() {

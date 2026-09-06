@@ -332,7 +332,8 @@ impl ScenarioRuntime {
         scheduled: &ScheduledEvent,
     ) -> Result<(), String> {
         let at_time = scheduled.due_time.to_string();
-        let realization = self.compression.realize(&self.package_id);
+        let executed_package_id = self.executed_policy_package_id().map(str::to_owned);
+        let realization = self.compression.realize(executed_package_id.as_deref());
         let realized = self.ledger.append(
             &at_time,
             "aleatory_path_realized",
