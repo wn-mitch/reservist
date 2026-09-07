@@ -365,4 +365,124 @@ mod tests {
         assert!(ledger.reservations().is_empty());
         assert!(ledger.transactions().is_empty());
     }
+    #[test]
+    fn successful_commit_is_balanced_and_atomic() {
+        let mut ledger = cash_ledger("10");
+        let mut envelope = cash_envelope("success", decimal("5"));
+        assert_eq!(
+            envelope.prepare(&mut ledger, None).unwrap().status,
+            SettlementStatus::Prepared
+        );
+        assert_eq!(
+            envelope.commit(&mut ledger, None).unwrap().status,
+            SettlementStatus::Committed
+        );
+        assert_eq!(ledger.balance("buyer.cash").unwrap(), decimal("5"));
+        assert_eq!(ledger.balance("seller.cash").unwrap(), decimal("5"));
+        assert!(ledger.assert_conserved().is_ok());
+    }
+
+    #[test]
+    fn unavailable_cash_fails_prepare_without_mutation() {
+        let mut ledger = cash_ledger("4");
+        let before = ledger.snapshot_for_hash();
+        let mut envelope = cash_envelope("cash_failure", decimal("5"));
+        assert_eq!(
+            envelope.prepare(&mut ledger, None).unwrap().status,
+            SettlementStatus::FailedPrepare
+        );
+        assert_eq!(ledger.snapshot_for_hash(), before);
+    }
+
+    #[test]
+    fn version_conflict_fails_commit_and_preserves_concurrent_transaction() {
+        let mut ledger = cash_ledger("10");
+        let mut envelope = cash_envelope("version_conflict", decimal("5"));
+        assert_eq!(
+            envelope.prepare(&mut ledger, None).unwrap().status,
+            SettlementStatus::Prepared
+        );
+        ledger
+            .commit(
+                "concurrent",
+                &[
+                    LedgerEntry {
+                        account_id: "buyer.cash".into(),
+                        delta: decimal("1"),
+                        instrument: "USD_CASH".into(),
+                        unit: "USD".into(),
+                    },
+                    LedgerEntry {
+                        account_id: "seller.cash".into(),
+                        delta: decimal("-1"),
+                        instrument: "USD_CASH".into(),
+                        unit: "USD".into(),
+                    },
+                ],
+                &BTreeMap::from([("buyer.cash".into(), 0), ("seller.cash".into(), 0)]),
+                &[],
+                "period:concurrent",
+            )
+            .unwrap();
+        assert_eq!(
+            envelope.commit(&mut ledger, None).unwrap().status,
+            SettlementStatus::FailedCommit
+        );
+        assert_eq!(ledger.balance("buyer.cash").unwrap(), decimal("11"));
+        assert_eq!(ledger.balance("seller.cash").unwrap(), decimal("-1"));
+        assert!(ledger.reservations().is_empty());
+        assert_eq!(ledger.transactions().len(), 1);
+        assert!(ledger.assert_conserved().is_ok());
+    }
+
+    fn cash_ledger(buyer_cash: &str) -> AccountingLedger {
+        AccountingLedger::new([
+            Account {
+                account_id: "buyer.cash".into(),
+                owner_id: "buyer".into(),
+                instrument: "USD_CASH".into(),
+                unit: "USD".into(),
+                balance: decimal(buyer_cash),
+                account_kind: "asset".into(),
+                allow_negative: false,
+                version: 0,
+                reserved: Decimal::ZERO,
+            },
+            Account {
+                account_id: "seller.cash".into(),
+                owner_id: "seller".into(),
+                instrument: "USD_CASH".into(),
+                unit: "USD".into(),
+                balance: Decimal::ZERO,
+                account_kind: "signed_claim".into(),
+                allow_negative: true,
+                version: 0,
+                reserved: Decimal::ZERO,
+            },
+        ])
+        .unwrap()
+    }
+
+    fn cash_envelope(id: &str, amount: Decimal) -> SettlementEnvelope {
+        SettlementEnvelope::new(
+            id,
+            [
+                LedgerEntry {
+                    account_id: "buyer.cash".into(),
+                    delta: -amount,
+                    instrument: "USD_CASH".into(),
+                    unit: "USD".into(),
+                },
+                LedgerEntry {
+                    account_id: "seller.cash".into(),
+                    delta: amount,
+                    instrument: "USD_CASH".into(),
+                    unit: "USD".into(),
+                },
+            ],
+            "period:test",
+            Some("event.test".into()),
+            "test",
+        )
+    }
 }

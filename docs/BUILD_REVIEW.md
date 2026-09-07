@@ -136,4 +136,34 @@ Executed evidence on the working change:
 | `just market-lab-sweep experiments/market_lab/principal_sweep.toml --output target/market-lab-principal-sweep.json` | 81/81 reconcile; 18 stable-convergence and 63 fire-sale-amplification cases. Haircut 0.05 contains both regimes; haircuts 0.10 and 0.15 amplify throughout this neighborhood. Leverage limit 12 amplifies throughout; limits 18 and 24 each contain nine stable cases |
 | `just check` | Passed workspace build and tests, formatting, strict Clippy, dependency boundaries, 20-vector native/oracle parity, 18 catalog tests, 86 retained oracle tests, scenario validation, and Godot boundary/runtime tests |
 
-The robust result in this bounded neighborhood is that tighter leverage and haircuts weakly increase required closeout, while dealer and residual capacity determine whether sell pressure clears or remains rationed. Exact thresholds and price magnitudes remain calibration-dependent. The smallest next package is to replace the single-price futures liquidity counterparty with explicit heterogeneous futures participants and initial-margin default-waterfall rules while retaining the same ledger and trace schema.
+The earlier 81-case labels are superseded by the precondition-aware evidence below. Exact thresholds and price magnitudes remain calibration-dependent.
+
+### Progressive validation program
+
+**Inspected:** the tooling-only laboratory now enforces shock-free burn-in, records
+initial repo, margin, leverage, and participant-cash slack, rejects treatment
+during burn-in, measures first adjustment and subsequent endogenous liquidation,
+and derives regime labels from explicit predicates. The suite gate executes
+lower tiers before higher tiers. Heterogeneous ecology and observer-bounded
+runtime projections remain tooling-only and reuse the production order book,
+accounting ledger, and settlement envelope.
+
+Executed evidence on the current working change:
+
+| Command or exercise | Observed result |
+|---|---|
+| `cargo test -p reservist-core --locked` | 95 tests passed, including precondition classification, the 81-case invalid-state regression, isolated cash/futures/repo responses, settlement preparation and version-conflict rollback, heterogeneous distribution effects, and eight deterministic runtime slices |
+| `just market-lab-suite experiments/market_lab/validation_suite.toml --output target/market-lab-validation.json --markdown-output docs/MARKET_LAB_VALIDATION.md` | Tiers 0–7 passed their declared gates; 14 paired experiments plus heterogeneous ecology and runtime composition reconciled |
+| `just market-lab-sweep experiments/market_lab/principal_sweep.toml --output target/market-lab-principal-sweep-v2.json` | 63 of 81 cases classified `INVALID_INITIAL_STATE`; the remaining 18 were valid stable controls. The former universal amplification at leverage 12 and haircuts 0.10–0.15 was entirely initial infeasibility, not post-shock propagation |
+| `just market-lab-sweep experiments/market_lab/dense_transition_sweep.toml --output target/market-lab-dense-sweep.json` | In the tested neighborhood, initial validity begins at leverage 13.51 and persists through initial haircut 0.087; 0.088 and above is initially repo-infeasible. Every valid point amplified after the common 0.15 treatment haircut |
+| `just market-lab-ablate experiments/market_lab/tier3_full_stress.toml --output target/market-lab-ablation.json` | Removing haircut response eliminated liquidation and the fire-sale regime. Removing variation margin, repo non-roll, leverage, dealer capacity, or residual retreat did not change this fixture's five-unit liquidation; removing price feedback changed severity |
+| `just market-lab-ecology --output target/market-lab-ecology.json` | Equal aggregate cash 60, Treasuries 10, and repo 900 produced four forced-sale units under concentrated terms versus two under distributed terms; finite futures demand left residual two versus zero; both settlements reconciled |
+| `just market-lab-policy experiments/market_lab/tier3_full_stress.toml --output target/market-lab-policy-ladder.json` | Proposed-unavailable, rejected, and authorized-unexecuted cases were inert. Early filled purchases removed measured cash-price drawdown but did not reduce five forced-sale units; late purchases left 0.225 drawdown; quantities above one remained unfilled |
+| `just market-lab-runtime experiments/market_lab/fed_purchase_executed.toml --output target/market-lab-runtime.json` | All eight runtime slices were deterministic, preserved evidence-before-decision ordering, withheld canonical fund state from the player, and retained complete causal reconstruction |
+
+The software invariants pass independently of the economic claims. Isolated
+cash absorption, variation margin, repo capacity, and atomic settlement have
+local directional evidence. The complete-loop amplification claim is narrower:
+in the valid stress fixture, a haircut increase causes one initial sale and four
+additional sales; removing the haircut response removes all five. Price levels,
+thresholds, and policy magnitudes remain provisional rather than calibrated.

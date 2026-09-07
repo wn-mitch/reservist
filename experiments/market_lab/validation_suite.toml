@@ -1,0 +1,170 @@
+schema_version = "reservist.market-lab.suite.v1"
+suite_id = "progressive_market_validation"
+runtime_fixture = "fed_purchase_executed.toml"
+
+[ecology]
+concentrated = "ecology_concentrated.toml"
+distributed = "ecology_distributed.toml"
+
+[provisional_thresholds]
+basis_recovery_tolerance = "0.01"
+amplification_ratio = "0"
+
+[[experiments]]
+experiment_id = "tier0.deterministic_control"
+tier = 0
+control = "stable_baseline.toml"
+treatment = "stable_baseline.toml"
+declared_treatments = []
+required_mechanics = ["deterministic replay", "accounting", "settlement"]
+[[experiments.expectations]]
+metric = "total_liquidation"
+relation = "equal"
+
+[[experiments]]
+experiment_id = "tier1.cash_treasury_absorption"
+tier = 1
+control = "tier1_cash_control.toml"
+treatment = "tier1_cash_sell.toml"
+declared_treatments = ["cash sell quantity", "dealer capacity", "residual demand"]
+required_mechanics = ["Treasury order clearing", "cash settlement"]
+neutralized_mechanics = ["repo", "futures exposure", "variation margin", "policy"]
+[[experiments.expectations]]
+metric = "price_drawdown"
+relation = "greater"
+[[experiments.expectations]]
+metric = "peak_residual_imbalance"
+relation = "greater"
+
+[[experiments]]
+experiment_id = "tier1.futures_variation_margin"
+tier = 1
+control = "tier1_futures_control.toml"
+treatment = "tier1_futures_adverse.toml"
+declared_treatments = ["futures buy pressure"]
+required_mechanics = ["futures order clearing", "symmetric variation margin"]
+neutralized_mechanics = ["cash Treasury sales", "repo", "policy"]
+[[experiments.expectations]]
+metric = "final_margin_headroom"
+relation = "less"
+
+[[experiments]]
+experiment_id = "tier1.variation_margin_atomic_failure"
+tier = 1
+control = "tier1_margin_failure_control.toml"
+treatment = "tier1_margin_failure.toml"
+declared_treatments = ["futures buy pressure beyond available cash"]
+required_mechanics = ["futures clearing", "variation margin", "atomic settlement"]
+neutralized_mechanics = ["cash Treasury sales", "repo", "policy"]
+
+[[experiments]]
+experiment_id = "tier1.repo_capacity"
+tier = 1
+control = "tier1_repo_control.toml"
+treatment = "tier1_repo_haircut.toml"
+declared_treatments = ["repo haircut"]
+required_mechanics = ["collateral valuation", "repo capacity"]
+neutralized_mechanics = ["futures", "secondary-market feedback", "policy"]
+[[experiments.expectations]]
+metric = "final_repo_capacity"
+relation = "less"
+
+[[experiments]]
+experiment_id = "tier1.settlement_atomic_failure"
+tier = 1
+control = "settlement_control.toml"
+treatment = "settlement_failure.toml"
+declared_treatments = ["settlement cash holdback"]
+required_mechanics = ["atomic settlement"]
+
+[[experiments]]
+experiment_id = "tier2.cash_market_plus_repo"
+tier = 2
+control = "repo_control.toml"
+treatment = "repo_haircut_increase.toml"
+declared_treatments = ["repo haircut"]
+required_mechanics = ["repo capacity", "Treasury liquidation", "cash clearing"]
+neutralized_mechanics = ["futures price shock"]
+[[experiments.expectations]]
+metric = "total_liquidation"
+relation = "greater"
+
+[[experiments]]
+experiment_id = "tier2.futures_plus_fund_liquidity"
+tier = 2
+control = "tier1_margin_failure_control.toml"
+treatment = "tier2_margin_deleveraging.toml"
+declared_treatments = ["adverse futures repricing"]
+required_mechanics = ["variation margin", "fund liquidity", "futures position adjustment"]
+neutralized_mechanics = ["repo", "cash Treasury price feedback"]
+[[experiments.expectations]]
+metric = "final_futures_position_abs"
+relation = "less"
+
+[[experiments]]
+experiment_id = "tier2.market_plus_dealer_constraint"
+tier = 2
+control = "tier2_dealer_control.toml"
+treatment = "tier2_dealer_exhausted.toml"
+declared_treatments = ["dealer capacity reduction"]
+required_mechanics = ["Treasury liquidation", "dealer capacity"]
+[[experiments.expectations]]
+metric = "peak_rationing"
+relation = "greater"
+
+[[experiments]]
+experiment_id = "tier2.funding_plus_settlement"
+tier = 2
+control = "settlement_control.toml"
+treatment = "settlement_failure.toml"
+declared_treatments = ["settlement cash holdback"]
+required_mechanics = ["variation margin", "atomic settlement"]
+
+[[experiments]]
+experiment_id = "tier3.complete_basis_loop"
+tier = 3
+control = "tier2_full_control.toml"
+treatment = "tier3_full_stress.toml"
+declared_treatments = ["haircut increase", "futures repricing"]
+required_mechanics = ["cash Treasury", "futures", "repo", "variation margin", "dealer", "residual buyer", "settlement"]
+[[experiments.expectations]]
+metric = "endogenous_sales"
+relation = "greater"
+[[experiments.expectations]]
+metric = "price_drawdown"
+relation = "greater"
+
+[[experiments]]
+experiment_id = "tier4.remove_leverage_constraint"
+tier = 4
+control = "tier3_full_stress.toml"
+treatment = "tier4_no_leverage.toml"
+declared_treatments = ["neutralize leverage constraint"]
+required_mechanics = ["full basis loop"]
+neutralized_mechanics = ["leverage constraint"]
+[[experiments.expectations]]
+metric = "total_liquidation"
+relation = "less_or_equal"
+
+[[experiments]]
+experiment_id = "tier4.remove_variation_margin"
+tier = 4
+control = "tier3_full_stress.toml"
+treatment = "tier4_no_margin.toml"
+declared_treatments = ["neutralize variation margin requirement"]
+required_mechanics = ["full basis loop"]
+neutralized_mechanics = ["variation margin requirement"]
+[[experiments.expectations]]
+metric = "total_liquidation"
+relation = "less_or_equal"
+
+[[experiments]]
+experiment_id = "tier6.executed_policy"
+tier = 6
+control = "fed_purchase_control.toml"
+treatment = "fed_purchase_executed.toml"
+declared_treatments = ["authorized Desk purchase execution"]
+required_mechanics = ["authorization", "execution", "cash-market fill", "settlement"]
+[[experiments.expectations]]
+metric = "fed_purchases"
+relation = "greater"

@@ -36,6 +36,24 @@ market-lab-sweep experiment="experiments/market_lab/principal_sweep.toml" *args:
 
 market-lab-compare control treatment *args:
     {{reservist}} market-lab compare {{control}} {{treatment}} {{args}}
+
+market-lab-suite manifest="experiments/market_lab/validation_suite.toml" *args:
+    {{reservist}} market-lab suite {{manifest}} {{args}}
+
+market-lab-tier tier manifest="experiments/market_lab/validation_suite.toml" *args:
+    {{reservist}} market-lab tier {{tier}} {{manifest}} {{args}}
+
+market-lab-ablate fixture="experiments/market_lab/tier3_full_stress.toml" *args:
+    {{reservist}} market-lab ablate {{fixture}} {{args}}
+
+market-lab-policy fixture="experiments/market_lab/tier3_full_stress.toml" *args:
+    {{reservist}} market-lab policy-ladder {{fixture}} {{args}}
+
+market-lab-ecology *args:
+    {{reservist}} market-lab ecology experiments/market_lab/ecology_concentrated.toml experiments/market_lab/ecology_distributed.toml {{args}}
+
+market-lab-runtime fixture="experiments/market_lab/fed_purchase_executed.toml" *args:
+    {{reservist}} market-lab runtime-compose {{fixture}} {{args}}
 replay:
     {{reservist}} replay-check {{scenario}}
 

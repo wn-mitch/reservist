@@ -5,7 +5,13 @@ pub mod api;
 pub mod canon;
 pub mod fidelity;
 #[cfg(any(test, feature = "tooling"))]
+pub mod market_ecology;
+#[cfg(any(test, feature = "tooling"))]
 pub mod market_lab;
+#[cfg(any(test, feature = "tooling"))]
+pub mod market_lab_runtime;
+#[cfg(any(test, feature = "tooling"))]
+pub mod market_lab_validation;
 pub mod phase;
 pub mod save;
 

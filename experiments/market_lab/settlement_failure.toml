@@ -28,11 +28,11 @@ fed_cash="5000"
 fed_treasuries="0"
 [[shocks]]
 shock_id="shock.futures.sell_pressure"
-period=1
+period=2
 kind="futures_sell_pressure"
 value="5"
 [[shocks]]
 shock_id="shock.settlement.cash_holdback"
-period=2
+period=3
 kind="settlement_cash_holdback"
 value="200"

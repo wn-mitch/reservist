@@ -1,7 +1,8 @@
 schema_version="reservist.market-lab.v1"
-fixture_id="fed_purchase_unexecuted"
+fixture_id="repo_control"
 seed=20060328
 periods=6
+burn_in_periods=1
 [parameters]
 cash_price="98.60"
 futures_price="98.55"
@@ -10,8 +11,8 @@ repo_haircut="0.02"
 margin_rate="0.04"
 basis_entry_threshold="0.20"
 fund_leverage_limit="18"
-dealer_capacity="2"
-residual_demand="0"
+dealer_capacity="8"
+residual_demand="6"
 price_impact="0.08"
 [initial]
 fund_cash="45"
@@ -26,15 +27,3 @@ repo_lender_cash="2000"
 clearing_cash="1000"
 fed_cash="5000"
 fed_treasuries="0"
-[[shocks]]
-shock_id="shock.repo.haircut"
-period=2
-kind="repo_haircut"
-value="0.12"
-[[policy]]
-proposal_id="proposal.fed.purchase.unexecuted"
-period=2
-quantity="5"
-authorization="AUTHORIZED"
-execution="NOT_EXECUTED"
-reason="Execution was unavailable."
