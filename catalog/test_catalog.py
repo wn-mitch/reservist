@@ -268,6 +268,29 @@ class CatalogContractTest(unittest.TestCase):
         self.run_catalog("import")
         self.run_catalog("generate")
         self.assertEqual(first, checksums())
+
+    def test_compare_reads_canonical_leaves_without_omnibus(self) -> None:
+        omnibus = self.case_dir / "docs" / "design" / "06-design-discussion-representation-catalog.md"
+        if omnibus.exists():
+            omnibus.unlink()
+        self.assertFalse(omnibus.exists())
+        leaf = self.case_dir / "docs" / "design" / "comparison-test.md"
+        leaf.write_text(
+            "# Comparison fixture\n\n"
+            "**ID:** `design.comparison.fixture`\n"
+            "**Status:** `canonical`\n"
+            "**Depends on:** `none`\n\n"
+            "The catalog must contain `person.test.missing_from_catalog`.\n"
+        )
+        result = self.run_catalog("compare", expected=1)
+        self.assertIn("1 missing", result.stdout)
+        row = next(
+            row
+            for row in read_rows(self.catalog / "generated" / "source_comparison.csv")
+            if row["catalog_id"] == "person.test.missing_from_catalog"
+        )
+        self.assertEqual("missing_in_data", row["status"])
+
     def test_selected_mvp_entries_have_complete_catalog_contracts(self) -> None:
         self.run_catalog("import")
         spec = importlib.util.spec_from_file_location("catalog_tool", self.catalog / "catalog.py")

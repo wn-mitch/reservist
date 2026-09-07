@@ -88,13 +88,16 @@ lint:
     cargo clippy --workspace --all-targets --locked -- -D warnings
     cargo clippy -p reservist-godot --all-targets --locked --no-default-features -- -D warnings
 
+docs-check:
+    {{reservist}} boundaries docs
+
 deps-check:
     {{reservist}} boundaries dependencies
 
 godot-lint:
     {{reservist}} boundaries godot
 
-check: rust-build rust-test fmt lint deps-check parity catalog-test oracle-test validate godot-lint godot-test
+check: rust-build rust-test fmt lint deps-check docs-check parity catalog-test oracle-test validate godot-lint godot-test
 
 godot-import: rust-build
     {{godot}} --headless --editor --path godot --import --quit

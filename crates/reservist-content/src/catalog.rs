@@ -316,7 +316,11 @@ fn rows(path: &Path, fields: &[String], trim: bool) -> Result<Vec<(usize, Row)>,
 fn inventory_paths(root: &Path, name: &str) -> Result<Vec<PathBuf>, std::io::Error> {
     let mut paths = Vec::new();
     for entry in fs::read_dir(root.join("inventory"))? {
-        let path = entry?.path().join(name);
+        let entry = entry?;
+        if !entry.file_type()?.is_dir() {
+            continue;
+        }
+        let path = entry.path().join(name);
         if path.try_exists()? {
             paths.push(path);
         }

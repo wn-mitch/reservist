@@ -1,0 +1,38 @@
+schema_version = 1
+legacy_revision = "4f70592a0874d54305125456da4f5359cda0ef6e"
+
+[[source]]
+key = "04-design-discussion-minimum-simulation-kernel.md"
+path = "docs/design/04-design-discussion-minimum-simulation-kernel.md"
+
+[[source]]
+key = "05-design-discussion-representation-bible.md"
+path = "docs/design/05-design-discussion-representation-bible.md"
+
+[[source]]
+key = "06-design-discussion-representation-catalog.md"
+path = "docs/design/06-design-discussion-representation-catalog.md"
+
+[[source]]
+key = "07-design-discussion-burrow-composition-probe.md"
+path = "docs/design/07-design-discussion-burrow-composition-probe.md"
+
+[[source]]
+key = "11-design-discussion-bernankey-mvp-slice.md"
+path = "docs/design/11-design-discussion-bernankey-mvp-slice.md"
+
+[[source]]
+key = "12-structure-outline-bernankey-mvp-cycle.md"
+path = "docs/design/12-structure-outline-bernankey-mvp-cycle.md"
+
+[[source]]
+key = "15-open-questions-decision-handoff.md"
+path = "docs/design/15-open-questions-decision-handoff.md"
+
+[[source]]
+key = "FABLE_IMPLEMENTATION_PLAN.md"
+path = "docs/FABLE_IMPLEMENTATION_PLAN.md"
+
+[[source]]
+key = "task.md"
+path = "docs/design/task.md"

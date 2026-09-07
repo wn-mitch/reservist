@@ -776,19 +776,30 @@ def generate(_: argparse.Namespace) -> int:
     return 1 if errors else 0
 
 
+def canonical_prose_ids(design_root: Path, prefixes: tuple[str, ...]) -> set[str]:
+    prose_ids: set[str] = set()
+    for path in sorted(design_root.rglob("*.md")):
+        if path.name == "AGENTS.md":
+            continue
+        source = path.read_text()
+        if "**Status:** `canonical`" not in source.splitlines()[1:7]:
+            continue
+        for token in source.split("`")[1::2]:
+            value = token.strip()
+            if (value.startswith(prefixes) and "<" not in value and " " not in value
+                    and ":" not in value and "*" not in value and value.count(".") >= 2):
+                prose_ids.add(value)
+    return prose_ids
+
+
 def compare(_: argparse.Namespace) -> int:
-    source = (ROOT.parent / "06-design-discussion-representation-catalog.md").read_text()
+    design_root = REPO_ROOT / "docs" / "design"
     prefixes = tuple({value.split(".", 1)[0] + "." for value in SCHEMA["stable_ids"].values() if value.startswith(("type.", "profile.", "channel.", "interface.", "backlog."))})
     prefixes += ("region.", "generator.", "process.", "industry.", "adapter.", "mechanism.", "market.", "inst.",
                  "federation.", "facility.", "reference.", "lens.", "office.", "body.", "staff.", "sovereign.",
                  "outlet.", "network.", "schedule.", "record.", "law.", "cohort.", "firm.", "coalition.",
                  "agreement.", "person.")
-    prose_ids: set[str] = set()
-    for token in source.split("`")[1::2]:
-        value = token.strip()
-        if (value.startswith(prefixes) and "<" not in value and " " not in value
-                and ":" not in value and "*" not in value and value.count(".") >= 2):
-            prose_ids.add(value)
+    prose_ids = canonical_prose_ids(design_root, prefixes)
     data_ids = ({row["catalog_id"] for row in read_table("entities.csv")} |
                 {row["type_id"] for row in read_table("types.csv")} |
                 {row["profile_id"] for row in read_table("world_profiles.csv")} |
