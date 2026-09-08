@@ -8,6 +8,8 @@ This is the non-normative front door to the current design. Binding clauses live
 
 ## Domain routes
 
+- [Gulf reference world](design/gulf-web.md)
+
 - [Product premise and player role](design/product/AGENTS.md)
 - [Canonical state and causal contracts](design/state/AGENTS.md)
 - [Runtime ordering, dispatch, clients, and replay](design/runtime/AGENTS.md)
@@ -20,4 +22,4 @@ This is the non-normative front door to the current design. Binding clauses live
 - [Catalog and manifest contracts](design/content/AGENTS.md)
 - [Early-2006 playable cut](design/mvp/AGENTS.md)
 
-Concrete catalog identities and readiness live in `catalog/*.csv`, not in prose. Current build authority starts at [the build mandate](BUILD_MANDATE.md); observed implementation starts at [the build review](BUILD_REVIEW.md). Unaccepted design work starts at [proposals](proposals/AGENTS.md).
+Concrete catalog identities and readiness live in `catalog/*.csv`, not in prose. Current build authority starts at [the build mandate](BUILD_MANDATE.md); observed implementation starts at [the build review](BUILD_REVIEW.md).

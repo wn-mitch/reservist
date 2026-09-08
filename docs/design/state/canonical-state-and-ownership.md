@@ -11,3 +11,11 @@ Derived caches, indexes, dashboards, situation views, staff products, Pop lenses
 Identity clade, canonical owner class, cognition, authority, selected fidelity, and presentation salience are separate axes. Stable identity does not imply ownership, legal personality, a mind, authority, or rich simulation. Cross-owner effects use declared typed transitions and witnesses. Conserved quantities move only through balanced owner-specific entries; non-conserved conditions still require a witnessed owner transition.
 
 One real-world subject may compose several owners without duplication: a person, office, institution, decision body, account, facility, and record can cooperate while retaining separate state and lifecycle boundaries.
+
+Resource composition separates latent physical condition, legal rights,
+productive capacity, titled inventory, custody, operating condition, estimates,
+and observations. A stateful process owns unallocated recoverable or
+environmental condition; right holders and account owners hold legal and
+conserved positions; mechanisms hold queues and witnessed execution state.
+Surveys, booked reserves, and published estimates may change without changing
+physical endowment.

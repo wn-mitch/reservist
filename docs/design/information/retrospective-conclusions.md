@@ -11,3 +11,9 @@ Later evidence may revise an assessment but must be labeled as hindsight. A supp
 The player may accept the record, attach a Chair response, request a specific evidence-backed revision, or commission a supplemental review under real capacity and timing constraints. Dispositioning a record does not require agreement. Refusing to close an adverse report cannot suppress institutional history or any separately valid evaluative consequence.
 
 Developer traces may inspect complete canonical causality for debugging and validation. Staff reports and player-facing postmortems cannot. Player comprehension is tested by whether the player can explain what was known, what remained uncertain, and which lesson transfers—not by agreement with a preferred policy.
+
+A developer trace may compare the hidden causal history with the evidence
+available at each decision, the player's preserved annotations, and later
+records. Player-facing conclusions still expose only authorized evidence and
+clearly label hindsight. Evaluation rewards bounded causal explanation and
+revision across vintages, not reconstruction of inaccessible truth.

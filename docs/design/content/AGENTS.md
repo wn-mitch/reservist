@@ -10,4 +10,3 @@ Authority class: canonical. This folder owns catalog schema, stable IDs, relatio
 - [Validation and fallbacks](validation-and-fallbacks.md)
 - [Regional promotion](regional-promotion.md)
 - [Catalog authoring boundary](catalog-authoring-boundary.md)
-- [World expansion proposals](../../proposals/world/AGENTS.md) are nonbinding and make no catalog entry or scenario ready.
