@@ -14,8 +14,10 @@ use super::{
 };
 use crate::{
     calendar::{
-        CalendarBoard, Interruption, InterruptionContext, InterruptionDisposition, InterruptionKind,
+        CalendarBoard, DatedCapacityReservation, Interruption, InterruptionContext,
+        InterruptionDisposition, InterruptionKind,
     },
+    campaign::{CampaignState, ReviewDisposition, ReviewRecord, SuccessionCause},
     canon::sha256,
     folder::{AdmissionContext, BoundAction, FolderBook, FolderContext},
     packages::package_by_id,
@@ -31,6 +33,7 @@ pub(super) struct InteractionState {
     pub active_folder: Option<String>,
     pub scorecard: Option<Scorecard>,
     pub stewardship: StewardshipLedger,
+    pub campaign: Option<CampaignState>,
 }
 
 impl InteractionState {
@@ -39,8 +42,21 @@ impl InteractionState {
             return Ok(Self::default());
         }
         let folders = FolderBook::from_work_data(&scenario.authority_content["staff"])?;
+        let campaign = match scenario
+            .manifest
+            .get("campaign_contract")
+            .and_then(Value::as_str)
+        {
+            None => None,
+            Some("campaign_m3") => Some(CampaignState::from_content(
+                &scenario.authority_content["campaign"]["campaign"],
+                &scenario.authority_content["campaign"]["reviews"],
+            )?),
+            Some(_) => return Err("unsupported campaign contract".into()),
+        };
         Ok(Self {
             folders: Some(folders),
+            campaign,
             ..Self::default()
         })
     }
@@ -58,11 +74,13 @@ pub fn validate_interaction_contract(scenario: &FrozenScenario) -> Result<(), St
     crate::cognition::chief::ChiefState::from_scenario(scenario)
         .map_err(|error| error.to_string())?
         .ok_or("calendar-and-folder scenario requires a named chief")?;
+    if scenario.manifest.get("campaign_contract").is_none() {
+        finding_rules(scenario)?;
+    }
     let state = InteractionState::from_scenario(scenario)?;
     let routing_policy: AuthoredRoutingPolicy =
         serde_json::from_value(scenario.authority_content["staff"]["routing_policy"].clone())
             .map_err(|error| error.to_string())?;
-    finding_rules(scenario)?;
     let legal = crate::legal::LegalRegistry::from_content(&scenario.authority_content["legal"])
         .map_err(|error| error.to_string())?;
     let at = scenario.initialization["clock_start"]
@@ -256,6 +274,26 @@ impl Session {
             return prior.receipt.clone();
         }
         let collision = prior.is_some();
+        if self
+            .interaction
+            .campaign
+            .as_ref()
+            .is_some_and(|campaign| campaign.terminal)
+        {
+            return Receipt {
+                command_id: command.command_id,
+                idempotency_key: command.idempotency_key,
+                accepted: false,
+                previous_state_hash: self.state_hash(),
+                state_hash: self.state_hash(),
+                witness_event_id: String::new(),
+                category: Some("campaign_terminal".into()),
+                reason: Some("The campaign has been finalized.".into()),
+                advanced: false,
+                projection: None,
+                message: None,
+            };
+        }
         let before = self.state_hash();
         let event = self.runtime.ledger.append(
             &self.current_time(),
@@ -328,6 +366,22 @@ impl Session {
 
     fn apply_adopted(&mut self, action: CommandAction) -> Result<OpOutcome, Rejected> {
         let before = self.state_hash();
+        if self
+            .interaction
+            .campaign
+            .as_ref()
+            .is_some_and(|campaign| campaign.endpoint_reached)
+            && !matches!(
+                &action,
+                CommandAction::DisposeReview { .. }
+                    | CommandAction::CommissionSupplementalReview { .. }
+            )
+        {
+            return Err(self.reject(
+                "campaign_final_review_required",
+                "Only the final campaign review disposition path remains open.",
+            ));
+        }
         let mut advanced = false;
         let projection = match action {
             CommandAction::Advance => {
@@ -475,6 +529,193 @@ impl Session {
                     .map_err(|reason| self.reject("review", reason))?;
                 Some(self.view(View::Scorecard)?)
             }
+            CommandAction::ReviseChairmanshipProgram {
+                program_id,
+                revision_id,
+            } => {
+                let mut program = self
+                    .interaction
+                    .campaign
+                    .as_ref()
+                    .ok_or_else(|| {
+                        self.reject("campaign", "This scenario has no campaign contract.")
+                    })?
+                    .dossiers
+                    .last()
+                    .ok_or_else(|| {
+                        self.reject("campaign", "Campaign has no chairmanship dossier.")
+                    })?
+                    .program
+                    .clone();
+                program.revision_id = revision_id;
+                let result = self.campaign_mut()?.revise_program(&program_id, program);
+                if let Err(reason) = result {
+                    return Err(self.reject("campaign", reason));
+                }
+                Some(self.view(View::Review)?)
+            }
+            CommandAction::DisposeReview {
+                review_id,
+                review_version,
+                disposition,
+                response_record_id,
+            } => {
+                if matches!(disposition, ReviewDisposition::AcceptWithChairResponse)
+                    != response_record_id.is_some()
+                {
+                    return Err(self.reject(
+                        "review",
+                        "Only a Chair-response disposition may name one response record.",
+                    ));
+                }
+                if let Some(response_record_id) = &response_record_id
+                    && !self.runtime.player_records.contains(response_record_id)
+                {
+                    return Err(self.reject(
+                        "missing_record",
+                        "The Chair response must name a delivered player record.",
+                    ));
+                }
+                let mut campaign = self.interaction.campaign.clone().ok_or_else(|| {
+                    self.reject("campaign", "This scenario has no campaign contract.")
+                })?;
+                let review = campaign
+                    .reviews
+                    .get(&review_id)
+                    .cloned()
+                    .ok_or_else(|| self.reject("review", "Unknown campaign review."))?;
+                if !review.disclosed {
+                    return Err(self.reject("review", "The campaign review is not disclosed."));
+                }
+                if !review.timing_boundary.is_empty()
+                    && Instant::parse(&review.timing_boundary)
+                        .map_err(|error| self.reject("review", error.to_string()))?
+                        > self.runtime.clock.current_time
+                {
+                    return Err(self.reject(
+                        "review",
+                        "The campaign review has not reached its timing boundary.",
+                    ));
+                }
+                let capacity = if matches!(disposition, ReviewDisposition::RequestRevision) {
+                    Some(
+                        self.reserve_campaign_review_capacity(
+                            &review,
+                            &format!("revision.{}", review_version + 1),
+                        )
+                        .map_err(|reason| self.reject("capacity", reason))?,
+                    )
+                } else {
+                    None
+                };
+                campaign
+                    .dispose_review(&review_id, review_version, disposition.clone(), None)
+                    .map_err(|reason| self.reject("review", reason))?;
+                if let Some(response_record_id) = response_record_id {
+                    campaign
+                        .reviews
+                        .get_mut(&review_id)
+                        .expect("validated campaign review")
+                        .response_record_id = Some(response_record_id);
+                }
+                if let Some((calendar, releases_at)) = capacity {
+                    campaign
+                        .reviews
+                        .get_mut(&review_id)
+                        .expect("validated campaign review")
+                        .capacity_releases_at = Some(releases_at.clone());
+                    self.runtime.calendar = Some(calendar);
+                    self.runtime.ledger.append(
+                        &self.current_time(),
+                        "campaign_review_revision_commissioned",
+                        &review.capacity_owner_id,
+                        json!({
+                            "review_id": review_id,
+                            "review_version": review_version + 1,
+                            "capacity_reservation_id": review.capacity_reservation_id,
+                            "capacity_releases_at": releases_at
+                        }),
+                        "profile.chair_scoped",
+                        None,
+                    );
+                } else {
+                    self.record_campaign_awards(&mut campaign, &review_id, review_version)
+                        .map_err(|reason| self.reject("stewardship", reason))?;
+                    campaign.finalize_if_ready();
+                }
+                self.interaction.campaign = Some(campaign);
+                Some(self.view(View::Scorecard)?)
+            }
+            CommandAction::CommissionSupplementalReview {
+                review_id,
+                review_version,
+                supplemental_review_id,
+            } => {
+                let mut campaign = self.interaction.campaign.clone().ok_or_else(|| {
+                    self.reject("campaign", "This scenario has no campaign contract.")
+                })?;
+                let review = campaign
+                    .reviews
+                    .get(&review_id)
+                    .cloned()
+                    .ok_or_else(|| self.reject("review", "Unknown campaign review."))?;
+                if !review.disclosed {
+                    return Err(self.reject("review", "The campaign review is not disclosed."));
+                }
+                if !review.timing_boundary.is_empty()
+                    && Instant::parse(&review.timing_boundary)
+                        .map_err(|error| self.reject("review", error.to_string()))?
+                        > self.runtime.clock.current_time
+                {
+                    return Err(self.reject(
+                        "review",
+                        "The campaign review has not reached its timing boundary.",
+                    ));
+                }
+                let (calendar, releases_at) = self
+                    .reserve_campaign_review_capacity(&review, &supplemental_review_id)
+                    .map_err(|reason| self.reject("capacity", reason))?;
+                campaign
+                    .dispose_review(
+                        &review_id,
+                        review_version,
+                        ReviewDisposition::AcceptWithSupplementalReview,
+                        Some(supplemental_review_id.clone()),
+                    )
+                    .map_err(|reason| self.reject("review", reason))?;
+                self.record_campaign_awards(&mut campaign, &review_id, review_version)
+                    .map_err(|reason| self.reject("stewardship", reason))?;
+                campaign
+                    .commission_supplemental(
+                        &review_id,
+                        review_version,
+                        supplemental_review_id.clone(),
+                    )
+                    .map_err(|reason| self.reject("review", reason))?;
+                campaign
+                    .reviews
+                    .get_mut(&supplemental_review_id)
+                    .expect("created supplemental review")
+                    .capacity_releases_at = Some(releases_at.clone());
+                self.runtime.calendar = Some(calendar);
+                let at = self.current_time();
+                self.runtime.ledger.append(
+                    &at,
+                    "campaign_supplemental_review_commissioned",
+                    &review.capacity_owner_id,
+                    json!({
+                        "review_id":review_id,
+                        "review_version":review_version,
+                        "supplemental_review_id":supplemental_review_id,
+                        "capacity_reservation_id":review.capacity_reservation_id,
+                        "capacity_releases_at":releases_at
+                    }),
+                    "profile.chair_scoped",
+                    None,
+                );
+                self.interaction.campaign = Some(campaign);
+                Some(self.view(View::Review)?)
+            }
         };
         Ok(OpOutcome {
             previous_state_hash: before,
@@ -483,6 +724,17 @@ impl Session {
             projection,
             message: None,
         })
+    }
+
+    fn campaign_mut(&mut self) -> Result<&mut CampaignState, Rejected> {
+        if self.interaction.campaign.is_none() {
+            return Err(self.reject("campaign", "This scenario has no campaign contract."));
+        }
+        Ok(self
+            .interaction
+            .campaign
+            .as_mut()
+            .expect("checked campaign state"))
     }
 
     pub(super) fn folder_book(&self) -> Result<&FolderBook, String> {
@@ -774,14 +1026,18 @@ impl Session {
 
     fn advance_calendar(&mut self) -> Result<bool, String> {
         let now = self.runtime.clock.current_time;
-        let Some(target) = self
+        let target = self
             .runtime
             .calendar
             .as_ref()
             .ok_or("No calendar.")?
-            .next_boundary(now)
-        else {
-            return Ok(false);
+            .next_boundary(now);
+        let Some(target) = target else {
+            let advanced = self.runtime.advance_next()?;
+            if advanced {
+                self.sync_campaign_events()?;
+            }
+            return Ok(advanced);
         };
         let mut runtime = self.runtime.clone();
         runtime.advance_to(&target.to_string())?;
@@ -799,8 +1055,70 @@ impl Session {
             None,
         );
         self.runtime = runtime;
+        self.sync_campaign_events()?;
+        if let Some(campaign) = self.interaction.campaign.as_mut()
+            && self.runtime.clock.current_time.to_string() >= campaign.endpoint
+        {
+            campaign.reach_endpoint();
+        }
         self.observe_interruptions()?;
         Ok(true)
+    }
+    fn sync_campaign_events(&mut self) -> Result<(), String> {
+        let events = self.runtime.ledger.events().to_vec();
+        let mut successors = Vec::new();
+        {
+            let Some(campaign) = self.interaction.campaign.as_mut() else {
+                return Ok(());
+            };
+            for event in events {
+                if event.transition_kind == "campaign_endpoint_reached" {
+                    campaign.reach_endpoint();
+                    continue;
+                }
+                if event.transition_kind != "campaign_succession_activated"
+                    || campaign
+                        .processed_event_ids
+                        .iter()
+                        .any(|id| id == &event.event_id)
+                {
+                    continue;
+                }
+                let cause: SuccessionCause = serde_json::from_value(event.payload["cause"].clone())
+                    .map_err(|error| format!("invalid frozen succession cause: {error}"))?;
+                let rule_id = event.payload["rule_id"]
+                    .as_str()
+                    .ok_or("campaign succession has no rule id")?;
+                let successor_id = event.payload["successor_id"]
+                    .as_str()
+                    .ok_or("campaign succession has no successor")?;
+                let incoming = event.payload["incoming_information_refs"]
+                    .as_array()
+                    .map(|items| {
+                        items
+                            .iter()
+                            .filter_map(Value::as_str)
+                            .map(str::to_owned)
+                            .collect()
+                    })
+                    .unwrap_or_default();
+                let program = campaign.program_for_successor(successor_id)?;
+                campaign.succeed(
+                    cause,
+                    rule_id,
+                    successor_id.into(),
+                    program,
+                    event.completion_time.clone(),
+                    incoming,
+                )?;
+                campaign.processed_event_ids.push(event.event_id);
+                successors.push(successor_id.to_owned());
+            }
+        }
+        for successor in successors {
+            self.runtime.player_records.rebind_recipient(successor);
+        }
+        Ok(())
     }
 
     pub(super) fn observe_interruptions(&mut self) -> Result<(), String> {
@@ -829,6 +1147,111 @@ impl Session {
                 .and_then(Value::as_str)
                 .unwrap_or("New institutional record at the desk");
             calendar.enqueue_interruption(Interruption {interruption_id,kind:InterruptionKind::ObservedCondition,observed_at:Instant::parse(at).map_err(|error|error.to_string())?,title:title.into(),context:InterruptionContext {source_record_ids:vec![id.into()],reason:"A delivered record is available for attention; the open folder remains unchanged.".into(),requested_owner_id:None}})?;
+        }
+        Ok(())
+    }
+    fn reserve_campaign_review_capacity(
+        &self,
+        review: &ReviewRecord,
+        work_id: &str,
+    ) -> Result<(CalendarBoard, String), String> {
+        let reservation_root = review
+            .capacity_reservation_id
+            .as_deref()
+            .ok_or("campaign review has no capacity reservation identity")?;
+        if review.capacity_owner_id.is_empty()
+            || review.capacity_units <= 0
+            || review.capacity_duration_minutes <= 0
+        {
+            return Err("campaign review has no concrete capacity cost".into());
+        }
+        let releases_at = self
+            .runtime
+            .clock
+            .current_time
+            .add_minutes(review.capacity_duration_minutes)
+            .map_err(|error| error.to_string())?;
+        let mut calendar = self.runtime.calendar.clone().ok_or("No calendar.")?;
+        calendar.reserve_batch(vec![DatedCapacityReservation {
+            reservation_id: format!("{reservation_root}.{work_id}"),
+            owner_id: review.capacity_owner_id.clone(),
+            allocation: review.capacity_units,
+            starts_at: self.runtime.clock.current_time,
+            releases_at,
+            expected_payoff: format!("Evidence-backed work for {}", review.review_id),
+            release_condition: "The requested review work reaches its authored boundary.".into(),
+        }])?;
+        Ok((calendar, releases_at.to_string()))
+    }
+    fn record_campaign_awards(
+        &self,
+        campaign: &mut CampaignState,
+        review_id: &str,
+        review_version: u32,
+    ) -> Result<(), String> {
+        let rows = self
+            .runtime
+            .scenario
+            .catalog_slice
+            .get("stewardship_findings")
+            .or_else(|| {
+                self.runtime
+                    .scenario
+                    .catalog_slice
+                    .get("stewardship_findings.csv")
+            })
+            .and_then(Value::as_array)
+            .ok_or("campaign has no frozen stewardship findings")?;
+        let events = self.runtime.ledger.events();
+        for row in rows {
+            if row.get("review_id").and_then(Value::as_str) != Some(review_id)
+                || row
+                    .get("review_version")
+                    .and_then(Value::as_str)
+                    .and_then(|value| value.parse::<u32>().ok())
+                    != Some(review_version)
+            {
+                continue;
+            }
+            let subject = row
+                .get("disclosure_subject_id")
+                .and_then(Value::as_str)
+                .unwrap_or("NONE");
+            if subject != "NONE" {
+                let predicate = row
+                    .get("disclosure_predicate")
+                    .and_then(Value::as_str)
+                    .ok_or("hidden campaign finding has no disclosure predicate")?;
+                if !events.iter().any(|event| {
+                    event.transition_kind == predicate
+                        && event.payload.get("subject_id").and_then(Value::as_str) == Some(subject)
+                }) {
+                    continue;
+                }
+            }
+            let witness_kind = row
+                .get("witness_kind")
+                .and_then(Value::as_str)
+                .ok_or("campaign finding has no witness kind")?;
+            let witnesses = events
+                .iter()
+                .filter(|event| event.transition_kind == witness_kind)
+                .map(|event| event.event_id.clone())
+                .collect::<Vec<_>>();
+            if witnesses.is_empty() {
+                continue;
+            }
+            let finding_id = row
+                .get("finding_id")
+                .and_then(Value::as_str)
+                .ok_or("campaign finding has no id")?;
+            let delta = row
+                .get("delta")
+                .and_then(Value::as_str)
+                .ok_or("campaign finding has no delta")?
+                .parse::<i64>()
+                .map_err(|_| "campaign finding delta is invalid")?;
+            campaign.record_award(review_id, review_version, finding_id, delta, witnesses)?;
         }
         Ok(())
     }

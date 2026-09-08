@@ -37,14 +37,6 @@ pub(crate) struct ChiefOffice {
     pub(crate) institutional_records: Vec<Value>,
 }
 
-#[cfg(test)]
-#[derive(Clone, Debug, Eq, PartialEq, Serialize, Deserialize)]
-pub(crate) struct ChiefReplacement {
-    pub(crate) prior_holder_id: String,
-    pub(crate) successor_holder_id: String,
-    pub(crate) effective_period: String,
-}
-
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub(crate) struct ChiefState {
     pub(crate) office: ChiefOffice,
@@ -102,52 +94,6 @@ impl ChiefState {
             office,
             persons: BTreeMap::from([(person.person_id.clone(), person)]),
         }))
-    }
-
-    #[cfg(test)]
-    pub(crate) fn current_holder(&self) -> &ChiefPerson {
-        self.persons
-            .get(&self.office.holder_id)
-            .expect("chief office holder always has private cognition")
-    }
-
-    #[cfg(test)]
-    /// Moves the office's duties and institutional records to a distinct successor only.
-    pub(crate) fn replace_holder(
-        &mut self,
-        successor: ChiefPerson,
-        effective_period: impl Into<String>,
-    ) -> Result<ChiefReplacement, ChiefError> {
-        if successor.person_id.is_empty() {
-            return Err(ChiefError("chief successor requires a person id".into()));
-        }
-        if successor.person_id == self.office.holder_id {
-            return Err(ChiefError(
-                "chief successor must differ from current holder".into(),
-            ));
-        }
-        if self.persons.contains_key(&successor.person_id) {
-            return Err(ChiefError(format!(
-                "chief successor {} already has private cognition",
-                successor.person_id
-            )));
-        }
-        let prior_holder_id = self.office.holder_id.clone();
-        let successor_holder_id = successor.person_id.clone();
-        let effective_period = effective_period.into();
-        if effective_period.is_empty() {
-            return Err(ChiefError(
-                "chief replacement requires an effective period".into(),
-            ));
-        }
-        self.persons.insert(successor_holder_id.clone(), successor);
-        self.office.holder_id = successor_holder_id.clone();
-        self.office.effective_period = effective_period.clone();
-        Ok(ChiefReplacement {
-            prior_holder_id,
-            successor_holder_id,
-            effective_period,
-        })
     }
 }
 
@@ -263,41 +209,6 @@ mod tests {
             authority_content: json!({}),
             scenario_hash: "test".into(),
         }
-    }
-
-    fn successor() -> ChiefPerson {
-        ChiefPerson {
-            person_id: "person.us.successor".into(),
-            beliefs: BeliefLedger::new(vec![]).unwrap(),
-            goals: vec![],
-            plans: vec![],
-            memory: vec![json!({"note": "successor private"})],
-            judgment: vec![],
-            relationships: vec![],
-            dispositions: vec![],
-            recommendations: vec![],
-        }
-    }
-
-    #[test]
-    fn replacement_preserves_office_records_and_private_cognition() {
-        let mut chief = ChiefState::from_scenario(&scenario()).unwrap().unwrap();
-        let original_person = chief.current_holder().clone();
-        let replacement = chief
-            .replace_holder(successor(), "2007-01-01/2007-12-31")
-            .unwrap();
-
-        assert_eq!(replacement.prior_holder_id, "person.us.avery_agendaloon");
-        assert_eq!(
-            chief.office.institutional_records,
-            vec![json!({"record_id": "agenda.2006_03"})]
-        );
-        assert_eq!(chief.persons["person.us.avery_agendaloon"], original_person);
-        assert_eq!(chief.current_holder().person_id, "person.us.successor");
-        assert_eq!(
-            chief.current_holder().memory,
-            vec![json!({"note": "successor private"})]
-        );
     }
 
     #[test]

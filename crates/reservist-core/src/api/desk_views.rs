@@ -422,6 +422,49 @@ impl Session {
     }
 
     pub(super) fn scorecard_view(&self) -> Result<ScorecardView, String> {
+        if let Some(campaign) = &self.interaction.campaign {
+            let total = campaign.total()?;
+            let findings = campaign
+                .ledger
+                .iter()
+                .map(|entry| ScoreFindingView {
+                    finding_id: entry.finding_id.clone(),
+                    verdict: format!("{:?}", entry.kind),
+                    delta: entry.delta,
+                    witness_ids: entry.witness_ids.clone(),
+                })
+                .collect::<Vec<_>>();
+            let current = campaign
+                .dossiers
+                .last()
+                .ok_or("campaign has no chairmanship dossier")?;
+            let mut lines = vec![
+                "STEWARDSHIP CAMPAIGN LEDGER".into(),
+                format!(
+                    "Campaign: {}. Current Chair: {}.",
+                    campaign.campaign_id, current.chair_person_id
+                ),
+                format!("Total: {total:+}. Terminal: {}.", campaign.terminal),
+            ];
+            for entry in &campaign.ledger {
+                lines.push(format!(
+                    "{:+}: {} ({}/{})",
+                    entry.delta, entry.finding_id, entry.review_id, entry.review_version
+                ));
+            }
+            return Ok(ScorecardView {
+                text: lines.join("\n"),
+                scorecard_id: format!("campaign.{}", campaign.campaign_id),
+                verdict: if campaign.terminal {
+                    "Campaign finalized".into()
+                } else {
+                    "Campaign continuing".into()
+                },
+                delta: campaign.ledger.last().map_or(0, |entry| entry.delta),
+                total,
+                findings,
+            });
+        }
         let card = self
             .interaction
             .scorecard

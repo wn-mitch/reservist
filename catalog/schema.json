@@ -84,7 +84,11 @@
     "composition_probe_requirements.csv": ["composition_probe_id", "architecture_probe_id", "catalog_id", "gate", "required_status", "provenance"],
     "composition_probe_instrument_buckets.csv": ["composition_probe_id", "bucket_id", "requirement", "provenance"],
     "research_backlog.csv": ["backlog_id", "catalog_id", "artifact_kind", "artifact_key", "blocker_code", "required_evidence", "provenance"],
-    "stewardship_findings.csv": ["finding_id", "witness_kind", "receipt_status", "minimum_matches", "points", "verdict", "provenance"]
+    "stewardship_findings.csv": ["finding_id", "finding_version", "scenario_id", "disclosure_subject_id", "disclosure_predicate", "review_id", "review_version", "witness_kind", "delta", "lawful_condition", "proportionality_condition", "exit_condition", "preparation_condition", "handoff_condition", "provenance"],
+    "campaign_definitions.csv": ["campaign_id", "endpoint", "terminal_review_id", "default_scenario_id", "initial_chair_person_id", "provenance"],
+    "chairmanship_programs.csv": ["program_id", "chair_person_id", "office_id", "primary_aspiration", "support_aspirations", "inherited_project_ids", "prior_claim_ids", "relationship_ids", "commitment_refs", "revision_vocabulary", "provenance"],
+    "succession_rules.csv": ["rule_id", "office_id", "effective_period", "cause", "selection_procedure", "eligible_successor_ids", "handoff_refs", "incoming_information_refs", "provenance"],
+    "campaign_reviews.csv": ["review_id", "review_version", "chairmanship_id", "timing_boundary", "access_boundary", "evidence_refs", "dissent_refs", "confidence_refs", "disposition_vocabulary", "capacity_reservation_id", "capacity_owner_id", "capacity_units", "capacity_duration_minutes", "provenance"]
   },
   "table_lifecycle": {
     "period_variants.csv": "deferred",
@@ -126,7 +130,11 @@
     "composition_probe_members.csv": "required",
     "composition_probe_requirements.csv": "required",
     "composition_probe_instrument_buckets.csv": "required",
-    "stewardship_findings.csv": "required"
+    "stewardship_findings.csv": "required",
+    "campaign_definitions.csv": "required",
+    "chairmanship_programs.csv": "required",
+    "succession_rules.csv": "required",
+    "campaign_reviews.csv": "required"
   },
   "table_keys": {
     "types.csv": ["type_id"],
@@ -168,7 +176,11 @@
     "composition_probe_requirements.csv": ["composition_probe_id", "architecture_probe_id", "catalog_id", "gate"],
     "composition_probe_instrument_buckets.csv": ["composition_probe_id", "bucket_id"],
     "research_backlog.csv": ["backlog_id"],
-    "stewardship_findings.csv": ["finding_id"]
+    "stewardship_findings.csv": ["finding_id", "finding_version", "scenario_id"],
+    "campaign_definitions.csv": ["campaign_id"],
+    "chairmanship_programs.csv": ["program_id"],
+    "succession_rules.csv": ["rule_id"],
+    "campaign_reviews.csv": ["review_id", "review_version"]
   },
   "field_vocabularies": {
     "entities.csv.entry_class": "entry_class",

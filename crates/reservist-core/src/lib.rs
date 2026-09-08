@@ -2,6 +2,7 @@
 //! Deterministic causal simulation, independent of client input and rendering.
 
 pub mod api;
+pub mod campaign;
 pub mod canon;
 pub mod fidelity;
 #[cfg(any(test, feature = "tooling"))]

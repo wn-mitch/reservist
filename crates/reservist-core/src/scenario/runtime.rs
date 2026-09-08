@@ -464,6 +464,48 @@ impl ScenarioRuntime {
         self.dynamic_event_sequence = next;
         Ok(())
     }
+    pub(crate) fn handle_campaign_event(&mut self, event: &ScheduledEvent) -> Result<(), String> {
+        if self
+            .scenario
+            .manifest
+            .get("campaign_contract")
+            .and_then(Value::as_str)
+            != Some("campaign_m3")
+        {
+            return Err("campaign work is not allowed outside campaign_m3".into());
+        }
+        match event.work_kind.as_str() {
+            "campaign.succession" => {
+                for key in ["cause", "rule_id", "successor_id"] {
+                    if event.payload.get(key).and_then(Value::as_str).is_none() {
+                        return Err(format!("campaign succession event is missing {key}"));
+                    }
+                }
+                self.ledger.append(&event.due_time.to_string(), "campaign_succession_activated",
+                    &event.responsible_owner,
+                    json!({"scheduled_event_id":event.stable_id,"cause":event.payload["cause"],"rule_id":event.payload["rule_id"],"successor_id":event.payload["successor_id"],"incoming_information_refs":event.payload["incoming_information_refs"]}),
+                    "profile.chair_scoped", event.causal_parent.as_deref());
+            }
+            "campaign.endpoint" => {
+                self.ledger.append(
+                    &event.due_time.to_string(),
+                    "campaign_endpoint_reached",
+                    &event.responsible_owner,
+                    json!({"scheduled_event_id":event.stable_id}),
+                    "profile.chair_scoped",
+                    event.causal_parent.as_deref(),
+                );
+            }
+            _ => {
+                return Err(format!(
+                    "unsupported campaign work kind: {}",
+                    event.work_kind
+                ));
+            }
+        }
+        Ok(())
+    }
+
     pub(crate) fn handle_release(&mut self, event: &ScheduledEvent) -> Result<(), String> {
         if event.work_kind == "macro.publish_intermeeting_release" {
             return self.handle_intermeeting_release(event);

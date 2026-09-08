@@ -17,7 +17,7 @@ pub enum Projection {
     Operations(OperationsView),
     Statement(StatementView),
     Wire(WireView),
-    Review(ReviewView),
+    Review(Box<ReviewView>),
     Routing(RoutingAccount),
     Request(RequestView),
     Record(RecordView),
@@ -201,6 +201,50 @@ pub struct ReviewView {
     pub text: String,
     pub next_morning_book: Option<NextCycleBook>,
     pub staff_review: Option<Box<StaffReviewView>>,
+    pub campaign: Option<CampaignReviewView>,
+}
+
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+pub struct CampaignReviewView {
+    pub campaign_id: String,
+    pub current_chairmanship: ChairmanshipSummaryView,
+    pub chairmanship_count: usize,
+    pub reviews: Vec<CampaignReviewSummaryView>,
+    pub endpoint_reached: bool,
+    pub terminal: bool,
+}
+
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+pub struct ChairmanshipSummaryView {
+    pub chairmanship_id: String,
+    pub chair_person_id: String,
+    pub office_id: String,
+    pub started_at: String,
+    pub program_id: String,
+    pub program_revision_id: String,
+    pub aspirations: Vec<String>,
+    pub inherited_official_refs: Vec<String>,
+}
+
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+pub struct CampaignReviewSummaryView {
+    pub review_id: String,
+    pub review_version: u32,
+    pub owner_chairmanship_id: String,
+    pub evidence_refs: Vec<String>,
+    pub dissent_refs: Vec<String>,
+    pub confidence_refs: Vec<String>,
+    pub timing_boundary: String,
+    pub access_boundary: String,
+    pub capacity_reservation_id: Option<String>,
+    pub capacity_owner_id: String,
+    pub capacity_units: i64,
+    pub capacity_duration_minutes: i64,
+    pub capacity_releases_at: Option<String>,
+    pub disposition: Option<String>,
+    pub response_record_id: Option<String>,
+    pub supplemental_review_id: Option<String>,
+    pub final_required: bool,
 }
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
@@ -1077,7 +1121,115 @@ impl ReviewView {
             text: lines.join("\n"),
             next_morning_book,
             staff_review,
+            campaign: None,
         })
+    }
+
+    pub(crate) fn attach_campaign(
+        &mut self,
+        campaign: &crate::campaign::CampaignState,
+        current_time: &str,
+    ) -> Result<(), String> {
+        let current = campaign
+            .dossiers
+            .last()
+            .ok_or("campaign has no current chairmanship dossier")?;
+        let reviews = campaign
+            .reviews
+            .values()
+            .filter(|review| {
+                review.disclosed
+                    && (review.timing_boundary.is_empty()
+                        || review.timing_boundary.as_str() <= current_time)
+            })
+            .map(|review| CampaignReviewSummaryView {
+                review_id: review.review_id.clone(),
+                review_version: review.review_version,
+                owner_chairmanship_id: review.owner_chairmanship_id.clone(),
+                evidence_refs: review.evidence_refs.clone(),
+                dissent_refs: review.dissent_refs.clone(),
+                confidence_refs: review.confidence_refs.clone(),
+                timing_boundary: review.timing_boundary.clone(),
+                access_boundary: review.access_boundary.clone(),
+                capacity_reservation_id: review.capacity_reservation_id.clone(),
+                capacity_owner_id: review.capacity_owner_id.clone(),
+                capacity_units: review.capacity_units,
+                capacity_duration_minutes: review.capacity_duration_minutes,
+                capacity_releases_at: review.capacity_releases_at.clone(),
+                disposition: review
+                    .disposed
+                    .as_ref()
+                    .and_then(|value| serde_json::to_value(value).ok())
+                    .and_then(|value| value.as_str().map(str::to_owned)),
+                response_record_id: review.response_record_id.clone(),
+                supplemental_review_id: review.supplemental_review_id.clone(),
+                final_required: review.final_required,
+            })
+            .collect::<Vec<_>>();
+        let mut lines = vec![
+            "CAMPAIGN STEWARDSHIP REVIEW".to_owned(),
+            "===========================".to_owned(),
+            format!(
+                "Campaign: {}. Chairmanship: {}. Chair: {}.",
+                campaign.campaign_id, current.chairmanship_id, current.chair_person_id
+            ),
+            format!(
+                "Program: {} revision {}.",
+                current.program.program_id, current.program.revision_id
+            ),
+            format!("Aspirations: {}.", current.program.aspirations.join(", ")),
+            format!(
+                "Chairmanship dossiers: {}. Endpoint reached: {}. Terminal: {}.",
+                campaign.dossiers.len(),
+                campaign.endpoint_reached,
+                campaign.terminal
+            ),
+        ];
+        for review in &reviews {
+            lines.push(format!(
+                "Review {} v{}: {}. Evidence: {}. Confidence: {}. Dissent: {}.",
+                review.review_id,
+                review.review_version,
+                review.disposition.as_deref().unwrap_or("open"),
+                review.evidence_refs.join(", "),
+                review.confidence_refs.join(", "),
+                review.dissent_refs.join(", ")
+            ));
+            if review.capacity_units > 0 {
+                lines.push(format!(
+                    "Disposition work reserves {} unit(s) from {} for {} minutes{}.",
+                    review.capacity_units,
+                    review.capacity_owner_id,
+                    review.capacity_duration_minutes,
+                    review
+                        .capacity_releases_at
+                        .as_ref()
+                        .map(|at| format!(", currently through {at}"))
+                        .unwrap_or_default()
+                ));
+            }
+        }
+        lines.push(String::new());
+        lines.push(self.text.clone());
+        self.text = lines.join("\n");
+        self.campaign = Some(CampaignReviewView {
+            campaign_id: campaign.campaign_id.clone(),
+            current_chairmanship: ChairmanshipSummaryView {
+                chairmanship_id: current.chairmanship_id.clone(),
+                chair_person_id: current.chair_person_id.clone(),
+                office_id: current.office_id.clone(),
+                started_at: current.started_at.clone(),
+                program_id: current.program.program_id.clone(),
+                program_revision_id: current.program.revision_id.clone(),
+                aspirations: current.program.aspirations.clone(),
+                inherited_official_refs: current.inherited_official_refs.clone(),
+            },
+            chairmanship_count: campaign.dossiers.len(),
+            reviews,
+            endpoint_reached: campaign.endpoint_reached,
+            terminal: campaign.terminal,
+        });
+        Ok(())
     }
 }
 

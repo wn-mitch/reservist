@@ -1,0 +1,2 @@
+finding_id,finding_version,scenario_id,disclosure_subject_id,disclosure_predicate,review_id,review_version,witness_kind,delta,lawful_condition,proportionality_condition,exit_condition,preparation_condition,handoff_condition,provenance
+finding.m3.final_review,1,scenario.mvp_2006_campaign_m3,NONE,always,review.m3.final,1,staff_review_authored,3,witnessed,proportionate,review_disposed,program_populated,official_handoff,doc:design.campaign.stewardship-score

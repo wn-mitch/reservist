@@ -31,6 +31,11 @@ impl PlayerRecordStore {
             delivery_order: Vec::new(),
         }
     }
+    /// A lawful Chair transition rebinds future delivery without discarding
+    /// institutional records already delivered to the office.
+    pub(crate) fn rebind_recipient(&mut self, recipient_id: String) {
+        self.recipient_id = recipient_id;
+    }
     pub(crate) fn deliver(&mut self, delivery: &Value, item: &Value) -> Result<(), DeliveryError> {
         self.deliver_item(delivery, item, "observation_id", "observation_id")
     }
@@ -134,5 +139,26 @@ mod tests {
         assert!(!store.inspect("observation.sample").unwrap().1);
         assert!(store.inspect("state.hidden").is_err());
         assert!(store.deliver(&delivery, &item).is_err());
+    }
+    #[test]
+    fn chair_rebinding_preserves_official_records_and_changes_future_recipient() {
+        let mut store = PlayerRecordStore::new("person.outgoing".into(), "scope".into());
+        let item = json!({"observation_id":"observation.official","observed_value":1});
+        let outgoing_delivery = json!({
+            "recipient_id":"person.outgoing",
+            "access_scope":"scope",
+            "observation_id":"observation.official"
+        });
+        store.deliver(&outgoing_delivery, &item).unwrap();
+        store.rebind_recipient("person.successor".into());
+        assert!(store.contains("observation.official"));
+        let successor_item = json!({"observation_id":"observation.successor","observed_value":2});
+        let successor_delivery = json!({
+            "recipient_id":"person.successor",
+            "access_scope":"scope",
+            "observation_id":"observation.successor"
+        });
+        store.deliver(&successor_delivery, &successor_item).unwrap();
+        assert!(store.contains("observation.successor"));
     }
 }

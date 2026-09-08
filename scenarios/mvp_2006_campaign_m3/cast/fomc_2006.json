@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "meeting_id": "meeting.fomc.2006_03",
+  "chair_id": "person.us.ben_bernankey",
+  "chair_office": "office.us.federal_reserve.fomc_chair",
+  "quorum": 3,
+  "affirmative_threshold": 2,
+  "participants": [
+    {
+      "participant_id": "role_holder.fomc.governor_1",
+      "display_name": "Governor Heron",
+      "office_id": "office.us.federal_reserve.governor",
+      "effective_period": "2006-02-01/2006-12-31",
+      "beliefs": [
+        {
+          "proposition": "inflation_persistence",
+          "estimate": 0.82,
+          "lower": 0.68,
+          "upper": 0.91,
+          "confidence": 0.78,
+          "as_of_time": "2006-03-27T08:30:00-05:00",
+          "source_ledger": [
+            {
+              "source_id": "reference.us.bls.cpi",
+              "evidence_id": "release.core_cpi.2006_02",
+              "observed_at": "2006-03-27T08:30:00-05:00",
+              "uncertainty_kind": "measurement",
+              "note": "Recent core inflation remains firm; seasonal revision remains possible."
+            }
+          ]
+        },
+        {
+          "proposition": "housing_credit_sensitivity",
+          "estimate": 0.35,
+          "lower": 0.22,
+          "upper": 0.54,
+          "confidence": 0.61,
+          "as_of_time": "2006-03-27T07:30:00-05:00",
+          "source_ledger": [
+            {
+              "source_id": "adapter.macro.us.broad",
+              "evidence_id": "assessment.housing.summary.opening",
+              "observed_at": "2006-03-27T07:30:00-05:00",
+              "uncertainty_kind": "model",
+              "note": "The housing response remains model-sensitive and incompletely observed."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "participant_id": "role_holder.fomc.governor_2",
+      "display_name": "Governor Hare",
+      "office_id": "office.us.federal_reserve.governor",
+      "effective_period": "2006-02-01/2006-12-31",
+      "beliefs": [
+        {
+          "proposition": "inflation_persistence",
+          "estimate": 0.55,
+          "lower": 0.39,
+          "upper": 0.72,
+          "confidence": 0.63,
+          "as_of_time": "2006-03-27T08:30:00-05:00",
+          "source_ledger": [
+            {
+              "source_id": "reference.us.bls.cpi",
+              "evidence_id": "release.core_cpi.2006_02",
+              "observed_at": "2006-03-27T08:30:00-05:00",
+              "uncertainty_kind": "measurement",
+              "note": "The release is concerning but does not settle persistence."
+            }
+          ]
+        },
+        {
+          "proposition": "housing_credit_sensitivity",
+          "estimate": 0.78,
+          "lower": 0.62,
+          "upper": 0.9,
+          "confidence": 0.74,
+          "as_of_time": "2006-03-27T07:30:00-05:00",
+          "source_ledger": [
+            {
+              "source_id": "adapter.macro.us.broad",
+              "evidence_id": "assessment.housing.summary.opening",
+              "observed_at": "2006-03-27T07:30:00-05:00",
+              "uncertainty_kind": "model",
+              "note": "Interest-sensitive activity shows a material downside under further guidance."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "chief_of_staff": {
+    "display_name": "Avery Agendaloon",
+    "effective_period": "2006-02-01/2006-12-31",
+    "office_id": "office.us.federal_reserve.chief_of_staff",
+    "person_id": "person.us.avery_agendaloon"
+  }
+}

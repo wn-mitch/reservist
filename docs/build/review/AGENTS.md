@@ -6,6 +6,7 @@ Authority class: evidence. These leaves record inspected implementation and obse
 - [Runnable path](runnable-path.md)
 - [Accepted M1](accepted-m1.md)
 - [Accepted M2](accepted-m2.md)
+- [Accepted M3](accepted-m3.md)
 - [Work packages 01–06](work-packages-01-06.md)
 - [Work packages 07–12](work-packages-07-12.md)
 - [Work packages 13–18](work-packages-13-18.md)

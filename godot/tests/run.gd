@@ -51,6 +51,11 @@ func _run() -> void:
     Boundary.assert_speaking_boundary(speaking_session)
     speaking_session.queue_free()
 
+    var m3_session := Boundary.new_session(Boundary.M3_FIXTURE)
+    root.add_child(m3_session)
+    Boundary.assert_m3_campaign_boundary(m3_session)
+    m3_session.queue_free()
+
     assert(change_scene_to_file("res://main.tscn") == OK)
     await scene_changed
     var app: Control = current_scene

@@ -4,7 +4,7 @@
 **Status:** `index`
 **Depends on:** `none`
 
-This non-normative front door routes current executable evidence. M1 and M2 were accepted on jj change `mkstwyuv`. Production uses Rust and Godot; Python remains only in oracle and catalog-authoring tooling. M3 campaign mechanics and M4 provider/world expansion are not implemented by those acceptances.
+M1 and M2 were accepted on jj change `mkstwyuv`. M3 was accepted on change `nryypxus`. Production uses Rust and Godot; Python remains only in oracle and catalog-authoring tooling. M4 provider/world expansion is not implemented by those acceptances.
 
 ## Current system
 
@@ -12,6 +12,7 @@ This non-normative front door routes current executable evidence. M1 and M2 were
 - [Runnable path](build/review/runnable-path.md)
 - [Accepted M1](build/review/accepted-m1.md)
 - [Accepted M2](build/review/accepted-m2.md)
+- [Accepted M3](build/review/accepted-m3.md)
 - [Current boundaries](build/review/current-boundaries.md)
 
 ## Work-package evidence

@@ -5,10 +5,12 @@
 **Depends on:** `none`
 **Verifies:** `mandate.milestone-order`, `design.runtime.client-and-repository-boundary`
 
-**Inspected on accepted M1/M2 change `mkstwyuv`:** `reservist-core` owns causal state, capacity, history, persistence, markets, accounting, evidence, and scoring. `reservist-content` validates the global authored catalog and compiles frozen scenario slices. `reservist-godot` exposes typed session commands and immutable player-safe projections. GDScript remains presentation-only. Diagnostic snapshots and whole-run export are CLI tooling, not gameplay state.
+**Inspected through accepted M3 change `nryypxus`:** `reservist-core` owns causal state, capacity, history, persistence, markets, accounting, evidence, and campaign continuity. `reservist-content` validates the global authored catalog and compiles frozen scenario slices. `reservist-godot` exposes typed session commands and immutable player-safe projections. GDScript remains presentation-only. Diagnostic snapshots and whole-run export are CLI tooling, not gameplay state.
 
 Production commands are native Rust. Python remains in the retained oracle and authoring-side catalog tests. The runtime is pinned to Rust 1.98.1 and godot-rust 0.5.5 with the Godot 4.7 extension API. The observed Godot runtime was 4.7.2.
 
-M2 starts paused. Reading and previewing do not advance the calendar or reserve capacity. Submission uses explicit typed commands. Unchosen proposals do not become default policy. Supported saves retain queue, reservations, command idempotency, interruption state, admitted work, and scorecard state at quiescent boundaries.
+M2 and M3 start paused. Reading and previewing do not advance the calendar or reserve capacity. Submission uses explicit typed commands. Unchosen proposals do not become default policy. Supported saves retain queues, reservations, command idempotency, interruptions, admitted work, campaign dossiers, review state, and the immutable Stewardship ledger at quiescent boundaries.
 
-No inspected type or interface is claimed as M3 succession gameplay, full Stewardship lifecycle, M4 provider response, broader world content, economic calibration, or player-comprehension evidence.
+M3 executes all seven canonical Chair succession causes through frozen rule references, retains official burdens and records, selects authored successor programs, and exposes distinct player-safe chairmanship dossiers. Versioned reviews support acceptance, Chair response, evidence-backed revision, and supplemental work with dated capacity costs. The final endpoint closes ordinary gameplay until required review disposition, then records a terminal campaign dossier that persists through save and replay.
+
+No inspected type or interface is claimed as M4 provider response, broader world content, economic calibration, or player-comprehension evidence.

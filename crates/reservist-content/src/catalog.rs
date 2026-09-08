@@ -519,8 +519,10 @@ pub fn validate_catalog(catalog_dir: &Path) -> Result<Tables, Vec<Issue>> {
         return Err(errors);
     }
     validate(&tables, &schema, catalog_dir, &mut errors);
+    validate_campaign_contracts(&tables, &mut errors);
     let authored = inspect_inventory(catalog_dir, &schema, &mut errors);
     validate(&authored, &schema, catalog_dir, &mut errors);
+    validate_campaign_contracts(&authored, &mut errors);
     for (name, rows) in &tables {
         let mut actual: Vec<_> = rows.iter().collect();
         let mut expected: Vec<_> = authored[name].iter().collect();
@@ -539,6 +541,172 @@ pub fn validate_catalog(catalog_dir: &Path) -> Result<Tables, Vec<Issue>> {
         Ok(tables)
     } else {
         Err(errors)
+    }
+}
+
+fn validate_campaign_contracts(tables: &Tables, errors: &mut Vec<Issue>) {
+    let definitions = tables
+        .get("campaign_definitions.csv")
+        .map(Vec::as_slice)
+        .unwrap_or_default();
+    let programs = tables
+        .get("chairmanship_programs.csv")
+        .map(Vec::as_slice)
+        .unwrap_or_default();
+    let rules = tables
+        .get("succession_rules.csv")
+        .map(Vec::as_slice)
+        .unwrap_or_default();
+    let reviews = tables
+        .get("campaign_reviews.csv")
+        .map(Vec::as_slice)
+        .unwrap_or_default();
+    let findings = tables
+        .get("stewardship_findings.csv")
+        .map(Vec::as_slice)
+        .unwrap_or_default();
+    for campaign in definitions {
+        let id = get(campaign, "campaign_id");
+        let terminal = get(campaign, "terminal_review_id");
+        if !reviews
+            .iter()
+            .any(|review| get(review, "review_id") == terminal)
+        {
+            issue(
+                errors,
+                "campaign_closure",
+                id,
+                "campaign endpoint has no required final review",
+            );
+        }
+        if programs
+            .iter()
+            .all(|program| get(program, "primary_aspiration").is_empty())
+        {
+            issue(
+                errors,
+                "campaign_closure",
+                id,
+                "campaign has no populated chairmanship program",
+            );
+        }
+    }
+    for program in programs {
+        let supports = get(program, "support_aspirations")
+            .split('|')
+            .filter(|value| !value.is_empty() && *value != NONE)
+            .count();
+        if get(program, "primary_aspiration").is_empty() || supports > 2 {
+            issue(
+                errors,
+                "campaign_closure",
+                get(program, "program_id"),
+                "chairmanship program requires one primary and at most two support aspirations",
+            );
+        }
+    }
+    let supported = [
+        "resignation",
+        "incapacity",
+        "death",
+        "removal",
+        "failed_renomination",
+        "term_expiry",
+        "statutory_reorganization",
+    ];
+    let mut rule_keys = BTreeSet::new();
+    for rule in rules {
+        let successors = get(rule, "eligible_successor_ids")
+            .split('|')
+            .filter(|value| !value.is_empty() && *value != NONE)
+            .collect::<Vec<_>>();
+        let key = (
+            get(rule, "office_id"),
+            get(rule, "cause"),
+            get(rule, "effective_period"),
+        );
+        if !supported.contains(&get(rule, "cause"))
+            || successors.len() != 1
+            || successors.first().is_some_and(|successor| {
+                !programs
+                    .iter()
+                    .any(|program| get(program, "chair_person_id") == *successor)
+            })
+            || !rule_keys.insert(key)
+        {
+            issue(
+                errors,
+                "campaign_closure",
+                get(rule, "rule_id"),
+                "succession rule has an unsupported, missing, ambiguous, overlapping, or unprogrammed selector",
+            );
+        }
+    }
+    let required_dispositions = [
+        "accept",
+        "accept_with_chair_response",
+        "request_revision",
+        "accept_with_supplemental_review",
+    ];
+    let mut review_keys = BTreeSet::new();
+    for review in reviews {
+        let dispositions = get(review, "disposition_vocabulary")
+            .split('|')
+            .collect::<BTreeSet<_>>();
+        let capacity_units = get(review, "capacity_units").parse::<i64>().ok();
+        let capacity_duration = get(review, "capacity_duration_minutes").parse::<i64>().ok();
+        let key = (get(review, "review_id"), get(review, "review_version"));
+        if !review_keys.insert(key)
+            || required_dispositions
+                .iter()
+                .any(|value| !dispositions.contains(value))
+            || get(review, "capacity_reservation_id").is_empty()
+            || get(review, "capacity_owner_id").is_empty()
+            || !capacity_units.is_some_and(|value| value > 0)
+            || !capacity_duration.is_some_and(|value| value > 0)
+        {
+            issue(
+                errors,
+                "campaign_closure",
+                get(review, "review_id"),
+                "campaign review lacks unique identity, complete dispositions, or concrete capacity",
+            );
+        }
+    }
+    let mut finding_keys = BTreeSet::new();
+    for finding in findings {
+        let key = (get(finding, "finding_id"), get(finding, "finding_version"));
+        if !finding_keys.insert(key) {
+            issue(
+                errors,
+                "campaign_closure",
+                get(finding, "finding_id"),
+                "duplicate campaign finding identity and version",
+            );
+        }
+        if get(finding, "disclosure_subject_id") != NONE
+            && get(finding, "disclosure_predicate").is_empty()
+        {
+            issue(
+                errors,
+                "campaign_closure",
+                get(finding, "finding_id"),
+                "hidden stewardship finding has no disclosure predicate",
+            );
+        }
+        if get(finding, "scenario_id") == "scenario.mvp_2006_campaign_m3"
+            && !reviews.iter().any(|review| {
+                get(review, "review_id") == get(finding, "review_id")
+                    && get(review, "review_version") == get(finding, "review_version")
+            })
+        {
+            issue(
+                errors,
+                "campaign_closure",
+                get(finding, "finding_id"),
+                "campaign finding names an absent review version",
+            );
+        }
     }
 }
 
@@ -2016,5 +2184,46 @@ mod tests {
         ).unwrap();
         assert_category(&catalog, "schema");
         fs::remove_dir_all(case).unwrap();
+    }
+    #[test]
+    fn rejects_incomplete_campaign_closure() {
+        mutation_case("campaign_closure", |catalog| {
+            mutate_inventory(
+                catalog,
+                "campaign_reviews.csv",
+                "review_id",
+                "review.m3.final",
+                "capacity_units",
+                "0",
+            )
+        });
+        mutation_case("campaign_closure", |catalog| {
+            mutate_inventory(
+                catalog,
+                "succession_rules.csv",
+                "rule_id",
+                "rule.m3.resignation",
+                "eligible_successor_ids",
+                "person.successor.first|person.successor.second",
+            )
+        });
+        mutation_case("campaign_closure", |catalog| {
+            mutate_inventory(
+                catalog,
+                "stewardship_findings.csv",
+                "finding_id",
+                "finding.m3.final_review",
+                "disclosure_subject_id",
+                "subject.hidden",
+            );
+            mutate_inventory(
+                catalog,
+                "stewardship_findings.csv",
+                "finding_id",
+                "finding.m3.final_review",
+                "disclosure_predicate",
+                "",
+            );
+        });
     }
 }

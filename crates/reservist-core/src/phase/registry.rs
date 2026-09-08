@@ -234,6 +234,16 @@ handler!(
     None
 );
 handler!(
+    CampaignWorkHandler,
+    handle_campaign_event,
+    "campaign-continuity",
+    ["campaign.succession", "campaign.endpoint"],
+    Review,
+    ["campaign.frozen_contract"],
+    ["ledger.witness"],
+    None
+);
+handler!(
     ReceptionWorkHandler,
     handle_audience_reception,
     "audience-reception",
@@ -344,6 +354,10 @@ static DECLARATIONS: &[Declaration] = &[
     Declaration {
         meta: NextMorningBookWorkHandler::META,
         invoke: NextMorningBookWorkHandler::invoke,
+    },
+    Declaration {
+        meta: CampaignWorkHandler::META,
+        invoke: CampaignWorkHandler::invoke,
     },
 ];
 

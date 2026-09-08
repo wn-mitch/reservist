@@ -14,6 +14,8 @@ pub mod slice;
 mod m2_dialogue_tests;
 #[cfg(test)]
 mod m2_tests;
+#[cfg(test)]
+mod m3_tests;
 
 use std::collections::BTreeMap;
 

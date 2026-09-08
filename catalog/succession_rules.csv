@@ -1,0 +1,8 @@
+rule_id,office_id,effective_period,cause,selection_procedure,eligible_successor_ids,handoff_refs,incoming_information_refs,provenance
+rule.m3.death,office.us.federal_reserve.fomc_chair,2006-01-01/2006-12-31,death,statutory_successor,person.us.successor.death,handoff.official,incoming.official,doc:design.campaign.chair-succession
+rule.m3.failed_renomination,office.us.federal_reserve.fomc_chair,2006-01-01/2006-12-31,failed_renomination,statutory_successor,person.us.successor.failed_renomination,handoff.official,incoming.official,doc:design.campaign.chair-succession
+rule.m3.incapacity,office.us.federal_reserve.fomc_chair,2006-01-01/2006-12-31,incapacity,statutory_successor,person.us.successor.incapacity,handoff.official,incoming.official,doc:design.campaign.chair-succession
+rule.m3.removal,office.us.federal_reserve.fomc_chair,2006-01-01/2006-12-31,removal,statutory_successor,person.us.successor.removal,handoff.official,incoming.official,doc:design.campaign.chair-succession
+rule.m3.resignation,office.us.federal_reserve.fomc_chair,2006-01-01/2006-12-31,resignation,statutory_successor,person.us.successor.resignation,handoff.official,incoming.official,doc:design.campaign.chair-succession
+rule.m3.statutory_reorganization,office.us.federal_reserve.fomc_chair,2006-01-01/2006-12-31,statutory_reorganization,statutory_successor,person.us.successor.statutory_reorganization,handoff.official,incoming.official,doc:design.campaign.chair-succession
+rule.m3.term_expiry,office.us.federal_reserve.fomc_chair,2006-01-01/2006-12-31,term_expiry,statutory_successor,person.us.successor.term_expiry,handoff.official,incoming.official,doc:design.campaign.chair-succession

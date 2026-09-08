@@ -1,0 +1,2 @@
+campaign_id,endpoint,terminal_review_id,default_scenario_id,initial_chair_person_id,provenance
+campaign.mvp_2006_continuity,2006-12-31T17:00:00-05:00,review.m3.final,scenario.mvp_2006_campaign_m3,person.us.ben_bernankey,doc:design.campaign.review-and-finalization

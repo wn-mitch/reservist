@@ -14,9 +14,21 @@ pub(crate) struct PlayArgs {
 }
 
 const COMMANDS: &str = "Commands: inspect <number> | ask markets [accelerated] | advance | book | verbs | fomc | propose <package> | operations | statement | wire | review | quit";
+const CAMPAIGN_COMMANDS: &str = "Commands: inspect <number> | ask markets [accelerated] | advance | book | calendar | folder | verbs | fomc | propose <package> | operations | statement | wire | review | scorecard | revise-program <id> | dispose-review <id> <version> <accept|respond|revise> [response-record] | supplement-review <id> <version> <supplemental-id> | quit";
 
 fn failure(error: impl ToString) -> ContentError {
     ContentError::new("session", error.to_string())
+}
+
+fn command_banner(session: &Session) -> &'static str {
+    if session
+        .available_verbs()
+        .is_ok_and(|verbs| verbs.iter().any(|verb| verb == "dispose_review"))
+    {
+        CAMPAIGN_COMMANDS
+    } else {
+        COMMANDS
+    }
 }
 
 enum Input {
@@ -114,10 +126,78 @@ fn perform(session: &mut Session, command: &str) -> Result<Input, ContentError> 
             submit(session, CommandAction::CloseWithoutHandoff),
             "close-folder has no result",
         )?,
-        "accept-review" => receipt_text(
-            submit(session, CommandAction::AcceptReview),
-            "accept-review has no result",
+        command if command.starts_with("revise-program ") => receipt_text(
+            submit(
+                session,
+                CommandAction::ReviseChairmanshipProgram {
+                    program_id: command_argument(command, "revise-program ")
+                        .unwrap_or_default()
+                        .into(),
+                    revision_id: format!("revision.cli.{}", session.next_command_id()),
+                },
+            ),
+            "program revision has no result",
         )?,
+        command if command.starts_with("dispose-review ") => {
+            let mut arguments = command["dispose-review ".len()..].split_whitespace();
+            match (
+                arguments.next(),
+                arguments.next().and_then(|value| value.parse::<u32>().ok()),
+                arguments.next(),
+                arguments.next(),
+                arguments.next(),
+            ) {
+                (Some(review_id), Some(review_version), Some("accept"), None, None) => receipt_text(
+                    submit(session, CommandAction::DisposeReview {
+                        review_id: review_id.into(),
+                        review_version,
+                        disposition: reservist_core::campaign::ReviewDisposition::Accept,
+                        response_record_id: None,
+                    }),
+                    "review disposition has no result",
+                )?,
+                (Some(review_id), Some(review_version), Some("respond"), Some(response), None) => receipt_text(
+                    submit(session, CommandAction::DisposeReview {
+                        review_id: review_id.into(),
+                        review_version,
+                        disposition: reservist_core::campaign::ReviewDisposition::AcceptWithChairResponse,
+                        response_record_id: Some(response.into()),
+                    }),
+                    "review disposition has no result",
+                )?,
+                (Some(review_id), Some(review_version), Some("revise"), None, None) => receipt_text(
+                    submit(session, CommandAction::DisposeReview {
+                        review_id: review_id.into(),
+                        review_version,
+                        disposition: reservist_core::campaign::ReviewDisposition::RequestRevision,
+                        response_record_id: None,
+                    }),
+                    "review disposition has no result",
+                )?,
+                _ => "invalid dispose-review command: expected dispose-review <id> <version> <accept|respond|revise> [response-record]".into(),
+            }
+        }
+        command if command.starts_with("supplement-review ") => {
+            let mut arguments = command["supplement-review ".len()..].split_whitespace();
+            match (
+                arguments.next(),
+                arguments.next().and_then(|value| value.parse::<u32>().ok()),
+                arguments.next(),
+                arguments.next(),
+            ) {
+                (Some(review_id), Some(review_version), Some(supplemental_review_id), None) => {
+                    receipt_text(
+                        submit(session, CommandAction::CommissionSupplementalReview {
+                            review_id: review_id.into(),
+                            review_version,
+                            supplemental_review_id: supplemental_review_id.into(),
+                        }),
+                        "supplemental review has no result",
+                    )?
+                }
+                _ => "invalid supplement-review command: expected supplement-review <id> <version> <supplemental-id>".into(),
+            }
+        }
         command if command.starts_with("propose ") => {
             let package_id = command_argument(command, "propose ").unwrap_or_default();
             let receipt = submit(
@@ -233,7 +313,7 @@ fn perform(session: &mut Session, command: &str) -> Result<Input, ContentError> 
                 Err(error) => format!("invalid inspect command: {error}"),
             }
         }
-        _ => COMMANDS.into(),
+        _ => command_banner(session).into(),
     };
     Ok(Input::Output(output))
 }
@@ -246,8 +326,9 @@ pub(crate) fn scripted(
 ) -> Result<String, ContentError> {
     let mut session = Session::new(scenario, package).map_err(failure)?;
     let mut output = format!(
-        "{}\n\n{COMMANDS}\n",
-        session.view(View::Book).map_err(failure)?.text()
+        "{}\n\n{}\n",
+        session.view(View::Book).map_err(failure)?.text(),
+        command_banner(&session)
     );
     for command in commands {
         match perform(&mut session, command.trim())? {
@@ -268,7 +349,7 @@ pub(crate) fn run(args: PlayArgs) -> Result<(), ContentError> {
     if !io::stdin().is_terminal() {
         return Ok(());
     }
-    println!("\n{COMMANDS}");
+    println!("\n{}", command_banner(&session));
     let mut line = String::new();
     loop {
         print!("reservist> ");

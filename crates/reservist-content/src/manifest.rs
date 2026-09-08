@@ -190,6 +190,14 @@ impl ScenarioManifest {
                 "unsupported interaction contract",
             ));
         }
+        if let Some(contract) = self.value.get("campaign_contract")
+            && contract.as_str() != Some("campaign_m3")
+        {
+            return Err(ContentError::new(
+                "manifest_closure",
+                "unsupported campaign contract",
+            ));
+        }
         let selected = self.selected_entries()?;
         if selected.is_empty() {
             return Err(ContentError::new(

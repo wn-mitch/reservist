@@ -47,11 +47,32 @@ pub fn authority_content(scenario_dir: &Path) -> Result<Value, ContentError> {
             .is_some_and(|extension| extension == "json")
     });
     legal_paths.sort();
-    Ok(serde_json::json!({
-        "cast": reservist_core::canon::load_json(scenario_dir.join("cast/fomc_2006.json"))?,
-        "legal": legal_paths.into_iter().map(reservist_core::canon::load_json).collect::<Result<Vec<_>, _>>()?,
-        "staff": reservist_core::canon::load_json(scenario_dir.join("staff/work_2006.json"))?,
-    }))
+    let mut authority = serde_json::Map::new();
+    authority.insert(
+        "cast".into(),
+        reservist_core::canon::load_json(scenario_dir.join("cast/fomc_2006.json"))?,
+    );
+    authority.insert(
+        "legal".into(),
+        Value::Array(
+            legal_paths
+                .into_iter()
+                .map(reservist_core::canon::load_json)
+                .collect::<Result<Vec<_>, _>>()?,
+        ),
+    );
+    authority.insert(
+        "staff".into(),
+        reservist_core::canon::load_json(scenario_dir.join("staff/work_2006.json"))?,
+    );
+    let campaign_path = scenario_dir.join("campaign/campaign.json");
+    if campaign_path.try_exists()? {
+        authority.insert("campaign".into(), serde_json::json!({
+            "campaign": reservist_core::canon::load_json(campaign_path)?,
+            "reviews": reservist_core::canon::load_json(scenario_dir.join("campaign/reviews.json"))?,
+        }));
+    }
+    Ok(Value::Object(authority))
 }
 
 pub fn validate_scenario(dir: &Path) -> Result<FrozenScenario, ContentError> {
@@ -105,6 +126,27 @@ pub fn seal_scenario(dir: &Path, catalog_dir: &Path) -> Result<String, ContentEr
         })?;
         catalog_slice["stewardship_findings"] = serde_json::to_value(findings)
             .map_err(|error| ContentError::new("stewardship", error.to_string()))?;
+        catalog_slice["catalog_definition_hash"] =
+            crate::slice::catalog_definition_hash(&catalog_slice).into();
+    }
+    if manifest_value
+        .get("campaign_contract")
+        .and_then(Value::as_str)
+        == Some("campaign_m3")
+    {
+        for table in [
+            "campaign_definitions.csv",
+            "chairmanship_programs.csv",
+            "succession_rules.csv",
+            "campaign_reviews.csv",
+            "stewardship_findings.csv",
+        ] {
+            let rows = tables
+                .get(table)
+                .ok_or_else(|| ContentError::new("campaign", format!("catalog has no {table}")))?;
+            catalog_slice[table.trim_end_matches(".csv")] = serde_json::to_value(rows)
+                .map_err(|error| ContentError::new("campaign", error.to_string()))?;
+        }
         catalog_slice["catalog_definition_hash"] =
             crate::slice::catalog_definition_hash(&catalog_slice).into();
     }
@@ -234,6 +276,144 @@ fn validate_documents(
             "hash_mismatch",
             "authority content hash mismatch",
         ));
+    }
+    if manifest.value.get("campaign_contract").is_some() {
+        if manifest
+            .value
+            .get("campaign_contract")
+            .and_then(Value::as_str)
+            != Some("campaign_m3")
+        {
+            return Err(ContentError::new(
+                "campaign",
+                "unsupported campaign contract",
+            ));
+        }
+        let campaign = authority.get("campaign").ok_or_else(|| {
+            ContentError::new(
+                "campaign",
+                "campaign contract requires frozen campaign authority",
+            )
+        })?;
+        let initial = campaign
+            .get("campaign")
+            .and_then(|value| value.get("initial_dossier"))
+            .ok_or_else(|| {
+                ContentError::new("campaign", "campaign authority has no initial dossier")
+            })?;
+        if !initial
+            .get("program")
+            .and_then(|program| program.get("aspirations"))
+            .and_then(Value::as_array)
+            .is_some_and(|aspirations| !aspirations.is_empty())
+        {
+            return Err(ContentError::new(
+                "campaign",
+                "campaign initial program must be populated",
+            ));
+        }
+        let successor_programs = campaign
+            .get("campaign")
+            .and_then(|value| value.get("successor_programs"))
+            .and_then(Value::as_object)
+            .ok_or_else(|| {
+                ContentError::new("campaign", "campaign authority has no successor programs")
+            })?;
+        let reviews = campaign
+            .get("reviews")
+            .and_then(Value::as_array)
+            .ok_or_else(|| ContentError::new("campaign", "campaign authority has no reviews"))?;
+        if !reviews
+            .iter()
+            .any(|review| review.get("final_required").and_then(Value::as_bool) == Some(true))
+        {
+            return Err(ContentError::new(
+                "campaign",
+                "campaign endpoint requires a final review",
+            ));
+        }
+        for review in reviews {
+            if review
+                .get("capacity_owner_id")
+                .and_then(Value::as_str)
+                .is_none_or(str::is_empty)
+                || review
+                    .get("capacity_units")
+                    .and_then(Value::as_i64)
+                    .is_none_or(|value| value <= 0)
+                || review
+                    .get("capacity_duration_minutes")
+                    .and_then(Value::as_i64)
+                    .is_none_or(|value| value <= 0)
+            {
+                return Err(ContentError::new(
+                    "campaign",
+                    "campaign review has no concrete capacity consequence",
+                ));
+            }
+        }
+        let rules = campaign
+            .get("campaign")
+            .and_then(|value| value.get("succession_rules"))
+            .and_then(Value::as_array)
+            .ok_or_else(|| {
+                ContentError::new("campaign", "campaign authority has no succession rules")
+            })?;
+        for event in tape
+            .get("events")
+            .and_then(Value::as_array)
+            .into_iter()
+            .flatten()
+            .filter(|event| {
+                event.get("work_kind").and_then(Value::as_str) == Some("campaign.succession")
+            })
+        {
+            let payload = event.get("payload").ok_or_else(|| {
+                ContentError::new("campaign", "campaign succession has no payload")
+            })?;
+            let rule_id = payload
+                .get("rule_id")
+                .and_then(Value::as_str)
+                .ok_or_else(|| {
+                    ContentError::new("campaign", "campaign succession has no rule id")
+                })?;
+            let cause = payload
+                .get("cause")
+                .and_then(Value::as_str)
+                .ok_or_else(|| ContentError::new("campaign", "campaign succession has no cause"))?;
+            let successor = payload
+                .get("successor_id")
+                .and_then(Value::as_str)
+                .ok_or_else(|| {
+                    ContentError::new("campaign", "campaign succession has no successor")
+                })?;
+            if !successor_programs
+                .get(successor)
+                .and_then(|program| program.get("aspirations"))
+                .and_then(Value::as_array)
+                .is_some_and(|aspirations| !aspirations.is_empty())
+            {
+                return Err(ContentError::new(
+                    "campaign",
+                    format!("campaign successor has no populated program: {successor}"),
+                ));
+            }
+            if !rules.iter().any(|rule| {
+                rule.get("rule_id").and_then(Value::as_str) == Some(rule_id)
+                    && rule.get("cause").and_then(Value::as_str) == Some(cause)
+                    && rule
+                        .get("eligible_successor_ids")
+                        .and_then(Value::as_array)
+                        .is_some_and(|ids| ids.iter().any(|id| id.as_str() == Some(successor)))
+            }) {
+                return Err(ContentError::new(
+                    "campaign",
+                    format!(
+                        "campaign succession event does not match a lawful frozen rule: {rule_id}"
+                    ),
+                ));
+            }
+        }
     }
     manifest.validate_catalog(catalog_slice)?;
     manifest.validate_hash()?;

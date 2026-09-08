@@ -1,0 +1,2 @@
+review_id,review_version,chairmanship_id,timing_boundary,access_boundary,evidence_refs,dissent_refs,confidence_refs,disposition_vocabulary,capacity_reservation_id,capacity_owner_id,capacity_units,capacity_duration_minutes,provenance
+review.m3.final,1,chairmanship.campaign.mvp_2006_continuity.8,2006-12-31T17:00:00-05:00,chair_disclosed,review.evidence.final,NONE,confidence.authored,accept|accept_with_chair_response|request_revision|accept_with_supplemental_review,capacity.review.final,staff.us.federal_reserve.monetary_affairs,1,1440,doc:design.campaign.review-and-finalization

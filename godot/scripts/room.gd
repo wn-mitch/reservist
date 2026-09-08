@@ -144,11 +144,60 @@ func _build_controls(view_data: Dictionary) -> void:
             _add_button("Advance to next calendar boundary", func() -> void: _submit({"op": "advance"}))
             _add_interruption_controls(view_data)
         "review":
-            _add_button("Compute extradiegetic scorecard", func() -> void: _submit({"op": "accept_review"}))
+            _add_review_controls(view_data)
         "routing":
             _add_routing_controls(view_data)
         "scorecard", "wire":
             _add_note("This room presents attributed, player-safe records only.")
+
+func _add_review_controls(view_data: Dictionary) -> void:
+    var campaign: Variant = view_data.get("campaign")
+    if not campaign is Dictionary:
+        _add_button("Compute extradiegetic scorecard", func() -> void: _submit({"op": "accept_review"}))
+        return
+    if campaign.get("terminal", false):
+        _add_note("The campaign is finalized. Gameplay commands are closed.")
+        return
+    var reviews: Array = campaign.get("reviews", [])
+    if reviews.is_empty():
+        _add_note("No disclosed campaign review has reached its timing boundary.")
+        return
+    for review in reviews:
+        if review.get("disposition") != null:
+            continue
+        var review_id: String = review.get("review_id", "")
+        var review_version: int = review.get("review_version", 0)
+        _add_separator("Disposition: %s v%s" % [review_id, review_version])
+        _add_button("Accept review", func() -> void: _submit({
+            "op": "dispose_review",
+            "review_id": review_id,
+            "review_version": review_version,
+            "disposition": "accept",
+            "response_record_id": null,
+        }))
+        var response := LineEdit.new()
+        response.placeholder_text = "Chair response record ID"
+        controls.add_child(response)
+        _add_button("Accept with Chair response", func() -> void: _submit({
+            "op": "dispose_review",
+            "review_id": review_id,
+            "review_version": review_version,
+            "disposition": "accept_with_chair_response",
+            "response_record_id": response.text,
+        }))
+        _add_button("Request evidence-backed revision", func() -> void: _submit({
+            "op": "dispose_review",
+            "review_id": review_id,
+            "review_version": review_version,
+            "disposition": "request_revision",
+            "response_record_id": null,
+        }))
+        _add_button("Accept and commission supplemental review", func() -> void: _submit({
+            "op": "commission_supplemental_review",
+            "review_id": review_id,
+            "review_version": review_version,
+            "supplemental_review_id": "%s.supplemental.%s" % [review_id, review_version],
+        }))
 
 func _add_folder_controls(view_data: Dictionary) -> void:
     if view_data.get("status", "") != "OPEN":

@@ -3,6 +3,7 @@ extends RefCounted
 
 const M1_FIXTURE := "res://../scenarios/mvp_2006_cycle_m1"
 const M2_FIXTURE := "res://../scenarios/mvp_2006_cycle"
+const M3_FIXTURE := "res://../scenarios/mvp_2006_campaign_m3"
 const M1_VIEW_NAMES := ["book", "fomc", "operations", "statement", "wire", "review", "routing", "request"]
 const M2_VIEW_NAMES := M1_VIEW_NAMES + ["calendar"]
 const FORBIDDEN_KEYS := ["hidden_conditions", "opening_state", "canonical_registry", "inflation_persistence", "repo_obligation"]
@@ -232,6 +233,40 @@ static func assert_m2_interruption_close(session: Node) -> void:
     var closed := submit_action(session, {"op": "resolve_interruption", "interruption_id": interruption.get("interruption_id", ""), "choice": "close"})
     assert(closed.get("accepted", false), "Interruption closure must be explicit")
     assert(session.view("calendar").get("view", {}).get("interruption") == null, "Closed interruption must clear the active banner")
+
+static func assert_m3_campaign_boundary(session: Node) -> void:
+    var opening: Dictionary = session.view("review")
+    assert(opening.get("accepted", false), "M3 review projection must load")
+    var opening_campaign: Dictionary = opening.get("view", {}).get("campaign", {})
+    assert(not opening_campaign.is_empty(), "M3 review must expose a campaign summary")
+    assert(opening_campaign.get("reviews", []).is_empty(), "Future review leaked before its timing boundary")
+    for step in range(40):
+        var campaign: Dictionary = session.view("review").get("view", {}).get("campaign", {})
+        if campaign.get("endpoint_reached", false):
+            break
+        var advanced := submit_action(session, {"op": "advance"})
+        assert(advanced.get("accepted", false), "M3 campaign advance must be accepted")
+        assert(advanced.get("advanced", false), "M3 endpoint became unreachable")
+    var review: Dictionary = session.view("review")
+    var campaign: Dictionary = review.get("view", {}).get("campaign", {})
+    assert(campaign.get("chairmanship_count", 0) == 8, "All seven succession causes must create dossiers")
+    assert(campaign.get("reviews", []).size() == 1, "Final disclosed review must appear at the endpoint")
+    _assert_without_forbidden_keys(review)
+    var disposed := submit_action(session, {
+        "op": "dispose_review",
+        "review_id": "review.m3.final",
+        "review_version": 1,
+        "disposition": "accept",
+        "response_record_id": null,
+    })
+    assert(disposed.get("accepted", false), "M3 final review disposition must be accepted")
+    assert(disposed.get("projection", {}).get("view", {}).get("total", 0) == 3, "M3 final finding must score once")
+    var terminal: Dictionary = session.view("review")
+    assert(terminal.get("view", {}).get("campaign", {}).get("terminal", false), "Final disposition must terminalize M3")
+    assert(terminal.get("available_verbs", []).is_empty(), "Terminal campaign must expose no gameplay verbs")
+    var rejected := submit_action(session, {"op": "advance"})
+    assert(not rejected.get("accepted", true), "Terminal campaign accepted a gameplay command")
+    assert(rejected.get("category", "") == "campaign_terminal", "Terminal rejection category changed")
 
 static func _advance_until_interruption(session: Node) -> Dictionary:
     while true:

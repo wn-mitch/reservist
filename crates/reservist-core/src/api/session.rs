@@ -100,8 +100,27 @@ impl Session {
         &self.runtime.scenario.scenario_hash
     }
     pub fn available_verbs(&self) -> Result<Vec<String>, Rejected> {
-        if self.runtime.calendar.is_some() {
+        if self
+            .interaction
+            .campaign
+            .as_ref()
+            .is_some_and(|campaign| campaign.terminal)
+        {
+            return Ok(Vec::new());
+        }
+        if self
+            .interaction
+            .campaign
+            .as_ref()
+            .is_some_and(|campaign| campaign.endpoint_reached)
+        {
             return Ok(vec![
+                "dispose_review".into(),
+                "commission_supplemental_review".into(),
+            ]);
+        }
+        if self.runtime.calendar.is_some() {
+            let mut verbs = vec![
                 "advance",
                 "inspect",
                 "open_folder",
@@ -111,14 +130,20 @@ impl Session {
                 "close_without_handoff",
                 "restore_folder",
                 "resolve_interruption",
-                "accept_review",
                 "propose",
                 "request_follow_up",
                 "select_claims",
-            ]
-            .into_iter()
-            .map(Into::into)
-            .collect());
+            ];
+            if self.interaction.campaign.is_some() {
+                verbs.extend([
+                    "revise_chairmanship_program",
+                    "dispose_review",
+                    "commission_supplemental_review",
+                ]);
+            } else {
+                verbs.push("accept_review");
+            }
+            return Ok(verbs.into_iter().map(Into::into).collect());
         }
         self.runtime
             .available_verbs(None)
@@ -137,7 +162,12 @@ impl Session {
                 StatementView::from_runtime(&self.runtime).map(Projection::Statement)
             }
             View::Wire => WireView::from_runtime(&self.runtime).map(Projection::Wire),
-            View::Review => ReviewView::from_runtime(&self.runtime).map(Projection::Review),
+            View::Review => ReviewView::from_runtime(&self.runtime).and_then(|mut view| {
+                if let Some(campaign) = &self.interaction.campaign {
+                    view.attach_campaign(campaign, &self.current_time())?;
+                }
+                Ok(Projection::Review(Box::new(view)))
+            }),
             View::Routing => self.routing_view().map(Projection::Routing),
             View::Calendar => self.calendar_view().map(Projection::Calendar),
             View::Folder => self.folder_view().map(Projection::Folder),

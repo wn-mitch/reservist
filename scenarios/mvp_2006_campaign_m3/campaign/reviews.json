@@ -1,0 +1,23 @@
+[
+  {
+    "review_id": "review.m3.final",
+    "review_version": 1,
+    "owner_chairmanship_id": "chairmanship.campaign.mvp_2006_continuity.8",
+    "disclosed": true,
+    "final_required": true,
+    "evidence_refs": ["review.evidence.final"],
+    "dissent_refs": [],
+    "confidence_refs": ["confidence.authored"],
+    "timing_boundary": "2006-12-31T17:00:00-05:00",
+    "access_boundary": "chair_disclosed",
+    "capacity_reservation_id": "capacity.review.final",
+    "capacity_owner_id": "staff.us.federal_reserve.monetary_affairs",
+    "capacity_units": 1,
+    "capacity_duration_minutes": 1440,
+    "capacity_releases_at": null,
+    "disposed": null,
+    "disposition_history": [],
+    "response_record_id": null,
+    "supplemental_review_id": null
+  }
+]

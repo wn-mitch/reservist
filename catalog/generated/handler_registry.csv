@@ -11,3 +11,4 @@ audience-reception,audience.receive_artifact,60,state.communication;state.report
 monitoring-review,monitoring.review,70,state.monitoring,state.monitoring;ledger.witness,,,,
 commitment-expiry,commitment.expire,80,state.commitments,state.commitments;state.monitoring;state.staff.capacity;ledger.witness,,,,
 next-morning-book,morning_book.next_cycle,90,state.record.us.federal_reserve.policy_package.records;state.market.us.treasury.secondary.clearing,state.morning_book;state.staff.review;state.player_records;ledger.witness,,,,
+campaign-continuity,campaign.succession;campaign.endpoint,90,campaign.frozen_contract,ledger.witness,,,,

@@ -1,0 +1,41 @@
+{
+  "campaign_id": "campaign.mvp_2006_continuity",
+  "endpoint": "2006-12-31T17:00:00-05:00",
+  "initial_dossier": {
+    "chairmanship_id": "chairmanship.mvp_2006_continuity.1",
+    "chair_person_id": "person.us.ben_bernankey",
+    "office_id": "office.us.federal_reserve.fomc_chair",
+    "started_at": "2006-03-27T07:00:00-05:00",
+    "ended_at": null,
+    "inherited_official_refs": ["state.office.us.federal_reserve.fomc_chair.tenure"],
+    "incoming_information_refs": ["record.forecast"],
+    "program": {
+      "program_id": "program.chair.initial",
+      "revision_id": "revision.m3.initial",
+      "aspirations": ["aspiration.price_stability", "aspiration.employment"],
+      "inherited_project_ids": [],
+      "prior_claim_ids": [],
+      "relationship_ids": [],
+      "commitment_refs": []
+    },
+    "program_history": []
+  },
+  "succession_rules": [
+    {"rule_id":"rule.m3.resignation","office_id":"office.us.federal_reserve.fomc_chair","cause":"resignation","eligible_successor_ids":["person.us.successor.resignation"]},
+    {"rule_id":"rule.m3.incapacity","office_id":"office.us.federal_reserve.fomc_chair","cause":"incapacity","eligible_successor_ids":["person.us.successor.incapacity"]},
+    {"rule_id":"rule.m3.death","office_id":"office.us.federal_reserve.fomc_chair","cause":"death","eligible_successor_ids":["person.us.successor.death"]},
+    {"rule_id":"rule.m3.removal","office_id":"office.us.federal_reserve.fomc_chair","cause":"removal","eligible_successor_ids":["person.us.successor.removal"]},
+    {"rule_id":"rule.m3.failed_renomination","office_id":"office.us.federal_reserve.fomc_chair","cause":"failed_renomination","eligible_successor_ids":["person.us.successor.failed_renomination"]},
+    {"rule_id":"rule.m3.term_expiry","office_id":"office.us.federal_reserve.fomc_chair","cause":"term_expiry","eligible_successor_ids":["person.us.successor.term_expiry"]},
+    {"rule_id":"rule.m3.statutory_reorganization","office_id":"office.us.federal_reserve.fomc_chair","cause":"statutory_reorganization","eligible_successor_ids":["person.us.successor.statutory_reorganization"]}
+  ],
+  "successor_programs": {
+    "person.us.successor.resignation": {"program_id":"program.chair.resignation","revision_id":"revision.m3.resignation.initial","aspirations":["aspiration.price_stability"],"inherited_project_ids":[],"prior_claim_ids":[],"relationship_ids":[],"commitment_refs":[]},
+    "person.us.successor.incapacity": {"program_id":"program.chair.incapacity","revision_id":"revision.m3.incapacity.initial","aspirations":["aspiration.employment"],"inherited_project_ids":[],"prior_claim_ids":[],"relationship_ids":[],"commitment_refs":[]},
+    "person.us.successor.death": {"program_id":"program.chair.death","revision_id":"revision.m3.death.initial","aspirations":["aspiration.price_stability"],"inherited_project_ids":[],"prior_claim_ids":[],"relationship_ids":[],"commitment_refs":[]},
+    "person.us.successor.removal": {"program_id":"program.chair.removal","revision_id":"revision.m3.removal.initial","aspirations":["aspiration.employment"],"inherited_project_ids":[],"prior_claim_ids":[],"relationship_ids":[],"commitment_refs":[]},
+    "person.us.successor.failed_renomination": {"program_id":"program.chair.failed_renomination","revision_id":"revision.m3.failed_renomination.initial","aspirations":["aspiration.price_stability"],"inherited_project_ids":[],"prior_claim_ids":[],"relationship_ids":[],"commitment_refs":[]},
+    "person.us.successor.term_expiry": {"program_id":"program.chair.term_expiry","revision_id":"revision.m3.term_expiry.initial","aspirations":["aspiration.employment"],"inherited_project_ids":[],"prior_claim_ids":[],"relationship_ids":[],"commitment_refs":[]},
+    "person.us.successor.statutory_reorganization": {"program_id":"program.chair.statutory_reorganization","revision_id":"revision.m3.statutory_reorganization.initial","aspirations":["aspiration.price_stability","aspiration.employment"],"inherited_project_ids":[],"prior_claim_ids":[],"relationship_ids":[],"commitment_refs":[]}
+  }
+}

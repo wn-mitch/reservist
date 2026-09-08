@@ -46,4 +46,19 @@ pub enum CommandAction {
         choice: String,
     },
     AcceptReview,
+    ReviseChairmanshipProgram {
+        program_id: String,
+        revision_id: String,
+    },
+    DisposeReview {
+        review_id: String,
+        review_version: u32,
+        disposition: crate::campaign::ReviewDisposition,
+        response_record_id: Option<String>,
+    },
+    CommissionSupplementalReview {
+        review_id: String,
+        review_version: u32,
+        supplemental_review_id: String,
+    },
 }
