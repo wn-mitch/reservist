@@ -32,10 +32,18 @@ pub fn import_inventory(catalog_dir: &Path) -> Result<usize, ContentError> {
 pub fn generate_evidence(catalog_dir: &Path) -> Result<usize, ContentError> {
     let tables = catalog::validate_catalog(catalog_dir).map_err(catalog_error)?;
     let generated = catalog_dir.join("generated");
+    let generated_agent = generated.join("AGENTS.md");
+    let agent_contents = generated_agent
+        .try_exists()?
+        .then(|| fs::read(&generated_agent))
+        .transpose()?;
     if generated.try_exists()? {
         fs::remove_dir_all(&generated)?;
     }
     fs::create_dir_all(&generated)?;
+    if let Some(contents) = agent_contents {
+        fs::write(generated.join("AGENTS.md"), contents)?;
+    }
     write_csv(
         &generated.join("gaps.csv"),
         &["severity", "category", "record_id", "issue"],
@@ -692,7 +700,11 @@ fn write_completeness(
         .join("scenarios");
     if scenarios.try_exists()? {
         for entry in fs::read_dir(scenarios)? {
-            let path = entry?.path().join("manifest.json");
+            let entry = entry?;
+            if !entry.file_type()?.is_dir() {
+                continue;
+            }
+            let path = entry.path().join("manifest.json");
             if path.try_exists()? {
                 let value: serde_json::Value = serde_json::from_str(&fs::read_to_string(path)?)?;
                 manifests.push(format!(

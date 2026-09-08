@@ -10,4 +10,10 @@ Known deadlines and required authorizations always surface. Other material compe
 
 Staff and the chief may miss connections, delay uncertain evidence, or prioritize the wrong accessible item without becoming generally incompetent. The player may change monitoring obligations, doctrine, staffing, and priorities. Those choices alter future collection and routing, not hidden truth.
 
+Monitoring may follow products, routes, institutions, claims, prices,
+commitments, or hypotheses. Highlighting, linking, watching, or casually
+sharing delivered evidence may steer later staff attention, while a
+commissioned analysis or meeting consumes its owner's real capacity. Neither
+operation grants new access or reveals canonical significance.
+
 Observation events may create dated artifacts without stopping play. Interruptions occur only through observed or committed conditions. New material is announced separately and never silently replaces an open folder's settled context. The archive retains all delivered artifacts and routing history for later inspection.

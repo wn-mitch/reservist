@@ -10,4 +10,9 @@ Run knowledge comes only from delivered evidence, records, participants, and aut
 
 Practical cards teach what an instrument immediately does and which mechanisms may matter. They do not identify the correct decision or expose the simulator's future draw. Postmortems distinguish what was known, knowable, unavailable, and learned later.
 
+Scenario-family learning compares causal structures rather than raw outcome
+levels. A useful explanation distinguishes production, route, contract,
+settlement, financial, belief, and evidence channels and states which
+institutionally obtainable observations would separate plausible regimes.
+
 Learning succeeds when players can explain their information position, identify the evidence that distinguished plausible regimes, and transfer the lesson to a sibling or holdout fixture. Testing preferred outcomes or memorized package names is insufficient. Educational prose is presentation content, has no causal effect, and does not alter replay identity.

@@ -12,11 +12,11 @@ Activities reserve concrete dated capacity and may complete now or schedule late
 
 Briefings summarize trends and accumulated changes. Genuine surprise remains possible when evidence was inaccessible, misleading, unmonitored, or not institutionally escalated.
 
-Global time uses one canonical UTC event instant. Institutions, venues, assets,
-and player offices interpret that instant through local calendars, holidays,
+Canonical event time is one UTC instant. Institutions, venues, assets, and
+player offices interpret it through versioned local calendars, holidays,
 sessions, information cutoffs, and settlement rules. Daily accounting and
 physical settlement may coexist with timestamped intraday announcements,
-market clearings, incidents, and interruptions. Long-horizon processes update
-at their declared natural cadence rather than recomputing merely because the
-global clock advanced. A later player role changes its local view and briefing
-cutoff, not the world's clock or causal order.
+clearings, incidents, and interruptions. Long-horizon processes update at
+their declared natural cadence rather than whenever the global clock advances.
+A later player role changes its local view and briefing cutoff, never the
+world's clock or causal order.

@@ -11,4 +11,3 @@ Every documentation directory has a local `AGENTS.md` linking every immediate ch
 - [Build review](BUILD_REVIEW.md)
 - [Canonical design tree](design/AGENTS.md)
 - [Build tree](build/AGENTS.md)
-- [Proposal tree](proposals/AGENTS.md)

@@ -8,6 +8,13 @@ Relationship records describe durable composition, scope, affiliation, ownership
 
 Transmission records describe values crossing canonical-owner boundaries. Each names producer owner and transition, stable output ID, consumer owner and input ID, schema, unit, direction, effective delay, capacity or saturation, persistence, provenance, witness, selected provider, and fallback behavior. Conserved states cross through balanced transactions; conditions and observations still require owner-specific transitions.
 
+Transport and delivery compositions retain separate nominations, capacity
+admission, custody, insurance and finance eligibility, security clearance,
+passage, destination acceptance, unloading, title, payment, and settlement
+transitions. A failure leaves an attributable queue, delay, cost, diversion,
+breach, default, or unmet demand at the responsible stage; one reduced flow
+cannot erase which condition caused it.
+
 The manifest closes both registries for every selected entry. Missing endpoints, units, owners, witnesses, or provider bindings are structural failures. Generic `affects` edges and prose-only causal descriptions are invalid substitutes.
 
 A transmission may be one-to-one, distributed, aggregated, delayed, or conditional, but its semantics are typed and reviewable. Fallback must preserve the declared receiving contract or state an honest loss. Relationship changes and transmission effects retain separate histories so structure cannot be mistaken for causation.

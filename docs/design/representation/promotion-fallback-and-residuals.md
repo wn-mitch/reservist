@@ -10,4 +10,11 @@ Every rich entry declares a contract-compatible aggregate, cohort, or boundary f
 
 Named-plus-residual accounting preserves totals when an institution, firm, facility, sovereign component, or material personal account is promoted. Rich representation replaces its declared share of the aggregate; it does not layer on top. Demotion or fallback reconciles owned stocks, commitments, queues, and pending effects back into the residual without duplication or disappearance.
 
+For M4 world profiles, every rich sovereign component maps to a prevalidated
+coarse component in the same sovereign bundle. Demotion reconciles accounts,
+stocks, relationships, commitments, queues, observations, and pending effects
+at a deterministic commit boundary and records the fidelity lost. Play may
+continue through that declared coarse model; the runtime may not choose a
+nearest approximation or invent behavior after initialization.
+
 Promotion never occurs dynamically during play. Presentation may foreground any existing entry. A missing required rich contract is a content failure, not permission to substitute a different subject or silently drop a channel.
