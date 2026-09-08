@@ -1,0 +1,166 @@
+RESERVIST FED CHAIR HEADSHOT PROMPTS
+
+This file records every prompt submitted during the headshot work. For batches,
+the submitted prompt was the shared base followed by the relevant subject block.
+
+
+1. INITIAL SIX-PORTRAIT BATCH (SUCCESSFUL)
+
+Shared base:
+
+Use case: stylized-concept
+Asset type: square character headshot for a political crisis-management video game
+Style/medium: gritty late-1980s Eastern Bloc border-checkpoint pixel-art portrait; low-resolution hand-pixeled aesthetic; blocky clusters; restrained dithering; angular shadows; muted olive, tobacco brown, dirty beige, charcoal, and desaturated rust; austere bureaucratic realism
+Composition/framing: exact 1:1 square; centered front-facing head-and-shoulders passport/dossier portrait; subject fills roughly 75 percent of frame; neutral eye-level viewpoint; identical visual scale suitable for a matched character roster
+Scene/backdrop: plain worn institutional wall with subtle paper-like grime, no objects
+Lighting/mood: flat overhead fluorescent light with stern high-contrast facial planes; serious and unsmiling
+Constraints: one subject only; anthropomorphic animal statesman in a conservative dark suit, white shirt, and subdued tie; convincingly merge the named animal anatomy with recognizable facial, hair, eyewear, and age cues of the referenced real Federal Reserve chair; original game art; no photorealism; no gradients; no modern glossy rendering; no text, letters, insignia, flags, logos, borders, UI, watermark, or signature
+
+Alan Greenspaniel subject block:
+
+Primary request: Alan Greenspaniel — an anthropomorphic spaniel interpretation of Alan Greenspan
+Subject details: elderly male spaniel with Greenspan's narrow face, large dark square eyeglasses, thinning gray hair, long drooping spaniel ears, slightly jowly muzzle, guarded analytical expression
+
+Janet Jackrabbit subject block:
+
+Primary request: Janet Jackrabbit — an anthropomorphic jackrabbit interpretation of Janet Yellen
+Subject details: elderly female jackrabbit with Yellen's short light-gray bob haircut, softly rounded face, small oval eyeglasses, tall upright rabbit ears integrated behind the hair, composed observant expression
+
+Jerome Owl subject block:
+
+Primary request: Jerome Owl — an anthropomorphic owl interpretation of Jerome Powell
+Subject details: older male owl with Powell's swept-back silver hair, broad forehead, dark brows, subtle wire-rim glasses, small hooked beak integrated naturally into the face, steady sober expression; restrained feather texture
+
+Ben Bernankey subject block:
+
+Primary request: Ben Bernankey — an anthropomorphic monkey interpretation of Ben Bernanke
+Subject details: older male monkey with Bernanke's bald crown, close gray beard, rectangular eyeglasses, prominent ears, intelligent slightly weary expression; restrained brown-gray fur
+
+Kevin Boarsh subject block:
+
+Primary request: Kevin Boarsh — an anthropomorphic wild boar interpretation of Kevin Warsh
+Subject details: middle-aged male boar with Warsh's neat dark hair, long angular face, strong brows, compact boar snout and small lower tusks, intense hawkish expression; dark bristled fur
+
+Paul Vulture subject block:
+
+Primary request: Paul Vulture — an anthropomorphic vulture interpretation of Paul Volcker
+Subject details: elderly towering-looking male vulture with Volcker's bald head, heavy brows, deep-set eyes, long severe face, large hooked beak, rumpled grave expression; sparse pale neck feathers and charcoal plumage
+
+
+2. FIRST ANIMAL-FIRST REVISION BATCH (SUBMITTED, THEN INTERRUPTED)
+
+Shared base:
+
+Use case: style-transfer
+Asset type: square character headshot for a political crisis-management video game
+Primary request: revise the supplied portrait so the character reads as an anthropomorphic animal first, not a human wearing animal prosthetics
+Style/medium: preserve the gritty late-1980s Eastern Bloc checkpoint pixel-art style, blocky pixel clusters, restrained dithering, muted olive/tobacco/beige/charcoal/rust palette, and austere bureaucratic mood
+Composition/framing: preserve the exact 1:1 square, centered front-facing head-and-shoulders dossier framing, visual scale, institutional wall, dark suit, white shirt, subdued tie, and flat overhead lighting
+Constraints: use the animal's skull, face planes, eyes, muzzle or beak, fur or feathers, and head silhouette as the anatomical base; retain only a few unmistakable human identifiers through hair styling, glasses, age, brows, and expression; one subject; no text, letters, insignia, flags, logos, border, UI, watermark, signature, photorealism, gradients, or glossy rendering
+
+Alan Greenspaniel subject block:
+
+Subject: Alan Greenspaniel, an elderly spaniel statesman recognizable as Alan Greenspan
+Targeted change: make the entire head unmistakably canine: fur must cover the forehead and cheeks; lengthen and define a genuine spaniel muzzle; use canine eye sockets and brow planes; keep the drooping ears anatomically integrated. Preserve the large dark square glasses, thinning gray crown fur arranged like Greenspan's hair, narrow elderly proportions, and guarded analytical gaze. Remove exposed human skin and human nose anatomy. Keep him serious, not cute or cartoonish.
+
+Janet Jackrabbit subject block:
+
+Subject: Janet Jackrabbit, an elderly jackrabbit stateswoman recognizable as Janet Yellen
+Targeted change: make the entire head unmistakably lagomorph: fine pale rabbit fur across forehead and cheeks; longer rabbit muzzle; rabbit nose and mouth; subtly side-set rabbit eye anatomy; tall ears naturally joined to the skull. Preserve the short light-gray bob as a stylized tuft layered over the fur, small oval glasses, softly rounded silhouette, age, and composed observant gaze. Remove human skin, human nose, lipstick, and human jaw anatomy. Keep her dignified, not cute or mascot-like.
+
+Jerome Owl subject block:
+
+Subject: Jerome Owl, an older owl statesman recognizable as Jerome Powell
+Targeted change: make the head fully avian: a complete owl facial disc of layered gray-brown feathers; owl eye placement and brow ridge; compact hooked beak emerging naturally from feathers; no human cheeks, ears, nose, lips, or skin. Translate Powell's swept-back silver hair into a distinctive swept feather crest, and preserve the broad forehead impression, dark brows, subtle wire-rim glasses, and steady sober gaze. Keep the owl dignified and grounded, not cute or supernatural.
+
+Kevin Boarsh subject block:
+
+Subject: Kevin Boarsh, a middle-aged wild boar statesman recognizable as Kevin Warsh
+Targeted change: push the existing head modestly further toward genuine wild-boar anatomy: coarse dark bristles must cover every facial plane; broaden the long boar snout; use small deep-set boar eyes, heavier jowls, and naturally rooted tusks; reduce the human forehead, human eyelids, and styled human hairline. Preserve Warsh's neat swept dark crest as groomed bristles, long angular silhouette, strong brows, youth relative to the others, and intense hawkish gaze. Keep the tusks small and the expression controlled, not monstrous or demonic.
+
+Paul Vulture subject block:
+
+Subject: Paul Vulture, an elderly vulture statesman recognizable as Paul Volcker
+Targeted change: rebuild the entire head from vulture anatomy. Replace all human skin, scalp, ears, nose, mouth, and cheek structure with a fully feathered dignified vulture head: charcoal and pale-gray crown feathers, soft layered cheek feathers, calm deep-set avian eyes, and a smaller rounded hooked beak proportionate to the face. Preserve only Volcker's heavy brows expressed through feather ridges, large dark glasses, tall narrow silhouette, age, stooped weary posture, and grave rumpled demeanor. The result must feel elderly, intelligent, tired, and humane—not predatory, skeletal, angry, frightening, or horror-like.
+
+
+3. SECOND ANIMAL-FIRST REVISION BATCH (SUCCESSFUL)
+
+Shared base:
+
+Use case: style-transfer
+Asset type: square character headshot for a political crisis-management video game
+Primary request: revise the supplied portrait so the character reads as an anthropomorphic animal first, not a human wearing animal prosthetics
+Style/medium: preserve the gritty late-1980s Eastern Bloc checkpoint pixel-art style, blocky pixel clusters, restrained dithering, muted olive/tobacco/beige/charcoal/rust palette, and austere bureaucratic mood
+Composition/framing: preserve the exact 1:1 square, centered front-facing head-and-shoulders dossier framing, visual scale, institutional wall, dark suit, white shirt, subdued tie, and flat overhead lighting
+Anatomy rule: build the portrait entirely from species-native anatomy and silhouette. Do not place a literal human hairstyle, human scalp, human skin, human ears, human nose, or human facial planes on the animal. Express identity through species-native fur, plumage, markings, glasses, age, posture, and gaze.
+Constraints: one subject; serious political character, not a cute mascot; no text, letters, insignia, flags, logos, border, UI, watermark, signature, photorealism, gradients, or glossy rendering
+
+Alan Greenspaniel subject block:
+
+Subject: Alan Greenspaniel, an elderly spaniel statesman recognizable as Alan Greenspan
+Targeted change: use a complete elderly spaniel head with fur covering the entire crown, forehead, and cheeks; a long genuine canine muzzle; canine eye sockets; and integrated drooping ears. Translate Greenspan's thinning gray hair into sparse, short gray crown fur with a subtly receding color pattern—not strands of human hair or a bald human forehead. Preserve large dark square glasses, narrow elderly proportions, heavy brows suggested by darker fur, and a guarded analytical gaze. Keep the dog sober and slightly jowly.
+
+Janet Jackrabbit subject block:
+
+Subject: Janet Jackrabbit, an elderly jackrabbit stateswoman recognizable as Janet Yellen
+Targeted change: use a complete pale jackrabbit head with fine fur across every facial plane, a longer rabbit muzzle, rabbit nose and mouth, slightly side-set eyes, and tall ears naturally joined to the skull. Translate Yellen's short light-gray bob into a rounded mantle of denser pale rabbit fur around the crown and cheek line—not human hair or a wig. Preserve small oval glasses, softly rounded silhouette, age, and composed observant gaze. No lipstick or human jaw.
+
+Jerome Owl subject block:
+
+Subject: Jerome Owl, an older owl statesman recognizable as Jerome Powell
+Targeted change: use a complete owl head with a layered gray-brown facial disc, avian eye placement, feathered brow ridge, compact hooked beak, and no human cheeks or skin. Translate Powell's swept-back silver hair into swept silver-gray crown plumage following the skull—not human hair. Preserve the broad forehead impression, dark feather brows, subtle wire-rim glasses, and steady sober gaze. Dignified and grounded, not supernatural.
+
+Kevin Boarsh subject block:
+
+Subject: Kevin Boarsh, a middle-aged wild boar statesman recognizable as Kevin Warsh
+Targeted change: use genuine wild-boar anatomy with coarse dark bristles covering every facial plane, a broad long snout, small deep-set boar eyes, heavy jowls, and naturally rooted small tusks. Translate Warsh's neat swept dark hairstyle into groomed directional crown bristles—not human hair or a human hairline. Preserve the long angular silhouette, strong brow expressed in bristles, relative youth, and controlled hawkish gaze. Not monstrous or demonic.
+
+Paul Vulture subject block:
+
+Subject: Paul Vulture, an elderly vulture statesman recognizable as Paul Volcker
+Targeted change: rebuild the head completely as a dignified elderly vulture with charcoal and pale-gray crown plumage, layered cheek feathers, calm deep-set avian eyes, and a small rounded hooked beak. Use no bald human scalp or human facial skin. Express Volcker's heavy brows through feather ridges; preserve large dark glasses, tall narrow silhouette, age, stooped weary posture, and grave rumpled demeanor. He must feel intelligent, tired, and humane—not predatory, skeletal, angry, frightening, or horror-like.
+
+
+4. KEVIN BOARSH CROWN CORRECTION (SUCCESSFUL)
+
+Use case: precise-object-edit
+Asset type: square character headshot for a political crisis-management video game
+Primary request: change only Kevin Boarsh's crown covering. Remove the smooth human pompadour and human hairline completely. Replace it with short, coarse, species-native wild-boar bristles continuous with the facial fur, slightly longer and subtly swept on the crown but unmistakably an animal's natural coat. The bristles must share the same texture, spacing, pixel treatment, and dark-brown coloring as the cheek and forehead fur. There must be no human hairstyle, coiffure, scalp, part, gelled wave, or wig silhouette.
+Constraints: preserve the wild-boar face, snout, tusks, eyes, ears, expression, suit, tie, pose, exact square composition, lighting, background, muted palette, and gritty checkpoint pixel-art style unchanged; one subject; no text, logos, watermark, or UI.
+
+
+5. PAUL VULTURE CLOTHING CORRECTION (SUCCESSFUL)
+
+Use case: precise-object-edit
+Asset type: square character headshot for a political crisis-management video game
+Primary request: change only Paul Vulture's clothing and neck-to-collar transition. Remove the frilly white feather ruff, decorative-looking feather tufts, layered scarf-like neck plumage, and oversized white collar effect. Give him the same restrained bureaucratic clothing treatment as the other portraits: plain charcoal suit jacket, simple off-white dress shirt with a modest conventional collar, and subdued dark rust tie. Let the charcoal neck feathers end cleanly and naturally above the shirt collar with a narrow, tidy silhouette.
+Constraints: preserve Paul Vulture's head, facial feathers, glasses, eyes, beak, expression, age, pose, proportions, background, lighting, muted palette, exact square framing, and gritty checkpoint pixel-art rendering unchanged. No frills, ruff, scarf, cravat, decorative trim, extra garments, text, logo, UI, watermark, or signature.
+
+
+6. PAUL VULTURE CIGAR ADDITION (SUCCESSFUL)
+
+Use case: precise-object-edit
+Asset type: square character headshot for a political crisis-management video game
+Primary request: add Paul Volcker's iconic cigar to Paul Vulture. Place one short, thick, dark-brown cigar held naturally and securely at the right corner of his hooked beak, angled slightly downward. The cigar should be clearly recognizable but restrained, with a small dull ember and only the faintest wisp of smoke.
+Constraints: change only by adding the cigar. Preserve the entire vulture head, feather anatomy, glasses, eyes, beak shape, tired humane expression, plain charcoal suit, conventional off-white shirt collar, rust tie, pose, background, lighting, exact square framing, muted colors, and gritty checkpoint pixel-art style unchanged. Do not reintroduce a feather ruff, frills, scarf, cravat, human skin, or human hair. No extra props, hands, text, logos, UI, watermark, or signature.
+
+
+7. SIX-PORTRAIT ENSEMBLE PROMPT (SUBMITTED, REJECTED BEFORE GENERATION)
+
+The image tool rejected this prompt because referenced_image_paths supports at
+most five source images. The delivered ensemble was then assembled
+deterministically from the six final portraits, so no generation prompt altered
+the framed lineup.
+
+Use case: compositing
+Asset type: landscape ensemble gallery image for a political crisis-management video game
+Input images: Image 1 Paul Vulture; Image 2 Alan Greenspaniel; Image 3 Ben Bernankey; Image 4 Janet Jackrabbit; Image 5 Jerome Owl; Image 6 Kevin Boarsh
+Primary request: create a formal chronological ensemble by placing all six supplied portraits, unchanged, into six separate small gilded picture frames
+Layout: exact 3-column by 2-row symmetrical grid. Top row left to right: Image 1 Paul Vulture, Image 2 Alan Greenspaniel, Image 3 Ben Bernankey. Bottom row left to right: Image 4 Janet Jackrabbit, Image 5 Jerome Owl, Image 6 Kevin Boarsh. Every character appears exactly once. Each frame has equal size, equal spacing, and matching portrait crop.
+Frames: narrow old gilt-wood frames with restrained carved corner details, worn gold leaf, thin dark inner bevel, and subtle age; dignified miniature institutional portrait frames, not ornate baroque objects
+Scene/backdrop: flat dark desaturated olive-green government-office wall with slight grime and age, matching the portraits' austere checkpoint-era world
+Style/medium: preserve the gritty late-1980s Eastern Bloc pixel-art style across the entire composite; blocky pixel clusters, restrained dithering, muted palette
+Lighting/mood: dim institutional gallery lighting with soft frame shadows, solemn and bureaucratic
+Critical invariants: reproduce the six supplied portraits faithfully without changing, redrawing, blending, swapping, duplicating, beautifying, or altering any face, animal species, glasses, hair/fur/plumage, expression, clothing, cigar, pose, or colors. Do not crop off ears or heads. Frames must not overlap portrait faces.
+Constraints: exactly six framed portraits; no seventh portrait; no group body scene; no text, names, plaques, numbers, flags, seals, logos, UI, watermark, or signature.
