@@ -11,3 +11,12 @@ Player time uses a visible calendar board, never a real-time clock or speed cont
 Activities reserve concrete dated capacity and may complete now or schedule later artifacts, meetings, and consequences. Reading delivered material does not consume capacity or advance time. Scheduled briefing cycles are the ordinary cadence. Observed calls, emergencies, or deadlines may interrupt before the next briefing, but hidden canonical significance never triggers a stop.
 
 Briefings summarize trends and accumulated changes. Genuine surprise remains possible when evidence was inaccessible, misleading, unmonitored, or not institutionally escalated.
+
+Global time uses one canonical UTC event instant. Institutions, venues, assets,
+and player offices interpret that instant through local calendars, holidays,
+sessions, information cutoffs, and settlement rules. Daily accounting and
+physical settlement may coexist with timestamped intraday announcements,
+market clearings, incidents, and interruptions. Long-horizon processes update
+at their declared natural cadence rather than recomputing merely because the
+global clock advanced. A later player role changes its local view and briefing
+cutoff, not the world's clock or causal order.
