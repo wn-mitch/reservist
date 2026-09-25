@@ -371,12 +371,18 @@ fn check_placement(
     origins: &BTreeMap<String, Vec<Candidate>>,
     errors: &mut Vec<Issue>,
 ) {
-    let domains: BTreeMap<&str, &str> = staged
+    let mut domains: BTreeMap<String, String> = staged
         .get("entities.csv")
         .into_iter()
         .flatten()
-        .map(|row| (row["catalog_id"].as_str(), row["domain"].as_str()))
+        .map(|row| (row["catalog_id"].clone(), row["domain"].clone()))
         .collect();
+    // A derived sovereign component owner files with its sovereign.
+    for (owner, sovereign) in crate::sovereign::derived_owners(staged) {
+        if let Some(domain) = domains.get(&sovereign).cloned() {
+            domains.insert(owner, domain);
+        }
+    }
     for (name, candidates) in origins {
         let Some(placement) = schema.placement.get(name) else {
             continue;
@@ -410,7 +416,7 @@ fn check_placement(
                             .map(|row| row[&via.field].as_str()),
                     };
                     match entry.and_then(|entry| domains.get(entry)) {
-                        Some(domain) => Some(Location::Domain((*domain).into())),
+                        Some(domain) => Some(Location::Domain(domain.clone())),
                         None => {
                             issue(
                                 errors,

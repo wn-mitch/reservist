@@ -44,8 +44,12 @@
     "fallback_contract_disposition": ["preserve", "lose", "terminal_exogenous_input"],
     "boolean": ["true", "false"],
     "entity_domain": ["Fed", "Treasury", "external_boundary", "external_scope", "financial", "legal_records", "macro_boundary", "markets", "media_information", "physical_products", "populations_organizations", "sovereign_regional"],
-    "relationship_family": ["ALLOCATES", "AUTHORIZES", "BELONGS_TO", "DERIVES", "GOVERNS", "HOLDS", "LENDS_TO", "MEMBER_OF", "OPERATES", "OPERATES_IN", "OPERATES_IN_SCOPE", "PART_OF", "PRODUCES_THROUGH", "PROJECTS", "PROVIDES", "PUBLISHES", "RECORDS", "REPRESENTS_SCOPE", "SCHEDULES", "SCOPED_TO", "SOURCES"],
-    "asset_role": ["portrait", "actor_cutout", "background_plate", "event_illustration"]
+    "relationship_family": ["ALLOCATES", "AUTHORIZES", "BELONGS_TO", "DERIVES", "GOVERNS", "HOLDS", "LENDS_TO", "MEMBER_OF", "OPERATES", "OPERATES_IN", "OPERATES_IN_SCOPE", "PART_OF", "PRODUCES_THROUGH", "PROJECTS", "PROVIDES", "PUBLISHES", "RECORDS", "REPRESENTS_SCOPE", "SCHEDULES", "SCOPED_TO", "SOURCES", "SUCCEEDED_BY", "HOLDS_ROLE"],
+    "asset_role": ["portrait", "actor_cutout", "background_plate", "event_illustration"],
+    "recognition_treatment": ["recognized", "recognized_non_un", "derecognized_by_us", "disputed", "unrecognized_claimant"],
+    "roster_status": ["complete", "partial", "NONE"],
+    "resource_system": ["petroleum"],
+    "sovereign_facet": ["governing_authority", "fiscal_accounts", "monetary_accounts", "external_relationships", "trade_production", "trade_demand", "response_table", "water_sanitation", "food", "energy", "shelter_thermal", "health", "transport_logistics", "payments_finance", "communications", "public_order_security", "strategic_materiel"]
   },
   "tables": {
     "types.csv": ["type_id", "display_name", "identity_clade", "cognition_class", "required_fallback_description", "provenance"],
@@ -72,7 +76,7 @@
     "scenario_availability.csv": ["scenario_id", "catalog_id", "availability", "selected_fidelity", "provider_entry_id", "uncertainty_notes", "provenance"],
     "scenario_candidates.csv": ["scenario_id", "catalog_id", "relevance", "uncertainty_notes", "provenance"],
     "probe_coverage.csv": ["probe_id", "catalog_id", "coverage_status", "requirement", "uncertainty_notes", "provenance"],
-    "world_profiles.csv": ["profile_id", "display_name", "effective_period", "player_entry_id", "planning_status", "research_status", "uncertainty_notes", "provenance"],
+    "world_profiles.csv": ["profile_id", "display_name", "effective_period", "player_entry_id", "planning_status", "research_status", "roster_status", "uncertainty_notes", "provenance"],
     "profile_catalog_roles.csv": ["profile_id", "catalog_id", "profile_role", "candidate_provider_entry_id", "activation_requirement", "rationale", "provenance"],
     "presentation_refs.csv": ["catalog_id", "asset_role", "asset_path", "provenance"],
     "profile_required_offices.csv": ["profile_id", "office_id", "requirement", "provenance"],
@@ -91,7 +95,11 @@
     "campaign_definitions.csv": ["campaign_id", "endpoint", "terminal_review_id", "default_scenario_id", "initial_chair_person_id", "provenance"],
     "chairmanship_programs.csv": ["program_id", "chair_person_id", "office_id", "primary_aspiration", "support_aspirations", "inherited_project_ids", "prior_claim_ids", "relationship_ids", "commitment_refs", "revision_vocabulary", "provenance"],
     "succession_rules.csv": ["rule_id", "office_id", "effective_period", "cause", "selection_procedure", "eligible_successor_ids", "handoff_refs", "incoming_information_refs", "provenance"],
-    "campaign_reviews.csv": ["review_id", "review_version", "chairmanship_id", "timing_boundary", "access_boundary", "evidence_refs", "dissent_refs", "confidence_refs", "disposition_vocabulary", "capacity_reservation_id", "capacity_owner_id", "capacity_units", "capacity_duration_minutes", "provenance"]
+    "campaign_reviews.csv": ["review_id", "review_version", "chairmanship_id", "timing_boundary", "access_boundary", "evidence_refs", "dissent_refs", "confidence_refs", "disposition_vocabulary", "capacity_reservation_id", "capacity_owner_id", "capacity_units", "capacity_duration_minutes", "provenance"],
+    "sovereign_rosters.csv": ["profile_id", "sovereign_id", "iso_code", "recognition_treatment", "scoped_under_id", "effective_period", "uncertainty_notes", "provenance"],
+    "sovereign_bundles.csv": ["profile_id", "sovereign_id", "governing_authority", "fiscal_accounts", "monetary_accounts", "external_relationships", "trade_production", "trade_demand", "response_table", "water_sanitation", "food", "energy", "shelter_thermal", "health", "transport_logistics", "payments_finance", "communications", "public_order_security", "strategic_materiel", "notes", "provenance"],
+    "sovereign_facet_exceptions.csv": ["profile_id", "sovereign_id", "facet", "reason", "provenance"],
+    "sovereign_resource_systems.csv": ["profile_id", "sovereign_id", "resource", "policy_owner", "operations_owner", "notes", "provenance"]
   },
   "table_lifecycle": {
     "period_variants.csv": "deferred",
@@ -137,7 +145,11 @@
     "campaign_definitions.csv": "required",
     "chairmanship_programs.csv": "required",
     "succession_rules.csv": "required",
-    "campaign_reviews.csv": "required"
+    "campaign_reviews.csv": "required",
+    "sovereign_rosters.csv": "deferred",
+    "sovereign_bundles.csv": "deferred",
+    "sovereign_facet_exceptions.csv": "deferred",
+    "sovereign_resource_systems.csv": "deferred"
   },
   "table_keys": {
     "types.csv": ["type_id"],
@@ -183,7 +195,11 @@
     "campaign_definitions.csv": ["campaign_id"],
     "chairmanship_programs.csv": ["program_id"],
     "succession_rules.csv": ["rule_id"],
-    "campaign_reviews.csv": ["review_id", "review_version"]
+    "campaign_reviews.csv": ["review_id", "review_version"],
+    "sovereign_rosters.csv": ["profile_id", "sovereign_id"],
+    "sovereign_bundles.csv": ["profile_id", "sovereign_id"],
+    "sovereign_facet_exceptions.csv": ["profile_id", "sovereign_id", "facet"],
+    "sovereign_resource_systems.csv": ["profile_id", "sovereign_id", "resource"]
   },
   "table_placement": {
     "types.csv": {"kind": "shared"},
@@ -229,7 +245,11 @@
     "campaign_definitions.csv": {"kind": "scenario", "field": "default_scenario_id"},
     "chairmanship_programs.csv": {"kind": "any_scenario"},
     "succession_rules.csv": {"kind": "any_scenario"},
-    "campaign_reviews.csv": {"kind": "any_scenario"}
+    "campaign_reviews.csv": {"kind": "any_scenario"},
+    "sovereign_rosters.csv": {"kind": "profile", "field": "profile_id"},
+    "sovereign_bundles.csv": {"kind": "profile", "field": "profile_id"},
+    "sovereign_facet_exceptions.csv": {"kind": "profile", "field": "profile_id"},
+    "sovereign_resource_systems.csv": {"kind": "profile", "field": "profile_id"}
   },
   "field_vocabularies": {
     "entities.csv.entry_class": "entry_class",
@@ -271,7 +291,11 @@
     "entity_fallback_contracts.csv.preserves_or_loses": "fallback_contract_disposition",
     "entities.csv.domain": "entity_domain",
     "relationships.csv.relationship_family": "relationship_family",
-    "presentation_refs.csv.asset_role": "asset_role"
+    "presentation_refs.csv.asset_role": "asset_role",
+    "sovereign_rosters.csv.recognition_treatment": "recognition_treatment",
+    "world_profiles.csv.roster_status": "roster_status",
+    "sovereign_resource_systems.csv.resource": "resource_system",
+    "sovereign_facet_exceptions.csv.facet": "sovereign_facet"
   },
   "allow_unknown": {
     "entities.csv": ["fallback_entry_id", "uncertainty_notes"],

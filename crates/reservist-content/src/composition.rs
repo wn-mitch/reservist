@@ -9,8 +9,7 @@ use crate::{Issue, Tables};
 use std::collections::BTreeMap;
 
 /// Clades that may scope or compose owners but may never own.
-pub(crate) const COMPOSITION_ROOT_CLADES: &[&str] =
-    &["SovereignSystem", "FederatedSystem", "Region"];
+pub(crate) use reservist_core::fidelity::COMPOSITION_ROOT_CLADES;
 
 pub(crate) fn validate(tables: &Tables, errors: &mut Vec<Issue>) {
     let clades: BTreeMap<&str, &str> = rows(tables, "entities.csv")

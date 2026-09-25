@@ -16,6 +16,9 @@ mod inventory_tests;
 pub mod manifest;
 pub mod slice;
 mod source_comparison;
+mod sovereign;
+#[cfg(test)]
+mod sovereign_tests;
 
 #[cfg(test)]
 mod m2_dialogue_tests;

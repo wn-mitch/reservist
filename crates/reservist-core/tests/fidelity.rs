@@ -220,3 +220,34 @@ fn permission_matrix_never_allows_runtime_promotion() {
             .all(|permission| !permission.runtime_promotion_permitted)
     );
 }
+
+#[test]
+fn composition_roots_select_without_state_and_reject_any_state() {
+    for clade in ["SovereignSystem", "FederatedSystem", "Region"] {
+        validate_selected(&scenario("MECHANICAL_OR_ADAPTER", clade, Vec::new()))
+            .unwrap_or_else(|error| panic!("{clade} root should select without state: {error}"));
+        let error = validate_selected(&scenario(
+            "MECHANICAL_OR_ADAPTER",
+            clade,
+            vec![state("state.subject.test.mechanism")],
+        ))
+        .unwrap_err();
+        assert!(error.contains("composition root"), "{clade}: {error}");
+        let mut contracted = scenario("MECHANICAL_OR_ADAPTER", clade, Vec::new());
+        contracted.catalog_slice["entries"][0]["owned_state_contracts"] =
+            json!([{"state_id": "state.subject.test.mechanism"}]);
+        let error = validate_selected(&contracted).unwrap_err();
+        assert!(error.contains("owned-state contracts"), "{clade}: {error}");
+    }
+}
+
+#[test]
+fn ordinary_mechanical_subjects_still_require_opening_state() {
+    let error = validate_selected(&scenario(
+        "MECHANICAL_OR_ADAPTER",
+        "MechanicalSystem",
+        Vec::new(),
+    ))
+    .unwrap_err();
+    assert!(error.starts_with("fidelity_state: subject.test"), "{error}");
+}

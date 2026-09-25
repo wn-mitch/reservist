@@ -279,6 +279,23 @@ fn load_schema(root: &Path, errors: &mut Vec<Issue>) -> Option<Schema> {
             issue(errors, "schema", qualified, "unknown vocabulary or field");
         }
     }
+    let bundle_fields = ["profile_id", "sovereign_id"]
+        .into_iter()
+        .chain(crate::sovereign::FACETS.iter().copied())
+        .chain(["notes", "provenance"])
+        .collect::<Vec<_>>();
+    if schema
+        .tables
+        .get("sovereign_bundles.csv")
+        .is_none_or(|fields| *fields != bundle_fields)
+    {
+        issue(
+            errors,
+            "schema",
+            "sovereign_bundles.csv",
+            "bundle columns must be profile_id, sovereign_id, every facet in order, notes, provenance",
+        );
+    }
     if schema
         .placement
         .keys()
@@ -414,10 +431,12 @@ pub fn validate_catalog(catalog_dir: &Path) -> Result<Tables, Vec<Issue>> {
     validate(&tables, &schema, catalog_dir, &mut errors);
     validate_campaign_contracts(&tables, &mut errors);
     crate::composition::validate(&tables, &mut errors);
+    crate::sovereign::validate(&tables, &mut errors);
     let authored = inspect_inventory(catalog_dir, &schema, &mut errors);
     validate(&authored, &schema, catalog_dir, &mut errors);
     validate_campaign_contracts(&authored, &mut errors);
     crate::composition::validate(&authored, &mut errors);
+    crate::sovereign::validate(&authored, &mut errors);
     for (name, rows) in &tables {
         let mut actual: Vec<_> = rows.iter().collect();
         let mut expected: Vec<_> = authored[name].iter().collect();
@@ -847,6 +866,9 @@ fn validate(tables: &Tables, schema: &Schema, root: &Path, errors: &mut Vec<Issu
         }
     }
     let entities = index(tables, "entities.csv", "catalog_id");
+    // Identity-only sovereign component owners implied by DERIVED bundle cells.
+    // They resolve as relationship and transmission endpoints but own no state.
+    let derived = crate::sovereign::derived_owners(tables);
     let instances = entities
         .iter()
         .filter(|(_, r)| get(r, "entry_class") == "instance")
@@ -931,7 +953,10 @@ fn validate(tables: &Tables, schema: &Schema, root: &Path, errors: &mut Vec<Issu
             // A mapping between two composition roots has no causal owner; the
             // composition check requires NONE there and nowhere else.
             let unowned_scope = field == "canonical_owner_id" && get(row, field) == NONE;
-            if !unowned_scope && !instances.contains_key(get(row, field)) {
+            if !unowned_scope
+                && !instances.contains_key(get(row, field))
+                && !derived.contains_key(get(row, field))
+            {
                 issue(
                     errors,
                     "relationship",
@@ -959,7 +984,7 @@ fn validate(tables: &Tables, schema: &Schema, root: &Path, errors: &mut Vec<Issu
             "consuming_entry_id",
             "transformation_owner_id",
         ] {
-            if !instances.contains_key(get(row, field)) {
+            if !instances.contains_key(get(row, field)) && !derived.contains_key(get(row, field)) {
                 issue(
                     errors,
                     "endpoint",

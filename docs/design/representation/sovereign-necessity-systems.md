@@ -15,7 +15,15 @@ communications, public order and security, and strategic materiel.
 Every sovereign carries every necessity facet. A facet may be declared not
 applicable only with a cited reason. In a federation, the facet stays under the
 federal root and its owner may be a cohort of sub-national owners; states,
-provinces, and emirates do not become roots by owning a system.
+provinces, and emirates do not become roots by owning a system. 
+
+Each facet is a role component that owns that role's state and keeps its
+identity across eras. Institutions exercise roles through dated holder
+relationships. One institution may hold several roles, and a component has
+at most one holder at any date. Consolidations, splits, and successions change
+holders, never components. An unresearched role uses a derived identity-only
+component scoped to its sovereign, which owns no state until reviewed content
+promotes it.
 
 Resource systems such as petroleum, gas, or grain are extensions a sovereign
 declares, not universal facets. Each declared resource system names distinct
@@ -38,7 +46,8 @@ meter. Household routing, detailed production scheduling, and supply-chain
 optimization are outside the model and never become player tasks.
 
 Coarse fidelity may compress a system's state and behavior. It may not merge
-facet owners, because each facet varies independently, holds different
-canonical state, and answers to different authority. Calibration of stocks,
+role components, because each varies independently, holds different canonical
+state, and answers to different authority, even while one institution holds
+several of them. Calibration of stocks,
 capacities, demand, access, and responses is authored content keyed by
 sovereign and facet, never a constant inside a model family.

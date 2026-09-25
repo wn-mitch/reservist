@@ -61,6 +61,14 @@ pub fn generate_evidence(catalog_dir: &Path) -> Result<usize, ContentError> {
         comparison.rows,
     )?;
     write_csv(
+        &generated.join("sovereign_derived_owners.csv"),
+        &["owner_id", "sovereign_id"],
+        crate::sovereign::derived_owners(&tables)
+            .into_iter()
+            .map(|(owner, sovereign)| row([("owner_id", owner), ("sovereign_id", sovereign)]))
+            .collect(),
+    )?;
+    write_csv(
         &generated.join("gaps.csv"),
         &["severity", "category", "record_id", "issue"],
         Vec::new(),

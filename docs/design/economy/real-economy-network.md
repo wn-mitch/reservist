@@ -30,7 +30,9 @@ under actual capacity and inputs. An announcement or authorized target is not
 realized output, and the policy owner cannot write barrels, inventories,
 transport, delivery, or prices. Coarse fidelity may compress state and behavior
 but may not merge owners that vary independently, hold different canonical
-state, or exercise different authority.
+state, or exercise different authority. One institution may hold both roles for a
+period, as a national oil company did before its ministry existed; the role
+components and their state stay separate.
 
 Financial conditions affect real decisions through specific contracts, accounts, refinancing, demand, and constraints. Physical shortages affect prices, production, employment, and claims through typed transmissions. Neither side may become a generic modifier over the other.
 

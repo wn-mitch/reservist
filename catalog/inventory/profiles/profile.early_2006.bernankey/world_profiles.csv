@@ -1,2 +1,2 @@
-profile_id,display_name,effective_period,player_entry_id,planning_status,research_status,uncertainty_notes,provenance
-profile.early_2006.bernankey,Early 2006 Bernankey campaign candidate,2006-02-01/2006-12-31,person.us.ben_bernankey,active_candidate,sketched,"Planning profile only; no representation manifest, replay hash, or runtime initialization is authored.",task.md campaign direction; Federal Reserve History chair chronology.
+profile_id,display_name,effective_period,player_entry_id,planning_status,research_status,roster_status,uncertainty_notes,provenance
+profile.early_2006.bernankey,Early 2006 Bernankey campaign candidate,2006-02-01/2006-12-31,person.us.ben_bernankey,active_candidate,sketched,NONE,"Planning profile only; no representation manifest, replay hash, or runtime initialization is authored.",task.md campaign direction; Federal Reserve History chair chronology.

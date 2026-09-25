@@ -11,6 +11,10 @@ pub use models::FidelityTier;
 use crate::api::FrozenScenario;
 use models::{DECLARATIONS, OpeningStates};
 
+/// Identity and scope roots. They compose owners, so a selected root carries no
+/// opening state and no owned-state contract.
+pub const COMPOSITION_ROOT_CLADES: &[&str] = &["SovereignSystem", "FederatedSystem", "Region"];
+
 /// Validates the frozen representation selection against the executable, sealed models.
 ///
 /// This deliberately consumes the already-frozen documents: content remains responsible for
@@ -81,6 +85,18 @@ pub fn validate_selected(scenario: &FrozenScenario) -> Result<(), String> {
             ));
         }
         let states: &[&Value] = opening_by_owner.get(id).map_or(&[], Vec::as_slice);
+        if COMPOSITION_ROOT_CLADES.contains(&clade) {
+            let contracts = entry
+                .get("owned_state_contracts")
+                .and_then(Value::as_array)
+                .map_or(0, Vec::len);
+            if !states.is_empty() || contracts > 0 {
+                return Err(format!(
+                    "fidelity_state: {id} is a {clade} composition root and cannot hold opening state or owned-state contracts"
+                ));
+            }
+            continue;
+        }
         if states.is_empty() {
             if (tier == FidelityTier::MechanicalOrAdapter && clade == "Record")
                 || (tier == FidelityTier::PopDistributedResponse && clade == "PopLens")
