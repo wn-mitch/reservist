@@ -15,7 +15,6 @@ entity_scope,cohort.us.bank.regional_cre_concentrated,cohort.us.bank.regional_cr
 entity_scope,inst.us.bank.burrow,inst.us.bank.burrow->UNKNOWN,scope,Resolved typed scope endpoint.,06-design-discussion-representation-catalog.md:819; intended subject: region.us.home_district
 entity_scope,mechanism.measurement.us.consumer_prices,mechanism.measurement.us.consumer_prices->UNKNOWN,scope,Resolved typed scope endpoint.,06-design-discussion-representation-catalog.md:523
 entity_scope,region.sa.aggregate,region.sa.aggregate->adapter.external_region.latin_america,scope,Resolved typed scope endpoint.,06-design-discussion-representation-catalog.md:510
-freeze_contract,inst.us.federal_reserve.board,period_variants.csv,design,"Frozen slices embed every period variant of a selected entry, so a 1979 variant on the Board of Governors would change the 2006 fixtures. Freeze should keep only variants effective in the scenario window before later-era variants are added to selected entries.",doc:mandate.m4-proving-lens
 identity_only,agreement.central_bank.swap_lines,NONE,research_content,NONE,doc:mandate.m4-proving-lens
 identity_only,agreement.foreign.information_sharing,NONE,research_content,NONE,doc:mandate.m4-proving-lens
 identity_only,agreement.foreign.liquidity_support,NONE,research_content,NONE,doc:mandate.m4-proving-lens

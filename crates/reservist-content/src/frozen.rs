@@ -108,6 +108,15 @@ pub fn seal_scenario(dir: &Path, catalog_dir: &Path) -> Result<String, ContentEr
         .selected_ids()?
         .into_iter()
         .collect::<Vec<_>>();
+    let opening = reservist_core::canon::load_json(dir.join("initialization.json"))?;
+    let opening_date = opening
+        .get("clock_start")
+        .and_then(Value::as_str)
+        .and_then(|start| start.get(..10))
+        .ok_or_else(|| {
+            ContentError::new("initialization", "initialization has no dated clock_start")
+        })?
+        .to_owned();
     let schema = reservist_core::canon::load_json(catalog_dir.join("schema.json"))?;
     let source_schema_version = schema
         .get("schema_version")
@@ -115,8 +124,12 @@ pub fn seal_scenario(dir: &Path, catalog_dir: &Path) -> Result<String, ContentEr
         .ok_or_else(|| {
             ContentError::new("catalog", "catalog schema has no integer schema_version")
         })?;
-    let mut catalog_slice =
-        freeze_catalog_slice_from_tables(&tables, &selected_ids, source_schema_version)?;
+    let mut catalog_slice = freeze_catalog_slice_from_tables(
+        &tables,
+        &selected_ids,
+        source_schema_version,
+        &opening_date,
+    )?;
     if manifest_value.get("interaction_contract").is_some() {
         // Campaign scenarios score versioned findings; a single-cycle interaction
         // scenario scores receipt-status rules, which keep their own table.

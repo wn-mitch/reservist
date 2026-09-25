@@ -19,6 +19,7 @@ pub fn catalog_definition_hash(value: &Value) -> String {
 pub fn freeze_catalog_slice(
     catalog_dir: &Path,
     selected_ids: &[String],
+    opening_date: &str,
 ) -> Result<Value, ContentError> {
     let tables = crate::catalog::validate_catalog(catalog_dir).map_err(|issues| {
         ContentError::new(
@@ -33,13 +34,17 @@ pub fn freeze_catalog_slice(
         .ok_or_else(|| {
             ContentError::new("catalog", "catalog schema has no integer schema_version")
         })?;
-    freeze_catalog_slice_from_tables(&tables, selected_ids, source_schema_version)
+    freeze_catalog_slice_from_tables(&tables, selected_ids, source_schema_version, opening_date)
 }
 
+/// Freezes the selected entries. Only period variants whose effective period
+/// contains `opening_date` (`YYYY-MM-DD`) enter the slice, so variants for
+/// other eras never alter a scenario's frozen identity.
 pub fn freeze_catalog_slice_from_tables(
     tables: &Tables,
     selected_ids: &[String],
     source_schema_version: u64,
+    opening_date: &str,
 ) -> Result<Value, ContentError> {
     let entities = index_rows(table(tables, "entities.csv")?, "catalog_id")?;
     let types = index_rows(table(tables, "types.csv")?, "type_id")?;
@@ -48,7 +53,23 @@ pub fn freeze_catalog_slice_from_tables(
         "type_id",
         "fidelity_tier",
     )?;
-    let variants = grouped_rows(table(tables, "period_variants.csv")?, "catalog_id");
+    let mut effective = Vec::new();
+    for row in table(tables, "period_variants.csv")? {
+        let period = required(row, "effective_period")?;
+        let (start, end) = period
+            .split_once('/')
+            .filter(|(start, end)| is_date(start) && is_date(end) && start <= end)
+            .ok_or_else(|| {
+                ContentError::new(
+                    "catalog",
+                    format!("period variant has a malformed effective_period {period}"),
+                )
+            })?;
+        if start <= opening_date && opening_date <= end {
+            effective.push(row.clone());
+        }
+    }
+    let variants = grouped_rows(&effective, "catalog_id");
     let authorities = grouped_rows(table(tables, "entity_authority_sources.csv")?, "catalog_id");
     let fallbacks = grouped_rows(
         table(tables, "entity_fallback_contracts.csv")?,
@@ -295,4 +316,67 @@ fn row_value(row: Row) -> Value {
             .map(|(key, value)| (key, Value::String(value)))
             .collect::<Map<_, _>>(),
     )
+}
+
+fn is_date(value: &str) -> bool {
+    let bytes = value.as_bytes();
+    bytes.len() == 10
+        && bytes[4] == b'-'
+        && bytes[7] == b'-'
+        && bytes
+            .iter()
+            .enumerate()
+            .all(|(index, byte)| matches!(index, 4 | 7) || byte.is_ascii_digit())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn tables() -> Tables {
+        let root = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../catalog");
+        crate::catalog::validate_catalog(&root).unwrap()
+    }
+
+    fn variant_ids(slice: &Value, entry: &str) -> Vec<String> {
+        slice["entries"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .find(|row| row["catalog_id"] == entry)
+            .unwrap()["period_variants"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .map(|variant| variant["variant_id"].as_str().unwrap().to_owned())
+            .collect()
+    }
+
+    #[test]
+    fn freezes_only_variants_effective_on_the_opening_date() {
+        let tables = tables();
+        let board = "inst.us.federal_reserve.board".to_owned();
+        let selected = [board.clone()];
+        let in_2006 =
+            freeze_catalog_slice_from_tables(&tables, &selected, 2, "2006-03-27").unwrap();
+        let in_1979 =
+            freeze_catalog_slice_from_tables(&tables, &selected, 2, "1979-08-06").unwrap();
+        assert!(!variant_ids(&in_2006, &board).contains(&"variant.1979".to_owned()));
+        assert_eq!(
+            variant_ids(&in_1979, &board),
+            vec!["variant.1979".to_owned()]
+        );
+    }
+
+    #[test]
+    fn rejects_malformed_variant_periods() {
+        let mut tables = tables();
+        tables.get_mut("period_variants.csv").unwrap()[0]
+            .insert("effective_period".into(), "2006-02-01".into());
+        let error = freeze_catalog_slice_from_tables(&tables, &[], 2, "2006-03-27").unwrap_err();
+        assert!(
+            error.message.contains("malformed effective_period"),
+            "{error}"
+        );
+    }
 }
