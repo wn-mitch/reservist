@@ -24,5 +24,12 @@ finding schema that M2's interaction contract reads. M2's original receipt
 rules now live in their own scenario table, and a test reseals M1, M2, and M3
 byte-for-byte from the current catalog. M2 reseals as `sha256:d9f745b9…2ce4`.
 
-**Not established:** no M4 runtime, sovereign bundle, roster, provider,
-calibration, or art beyond the existing Chair portraits.
+**Inspected after the roster change:** `profile.volcker_1979` carries a
+complete thin roster of 169 entries (161 roots), cited to a 1979 UN
+membership list plus per-row sources for non-members and claimants. Nine
+deep-set sovereigns name researched role holders, and the seven external
+channels follow a researched 1979 composition. The catalog validates and the
+2006 fixtures reseal unchanged.
+
+**Not established:** no M4 runtime, opening state, calibration, or art beyond
+the existing Chair portraits.

@@ -9,13 +9,20 @@ profile.early_2006.bernankey,adapter.external.euro_area,boundary_candidate,adapt
 profile.early_2006.bernankey,adapter.external.external_energy,boundary_candidate,adapter.external.external_energy,Receiving module selects this provider in a future representation manifest.,Early-2006 profile planning index.,true,manifest_selection
 profile.early_2006.bernankey,adapter.external.external_world,boundary_candidate,adapter.external.external_world,Receiving module selects this provider in a future representation manifest.,Early-2006 profile planning index.,true,manifest_selection
 profile.early_2006.bernankey,adapter.external.freight_global,boundary_candidate,adapter.external.freight_global,Receiving module selects this provider in a future representation manifest.,Early-2006 profile planning index.,true,manifest_selection
+profile.early_2006.bernankey,adapter.external.freight_gulf_hormuz,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,adapter.external.freight_gulf_suez,boundary_candidate,adapter.external.freight_gulf_suez,Receiving module selects this provider in a future representation manifest.,Early-2006 profile planning index.,true,manifest_selection
 profile.early_2006.bernankey,adapter.external.gulf_exporters,boundary_candidate,adapter.external.gulf_exporters,Receiving module selects this provider in a future representation manifest.,Early-2006 profile planning index.,true,manifest_selection
+profile.early_2006.bernankey,adapter.external.iran,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,adapter.external.japan,boundary_candidate,adapter.external.japan,Receiving module selects this provider in a future representation manifest.,Early-2006 profile planning index.,true,manifest_selection
+profile.early_2006.bernankey,adapter.external.latin_america_debtors,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,adapter.external.mexico,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,adapter.external.non_gulf_opec,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,adapter.external.offshore_asia,boundary_candidate,adapter.external.offshore_asia,Receiving module selects this provider in a future representation manifest.,Early-2006 profile planning index.,true,manifest_selection
 profile.early_2006.bernankey,adapter.external.oil_exporters,boundary_candidate,adapter.external.oil_exporters,Receiving module selects this provider in a future representation manifest.,Early-2006 profile planning index.,true,manifest_selection
 profile.early_2006.bernankey,adapter.external.russia,boundary_candidate,adapter.external.russia,Receiving module selects this provider in a future representation manifest.,Early-2006 profile planning index.,true,manifest_selection
+profile.early_2006.bernankey,adapter.external.switzerland,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,adapter.external.united_kingdom,boundary_candidate,adapter.external.united_kingdom,Receiving module selects this provider in a future representation manifest.,Early-2006 profile planning index.,true,manifest_selection
+profile.early_2006.bernankey,adapter.external.west_germany,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,adapter.flow.global.coffee,reserve,adapter.external.external_world,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.,false,manifest_selection|promotion_requirements
 profile.early_2006.bernankey,adapter.flow.global.pork,reserve,adapter.external.external_world,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.,false,manifest_selection|promotion_requirements
 profile.early_2006.bernankey,adapter.flow.global.timber,reserve,adapter.external.external_world,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.,false,manifest_selection|promotion_requirements
@@ -110,6 +117,7 @@ profile.early_2006.bernankey,cohort.us.fund.small_hedge,reference,NONE,NONE,Earl
 profile.early_2006.bernankey,cohort.us.insurer,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,cohort.us.insurer.regional,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,cohort.us.pension,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
+profile.early_2006.bernankey,cohort.us.petroleum_producers,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,facility.central_bank.swap_lines,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,facility.fima_repo,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,facility.us.federal_reserve.discount_window,slice_candidate,NONE,Future manifest selection plus effective-period initialization.,Early-2006 profile planning index.,false,manifest_selection
@@ -119,7 +127,13 @@ profile.early_2006.bernankey,facility.us.federal_reserve.section_13_3,reference,
 profile.early_2006.bernankey,facility.us.federal_reserve.srf,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,federated.euro_area,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,federation.us.federal_reserve,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
+profile.early_2006.bernankey,firm.iq.inoc,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,firm.ir.nioc,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,firm.kw.koc,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,firm.sa.aramco,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,firm.sa.saudi_aramco,reserve,adapter.external.gulf_exporters,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.,false,manifest_selection|promotion_requirements
+profile.early_2006.bernankey,firm.uk.bnoc,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,firm.ve.pdvsa,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,generator.chokepoint_blockage,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,generator.climate.amazon_basin,reserve,adapter.external.external_world,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.,false,manifest_selection|promotion_requirements
 profile.early_2006.bernankey,generator.cyber,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
@@ -183,12 +197,28 @@ profile.early_2006.bernankey,institution.fr.government,reserve,adapter.external.
 profile.early_2006.bernankey,institution.il.bank_of_israel,reserve,adapter.external.emerging_markets,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.,false,manifest_selection|promotion_requirements
 profile.early_2006.bernankey,institution.il.security,reserve,adapter.external.emerging_markets,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.,false,manifest_selection|promotion_requirements
 profile.early_2006.bernankey,institution.imf,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
+profile.early_2006.bernankey,institution.iq.central_bank,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,institution.iq.finance_ministry,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,institution.iq.foreign_ministry,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,institution.iq.oil_ministry,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,institution.iq.revolutionary_command_council,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,institution.ir.central_bank,reserve,adapter.external.emerging_markets,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.,false,manifest_selection|promotion_requirements
+profile.early_2006.bernankey,institution.ir.finance_ministry,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,institution.ir.foreign_ministry,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,institution.ir.interim_government,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,institution.ir.irgc,reserve,adapter.external.emerging_markets,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.,false,manifest_selection|promotion_requirements
 profile.early_2006.bernankey,institution.ir.oil,reserve,adapter.external.emerging_markets,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.,false,manifest_selection|promotion_requirements
 profile.early_2006.bernankey,institution.it.government,reserve,adapter.external.euro_area,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.,false,manifest_selection|promotion_requirements
 profile.early_2006.bernankey,institution.jp.boj,reserve,adapter.external.japan,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.,false,manifest_selection|promotion_requirements
+profile.early_2006.bernankey,institution.jp.foreign_ministry,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,institution.jp.jnoc,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,institution.jp.miti,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,institution.jp.mof,reserve,adapter.external.japan,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.,false,manifest_selection|promotion_requirements
+profile.early_2006.bernankey,institution.kw.central_bank,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,institution.kw.council_of_ministers,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,institution.kw.finance_ministry,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,institution.kw.foreign_ministry,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,institution.kw.oil_ministry,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,institution.media.aftv,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,institution.media.gnbc,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,institution.media.honkbox,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
@@ -200,15 +230,27 @@ profile.early_2006.bernankey,institution.qa.sovereign_funds,reserve,adapter.exte
 profile.early_2006.bernankey,institution.ru.central_bank,reserve,adapter.external.russia,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.,false,manifest_selection|promotion_requirements
 profile.early_2006.bernankey,institution.ru.presidency,reserve,adapter.external.russia,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.,false,manifest_selection|promotion_requirements
 profile.early_2006.bernankey,institution.ru.security,reserve,adapter.external.russia,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.,false,manifest_selection|promotion_requirements
+profile.early_2006.bernankey,institution.sa.council_of_ministers,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,institution.sa.energy_ministry,reserve,adapter.external.gulf_exporters,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.,false,manifest_selection|promotion_requirements
+profile.early_2006.bernankey,institution.sa.finance_ministry,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,institution.sa.foreign_ministry,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,institution.sa.sama,reserve,adapter.external.gulf_exporters,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.,false,manifest_selection|promotion_requirements
 profile.early_2006.bernankey,institution.sa.sovereign_funds,reserve,adapter.external.gulf_exporters,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.,false,manifest_selection|promotion_requirements
 profile.early_2006.bernankey,institution.sg.mas,reserve,adapter.external.offshore_asia,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.,false,manifest_selection|promotion_requirements
 profile.early_2006.bernankey,institution.sg.shipping,reserve,adapter.external.offshore_asia,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.,false,manifest_selection|promotion_requirements
 profile.early_2006.bernankey,institution.sg.sovereign_funds,reserve,adapter.external.offshore_asia,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.,false,manifest_selection|promotion_requirements
+profile.early_2006.bernankey,institution.su.council_of_ministers,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,institution.su.finance_ministry,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,institution.su.foreign_ministry,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,institution.su.gosbank,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,institution.su.gosplan,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,institution.su.oil_ministry,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,institution.uk.boe,reserve,adapter.external.united_kingdom,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.,false,manifest_selection|promotion_requirements
+profile.early_2006.bernankey,institution.uk.department_of_energy,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,institution.uk.dmo,reserve,adapter.external.united_kingdom,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.,false,manifest_selection|promotion_requirements
+profile.early_2006.bernankey,institution.uk.foreign_office,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,institution.uk.government,reserve,adapter.external.united_kingdom,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.,false,manifest_selection|promotion_requirements
+profile.early_2006.bernankey,institution.uk.treasury,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,institution.us.american.bankers.association,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,institution.us.bank.policy.institute,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,institution.us.bea,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
@@ -216,6 +258,7 @@ profile.early_2006.bernankey,institution.us.bls,reference,NONE,NONE,Early-2006 p
 profile.early_2006.bernankey,institution.us.chamber.of.commerce,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,institution.us.community.reinvestment.advocates,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,institution.us.consumer.finance.advocates,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
+profile.early_2006.bernankey,institution.us.department_of_energy,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,institution.us.farm.bureau.analogue,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,institution.us.homebuilders,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,institution.us.independent.community.bankers,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
@@ -226,11 +269,18 @@ profile.early_2006.bernankey,institution.us.member.unions,reference,NONE,NONE,Ea
 profile.early_2006.bernankey,institution.us.mortgage.bankers,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,institution.us.new_york_fed,slice_candidate,NONE,Future manifest selection plus effective-period initialization.,Early-2006 profile planning index.,false,manifest_selection
 profile.early_2006.bernankey,institution.us.policy.institutes,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
+profile.early_2006.bernankey,institution.us.presidency,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,institution.us.realtors,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,institution.us.retiree.association.aarp.analogue,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,institution.us.securities.industry.association,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,institution.us.small.business.federation,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
+profile.early_2006.bernankey,institution.us.state_department,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,institution.us.think.tanks,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
+profile.early_2006.bernankey,institution.ve.central_bank,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,institution.ve.energy_mines_ministry,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,institution.ve.finance_ministry,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,institution.ve.foreign_ministry,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,institution.ve.presidency,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,instrument.cross_border.capital_controls,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,legal.us.dodd_frank,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,legal.us.federal_reserve.act.section_12a,reference,NONE,Selected FOMC authority clause is effective.,Federal Reserve Act section 12A: https://www.federalreserve.gov/aboutthefed/section12a.htm,true,NONE
@@ -437,13 +487,20 @@ profile.early_2006.bernankey,region.external.euro_area,reference,NONE,NONE,Early
 profile.early_2006.bernankey,region.external.external_energy,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,region.external.external_world,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,region.external.freight_global,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
+profile.early_2006.bernankey,region.external.freight_gulf_hormuz,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,region.external.freight_gulf_suez,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,region.external.gulf_exporters,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
+profile.early_2006.bernankey,region.external.iran,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,region.external.japan,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
+profile.early_2006.bernankey,region.external.latin_america_debtors,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,region.external.mexico,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,region.external.non_gulf_opec,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,region.external.offshore_asia,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,region.external.oil_exporters,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,region.external.russia,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
+profile.early_2006.bernankey,region.external.switzerland,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,region.external.united_kingdom,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
+profile.early_2006.bernankey,region.external.west_germany,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,region.hormuz,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,region.me.arabian_peninsula,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,region.middle_east.gulf,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
@@ -464,23 +521,179 @@ profile.early_2006.bernankey,schedule.us.federal_reserve.blackout,reference,NONE
 profile.early_2006.bernankey,schedule.us.federal_reserve.fomc,reference,NONE,NONE,Early-2006 profile planning index.,true,NONE
 profile.early_2006.bernankey,schedule.us.treasury.auction,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,scheduled_process.unknown.call_report_calendar,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
+profile.early_2006.bernankey,sovereign.afghanistan,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.albania,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.algeria,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.andorra,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.angola,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.argentina,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,sovereign.armenia,reserve,adapter.external.emerging_markets,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.,false,manifest_selection|promotion_requirements
+profile.early_2006.bernankey,sovereign.australia,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.austria,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,sovereign.azerbaijan,reserve,adapter.external.emerging_markets,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.,false,manifest_selection|promotion_requirements
+profile.early_2006.bernankey,sovereign.bahamas,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.bahrain,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.bangladesh,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.barbados,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.belgium,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.benin,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.bhutan,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.bolivia,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.bophuthatswana,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.botswana,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.brazil,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.bulgaria,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.burkina_faso,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.burundi,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.byelorussian_ssr,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.cambodia,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.cameroon,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.canada,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.cape_verde,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.central_african_republic,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.chad,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.chile,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,sovereign.china,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
+profile.early_2006.bernankey,sovereign.colombia,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.comoros,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.congo,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.costa_rica,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.cote_divoire,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.cuba,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.cyprus,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.czechoslovakia,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.denmark,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.djibouti,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.dominica,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.dominican_republic,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,sovereign.drc,reserve,adapter.external.external_world,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.,false,manifest_selection|promotion_requirements
+profile.early_2006.bernankey,sovereign.east_germany,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.ecuador,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.egypt,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.el_salvador,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.equatorial_guinea,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.eswatini,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.ethiopia,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.fiji,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.finland,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,sovereign.france,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
+profile.early_2006.bernankey,sovereign.gabon,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.gambia,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,sovereign.georgia,reserve,adapter.external.emerging_markets,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.,false,manifest_selection|promotion_requirements
 profile.early_2006.bernankey,sovereign.germany,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
+profile.early_2006.bernankey,sovereign.ghana,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.greece,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.grenada,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.guatemala,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.guinea,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.guinea_bissau,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.guyana,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.haiti,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.holy_see,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.honduras,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.hungary,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.iceland,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.india,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.indonesia,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,sovereign.iran,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
+profile.early_2006.bernankey,sovereign.iraq,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.ireland,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,sovereign.israel,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,sovereign.italy,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
+profile.early_2006.bernankey,sovereign.jamaica,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,sovereign.japan,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
+profile.early_2006.bernankey,sovereign.jordan,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.kenya,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.kiribati,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.kuwait,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.laos,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.lebanon,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.lesotho,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.liberia,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.libya,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.liechtenstein,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.luxembourg,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.madagascar,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.malawi,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.malaysia,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.maldives,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.mali,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.malta,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.mauritania,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.mauritius,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.mexico,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.monaco,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.mongolia,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.morocco,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.mozambique,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.myanmar,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.nauru,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.nepal,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.netherlands,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.new_zealand,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.nicaragua,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.niger,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.nigeria,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.north_korea,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.north_yemen,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.norway,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.oman,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.pakistan,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.panama,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.papua_new_guinea,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.paraguay,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.peru,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.philippines,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.poland,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.portugal,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,sovereign.qatar,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
+profile.early_2006.bernankey,sovereign.romania,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,sovereign.russia,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
+profile.early_2006.bernankey,sovereign.rwanda,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.sahrawi_arab_democratic_republic,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.saint_lucia,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.samoa,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.san_marino,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.sao_tome_and_principe,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,sovereign.saudi_arabia,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
+profile.early_2006.bernankey,sovereign.senegal,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.seychelles,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.sierra_leone,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,sovereign.singapore,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
+profile.early_2006.bernankey,sovereign.solomon_islands,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.somalia,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.south_africa,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.south_korea,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.south_yemen,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.spain,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.sri_lanka,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.sudan,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.suriname,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.sweden,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.switzerland,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.syria,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.taiwan,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.tanzania,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.thailand,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.togo,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.tonga,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.transkei,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.trinidad_and_tobago,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.tunisia,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.turkey,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.tuvalu,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,sovereign.uae,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
+profile.early_2006.bernankey,sovereign.uganda,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.ukrainian_ssr,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,sovereign.united_kingdom,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
+profile.early_2006.bernankey,sovereign.united_states,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.uruguay,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.ussr,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.venezuela,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.vietnam,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.yugoslavia,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.zambia,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.early_2006.bernankey,sovereign.zimbabwe_rhodesia,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,staff.us.federal_reserve.communications,slice_candidate,staff.us.federal_reserve.communications,The bounded FOMC cycle initializes Communications access methods and capacity.,12-structure-outline-bernankey-mvp-cycle.md:397-415,true,manifest_selection
 profile.early_2006.bernankey,staff.us.federal_reserve.financial_stability,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,staff.us.federal_reserve.international,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
@@ -493,3 +706,710 @@ profile.early_2006.bernankey,staff.us.federal_reserve.supervision,reference,NONE
 profile.early_2006.bernankey,staff.us.treasury.debt_management,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,staff.us.treasury.ofr,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,stateful.us.treasury.duration_supply,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
+profile.volcker_1979,adapter.demand.global.coffee,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.demand.global.pork,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.demand.global.timber,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.export.arabian_peninsula.petroleum,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.external.china,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,adapter.external.emerging_markets,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,adapter.external.euro_area,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,adapter.external.external_energy,boundary_candidate,NONE,NONE,doc:mandate.m4-proving-lens,true,manifest_selection
+profile.volcker_1979,adapter.external.external_world,boundary_candidate,NONE,NONE,doc:mandate.m4-proving-lens,true,manifest_selection
+profile.volcker_1979,adapter.external.freight_global,boundary_candidate,NONE,NONE,doc:mandate.m4-proving-lens,true,manifest_selection
+profile.volcker_1979,adapter.external.freight_gulf_hormuz,boundary_candidate,NONE,NONE,doc:mandate.m4-proving-lens,false,manifest_selection
+profile.volcker_1979,adapter.external.freight_gulf_suez,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,adapter.external.gulf_exporters,boundary_candidate,NONE,NONE,doc:mandate.m4-proving-lens,true,manifest_selection
+profile.volcker_1979,adapter.external.iran,boundary_candidate,NONE,NONE,doc:mandate.m4-proving-lens,false,manifest_selection
+profile.volcker_1979,adapter.external.japan,boundary_candidate,NONE,NONE,doc:mandate.m4-proving-lens,true,manifest_selection
+profile.volcker_1979,adapter.external.latin_america_debtors,boundary_candidate,NONE,NONE,doc:mandate.m4-proving-lens,false,manifest_selection
+profile.volcker_1979,adapter.external.mexico,boundary_candidate,NONE,NONE,doc:mandate.m4-proving-lens,false,manifest_selection
+profile.volcker_1979,adapter.external.non_gulf_opec,boundary_candidate,NONE,NONE,doc:mandate.m4-proving-lens,false,manifest_selection
+profile.volcker_1979,adapter.external.offshore_asia,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,adapter.external.oil_exporters,boundary_candidate,NONE,NONE,doc:mandate.m4-proving-lens,true,manifest_selection
+profile.volcker_1979,adapter.external.russia,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,adapter.external.switzerland,boundary_candidate,NONE,NONE,doc:mandate.m4-proving-lens,false,manifest_selection
+profile.volcker_1979,adapter.external.united_kingdom,boundary_candidate,NONE,NONE,doc:mandate.m4-proving-lens,true,manifest_selection
+profile.volcker_1979,adapter.external.west_germany,boundary_candidate,NONE,NONE,doc:mandate.m4-proving-lens,false,manifest_selection
+profile.volcker_1979,adapter.flow.global.coffee,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.flow.global.pork,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.flow.global.timber,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.hydropower.caucasus,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.hydropower.congo_basin,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.incident.amazon_basin.climate,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.incident.external.chokepoint_blockage,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.incident.external.cyber,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.incident.external.drought,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.incident.external.gaffe_leak,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.incident.external.geological,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.incident.external.outbreak,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.incident.external.statistical_release_failure,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.incident.external.technological_breakthrough,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.incident.external.weather,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.incident.external.wildfire,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.input.amazon_basin.feed_grain,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.input.sa.feed_grain,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.macro.us.broad,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,adapter.market.global.coffee,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.market.global.pork,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.market.global.timber,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.market.us.treasury.external_buyer,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,adapter.market.us.treasury_demand.phase2,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.process.amazon_basin.climate_agriculture,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.process.arabian_peninsula.resources,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.process.caucasus.resources,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.process.climate_agriculture,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.process.congo_basin.ecology,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.process.epidemic,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.process.war,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.real.us.construction_inputs,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.real.us.food_baskets,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.real.us.housing_activity,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.sector.arabian_peninsula.gas,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.sector.arabian_peninsula.petroleum,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.sector.caucasus.petroleum,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.sector.congo_basin.forestry,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.sector.drc.copper_cobalt,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.supply.row.green_coffee,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.supply.row.live_hogs,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.supply.row.timber,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.transform.coffee_roasting,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.transform.hogs_slaughter,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.transform.timber_milling,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.transit.caucasus.energy,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.transport.drc.minerals,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,adapter.water.arabian_peninsula,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,agreement.central_bank.swap_lines,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,agreement.foreign.information_sharing,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,agreement.foreign.liquidity_support,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,agreement.foreign.regulatory_memoranda,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,agreement.foreign.sanctions_coordination,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,agreement.us.federal_reserve.swap_lines,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,agreement.us.repo.bilateral,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,auth.us.primary_dealer_designation,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,body.il.cabinet,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,body.jp.cabinet,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,body.opec,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,body.us.federal_reserve.board_voting,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,body.us.federal_reserve.fomc,reference,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,body.us.federal_reserve.reserve_bank_boards,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,body.us.treasury.tbac,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,coalition.il.governing_parties,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,coalition.ir.factional_networks,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,coalition.ru.elite_networks,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,coalition.uk.parties,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,cohort.eu.exposed_banks,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,cohort.foreign.central_bank,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,cohort.foreign.central_banks,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,cohort.foreign.finance_ministries,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,cohort.foreign.finance_ministry,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,cohort.foreign.sovereign_fund,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,cohort.foreign.sovereign_funds,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,cohort.foreign.state_bank,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,cohort.foreign.state_banks,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,cohort.jp.banks,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,cohort.jp.insurers,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,cohort.jp.pensions,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,cohort.ru.energy_firms,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,cohort.sg.dollar_funding_banks,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,cohort.uk.pensions,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,cohort.us.asset_manager,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,cohort.us.bank.community_credit_union,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,cohort.us.bank.regional_cre_concentrated,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,cohort.us.bank.systemically_important,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,cohort.us.custodian.tri_party,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,cohort.us.dealer.non_primary,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,cohort.us.dealer.primary,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,cohort.us.fund.money_market_complex,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,cohort.us.fund.small_hedge,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,cohort.us.insurer,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,cohort.us.insurer.regional,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,cohort.us.pension,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,cohort.us.petroleum_producers,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,facility.central_bank.swap_lines,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,facility.fima_repo,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,facility.us.federal_reserve.discount_window,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,facility.us.federal_reserve.fima_repo,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,facility.us.federal_reserve.rrp,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,facility.us.federal_reserve.section_13_3,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,facility.us.federal_reserve.srf,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,federated.euro_area,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,federation.us.federal_reserve,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,firm.iq.inoc,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,firm.ir.nioc,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,firm.kw.koc,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,firm.sa.aramco,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,firm.sa.saudi_aramco,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,firm.uk.bnoc,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,firm.ve.pdvsa,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,generator.chokepoint_blockage,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,generator.climate.amazon_basin,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,generator.cyber,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,generator.drought,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,generator.gaffe_leak,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,generator.geological,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,generator.outbreak,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,generator.statistical_release_failure,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,generator.technological_breakthrough,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,generator.weather,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,generator.wildfire,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,household.us.cohorts,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,industry.amazon_basin.coffee,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,industry.amazon_basin.forestry,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,industry.amazon_basin.pork,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,industry.arabian_peninsula.gas,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,industry.arabian_peninsula.petroleum,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,industry.caucasus.petroleum,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,industry.congo_basin.forestry,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,industry.drc.copper_cobalt,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,industry.sa.coffee.aggregate,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,industry.sa.forestry.aggregate,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,industry.sa.pork.aggregate,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,inst.global.bis,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,inst.global.imf,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,inst.global.settlement.cls,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,inst.us.bank.burrow,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,inst.us.clearing.cme,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,inst.us.clearing.ficc,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,inst.us.cme,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,inst.us.depository.dtcc,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,inst.us.federal_reserve.board,reference,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,inst.us.federal_reserve.new_york,reference,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,inst.us.federal_reserve.reserve_banks_other,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,inst.us.fhlb.system,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,inst.us.ficc,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,inst.us.fund.macro_fund_7,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,inst.us.fund.pamplona_brothers,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,inst.us.gse.fannie_mae,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,inst.us.gse.freddie_mac,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,inst.us.leveraged_funds,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,inst.us.primary_dealers,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,inst.us.systemically_important_banks,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,inst.us.treasury,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.ae.central_bank,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.ae.energy_companies,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.ae.sovereign_funds,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.bis,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.cn.military,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.cn.party_leadership,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.cn.pboc,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.cn.policy_banks,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.cn.safe,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.cn.state_council,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.de.government,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.eu.commission,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.eu.ecb,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.eu.member_governments,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.eu.national_central_banks,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.fr.government,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.il.bank_of_israel,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.il.security,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.imf,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.iq.central_bank,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.iq.finance_ministry,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.iq.foreign_ministry,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.iq.oil_ministry,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.iq.revolutionary_command_council,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.ir.central_bank,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.ir.finance_ministry,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.ir.foreign_ministry,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.ir.interim_government,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.ir.irgc,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.ir.oil,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.it.government,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.jp.boj,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.jp.foreign_ministry,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.jp.jnoc,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.jp.miti,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.jp.mof,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.kw.central_bank,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.kw.council_of_ministers,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.kw.finance_ministry,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.kw.foreign_ministry,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.kw.oil_ministry,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.media.aftv,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.media.gnbc,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.media.honkbox,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.media.loonberg,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.media.wool_street_journal,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.qa.central_bank,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.qa.energy_companies,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.qa.sovereign_funds,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.ru.central_bank,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.ru.presidency,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.ru.security,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.sa.council_of_ministers,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.sa.energy_ministry,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.sa.finance_ministry,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.sa.foreign_ministry,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.sa.sama,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.sa.sovereign_funds,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.sg.mas,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.sg.shipping,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.sg.sovereign_funds,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.su.council_of_ministers,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.su.finance_ministry,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.su.foreign_ministry,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.su.gosbank,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.su.gosplan,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.su.oil_ministry,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.uk.boe,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.uk.department_of_energy,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.uk.dmo,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.uk.foreign_office,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.uk.government,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.uk.treasury,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.us.american.bankers.association,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.us.bank.policy.institute,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.us.bea,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.us.bls,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.us.chamber.of.commerce,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.us.community.reinvestment.advocates,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.us.consumer.finance.advocates,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.us.department_of_energy,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.us.farm.bureau.analogue,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.us.homebuilders,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.us.independent.community.bankers,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.us.investment.company.institute.analogue,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.us.labor.federation,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.us.managed.funds.association,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.us.member.unions,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.us.mortgage.bankers,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.us.new_york_fed,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.us.policy.institutes,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.us.presidency,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.us.realtors,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.us.retiree.association.aarp.analogue,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.us.securities.industry.association,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.us.small.business.federation,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.us.state_department,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.us.think.tanks,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.ve.central_bank,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.ve.energy_mines_ministry,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.ve.finance_ministry,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.ve.foreign_ministry,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.ve.presidency,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,instrument.cross_border.capital_controls,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,legal.us.dodd_frank,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,legal.us.federal_reserve.act.section_12a,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,legal.us.federal_reserve.act.section_14,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,legal.us.federal_reserve.domestic_authorization.2006,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,legal.us.federal_reserve.fomc_rules.section_3,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,legal.us.federal_reserve.section_13_3,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,market.global.fx_spot_forward_basis,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,market.product.global.coffee,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,market.product.global.pork,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,market.product.global.timber,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,market.us.corporate_bond,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,market.us.equity,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,market.us.fed_funds,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,market.us.mbs_tba,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,market.us.sofr_futures,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,market.us.treasury.auction,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,market.us.treasury.futures,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,market.us.treasury.secondary,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,market.us.treasury_futures,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,mechanism.cross_border.chokepoint_shipping,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,mechanism.demand.global.coffee,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,mechanism.demand.global.pork,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,mechanism.demand.global.timber,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,mechanism.export.arabian_peninsula.petroleum,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,mechanism.flow.global.coffee,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,mechanism.flow.global.pork,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,mechanism.flow.global.timber,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,mechanism.hydropower.caucasus,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,mechanism.hydropower.congo_basin,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,mechanism.measurement.us.consumer_prices,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,mechanism.sector.sa.coffee,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,mechanism.sector.sa.forestry,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,mechanism.sector.sa.hog_production,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,mechanism.transform.global.coffee_roasting,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,mechanism.transform.global.hogs_slaughter,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,mechanism.transform.global.timber_milling,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,mechanism.transit.caucasus.energy,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,mechanism.transport.drc.minerals,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,mechanism.us.bank.regional_aggregate,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,mechanism.us.chips,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,mechanism.us.clearing.ficc_repo,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,mechanism.us.external_market_inputs,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,mechanism.us.fedwire.funds,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,mechanism.us.fedwire.securities,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,mechanism.us.ficc.sponsored_gcf_repo,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,mechanism.us.nss,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,mechanism.us.payment.chips,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,mechanism.us.payment.fedwire_funds,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,mechanism.us.repo.tri_party,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,mechanism.us.settlement.fedwire_securities,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,mechanism.us.settlement.nss,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,mechanism.water.arabian_peninsula,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,network.media.goosetogetherstrong,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,network.media.honkbox,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,network.media.the_herd,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,office.media.aftv.anchor_chair,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,office.media.gnbc.anchor_chair,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,office.media.wool_street_journal.fed_beat,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,office.us.federal_reserve.board_chair,anchor,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,office.us.federal_reserve.chief_of_staff,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,office.us.federal_reserve.division_director,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,office.us.federal_reserve.fomc_chair,anchor,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,office.us.federal_reserve.governor,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,office.us.federal_reserve.ny_president,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,office.us.federal_reserve.reserve_bank_president,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,office.us.federal_reserve.vice_chair,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,office.us.federal_reserve.vice_chair_supervision,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,office.us.treasury.secretary,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,organization.us.agricultural.producers,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,organization.us.all.banks,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,organization.us.asset.managers,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,organization.us.business.generally,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,organization.us.community.banks.credit.unions,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,organization.us.dealers.market.makers,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,organization.us.endowments,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,organization.us.hedge.funds,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,organization.us.homebuilders,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,organization.us.insurers,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,organization.us.large.banks,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,organization.us.money.market.fund.complexes,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,organization.us.money.market.mutual.funds,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,organization.us.mortgage.originators,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,organization.us.municipalities.by.rating.market.access,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,organization.us.nonprimary.broker.dealers,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,organization.us.nonprofits,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,organization.us.payroll.intermediaries,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,organization.us.pensions,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,organization.us.real.estate.agents,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,organization.us.regional.insurers,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,organization.us.small.businesses,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,organization.us.small.firms,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,organization.us.small.hedge.funds,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,organization_cohort.market.credit_rating_agencies,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,outlet.media.aftv,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,outlet.media.gnbc,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,outlet.media.loonberg,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,outlet.media.wool_street_journal,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,person.cn.pboc_governor,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,person.cn.safe_head,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,person.cn.xi,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,person.eu.ecb_president,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,person.il.boi_governor,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,person.il.prime_minister,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,person.ir.central_bank_head,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,person.ir.irgc_head,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,person.ir.president,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,person.ir.supreme_leader,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,person.jp.boj_governor,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,person.jp.mof_international_affairs_vice_minister,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,person.media.aftv_host,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,person.media.gnbc_anchor,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,person.media.wool_street_journal_fed_reporter,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,person.sa.aramco_ceo,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,person.sa.crown,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,person.sa.pif_head,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,person.sa.sama_governor,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,person.uk.boe_governor,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,person.uk.dmo_chief,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,person.us.alan_greenspaniel,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,person.us.avery_agendaloon,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,person.us.ben_bernankey,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,person.us.janet_jackrabbit,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,person.us.jerome_owl,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,person.us.kevin_boarsh,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,person.us.paul_vulture,anchor,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,person.us.primary_dealer.rates_head,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,person.us.treasury.secretary,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,pop.us.affluent.homeowners,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,pop.us.college.students,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,pop.us.fixed.rate.homeowners.by.mortgage.vintage,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,pop.us.fixed.rate.owners.low.mortgage.vintages,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,pop.us.high.income.finance.professionals,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,pop.us.high.income.professionals,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,pop.us.leftist.male.college.students.georgia.tech,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,pop.us.low.income.service.workers,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,pop.us.low.income.underserved.borrowers,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,pop.us.near.retirees,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,pop.us.parents.paying.childcare,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,pop.us.public.low_attention_residual,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,pop.us.renters.supply.constrained.metros,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,pop.us.retail.traders,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,pop.us.retirees,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,pop.us.small.business.owners,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,pop.us.strategic.production.workers.fab.technicians,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,pop.us.suburban.parents.childcare.costs,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,pop.us.uninsured.depositors,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,pop.us.workers.by.sector,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,pop.us.young.renters,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,poplens.media.honkbox.posting_population,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,population.us.person.cells,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,process.climate_agriculture.amazon_basin,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,process.climate_agriculture.regional,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,process.ecology.congo_basin,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,process.epidemic,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,process.resources.arabian_peninsula,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,process.resources.caucasus,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,process.us.statistical_release_calendar,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,process.war,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,record.media.goosetogetherstrong.margin_call,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,record.media.loonberg.ust_10y_auction_tail,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,record.media.the_herd.large_fox_shop_cutting_10s,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,record.us.federal_reserve.action_result,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,record.us.federal_reserve.analytical_task,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,record.us.federal_reserve.assessment,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,record.us.federal_reserve.authorization_decision,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,record.us.federal_reserve.case_file,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,record.us.federal_reserve.chairmanship_program,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,record.us.federal_reserve.directive,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,record.us.federal_reserve.discount_rate,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,record.us.federal_reserve.institutional_project,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,record.us.federal_reserve.iorb,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,record.us.federal_reserve.legacy_dossier,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,record.us.federal_reserve.policy_package,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,record.us.federal_reserve.stage_receipt,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,record.us.federal_reserve.target_range,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,record.us.treasury.esf,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,record.us.treasury.indemnification_13_3,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,reference.market.credit_ratings,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,reference.market.index_membership,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,reference.market.move,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,reference.market.vendor_indices,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,reference.market.vix,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,reference.unknown.move_index,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,reference.unknown.vix,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,reference.us.bea.pce,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,reference.us.bls.cpi,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,reference.us.consumer_price_index,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,reference.us.federal_reserve.acm_term_premium,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,reference.us.federal_reserve.effr,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,reference.us.federal_reserve.obfr,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,reference.us.nyfed.effr,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,reference.us.nyfed.obfr,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,reference.us.nyfed.sofr,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,reference.us.personal_consumption_expenditures,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,reference.us.treasury.par_yield_curve,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,region.af.congo_basin,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,region.cn.aggregate,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,region.cn.provinces,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,region.eurasia.caucasus,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,region.external.china,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,region.external.emerging_markets,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,region.external.euro_area,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,region.external.external_energy,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,region.external.external_world,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,region.external.freight_global,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,region.external.freight_gulf_hormuz,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,region.external.freight_gulf_suez,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,region.external.gulf_exporters,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,region.external.iran,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,region.external.japan,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,region.external.latin_america_debtors,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,region.external.mexico,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,region.external.non_gulf_opec,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,region.external.offshore_asia,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,region.external.oil_exporters,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,region.external.russia,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,region.external.switzerland,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,region.external.united_kingdom,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,region.external.west_germany,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,region.hormuz,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,region.me.arabian_peninsula,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,region.middle_east.gulf,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,region.panama,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,region.sa.aggregate,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,region.sa.amazon_basin,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,region.suez,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,region.taiwan_strait,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,region.us.aggregate,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,region.us.census_divisions,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,region.us.federal_reserve_districts,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,region.us.home_district,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,region.us.metros,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,region.us.states,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,role_holder.fomc.governor_1,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,role_holder.fomc.governor_2,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,schedule.us.federal_reserve.blackout,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,schedule.us.federal_reserve.fomc,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,schedule.us.treasury.auction,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,scheduled_process.unknown.call_report_calendar,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.afghanistan,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.albania,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.algeria,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.andorra,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.angola,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.argentina,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.armenia,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.australia,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.austria,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.azerbaijan,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.bahamas,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.bahrain,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.bangladesh,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.barbados,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.belgium,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.benin,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.bhutan,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.bolivia,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.bophuthatswana,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.botswana,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.brazil,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.bulgaria,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.burkina_faso,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.burundi,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.byelorussian_ssr,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.cambodia,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.cameroon,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.canada,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.cape_verde,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.central_african_republic,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.chad,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.chile,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.china,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.colombia,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.comoros,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.congo,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.costa_rica,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.cote_divoire,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.cuba,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.cyprus,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.czechoslovakia,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.denmark,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.djibouti,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.dominica,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.dominican_republic,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.drc,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.east_germany,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.ecuador,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.egypt,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.el_salvador,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.equatorial_guinea,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.eswatini,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.ethiopia,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.fiji,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.finland,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.france,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.gabon,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.gambia,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.georgia,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.germany,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.ghana,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.greece,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.grenada,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.guatemala,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.guinea,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.guinea_bissau,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.guyana,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.haiti,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.holy_see,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.honduras,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.hungary,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.iceland,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.india,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.indonesia,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.iran,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.iraq,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.ireland,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.israel,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.italy,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.jamaica,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.japan,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.jordan,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.kenya,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.kiribati,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.kuwait,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.laos,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.lebanon,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.lesotho,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.liberia,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.libya,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.liechtenstein,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.luxembourg,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.madagascar,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.malawi,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.malaysia,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.maldives,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.mali,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.malta,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.mauritania,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.mauritius,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.mexico,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.monaco,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.mongolia,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.morocco,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.mozambique,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.myanmar,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.nauru,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.nepal,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.netherlands,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.new_zealand,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.nicaragua,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.niger,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.nigeria,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.north_korea,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.north_yemen,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.norway,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.oman,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.pakistan,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.panama,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.papua_new_guinea,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.paraguay,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.peru,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.philippines,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.poland,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.portugal,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.qatar,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.romania,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.russia,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.rwanda,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.sahrawi_arab_democratic_republic,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.saint_lucia,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.samoa,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.san_marino,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.sao_tome_and_principe,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.saudi_arabia,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.senegal,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.seychelles,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.sierra_leone,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.singapore,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.solomon_islands,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.somalia,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.south_africa,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.south_korea,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.south_yemen,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.spain,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.sri_lanka,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.sudan,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.suriname,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.sweden,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.switzerland,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.syria,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.taiwan,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.tanzania,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.thailand,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.togo,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.tonga,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.transkei,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.trinidad_and_tobago,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.tunisia,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.turkey,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.tuvalu,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.uae,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.uganda,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.ukrainian_ssr,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.united_kingdom,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.united_states,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.uruguay,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.ussr,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.venezuela,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.vietnam,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.yugoslavia,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.zambia,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,sovereign.zimbabwe_rhodesia,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,staff.us.federal_reserve.communications,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,staff.us.federal_reserve.financial_stability,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,staff.us.federal_reserve.international,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,staff.us.federal_reserve.legal,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,staff.us.federal_reserve.markets,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,staff.us.federal_reserve.monetary_affairs,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,staff.us.federal_reserve.ny_markets_group,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,staff.us.federal_reserve.research,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,staff.us.federal_reserve.supervision,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,staff.us.treasury.debt_management,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,staff.us.treasury.ofr,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,stateful.us.treasury.duration_supply,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE

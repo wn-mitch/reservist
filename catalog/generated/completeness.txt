@@ -1,13 +1,13 @@
 catalog completeness
 identity inventory:
-  typed-subject coverage: 494/494 (100.0%)
+  typed-subject coverage: 707/707 (100.0%)
   identity inventory is not runtime readiness
 catalog contract:
-  catalog-eligible instances: 53/494
-  early-2006 profile assignment: 494/494
+  catalog-eligible instances: 53/707
+  early-2006 profile assignment: 1414/707
   slice-candidate catalog closure: 15/30
   external channels with one residual: 7/7
-  external provider/interface rows: 34
+  external provider/interface rows: 67
   probe-referenced product source + destination/market coverage: 7/7
   instrument-family closure: 15/15
   active Core + Circuit bucket-family closure: 10/10

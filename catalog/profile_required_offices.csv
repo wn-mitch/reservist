@@ -1,3 +1,5 @@
 profile_id,office_id,requirement,provenance
 profile.early_2006.bernankey,office.us.federal_reserve.board_chair,The player must effectively hold this Chair office in the profile period.,Federal Reserve History: https://www.federalreservehistory.org/people/federal-reserve-chair
 profile.early_2006.bernankey,office.us.federal_reserve.fomc_chair,The player must effectively hold this Chair office in the profile period.,Federal Reserve History: https://www.federalreservehistory.org/people/federal-reserve-chair
+profile.volcker_1979,office.us.federal_reserve.board_chair,Player holds the Chair office on the profile date.,https://en.wikipedia.org/wiki/Paul_Volcker
+profile.volcker_1979,office.us.federal_reserve.fomc_chair,Player holds the Chair office on the profile date.,https://en.wikipedia.org/wiki/Paul_Volcker

@@ -15,190 +15,408 @@ entity_scope,cohort.us.bank.regional_cre_concentrated,cohort.us.bank.regional_cr
 entity_scope,inst.us.bank.burrow,inst.us.bank.burrow->UNKNOWN,scope,Resolved typed scope endpoint.,06-design-discussion-representation-catalog.md:819; intended subject: region.us.home_district
 entity_scope,mechanism.measurement.us.consumer_prices,mechanism.measurement.us.consumer_prices->UNKNOWN,scope,Resolved typed scope endpoint.,06-design-discussion-representation-catalog.md:523
 entity_scope,region.sa.aggregate,region.sa.aggregate->adapter.external_region.latin_america,scope,Resolved typed scope endpoint.,06-design-discussion-representation-catalog.md:510
-identity_only,agreement.central_bank.swap_lines,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,agreement.foreign.information_sharing,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,agreement.foreign.liquidity_support,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,agreement.foreign.regulatory_memoranda,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,agreement.foreign.sanctions_coordination,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,agreement.us.federal_reserve.swap_lines,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,auth.us.primary_dealer_designation,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,body.jp.cabinet,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,body.opec,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,body.us.federal_reserve.reserve_bank_boards,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,coalition.il.governing_parties,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,coalition.ir.factional_networks,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,coalition.ru.elite_networks,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,coalition.uk.parties,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,cohort.foreign.central_banks,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,cohort.foreign.finance_ministries,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,cohort.foreign.sovereign_funds,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,cohort.foreign.state_banks,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,facility.central_bank.swap_lines,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,facility.fima_repo,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,facility.us.federal_reserve.fima_repo,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,facility.us.federal_reserve.rrp,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,facility.us.federal_reserve.section_13_3,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,federated.euro_area,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,generator.chokepoint_blockage,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,generator.cyber,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,generator.drought,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,generator.gaffe_leak,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,generator.geological,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,generator.outbreak,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,generator.statistical_release_failure,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,generator.technological_breakthrough,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,generator.weather,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,generator.wildfire,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,inst.us.cme,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,inst.us.federal_reserve.reserve_banks_other,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,inst.us.systemically_important_banks,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,institution.bis,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,institution.imf,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,institution.us.american.bankers.association,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,institution.us.bank.policy.institute,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,institution.us.chamber.of.commerce,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,institution.us.community.reinvestment.advocates,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,institution.us.consumer.finance.advocates,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,institution.us.farm.bureau.analogue,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,institution.us.homebuilders,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,institution.us.independent.community.bankers,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,institution.us.investment.company.institute.analogue,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,institution.us.labor.federation,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,institution.us.managed.funds.association,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,institution.us.member.unions,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,institution.us.mortgage.bankers,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,institution.us.policy.institutes,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,institution.us.realtors,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,institution.us.retiree.association.aarp.analogue,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,institution.us.securities.industry.association,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,institution.us.small.business.federation,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,institution.us.think.tanks,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,instrument.cross_border.capital_controls,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,legal.us.dodd_frank,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,mechanism.us.chips,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,mechanism.us.fedwire.funds,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,mechanism.us.fedwire.securities,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,mechanism.us.nss,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,office.us.federal_reserve.division_director,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,office.us.federal_reserve.ny_president,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,office.us.federal_reserve.reserve_bank_president,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,office.us.federal_reserve.vice_chair,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,office.us.federal_reserve.vice_chair_supervision,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,office.us.treasury.secretary,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,organization.us.agricultural.producers,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,organization.us.all.banks,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,organization.us.asset.managers,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,organization.us.business.generally,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,organization.us.community.banks.credit.unions,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,organization.us.dealers.market.makers,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,organization.us.endowments,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,organization.us.hedge.funds,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,organization.us.homebuilders,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,organization.us.insurers,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,organization.us.large.banks,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,organization.us.money.market.fund.complexes,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,organization.us.money.market.mutual.funds,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,organization.us.mortgage.originators,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,organization.us.municipalities.by.rating.market.access,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,organization.us.nonprimary.broker.dealers,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,organization.us.nonprofits,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,organization.us.payroll.intermediaries,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,organization.us.pensions,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,organization.us.real.estate.agents,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,organization.us.regional.insurers,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,organization.us.small.businesses,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,organization.us.small.firms,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,organization.us.small.hedge.funds,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,person.cn.pboc_governor,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,person.cn.safe_head,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,person.cn.xi,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,person.eu.ecb_president,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,person.il.boi_governor,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,person.il.prime_minister,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,person.ir.central_bank_head,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,person.ir.irgc_head,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,person.ir.president,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,person.ir.supreme_leader,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,person.jp.boj_governor,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,person.jp.mof_international_affairs_vice_minister,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,person.sa.aramco_ceo,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,person.sa.crown,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,person.sa.pif_head,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,person.sa.sama_governor,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,person.uk.boe_governor,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,person.uk.dmo_chief,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,person.us.primary_dealer.rates_head,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,person.us.treasury.secretary,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,pop.us.affluent.homeowners,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,pop.us.college.students,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,pop.us.fixed.rate.owners.low.mortgage.vintages,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,pop.us.high.income.finance.professionals,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,pop.us.high.income.professionals,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,pop.us.leftist.male.college.students.georgia.tech,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,pop.us.low.income.service.workers,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,pop.us.low.income.underserved.borrowers,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,pop.us.near.retirees,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,pop.us.parents.paying.childcare,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,pop.us.renters.supply.constrained.metros,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,pop.us.retail.traders,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,pop.us.retirees,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,pop.us.small.business.owners,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,pop.us.strategic.production.workers.fab.technicians,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,pop.us.suburban.parents.childcare.costs,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,pop.us.uninsured.depositors,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,pop.us.young.renters,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,process.climate_agriculture.regional,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,process.epidemic,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,process.war,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,record.us.federal_reserve.case_file,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,record.us.federal_reserve.chairmanship_program,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,record.us.federal_reserve.discount_rate,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,record.us.federal_reserve.institutional_project,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,record.us.federal_reserve.iorb,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,record.us.federal_reserve.legacy_dossier,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,record.us.federal_reserve.target_range,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,record.us.treasury.esf,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,record.us.treasury.indemnification_13_3,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,reference.unknown.move_index,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,reference.unknown.vix,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,reference.us.consumer_price_index,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,reference.us.federal_reserve.effr,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,reference.us.federal_reserve.obfr,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,reference.us.personal_consumption_expenditures,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,region.cn.aggregate,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,region.cn.provinces,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,region.hormuz,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,region.middle_east.gulf,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,region.panama,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,region.suez,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,region.taiwan_strait,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,region.us.aggregate,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,region.us.census_divisions,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,region.us.federal_reserve_districts,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,region.us.metros,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,region.us.states,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,scheduled_process.unknown.call_report_calendar,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,sovereign.china,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,sovereign.france,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,sovereign.germany,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,sovereign.iran,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,sovereign.israel,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,sovereign.italy,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,sovereign.japan,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,sovereign.qatar,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,sovereign.russia,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,sovereign.saudi_arabia,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,sovereign.singapore,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,sovereign.uae,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,sovereign.united_kingdom,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,staff.us.federal_reserve.financial_stability,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,staff.us.federal_reserve.international,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,staff.us.federal_reserve.legal,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,staff.us.federal_reserve.research,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,staff.us.federal_reserve.supervision,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,staff.us.treasury.debt_management,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,staff.us.treasury.ofr,NONE,research_content,NONE,Early-2006 profile planning index.
-identity_only,stateful.us.treasury.duration_supply,NONE,research_content,NONE,Early-2006 profile planning index.
+freeze_contract,inst.us.federal_reserve.board,period_variants.csv,design,"Frozen slices embed every period variant of a selected entry, so a 1979 variant on the Board of Governors would change the 2006 fixtures. Freeze should keep only variants effective in the scenario window before later-era variants are added to selected entries.",doc:mandate.m4-proving-lens
+identity_only,agreement.central_bank.swap_lines,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,agreement.foreign.information_sharing,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,agreement.foreign.liquidity_support,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,agreement.foreign.regulatory_memoranda,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,agreement.foreign.sanctions_coordination,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,agreement.us.federal_reserve.swap_lines,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,auth.us.primary_dealer_designation,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,body.jp.cabinet,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,body.opec,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,body.us.federal_reserve.reserve_bank_boards,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,coalition.il.governing_parties,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,coalition.ir.factional_networks,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,coalition.ru.elite_networks,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,coalition.uk.parties,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,cohort.foreign.central_banks,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,cohort.foreign.finance_ministries,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,cohort.foreign.sovereign_funds,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,cohort.foreign.state_banks,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,cohort.us.petroleum_producers,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,facility.central_bank.swap_lines,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,facility.fima_repo,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,facility.us.federal_reserve.fima_repo,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,facility.us.federal_reserve.rrp,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,facility.us.federal_reserve.section_13_3,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,federated.euro_area,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,firm.iq.inoc,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,firm.ir.nioc,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,firm.kw.koc,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,firm.sa.aramco,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,firm.uk.bnoc,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,firm.ve.pdvsa,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,generator.chokepoint_blockage,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,generator.cyber,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,generator.drought,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,generator.gaffe_leak,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,generator.geological,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,generator.outbreak,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,generator.statistical_release_failure,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,generator.technological_breakthrough,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,generator.weather,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,generator.wildfire,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,industry.arabian_peninsula.gas,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,industry.arabian_peninsula.petroleum,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,industry.caucasus.petroleum,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,industry.congo_basin.forestry,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,industry.drc.copper_cobalt,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,inst.us.cme,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,inst.us.federal_reserve.reserve_banks_other,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,inst.us.systemically_important_banks,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.bis,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.imf,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.iq.central_bank,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.iq.finance_ministry,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.iq.foreign_ministry,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.iq.oil_ministry,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.iq.revolutionary_command_council,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.ir.finance_ministry,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.ir.foreign_ministry,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.ir.interim_government,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.jp.foreign_ministry,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.jp.jnoc,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.jp.miti,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.kw.central_bank,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.kw.council_of_ministers,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.kw.finance_ministry,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.kw.foreign_ministry,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.kw.oil_ministry,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.sa.council_of_ministers,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.sa.finance_ministry,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.sa.foreign_ministry,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.su.council_of_ministers,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.su.finance_ministry,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.su.foreign_ministry,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.su.gosbank,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.su.gosplan,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.su.oil_ministry,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.uk.department_of_energy,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.uk.foreign_office,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.uk.treasury,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.us.american.bankers.association,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.us.bank.policy.institute,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.us.chamber.of.commerce,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.us.community.reinvestment.advocates,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.us.consumer.finance.advocates,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.us.department_of_energy,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.us.farm.bureau.analogue,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.us.homebuilders,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.us.independent.community.bankers,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.us.investment.company.institute.analogue,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.us.labor.federation,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.us.managed.funds.association,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.us.member.unions,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.us.mortgage.bankers,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.us.policy.institutes,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.us.presidency,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.us.realtors,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.us.retiree.association.aarp.analogue,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.us.securities.industry.association,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.us.small.business.federation,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.us.state_department,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.us.think.tanks,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.ve.central_bank,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.ve.energy_mines_ministry,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.ve.finance_ministry,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.ve.foreign_ministry,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,institution.ve.presidency,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,instrument.cross_border.capital_controls,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,legal.us.dodd_frank,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,mechanism.export.arabian_peninsula.petroleum,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,mechanism.hydropower.caucasus,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,mechanism.hydropower.congo_basin,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,mechanism.transit.caucasus.energy,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,mechanism.transport.drc.minerals,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,mechanism.us.chips,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,mechanism.us.fedwire.funds,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,mechanism.us.fedwire.securities,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,mechanism.us.nss,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,mechanism.water.arabian_peninsula,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,office.us.federal_reserve.division_director,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,office.us.federal_reserve.ny_president,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,office.us.federal_reserve.reserve_bank_president,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,office.us.federal_reserve.vice_chair,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,office.us.federal_reserve.vice_chair_supervision,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,office.us.treasury.secretary,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,organization.us.agricultural.producers,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,organization.us.all.banks,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,organization.us.asset.managers,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,organization.us.business.generally,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,organization.us.community.banks.credit.unions,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,organization.us.dealers.market.makers,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,organization.us.endowments,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,organization.us.hedge.funds,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,organization.us.homebuilders,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,organization.us.insurers,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,organization.us.large.banks,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,organization.us.money.market.fund.complexes,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,organization.us.money.market.mutual.funds,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,organization.us.mortgage.originators,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,organization.us.municipalities.by.rating.market.access,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,organization.us.nonprimary.broker.dealers,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,organization.us.nonprofits,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,organization.us.payroll.intermediaries,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,organization.us.pensions,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,organization.us.real.estate.agents,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,organization.us.regional.insurers,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,organization.us.small.businesses,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,organization.us.small.firms,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,organization.us.small.hedge.funds,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,person.cn.pboc_governor,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,person.cn.safe_head,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,person.cn.xi,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,person.eu.ecb_president,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,person.il.boi_governor,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,person.il.prime_minister,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,person.ir.central_bank_head,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,person.ir.irgc_head,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,person.ir.president,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,person.ir.supreme_leader,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,person.jp.boj_governor,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,person.jp.mof_international_affairs_vice_minister,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,person.sa.aramco_ceo,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,person.sa.crown,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,person.sa.pif_head,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,person.sa.sama_governor,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,person.uk.boe_governor,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,person.uk.dmo_chief,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,person.us.primary_dealer.rates_head,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,person.us.treasury.secretary,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,pop.us.affluent.homeowners,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,pop.us.college.students,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,pop.us.fixed.rate.owners.low.mortgage.vintages,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,pop.us.high.income.finance.professionals,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,pop.us.high.income.professionals,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,pop.us.leftist.male.college.students.georgia.tech,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,pop.us.low.income.service.workers,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,pop.us.low.income.underserved.borrowers,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,pop.us.near.retirees,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,pop.us.parents.paying.childcare,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,pop.us.renters.supply.constrained.metros,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,pop.us.retail.traders,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,pop.us.retirees,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,pop.us.small.business.owners,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,pop.us.strategic.production.workers.fab.technicians,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,pop.us.suburban.parents.childcare.costs,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,pop.us.uninsured.depositors,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,pop.us.young.renters,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,process.climate_agriculture.regional,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,process.ecology.congo_basin,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,process.epidemic,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,process.resources.arabian_peninsula,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,process.resources.caucasus,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,process.war,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,record.us.federal_reserve.case_file,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,record.us.federal_reserve.chairmanship_program,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,record.us.federal_reserve.discount_rate,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,record.us.federal_reserve.institutional_project,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,record.us.federal_reserve.iorb,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,record.us.federal_reserve.legacy_dossier,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,record.us.federal_reserve.target_range,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,record.us.treasury.esf,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,record.us.treasury.indemnification_13_3,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,reference.unknown.move_index,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,reference.unknown.vix,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,reference.us.consumer_price_index,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,reference.us.federal_reserve.effr,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,reference.us.federal_reserve.obfr,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,reference.us.personal_consumption_expenditures,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,region.cn.aggregate,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,region.cn.provinces,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,region.hormuz,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,region.middle_east.gulf,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,region.panama,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,region.suez,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,region.taiwan_strait,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,region.us.aggregate,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,region.us.census_divisions,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,region.us.federal_reserve_districts,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,region.us.metros,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,region.us.states,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,scheduled_process.unknown.call_report_calendar,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.afghanistan,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.albania,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.algeria,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.andorra,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.angola,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.argentina,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.armenia,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.australia,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.austria,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.azerbaijan,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.bahamas,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.bahrain,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.bangladesh,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.barbados,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.belgium,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.benin,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.bhutan,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.bolivia,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.bophuthatswana,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.botswana,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.brazil,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.bulgaria,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.burkina_faso,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.burundi,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.byelorussian_ssr,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.cambodia,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.cameroon,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.canada,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.cape_verde,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.central_african_republic,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.chad,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.chile,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.china,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.colombia,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.comoros,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.congo,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.costa_rica,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.cote_divoire,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.cuba,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.cyprus,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.czechoslovakia,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.denmark,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.djibouti,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.dominica,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.dominican_republic,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.drc,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.east_germany,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.ecuador,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.egypt,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.el_salvador,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.equatorial_guinea,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.eswatini,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.ethiopia,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.fiji,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.finland,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.france,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.gabon,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.gambia,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.georgia,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.germany,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.ghana,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.greece,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.grenada,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.guatemala,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.guinea,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.guinea_bissau,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.guyana,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.haiti,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.holy_see,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.honduras,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.hungary,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.iceland,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.india,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.indonesia,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.iran,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.iraq,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.ireland,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.israel,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.italy,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.jamaica,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.japan,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.jordan,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.kenya,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.kiribati,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.kuwait,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.laos,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.lebanon,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.lesotho,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.liberia,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.libya,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.liechtenstein,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.luxembourg,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.madagascar,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.malawi,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.malaysia,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.maldives,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.mali,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.malta,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.mauritania,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.mauritius,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.mexico,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.monaco,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.mongolia,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.morocco,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.mozambique,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.myanmar,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.nauru,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.nepal,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.netherlands,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.new_zealand,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.nicaragua,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.niger,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.nigeria,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.north_korea,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.north_yemen,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.norway,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.oman,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.pakistan,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.panama,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.papua_new_guinea,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.paraguay,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.peru,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.philippines,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.poland,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.portugal,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.qatar,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.romania,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.russia,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.rwanda,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.sahrawi_arab_democratic_republic,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.saint_lucia,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.samoa,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.san_marino,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.sao_tome_and_principe,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.saudi_arabia,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.senegal,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.seychelles,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.sierra_leone,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.singapore,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.solomon_islands,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.somalia,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.south_africa,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.south_korea,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.south_yemen,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.spain,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.sri_lanka,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.sudan,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.suriname,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.sweden,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.switzerland,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.syria,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.taiwan,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.tanzania,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.thailand,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.togo,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.tonga,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.transkei,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.trinidad_and_tobago,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.tunisia,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.turkey,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.tuvalu,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.uae,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.uganda,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.ukrainian_ssr,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.united_kingdom,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.united_states,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.uruguay,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.ussr,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.venezuela,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.vietnam,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.yugoslavia,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.zambia,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,sovereign.zimbabwe_rhodesia,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,staff.us.federal_reserve.financial_stability,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,staff.us.federal_reserve.international,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,staff.us.federal_reserve.legal,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,staff.us.federal_reserve.research,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,staff.us.federal_reserve.supervision,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,staff.us.treasury.debt_management,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,staff.us.treasury.ofr,NONE,research_content,NONE,doc:mandate.m4-proving-lens
+identity_only,stateful.us.treasury.duration_supply,NONE,research_content,NONE,doc:mandate.m4-proving-lens
 owned_state,UNKNOWN,state.external_region.aggregated_europe.commodities,state_transition,"Source-backed transition, witness, owner, and conserved unit.",04-design-discussion-minimum-simulation-kernel.md:819-837;05-design-discussion-representation-bible.md:678-690;05-design-discussion-representation-bible.md:737-771
 owned_state,UNKNOWN,state.external_region.aggregated_europe.currency,state_transition,"Source-backed transition, witness, owner, and conserved unit.",04-design-discussion-minimum-simulation-kernel.md:819-837;05-design-discussion-representation-bible.md:678-690;05-design-discussion-representation-bible.md:737-771
 owned_state,UNKNOWN,state.external_region.aggregated_europe.dollar_funding,state_transition,"Source-backed transition, witness, owner, and conserved unit.",04-design-discussion-minimum-simulation-kernel.md:819-837;05-design-discussion-representation-bible.md:678-690;05-design-discussion-representation-bible.md:737-771
@@ -452,131 +670,7 @@ owned_state,schedule.us.federal_reserve.blackout,state.fomc.blackout,state_trans
 owned_state,schedule.us.federal_reserve.fomc,state.fomc.calendar,state_transition,"Source-backed transition, witness, owner, and conserved unit.",06-design-discussion-representation-catalog.md:377;07-design-discussion-burrow-composition-probe.md:171
 owned_state,stateful.us.treasury.duration_supply,state.treasury.duration_supply,state_transition,"Source-backed transition, witness, owner, and conserved unit.",04-design-discussion-minimum-simulation-kernel.md:173-184;04-design-discussion-minimum-simulation-kernel.md:215
 presentation,person.us.paul_vulture,art.m4_pipeline,research,"Species guides for vulture, greyhound, and duck; Jimmy Darter and William Biller cues and wardrobe; cutout crop and transparency contract; plate and event style; rights and provenance metadata.",doc:mandate.m4-proving-lens
-profile_reserve,adapter.demand.global.coffee,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,adapter.demand.global.pork,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,adapter.demand.global.timber,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,adapter.export.arabian_peninsula.petroleum,adapter.external.gulf_exporters,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,adapter.flow.global.coffee,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,adapter.flow.global.pork,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,adapter.flow.global.timber,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,adapter.hydropower.caucasus,adapter.external.emerging_markets,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,adapter.hydropower.congo_basin,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,adapter.incident.amazon_basin.climate,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,adapter.input.amazon_basin.feed_grain,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,adapter.input.sa.feed_grain,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,adapter.market.global.coffee,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,adapter.market.global.pork,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,adapter.market.global.timber,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,adapter.process.amazon_basin.climate_agriculture,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,adapter.process.arabian_peninsula.resources,adapter.external.gulf_exporters,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,adapter.process.caucasus.resources,adapter.external.emerging_markets,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,adapter.process.congo_basin.ecology,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,adapter.real.us.construction_inputs,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,adapter.real.us.food_baskets,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,adapter.real.us.housing_activity,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,adapter.sector.arabian_peninsula.gas,adapter.external.gulf_exporters,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,adapter.sector.arabian_peninsula.petroleum,adapter.external.gulf_exporters,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,adapter.sector.caucasus.petroleum,adapter.external.emerging_markets,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,adapter.sector.congo_basin.forestry,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,adapter.sector.drc.copper_cobalt,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,adapter.supply.row.green_coffee,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,adapter.supply.row.live_hogs,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,adapter.supply.row.timber,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,adapter.transform.coffee_roasting,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,adapter.transform.hogs_slaughter,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,adapter.transform.timber_milling,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,adapter.transit.caucasus.energy,adapter.external.emerging_markets,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,adapter.transport.drc.minerals,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,adapter.water.arabian_peninsula,adapter.external.gulf_exporters,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,body.il.cabinet,adapter.external.emerging_markets,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,cohort.eu.exposed_banks,adapter.external.euro_area,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,cohort.jp.banks,adapter.external.japan,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,cohort.jp.insurers,adapter.external.japan,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,cohort.jp.pensions,adapter.external.japan,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,cohort.ru.energy_firms,adapter.external.russia,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,cohort.sg.dollar_funding_banks,adapter.external.offshore_asia,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,cohort.uk.pensions,adapter.external.united_kingdom,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,firm.sa.saudi_aramco,adapter.external.gulf_exporters,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,generator.climate.amazon_basin,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,industry.amazon_basin.coffee,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,industry.amazon_basin.forestry,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,industry.amazon_basin.pork,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,industry.arabian_peninsula.gas,adapter.external.gulf_exporters,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,industry.arabian_peninsula.petroleum,adapter.external.gulf_exporters,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,industry.caucasus.petroleum,adapter.external.emerging_markets,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,industry.congo_basin.forestry,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,industry.drc.copper_cobalt,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,industry.sa.coffee.aggregate,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,industry.sa.forestry.aggregate,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,industry.sa.pork.aggregate,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,institution.ae.central_bank,adapter.external.gulf_exporters,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,institution.ae.energy_companies,adapter.external.gulf_exporters,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,institution.ae.sovereign_funds,adapter.external.gulf_exporters,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,institution.cn.military,adapter.external.china,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,institution.cn.party_leadership,adapter.external.china,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,institution.cn.pboc,adapter.external.china,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,institution.cn.policy_banks,adapter.external.china,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,institution.cn.safe,adapter.external.china,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,institution.cn.state_council,adapter.external.china,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,institution.de.government,adapter.external.euro_area,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,institution.eu.commission,adapter.external.euro_area,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,institution.eu.ecb,adapter.external.euro_area,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,institution.eu.member_governments,adapter.external.euro_area,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,institution.eu.national_central_banks,adapter.external.euro_area,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,institution.fr.government,adapter.external.euro_area,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,institution.il.bank_of_israel,adapter.external.emerging_markets,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,institution.il.security,adapter.external.emerging_markets,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,institution.ir.central_bank,adapter.external.emerging_markets,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,institution.ir.irgc,adapter.external.emerging_markets,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,institution.ir.oil,adapter.external.emerging_markets,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,institution.it.government,adapter.external.euro_area,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,institution.jp.boj,adapter.external.japan,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,institution.jp.mof,adapter.external.japan,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,institution.qa.central_bank,adapter.external.gulf_exporters,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,institution.qa.energy_companies,adapter.external.gulf_exporters,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,institution.qa.sovereign_funds,adapter.external.gulf_exporters,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,institution.ru.central_bank,adapter.external.russia,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,institution.ru.presidency,adapter.external.russia,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,institution.ru.security,adapter.external.russia,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,institution.sa.energy_ministry,adapter.external.gulf_exporters,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,institution.sa.sama,adapter.external.gulf_exporters,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,institution.sa.sovereign_funds,adapter.external.gulf_exporters,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,institution.sg.mas,adapter.external.offshore_asia,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,institution.sg.shipping,adapter.external.offshore_asia,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,institution.sg.sovereign_funds,adapter.external.offshore_asia,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,institution.uk.boe,adapter.external.united_kingdom,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,institution.uk.dmo,adapter.external.united_kingdom,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,institution.uk.government,adapter.external.united_kingdom,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,market.product.global.coffee,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,market.product.global.pork,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,market.product.global.timber,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,mechanism.cross_border.chokepoint_shipping,adapter.external.emerging_markets,promotion_requirements,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.
-profile_reserve,mechanism.demand.global.coffee,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,mechanism.demand.global.pork,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,mechanism.demand.global.timber,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,mechanism.export.arabian_peninsula.petroleum,adapter.external.gulf_exporters,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,mechanism.flow.global.coffee,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,mechanism.flow.global.pork,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,mechanism.flow.global.timber,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,mechanism.hydropower.caucasus,adapter.external.emerging_markets,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,mechanism.hydropower.congo_basin,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,mechanism.sector.sa.coffee,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,mechanism.sector.sa.forestry,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,mechanism.sector.sa.hog_production,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,mechanism.transform.global.coffee_roasting,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,mechanism.transform.global.hogs_slaughter,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,mechanism.transform.global.timber_milling,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,mechanism.transit.caucasus.energy,adapter.external.emerging_markets,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,mechanism.transport.drc.minerals,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,mechanism.water.arabian_peninsula,adapter.external.gulf_exporters,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,process.climate_agriculture.amazon_basin,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,process.ecology.congo_basin,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,process.resources.arabian_peninsula,adapter.external.gulf_exporters,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,process.resources.caucasus,adapter.external.emerging_markets,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,sovereign.armenia,adapter.external.emerging_markets,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,sovereign.azerbaijan,adapter.external.emerging_markets,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,sovereign.drc,adapter.external.external_world,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
-profile_reserve,sovereign.georgia,adapter.external.emerging_markets,promotion_requirements,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.
+provider_channel,UNKNOWN,profile.volcker_1979,research,"Verify Treasury Bulletin 1979 holder labels on the scanned page, Saudi off-auction Treasury purchases, the $5.6bn Iranian deposits at overseas branches, and whether offshore Asia, Japan, and the UK belong in 1979 dollar funding or financial stress.",doc:mandate.m4-proving-lens
 provider_channel,sovereign.iran,channel.iran_political_occurrences,research,Per-occurrence no-feedback proof for each Iranian political occurrence kept RECORDED.,doc:mandate.m4-proving-lens
 provider_channel,sovereign.iran,channel.iran_sanctions_implementation,research,"Sanctions authorities, U.S. and foreign owners, accounts, counterparties, Chair intervention vocabulary, operational sequence, Board and New York Fed responsibilities, and calibration.",doc:mandate.m4-proving-lens
 relationship,UNKNOWN,rel.aggregates_into.external_region.aggregated_europe.global,relationship,"Resolved subject, object, canonical owner, lifecycle, observability, and witness.",04-design-discussion-minimum-simulation-kernel.md:819-837;05-design-discussion-representation-bible.md:678-690;05-design-discussion-representation-bible.md:737-771
@@ -595,6 +689,7 @@ relationship,body.us.federal_reserve.fomc,rel.governance.fomc_federal_reserve,li
 relationship,body.us.federal_reserve.fomc,rel.schedule.fomc,lifecycle,Source-backed effective period and exit conditions.,06-design-discussion-representation-catalog.md:377;07-design-discussion-burrow-composition-probe.md:171
 relationship,body.us.federal_reserve.reserve_bank_boards,rel.governance.reserve_boards_other_banks,lifecycle,Source-backed effective period and exit conditions.,06-design-discussion-representation-catalog.md:257
 relationship,body.us.treasury.tbac,rel.advisory.tbac_treasury,lifecycle,Source-backed effective period and exit conditions.,06-design-discussion-representation-catalog.md:259
+relationship,firm.sa.aramco,rel.succeeded_by.sa.aramco.saudi_aramco,research,Verified dates for the 1980 full state takeover of Aramco and the 1988 creation of Saudi Aramco before recording a SUCCEEDED_BY transition.,doc:mandate.m4-proving-lens
 relationship,industry.amazon_basin.coffee,rel.amazon_coffee.operates_in_basin,lifecycle,Source-backed effective period and exit conditions.,06-design-discussion-representation-catalog.md:735
 relationship,industry.amazon_basin.forestry,rel.amazon_forestry.extraction_right,lifecycle,Source-backed effective period and exit conditions.,06-design-discussion-representation-catalog.md:648
 relationship,industry.amazon_basin.forestry,rel.amazon_forestry.operates_in_basin,lifecycle,Source-backed effective period and exit conditions.,06-design-discussion-representation-catalog.md:734
@@ -659,6 +754,7 @@ relationship,staff.us.federal_reserve.ny_markets_group,rel.operation.ny_markets_
 resource_system,UNKNOWN,resource.petroleum,research,Which 1979 sovereigns declare a petroleum extension and the minimal complete state for each coarse model.,doc:mandate.m4-proving-lens
 resource_system,firm.sa.saudi_aramco,resource.sa.petroleum,research,"Dated policy institutions, operator ownership, rights, title, custody, capacity, inventories, facilities, export logistics, relationships, and rich-to-coarse shares.",doc:mandate.m4-proving-lens
 resource_system,mechanism.cross_border.chokepoint_shipping,resource.petroleum.logistics,research,"Product grades, substitution, routes, tanker state, payment and settlement paths, and calibration.",doc:mandate.m4-proving-lens
+role_holder,UNKNOWN,profile.volcker_1979,research,"Dated HOLDS_ROLE transitions after the as-of date, each re-verified: 1979-09-28 Iran: Hassan Nazih relieved as NIOC head; 1979-09-29 Iran: OWNER CHANGE: Ministry of Petroleum established; Moinfar becomes first minister and NIOC chairman. Petroleum policy moves from NIOC to the ministry; NIOC becomes a ministry subsidiary; 1979-11-06 Iran: OWNER CHANGE: Bazargan's Interim Government resigns; the Revolutionary Council assumes direct government; 1979-12-02/03 Iran: OWNER CHANGE: constitution adopted by referendum, creating the Supreme Leader and an elected presidency; 1980-01-27 Kuwait: OWNER CHANGE: Kuwait Petroleum Corporation founded as holding company over KOC, KNPC, KOTC and PIC; 1980-02-04 Iran: Banisadr takes office as first President; 1980 (day UNVERIFIED) Saudi Arabia: OWNER CHANGE: government raises Aramco interest to 100%; financial effect retroactive to 1976 (search-snippet only). Aramco remains operator; Saudi Aramco formed November 1988; 1980-06-12 Japan: PM Ōhira dies in office (Itō acting); 1980-07-17 Japan: Zenkō Suzuki becomes PM; 1980-07-20 Iran: Revolutionary Council dissolved; first Majlis convenes 1980-08-12; 1980-09-22 Iraq/Iran: EVENT (no owner change): Iraq invades Iran; 1980-10 (15th or 23rd; sources differ) Soviet Union: Kosygin replaced by Nikolai Tikhonov as Chairman of the Council of Ministers; 1981-01-20 United States: Carter administration ends (Duncan's term ends that date); Reagan takes office; 1981-01-28 United States: EO 12287 exempts crude oil and products from EPAA price and allocation controls; minor provisions run to 1981-03-31; 1981-06-21/22 Iran: Banisadr impeached and removed; 1982-03-04 United Kingdom: Britoil incorporated under the Oil and Gas (Enterprise) Act 1982; BNOC production arm split from its trading arm. 51% of Britoil",doc:mandate.m4-proving-lens
 scenario,UNKNOWN,scenario.gulf.oil_shocks_1979_1981,research,"Decided campaign endpoint, the M4 playable frontier if shorter, and whether the planning ID is renamed to match.",doc:mandate.m4-proving-lens
 scenario,UNKNOWN,scenario.gulf.oil_shocks_1979_1981,research,"Verified opening instant, source cutoff, historical prefix, effective law, officeholders, outstanding commitments, evidence sets, and event schedule.",doc:mandate.m4-proving-lens
 scenario,person.us.paul_vulture,scenario.gulf.oil_shocks_1979_1981,research,"Reviewed alternative Chairs with period office eligibility, relationships, and opening cognition.",doc:mandate.m4-proving-lens

@@ -9,13 +9,20 @@ profile.early_2006.bernankey,adapter.external.euro_area,boundary_candidate,adapt
 profile.early_2006.bernankey,adapter.external.external_energy,boundary_candidate,adapter.external.external_energy,Receiving module selects this provider in a future representation manifest.,Channel-specific external candidate; role does not activate it.,Early-2006 profile planning index.
 profile.early_2006.bernankey,adapter.external.external_world,boundary_candidate,adapter.external.external_world,Receiving module selects this provider in a future representation manifest.,Channel-specific external candidate; role does not activate it.,Early-2006 profile planning index.
 profile.early_2006.bernankey,adapter.external.freight_global,boundary_candidate,adapter.external.freight_global,Receiving module selects this provider in a future representation manifest.,Channel-specific external candidate; role does not activate it.,Early-2006 profile planning index.
+profile.early_2006.bernankey,adapter.external.freight_gulf_hormuz,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,adapter.external.freight_gulf_suez,boundary_candidate,adapter.external.freight_gulf_suez,Receiving module selects this provider in a future representation manifest.,Channel-specific external candidate; role does not activate it.,Early-2006 profile planning index.
 profile.early_2006.bernankey,adapter.external.gulf_exporters,boundary_candidate,adapter.external.gulf_exporters,Receiving module selects this provider in a future representation manifest.,Channel-specific external candidate; role does not activate it.,Early-2006 profile planning index.
+profile.early_2006.bernankey,adapter.external.iran,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,adapter.external.japan,boundary_candidate,adapter.external.japan,Receiving module selects this provider in a future representation manifest.,Channel-specific external candidate; role does not activate it.,Early-2006 profile planning index.
+profile.early_2006.bernankey,adapter.external.latin_america_debtors,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,adapter.external.mexico,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,adapter.external.non_gulf_opec,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,adapter.external.offshore_asia,boundary_candidate,adapter.external.offshore_asia,Receiving module selects this provider in a future representation manifest.,Channel-specific external candidate; role does not activate it.,Early-2006 profile planning index.
 profile.early_2006.bernankey,adapter.external.oil_exporters,boundary_candidate,adapter.external.oil_exporters,Receiving module selects this provider in a future representation manifest.,Channel-specific external candidate; role does not activate it.,Early-2006 profile planning index.
 profile.early_2006.bernankey,adapter.external.russia,boundary_candidate,adapter.external.russia,Receiving module selects this provider in a future representation manifest.,Channel-specific external candidate; role does not activate it.,Early-2006 profile planning index.
+profile.early_2006.bernankey,adapter.external.switzerland,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,adapter.external.united_kingdom,boundary_candidate,adapter.external.united_kingdom,Receiving module selects this provider in a future representation manifest.,Channel-specific external candidate; role does not activate it.,Early-2006 profile planning index.
+profile.early_2006.bernankey,adapter.external.west_germany,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,adapter.flow.global.coffee,reserve,adapter.external.external_world,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Rich regional content is reserved for composition and future promotion.,Early-2006 profile planning index.
 profile.early_2006.bernankey,adapter.flow.global.pork,reserve,adapter.external.external_world,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Rich regional content is reserved for composition and future promotion.,Early-2006 profile planning index.
 profile.early_2006.bernankey,adapter.flow.global.timber,reserve,adapter.external.external_world,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Rich regional content is reserved for composition and future promotion.,Early-2006 profile planning index.
@@ -110,6 +117,7 @@ profile.early_2006.bernankey,cohort.us.fund.small_hedge,reference,NONE,NONE,Type
 profile.early_2006.bernankey,cohort.us.insurer,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,cohort.us.insurer.regional,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,cohort.us.pension,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
+profile.early_2006.bernankey,cohort.us.petroleum_producers,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,facility.central_bank.swap_lines,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,facility.fima_repo,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,facility.us.federal_reserve.discount_window,slice_candidate,NONE,Future manifest selection plus effective-period initialization.,Dependency-closed Treasury-duration or secured-funding candidate.,Early-2006 profile planning index.
@@ -119,7 +127,13 @@ profile.early_2006.bernankey,facility.us.federal_reserve.section_13_3,reference,
 profile.early_2006.bernankey,facility.us.federal_reserve.srf,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,federated.euro_area,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,federation.us.federal_reserve,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
+profile.early_2006.bernankey,firm.iq.inoc,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,firm.ir.nioc,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,firm.kw.koc,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,firm.sa.aramco,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,firm.sa.saudi_aramco,reserve,adapter.external.gulf_exporters,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Thin foreign candidate retained without synthetic regional state.,Early-2006 profile planning index.
+profile.early_2006.bernankey,firm.uk.bnoc,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,firm.ve.pdvsa,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,generator.chokepoint_blockage,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,generator.climate.amazon_basin,reserve,adapter.external.external_world,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Rich regional content is reserved for composition and future promotion.,Early-2006 profile planning index.
 profile.early_2006.bernankey,generator.cyber,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
@@ -183,12 +197,28 @@ profile.early_2006.bernankey,institution.fr.government,reserve,adapter.external.
 profile.early_2006.bernankey,institution.il.bank_of_israel,reserve,adapter.external.emerging_markets,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Thin foreign candidate retained without synthetic regional state.,Early-2006 profile planning index.
 profile.early_2006.bernankey,institution.il.security,reserve,adapter.external.emerging_markets,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Thin foreign candidate retained without synthetic regional state.,Early-2006 profile planning index.
 profile.early_2006.bernankey,institution.imf,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
+profile.early_2006.bernankey,institution.iq.central_bank,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,institution.iq.finance_ministry,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,institution.iq.foreign_ministry,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,institution.iq.oil_ministry,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,institution.iq.revolutionary_command_council,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,institution.ir.central_bank,reserve,adapter.external.emerging_markets,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Thin foreign candidate retained without synthetic regional state.,Early-2006 profile planning index.
+profile.early_2006.bernankey,institution.ir.finance_ministry,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,institution.ir.foreign_ministry,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,institution.ir.interim_government,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,institution.ir.irgc,reserve,adapter.external.emerging_markets,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Thin foreign candidate retained without synthetic regional state.,Early-2006 profile planning index.
 profile.early_2006.bernankey,institution.ir.oil,reserve,adapter.external.emerging_markets,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Thin foreign candidate retained without synthetic regional state.,Early-2006 profile planning index.
 profile.early_2006.bernankey,institution.it.government,reserve,adapter.external.euro_area,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Thin foreign candidate retained without synthetic regional state.,Early-2006 profile planning index.
 profile.early_2006.bernankey,institution.jp.boj,reserve,adapter.external.japan,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Thin foreign candidate retained without synthetic regional state.,Early-2006 profile planning index.
+profile.early_2006.bernankey,institution.jp.foreign_ministry,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,institution.jp.jnoc,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,institution.jp.miti,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,institution.jp.mof,reserve,adapter.external.japan,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Thin foreign candidate retained without synthetic regional state.,Early-2006 profile planning index.
+profile.early_2006.bernankey,institution.kw.central_bank,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,institution.kw.council_of_ministers,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,institution.kw.finance_ministry,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,institution.kw.foreign_ministry,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,institution.kw.oil_ministry,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,institution.media.aftv,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,institution.media.gnbc,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,institution.media.honkbox,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
@@ -200,15 +230,27 @@ profile.early_2006.bernankey,institution.qa.sovereign_funds,reserve,adapter.exte
 profile.early_2006.bernankey,institution.ru.central_bank,reserve,adapter.external.russia,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Thin foreign candidate retained without synthetic regional state.,Early-2006 profile planning index.
 profile.early_2006.bernankey,institution.ru.presidency,reserve,adapter.external.russia,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Thin foreign candidate retained without synthetic regional state.,Early-2006 profile planning index.
 profile.early_2006.bernankey,institution.ru.security,reserve,adapter.external.russia,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Thin foreign candidate retained without synthetic regional state.,Early-2006 profile planning index.
+profile.early_2006.bernankey,institution.sa.council_of_ministers,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,institution.sa.energy_ministry,reserve,adapter.external.gulf_exporters,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Thin foreign candidate retained without synthetic regional state.,Early-2006 profile planning index.
+profile.early_2006.bernankey,institution.sa.finance_ministry,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,institution.sa.foreign_ministry,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,institution.sa.sama,reserve,adapter.external.gulf_exporters,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Thin foreign candidate retained without synthetic regional state.,Early-2006 profile planning index.
 profile.early_2006.bernankey,institution.sa.sovereign_funds,reserve,adapter.external.gulf_exporters,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Thin foreign candidate retained without synthetic regional state.,Early-2006 profile planning index.
 profile.early_2006.bernankey,institution.sg.mas,reserve,adapter.external.offshore_asia,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Thin foreign candidate retained without synthetic regional state.,Early-2006 profile planning index.
 profile.early_2006.bernankey,institution.sg.shipping,reserve,adapter.external.offshore_asia,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Thin foreign candidate retained without synthetic regional state.,Early-2006 profile planning index.
 profile.early_2006.bernankey,institution.sg.sovereign_funds,reserve,adapter.external.offshore_asia,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Thin foreign candidate retained without synthetic regional state.,Early-2006 profile planning index.
+profile.early_2006.bernankey,institution.su.council_of_ministers,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,institution.su.finance_ministry,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,institution.su.foreign_ministry,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,institution.su.gosbank,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,institution.su.gosplan,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,institution.su.oil_ministry,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,institution.uk.boe,reserve,adapter.external.united_kingdom,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Thin foreign candidate retained without synthetic regional state.,Early-2006 profile planning index.
+profile.early_2006.bernankey,institution.uk.department_of_energy,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,institution.uk.dmo,reserve,adapter.external.united_kingdom,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Thin foreign candidate retained without synthetic regional state.,Early-2006 profile planning index.
+profile.early_2006.bernankey,institution.uk.foreign_office,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,institution.uk.government,reserve,adapter.external.united_kingdom,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Thin foreign candidate retained without synthetic regional state.,Early-2006 profile planning index.
+profile.early_2006.bernankey,institution.uk.treasury,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,institution.us.american.bankers.association,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,institution.us.bank.policy.institute,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,institution.us.bea,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
@@ -216,6 +258,7 @@ profile.early_2006.bernankey,institution.us.bls,reference,NONE,NONE,Typed identi
 profile.early_2006.bernankey,institution.us.chamber.of.commerce,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,institution.us.community.reinvestment.advocates,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,institution.us.consumer.finance.advocates,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
+profile.early_2006.bernankey,institution.us.department_of_energy,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,institution.us.farm.bureau.analogue,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,institution.us.homebuilders,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,institution.us.independent.community.bankers,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
@@ -226,11 +269,18 @@ profile.early_2006.bernankey,institution.us.member.unions,reference,NONE,NONE,Ty
 profile.early_2006.bernankey,institution.us.mortgage.bankers,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,institution.us.new_york_fed,slice_candidate,NONE,Future manifest selection plus effective-period initialization.,Dependency-closed Treasury-duration or secured-funding candidate.,Early-2006 profile planning index.
 profile.early_2006.bernankey,institution.us.policy.institutes,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
+profile.early_2006.bernankey,institution.us.presidency,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,institution.us.realtors,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,institution.us.retiree.association.aarp.analogue,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,institution.us.securities.industry.association,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,institution.us.small.business.federation,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
+profile.early_2006.bernankey,institution.us.state_department,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,institution.us.think.tanks,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
+profile.early_2006.bernankey,institution.ve.central_bank,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,institution.ve.energy_mines_ministry,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,institution.ve.finance_ministry,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,institution.ve.foreign_ministry,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,institution.ve.presidency,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,instrument.cross_border.capital_controls,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,legal.us.dodd_frank,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,legal.us.federal_reserve.act.section_12a,reference,NONE,Selected FOMC authority clause is effective.,Statutory source for collective FOMC direction.,Federal Reserve Act section 12A: https://www.federalreserve.gov/aboutthefed/section12a.htm
@@ -437,13 +487,20 @@ profile.early_2006.bernankey,region.external.euro_area,reference,NONE,NONE,Typed
 profile.early_2006.bernankey,region.external.external_energy,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,region.external.external_world,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,region.external.freight_global,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
+profile.early_2006.bernankey,region.external.freight_gulf_hormuz,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,region.external.freight_gulf_suez,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,region.external.gulf_exporters,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
+profile.early_2006.bernankey,region.external.iran,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,region.external.japan,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
+profile.early_2006.bernankey,region.external.latin_america_debtors,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,region.external.mexico,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,region.external.non_gulf_opec,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,region.external.offshore_asia,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,region.external.oil_exporters,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,region.external.russia,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
+profile.early_2006.bernankey,region.external.switzerland,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,region.external.united_kingdom,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
+profile.early_2006.bernankey,region.external.west_germany,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,region.hormuz,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,region.me.arabian_peninsula,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,region.middle_east.gulf,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
@@ -464,23 +521,179 @@ profile.early_2006.bernankey,schedule.us.federal_reserve.blackout,reference,NONE
 profile.early_2006.bernankey,schedule.us.federal_reserve.fomc,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,schedule.us.treasury.auction,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,scheduled_process.unknown.call_report_calendar,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
+profile.early_2006.bernankey,sovereign.afghanistan,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.albania,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.algeria,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.andorra,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.angola,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.argentina,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,sovereign.armenia,reserve,adapter.external.emerging_markets,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Rich regional content is reserved for composition and future promotion.,Early-2006 profile planning index.
+profile.early_2006.bernankey,sovereign.australia,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.austria,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,sovereign.azerbaijan,reserve,adapter.external.emerging_markets,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Rich regional content is reserved for composition and future promotion.,Early-2006 profile planning index.
+profile.early_2006.bernankey,sovereign.bahamas,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.bahrain,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.bangladesh,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.barbados,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.belgium,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.benin,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.bhutan,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.bolivia,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.bophuthatswana,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.botswana,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.brazil,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.bulgaria,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.burkina_faso,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.burundi,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.byelorussian_ssr,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.cambodia,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.cameroon,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.canada,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.cape_verde,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.central_african_republic,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.chad,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.chile,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,sovereign.china,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
+profile.early_2006.bernankey,sovereign.colombia,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.comoros,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.congo,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.costa_rica,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.cote_divoire,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.cuba,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.cyprus,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.czechoslovakia,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.denmark,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.djibouti,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.dominica,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.dominican_republic,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,sovereign.drc,reserve,adapter.external.external_world,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Rich regional content is reserved for composition and future promotion.,Early-2006 profile planning index.
+profile.early_2006.bernankey,sovereign.east_germany,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.ecuador,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.egypt,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.el_salvador,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.equatorial_guinea,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.eswatini,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.ethiopia,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.fiji,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.finland,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,sovereign.france,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
+profile.early_2006.bernankey,sovereign.gabon,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.gambia,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,sovereign.georgia,reserve,adapter.external.emerging_markets,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Rich regional content is reserved for composition and future promotion.,Early-2006 profile planning index.
 profile.early_2006.bernankey,sovereign.germany,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
+profile.early_2006.bernankey,sovereign.ghana,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.greece,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.grenada,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.guatemala,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.guinea,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.guinea_bissau,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.guyana,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.haiti,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.holy_see,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.honduras,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.hungary,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.iceland,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.india,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.indonesia,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,sovereign.iran,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
+profile.early_2006.bernankey,sovereign.iraq,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.ireland,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,sovereign.israel,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,sovereign.italy,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
+profile.early_2006.bernankey,sovereign.jamaica,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,sovereign.japan,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
+profile.early_2006.bernankey,sovereign.jordan,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.kenya,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.kiribati,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.kuwait,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.laos,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.lebanon,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.lesotho,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.liberia,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.libya,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.liechtenstein,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.luxembourg,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.madagascar,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.malawi,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.malaysia,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.maldives,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.mali,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.malta,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.mauritania,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.mauritius,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.mexico,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.monaco,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.mongolia,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.morocco,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.mozambique,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.myanmar,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.nauru,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.nepal,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.netherlands,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.new_zealand,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.nicaragua,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.niger,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.nigeria,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.north_korea,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.north_yemen,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.norway,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.oman,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.pakistan,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.panama,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.papua_new_guinea,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.paraguay,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.peru,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.philippines,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.poland,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.portugal,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,sovereign.qatar,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
+profile.early_2006.bernankey,sovereign.romania,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,sovereign.russia,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
+profile.early_2006.bernankey,sovereign.rwanda,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.sahrawi_arab_democratic_republic,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.saint_lucia,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.samoa,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.san_marino,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.sao_tome_and_principe,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,sovereign.saudi_arabia,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
+profile.early_2006.bernankey,sovereign.senegal,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.seychelles,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.sierra_leone,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,sovereign.singapore,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
+profile.early_2006.bernankey,sovereign.solomon_islands,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.somalia,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.south_africa,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.south_korea,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.south_yemen,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.spain,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.sri_lanka,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.sudan,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.suriname,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.sweden,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.switzerland,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.syria,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.taiwan,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.tanzania,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.thailand,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.togo,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.tonga,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.transkei,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.trinidad_and_tobago,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.tunisia,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.turkey,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.tuvalu,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,sovereign.uae,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
+profile.early_2006.bernankey,sovereign.uganda,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.ukrainian_ssr,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,sovereign.united_kingdom,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
+profile.early_2006.bernankey,sovereign.united_states,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.uruguay,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.ussr,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.venezuela,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.vietnam,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.yugoslavia,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.zambia,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,sovereign.zimbabwe_rhodesia,excluded,NONE,NONE,Authored for the 1979 profile; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,staff.us.federal_reserve.communications,slice_candidate,staff.us.federal_reserve.communications,The bounded FOMC cycle initializes Communications access methods and capacity.,Retains the selected staff owner before Phase 5 publication work.,12-structure-outline-bernankey-mvp-cycle.md:397-415
 profile.early_2006.bernankey,staff.us.federal_reserve.financial_stability,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,staff.us.federal_reserve.international,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.

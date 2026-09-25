@@ -1,0 +1,3 @@
+profile_id,office_id,requirement,provenance
+profile.volcker_1979,office.us.federal_reserve.board_chair,Player holds the Chair office on the profile date.,https://en.wikipedia.org/wiki/Paul_Volcker
+profile.volcker_1979,office.us.federal_reserve.fomc_chair,Player holds the Chair office on the profile date.,https://en.wikipedia.org/wiki/Paul_Volcker
