@@ -21,7 +21,11 @@ diplomatic rupture may be recorded only on channels meeting that no-feedback
 test. Their material, financial, institutional, and informational consequences
 still enter ordinary owners and typed transmissions. Advice, coordination,
 swap arrangements, sanctions implementation, public claims, and other U.S.
-actions affect foreign behavior only through explicit reachable inputs. The
+actions affect foreign behavior only through explicit reachable inputs.
+The Chair reaches a responsive foreign channel only through authority the
+Chair holds: advice within the represented process, coordination through
+authored relationships, institutional assessment, and lawful execution of
+policy that another owner decided. The
 runtime cannot invent a conflict, authority, relationship, or political
 transition outside the frozen channel contract.
 

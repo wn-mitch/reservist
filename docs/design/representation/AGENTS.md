@@ -7,6 +7,7 @@ Authority class: canonical. This folder owns representation axes, kinds, composi
 - [Populations, households, and lenses](populations-households-and-lenses.md)
 - [Firms, markets, and mechanisms](firms-markets-and-mechanisms.md)
 - [Coalitions, sovereigns, and geography](coalitions-sovereigns-and-geography.md)
+- [Sovereign necessity systems](sovereign-necessity-systems.md)
 - [Generators, processes, and references](generators-processes-and-references.md)
 - [Relationships and affiliations](relationships-and-affiliations.md)
 - [Fidelity and actor behavior](fidelity-and-actor-behavior.md)

@@ -20,13 +20,17 @@ consume every supported intervention, and emit witnessed outputs. Rich
 promotion must replace exact coarse or residual shares; demotion must
 deterministically reconcile accounts, stocks, relationships, commitments,
 queues, observations, and pending effects while recording fidelity loss.
+Resource-system tests must show that policy posture never writes realized
+extraction, export availability, delivery, prices, or beliefs, and that an
+access shock leaves upstream stock and capacity unchanged.
 
 M4 must also prove UTC event ordering against local calendars, sessions,
 cutoffs, and settlement; feasible-project envelopes reject unregistered
 geography and technology; and dated instances freeze reusable templates,
 source cutoffs, provider modes, and content identity. Asset evidence must
 validate approved source references, rights and metadata, pinned import
-settings, excluded generated caches, and separate presentation identity.
+settings, excluded generated caches, and separate presentation identity for
+each of the four image roles M4 consumes.
 Broader content must close period variants, counterparties, opening state,
 fallbacks, supported transitions, and probes before scenario use.
 

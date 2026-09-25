@@ -17,4 +17,9 @@ at a deterministic commit boundary and records the fidelity lost. Play may
 continue through that declared coarse model; the runtime may not choose a
 nearest approximation or invent behavior after initialization.
 
+Promoting one component, such as a sovereign's petroleum system, never
+promotes the sovereign or its other components. The rich component replaces its
+own sovereign's declared coarse share, never a regional aggregate or a share
+held by another sovereign.
+
 Promotion never occurs dynamically during play. Presentation may foreground any existing entry. A missing required rich contract is a content failure, not permission to substitute a different subject or silently drop a channel.

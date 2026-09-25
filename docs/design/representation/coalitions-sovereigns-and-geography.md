@@ -20,6 +20,12 @@ component share. M1 and M2 retain their frozen narrower external boundaries.
 
 Regions scope geography and typed mappings. They do not own stocks merely because something occurs within them. Sovereign borders, currency areas, waters, trade routes, climate systems, media spheres, and operational regions may overlap through typed scope relationships. Overlap grants no containment, authority, title, or action by default.
 
+A regional or multi-sovereign view, such as a Gulf exporter group, currency
+area, or shipping route, is a non-owning projection or a bounded boundary
+provider over sovereign-specific owners. It never holds another sovereign's
+stock, authority, commitments, or cognition, and it cannot stand in for a
+component that a sovereign's bundle requires.
+
 Transnational religious authority and regional legitimacy are composed from
 promotable people, institutions, populations, outlets, claims, and
 relationships. Aggregate pressure is derived. No region, faith, people, or

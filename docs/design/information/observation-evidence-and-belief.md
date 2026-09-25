@@ -20,6 +20,12 @@ conditions remain separate observations. Signals map to hypotheses rather than
 conclusions: reduced delivery or a price move never identifies its physical,
 contractual, financial, political, or informational cause by itself.
 
+A material failure never applies a political penalty directly. The failure,
+its observation, evidence delivery, recipients' beliefs, public claims, and
+institutional or political response remain separate transitions. Political
+consequences depend on duration, distribution, expectations, attribution,
+represented fairness, and the evidence each audience can access.
+
 Beliefs never read world state directly. They retain supporting and contrary evidence, confidence, update time, and provenance. Missing observations may reduce confidence or leave uncertainty unresolved. Staff synthesis can compare sources and models but remains an authored institutional record, not truth.
 
 Developer traces may reconstruct the full causal path from state through measurement and delivery. Player-facing views contain only evidence legitimately available in the current context. General mechanism education remains separate from run knowledge and may not reveal unobserved exposures or future outcomes.

@@ -10,3 +10,4 @@ Authority class: canonical. This folder owns player presentation, folders, autho
 - [Learning and run knowledge](learning-and-run-knowledge.md)
 - [Scorecard and verdict boundary](scorecard-and-verdict-boundary.md)
 - [Asset and language-model boundary](asset-and-language-model-boundary.md)
+- [Art direction and character production](art-direction-and-character-production.md)

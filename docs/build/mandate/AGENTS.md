@@ -8,4 +8,5 @@ Authority class: mandate. These leaves define authorized scope, milestone order,
 - [Builder latitude](builder-latitude.md)
 - [M1 and M2 evidence obligations](evidence-obligations-m1-m2.md)
 - [M3 and M4 evidence obligations](evidence-obligations-m3-m4.md)
+- [M4 proving lens](m4-proving-lens.md)
 - [Continuation](continuation.md)

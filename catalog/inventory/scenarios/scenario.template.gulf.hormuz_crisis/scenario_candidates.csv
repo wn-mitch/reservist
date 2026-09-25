@@ -1,6 +1,6 @@
 scenario_id,catalog_id,relevance,uncertainty_notes,provenance
 scenario.template.gulf.hormuz_crisis,adapter.external.freight_gulf_suez,Coarse freight fallback candidate.,"A dated instance must supply routes, interfaces, and calibration.",doc:index.world.gulf-web
-scenario.template.gulf.hormuz_crisis,adapter.external.gulf_exporters,Coarse energy-supply fallback candidate.,"A dated instance must supply provider modes, interfaces, and calibration.",doc:index.world.gulf-web
+scenario.template.gulf.hormuz_crisis,adapter.external.gulf_exporters,"Non-owning boundary residual view over sovereign petroleum owners; holds no stock, authority, or cognition.","A dated instance must supply provider modes, interfaces, and calibration.",doc:index.world.gulf-web
 scenario.template.gulf.hormuz_crisis,firm.sa.saudi_aramco,Rich operator candidate for production and route allocation.,"Dated rights, plans, accounts, capacity, and residual share remain incomplete.",doc:index.world.gulf-web
 scenario.template.gulf.hormuz_crisis,institution.ir.oil,Rich Iranian petroleum authority and operator candidate.,"Dated authority, sanctions, accounts, storage, and fallback remain incomplete.",doc:index.world.gulf-web
 scenario.template.gulf.hormuz_crisis,institution.qa.energy_companies,Rich LNG production and shipping candidate.,"Dated owners, trains, contracts, vessels, and fallback remain incomplete.",doc:index.world.gulf-web

@@ -23,6 +23,15 @@ network constraints. Petroleum, gas, LNG, refining, water treatment, power,
 petrochemicals, fertilizer, freight, and other industries use this grammar only
 through their own typed products, technologies, owners, and stage contracts.
 
+Every resource system keeps policy authority and operations as separate
+owners at every fidelity. Policy authority sets and commits posture, targets,
+and terms. Operations realizes extraction, processing, and export availability
+under actual capacity and inputs. An announcement or authorized target is not
+realized output, and the policy owner cannot write barrels, inventories,
+transport, delivery, or prices. Coarse fidelity may compress state and behavior
+but may not merge owners that vary independently, hold different canonical
+state, or exercise different authority.
+
 Financial conditions affect real decisions through specific contracts, accounts, refinancing, demand, and constraints. Physical shortages affect prices, production, employment, and claims through typed transmissions. Neither side may become a generic modifier over the other.
 
 Major physical development occurs only inside a reviewed feasible-project

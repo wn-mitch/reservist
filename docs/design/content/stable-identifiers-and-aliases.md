@@ -10,4 +10,10 @@ There is no general alias or automatic entity-reconciliation system. Source-spec
 
 Mergers, successions, reorganizations, transformed legal subjects, and changed ownership are explicit dated transitions. They are not aliases. A renamed display label does not create a new subject; a legal successor does not silently inherit all private or institutional state.
 
+A subject that persists as the same legal person keeps its ID and gains a dated
+period variant when its name, territory, constitution, or membership changes.
+Dissolution, partition, or a continuator claim creates a new identity linked by
+a dated `SUCCEEDED_BY` relationship. The successor receives only what that
+transition explicitly transfers.
+
 Stable contract, handler, state, input, output, relationship, transmission, family, bucket, and option IDs follow the same principle. Frozen data stores resolved IDs and definition versions. If an ID changes meaning, create a new version or identity and migrate every caller; never reuse it for a different contract.

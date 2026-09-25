@@ -17,6 +17,12 @@ conditions. It does not prescribe player-reachable decisions or downstream
 outcomes. A historical episode supplies a researched starting regime, external
 channel classifications, and mechanism hypotheses, not a script.
 
+A familiar historical policy turn is selectable content, reachable only through
+the authority and actions the period supports. It is never a compulsory
+checkpoint or automatic trigger. A delivered scenario segment may stop at an
+authored content frontier. The frontier preserves unresolved obligations and
+binds no epilogue outcome.
+
 A past enactment, appointment, contract, or commitment may schedule a future effective date, term boundary, payment, review, or delivery. Valid future amendment, repeal, removal, succession, cancellation, performance, or breach can alter the prospective path. None erases the historical record or changes what was known earlier.
 
 Scenario and campaign time remains deterministic and institutionally dated. Presentation may compress uneventful periods, but every causal transition retains its effective time, owner, and witness. Retrospective evidence learned later is marked as hindsight rather than inserted into the historical information set.
