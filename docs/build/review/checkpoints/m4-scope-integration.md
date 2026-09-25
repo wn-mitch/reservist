@@ -18,11 +18,11 @@ folders with a closed four-role asset vocabulary.
 `sha256:493ca024…d066` and `sha256:095a1bbd…305a` byte-for-byte, and replay
 checks passed for M1, M2, and M3.
 
-**Observed defect:** `reservist freeze scenarios/mvp_2006_cycle` fails with
-`missing required stewardship finding column receipt_status`. The M3 change
-replaced the stewardship-finding schema, while the M2 interaction contract
-still requires the earlier columns. The committed M2 slice still validates
-and replays; only resealing M2 from the current catalog fails.
+**Observed defect, then repair:** resealing M2 failed with `missing required
+stewardship finding column receipt_status` because the M3 change replaced the
+finding schema that M2's interaction contract reads. M2's original receipt
+rules now live in their own scenario table, and a test reseals M1, M2, and M3
+byte-for-byte from the current catalog. M2 reseals as `sha256:d9f745b9…2ce4`.
 
 **Not established:** no M4 runtime, sovereign bundle, roster, provider,
 calibration, or art beyond the existing Chair portraits.

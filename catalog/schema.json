@@ -99,7 +99,8 @@
     "sovereign_rosters.csv": ["profile_id", "sovereign_id", "iso_code", "recognition_treatment", "scoped_under_id", "effective_period", "uncertainty_notes", "provenance"],
     "sovereign_bundles.csv": ["profile_id", "sovereign_id", "governing_authority", "fiscal_accounts", "monetary_accounts", "external_relationships", "trade_production", "trade_demand", "response_table", "water_sanitation", "food", "energy", "shelter_thermal", "health", "transport_logistics", "payments_finance", "communications", "public_order_security", "strategic_materiel", "notes", "provenance"],
     "sovereign_facet_exceptions.csv": ["profile_id", "sovereign_id", "facet", "reason", "provenance"],
-    "sovereign_resource_systems.csv": ["profile_id", "sovereign_id", "resource", "policy_owner", "operations_owner", "notes", "provenance"]
+    "sovereign_resource_systems.csv": ["profile_id", "sovereign_id", "resource", "policy_owner", "operations_owner", "notes", "provenance"],
+    "interaction_finding_rules.csv": ["finding_id", "witness_kind", "receipt_status", "minimum_matches", "points", "verdict", "provenance"]
   },
   "table_lifecycle": {
     "period_variants.csv": "deferred",
@@ -149,7 +150,8 @@
     "sovereign_rosters.csv": "deferred",
     "sovereign_bundles.csv": "deferred",
     "sovereign_facet_exceptions.csv": "deferred",
-    "sovereign_resource_systems.csv": "deferred"
+    "sovereign_resource_systems.csv": "deferred",
+    "interaction_finding_rules.csv": "required"
   },
   "table_keys": {
     "types.csv": ["type_id"],
@@ -199,7 +201,8 @@
     "sovereign_rosters.csv": ["profile_id", "sovereign_id"],
     "sovereign_bundles.csv": ["profile_id", "sovereign_id"],
     "sovereign_facet_exceptions.csv": ["profile_id", "sovereign_id", "facet"],
-    "sovereign_resource_systems.csv": ["profile_id", "sovereign_id", "resource"]
+    "sovereign_resource_systems.csv": ["profile_id", "sovereign_id", "resource"],
+    "interaction_finding_rules.csv": ["finding_id"]
   },
   "table_placement": {
     "types.csv": {"kind": "shared"},
@@ -249,7 +252,8 @@
     "sovereign_rosters.csv": {"kind": "profile", "field": "profile_id"},
     "sovereign_bundles.csv": {"kind": "profile", "field": "profile_id"},
     "sovereign_facet_exceptions.csv": {"kind": "profile", "field": "profile_id"},
-    "sovereign_resource_systems.csv": {"kind": "profile", "field": "profile_id"}
+    "sovereign_resource_systems.csv": {"kind": "profile", "field": "profile_id"},
+    "interaction_finding_rules.csv": {"kind": "any_scenario"}
   },
   "field_vocabularies": {
     "entities.csv.entry_class": "entry_class",

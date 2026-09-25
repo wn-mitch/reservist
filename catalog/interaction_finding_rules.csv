@@ -1,0 +1,4 @@
+finding_id,witness_kind,receipt_status,minimum_matches,points,verdict,provenance
+finding.execution_settled,settlement_envelope_committed,confirmed,1,4,Authorized exchange completed with conserved accounts.,docs/FABLE_IMPLEMENTATION_PLAN.md stewardship findings
+finding.funding_non_roll,repo_non_roll_recorded,recorded,1,-6,Funding continuity failed at the contractual maturity.,docs/FABLE_IMPLEMENTATION_PLAN.md stewardship findings
+finding.settlement_failed,settlement_commit_failed,rejected,1,-4,An admitted exchange failed to settle.,docs/FABLE_IMPLEMENTATION_PLAN.md stewardship findings

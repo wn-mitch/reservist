@@ -319,3 +319,32 @@ fn authored_negative_fixtures_are_rejected_before_any_seal_write() {
         std::fs::remove_dir_all(scenario).unwrap();
     }
 }
+
+/// Every committed fixture must reseal from the current catalog without
+/// changing a frozen byte, so schema migrations cannot strand a scenario.
+#[test]
+fn every_committed_fixture_reseals_byte_identically() {
+    let frozen = [
+        "catalog_slice.json",
+        "manifest.json",
+        "initialization.json",
+        "tape/releases.json",
+    ];
+    for name in [
+        "mvp_2006_cycle_m1",
+        "mvp_2006_cycle",
+        "mvp_2006_campaign_m3",
+    ] {
+        let target = std::env::temp_dir().join(format!(
+            "reservist-content-reseal-{name}-{}",
+            std::process::id()
+        ));
+        let _ = std::fs::remove_dir_all(&target);
+        copy_tree(&project_root().join("scenarios").join(name), &target);
+        let before = frozen.map(|file| std::fs::read(target.join(file)).unwrap());
+        seal_scenario(&target, &catalog()).unwrap_or_else(|error| panic!("{name}: {error}"));
+        let after = frozen.map(|file| std::fs::read(target.join(file)).unwrap());
+        assert!(before == after, "{name} changed on reseal");
+        let _ = std::fs::remove_dir_all(target);
+    }
+}

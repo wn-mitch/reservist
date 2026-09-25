@@ -118,7 +118,14 @@ pub fn seal_scenario(dir: &Path, catalog_dir: &Path) -> Result<String, ContentEr
     let mut catalog_slice =
         freeze_catalog_slice_from_tables(&tables, &selected_ids, source_schema_version)?;
     if manifest_value.get("interaction_contract").is_some() {
-        let findings = tables.get("stewardship_findings.csv").ok_or_else(|| {
+        // Campaign scenarios score versioned findings; a single-cycle interaction
+        // scenario scores receipt-status rules, which keep their own table.
+        let source = if manifest_value.get("campaign_contract").is_some() {
+            "stewardship_findings.csv"
+        } else {
+            "interaction_finding_rules.csv"
+        };
+        let findings = tables.get(source).ok_or_else(|| {
             ContentError::new(
                 "stewardship",
                 "catalog has no authored stewardship findings",
