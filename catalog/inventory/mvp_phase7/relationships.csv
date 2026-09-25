@@ -1,2 +1,0 @@
-relationship_id,relationship_family,subject_entry_id,object_entry_id,effective_period,canonical_owner_id,observability,lifecycle_and_exit,witness_kind,uncertainty_notes,provenance
-rel.holds.person.avery_agendaloon.chief_of_staff,HOLDS,person.us.avery_agendaloon,office.us.federal_reserve.chief_of_staff,2006-02-01/2006-12-31,person.us.avery_agendaloon,private,ends with the authored bounded scenario term,office_holding_witness,Authored scenario officeholding; no historical officeholder identity is asserted.,scenarios/mvp_2006_cycle/initialization.json

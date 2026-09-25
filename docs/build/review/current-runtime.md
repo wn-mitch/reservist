@@ -7,7 +7,7 @@
 
 **Inspected through accepted M3 change `nryypxus`:** `reservist-core` owns causal state, capacity, history, persistence, markets, accounting, evidence, and campaign continuity. `reservist-content` validates the global authored catalog and compiles frozen scenario slices. `reservist-godot` exposes typed session commands and immutable player-safe projections. GDScript remains presentation-only. Diagnostic snapshots and whole-run export are CLI tooling, not gameplay state.
 
-Production commands are native Rust. Python remains in the retained oracle and authoring-side catalog tests. The runtime is pinned to Rust 1.98.1 and godot-rust 0.5.5 with the Godot 4.7 extension API. The observed Godot runtime was 4.7.2.
+Production commands are native Rust. Python remains only in the retained oracle. The runtime is pinned to Rust 1.98.1 and godot-rust 0.5.5 with the Godot 4.7 extension API. The observed Godot runtime was 4.7.2.
 
 M2 and M3 start paused. Reading and previewing do not advance the calendar or reserve capacity. Submission uses explicit typed commands. Unchosen proposals do not become default policy. Supported saves retain queues, reservations, command idempotency, interruptions, admitted work, campaign dossiers, review state, and the immutable Stewardship ledger at quiescent boundaries.
 

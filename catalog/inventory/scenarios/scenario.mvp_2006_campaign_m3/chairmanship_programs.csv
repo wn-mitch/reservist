@@ -1,0 +1,9 @@
+program_id,chair_person_id,office_id,primary_aspiration,support_aspirations,inherited_project_ids,prior_claim_ids,relationship_ids,commitment_refs,revision_vocabulary,provenance
+program.chair.death,person.us.successor.death,office.us.federal_reserve.fomc_chair,aspiration.price_stability,NONE,NONE,NONE,NONE,NONE,revision.m3,doc:design.campaign.chairmanship-program
+program.chair.failed_renomination,person.us.successor.failed_renomination,office.us.federal_reserve.fomc_chair,aspiration.price_stability,NONE,NONE,NONE,NONE,NONE,revision.m3,doc:design.campaign.chairmanship-program
+program.chair.incapacity,person.us.successor.incapacity,office.us.federal_reserve.fomc_chair,aspiration.employment,NONE,NONE,NONE,NONE,NONE,revision.m3,doc:design.campaign.chairmanship-program
+program.chair.initial,person.us.ben_bernankey,office.us.federal_reserve.fomc_chair,aspiration.price_stability,aspiration.employment|aspiration.institutional_continuity,NONE,NONE,NONE,NONE,revision.m3,doc:design.campaign.chairmanship-program
+program.chair.removal,person.us.successor.removal,office.us.federal_reserve.fomc_chair,aspiration.employment,NONE,NONE,NONE,NONE,NONE,revision.m3,doc:design.campaign.chairmanship-program
+program.chair.resignation,person.us.successor.resignation,office.us.federal_reserve.fomc_chair,aspiration.price_stability,NONE,NONE,NONE,NONE,NONE,revision.m3,doc:design.campaign.chairmanship-program
+program.chair.statutory_reorganization,person.us.successor.statutory_reorganization,office.us.federal_reserve.fomc_chair,aspiration.price_stability,aspiration.employment,NONE,NONE,NONE,NONE,revision.m3,doc:design.campaign.chairmanship-program
+program.chair.term_expiry,person.us.successor.term_expiry,office.us.federal_reserve.fomc_chair,aspiration.employment,NONE,NONE,NONE,NONE,NONE,revision.m3,doc:design.campaign.chairmanship-program

@@ -72,7 +72,7 @@ func _build_layout() -> void:
     split.add_child(rail)
 
     var portrait := TextureRect.new()
-    portrait.texture = load("res://assets/headshots/jerome-owl-v2.png")
+    portrait.texture = load("res://assets/characters/jerome_owl/jerome-owl-v2.png")
     portrait.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
     portrait.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
     portrait.custom_minimum_size = Vector2(300, 180)

@@ -1,7 +1,0 @@
-catalog_id,variant_id,effective_period,authority_or_eligibility_ref,uncertainty_notes,provenance
-household.us.cohorts,variant.2006,2006-03-27/2006-03-28,profile.early_2006.bernankey,Only two bounded household summaries are selected.,12-structure-outline-bernankey-mvp-cycle.md:465-543
-outlet.media.loonberg,variant.2006,2006-03-27/2006-03-28,institution.media.loonberg,Only one FOMC statement and one direct-delivery report are selected.,12-structure-outline-bernankey-mvp-cycle.md:465-543
-pop.us.fixed.rate.homeowners.by.mortgage.vintage,variant.2006,2006-03-27/2006-03-28,population.us.person.cells,The lens is a scenario projection and not a national estimate.,12-structure-outline-bernankey-mvp-cycle.md:465-543
-pop.us.public.low_attention_residual,variant.2006,2006-03-27/2006-03-28,population.us.person.cells,The residual is a bounded direct audience and not a general media model.,12-structure-outline-bernankey-mvp-cycle.md:465-543
-pop.us.workers.by.sector,variant.2006,2006-03-27/2006-03-28,population.us.person.cells,The lens is a scenario projection and not a national estimate.,12-structure-outline-bernankey-mvp-cycle.md:465-543
-population.us.person.cells,variant.2006,2006-03-27/2006-03-28,profile.early_2006.bernankey,Two cells preserve only employment and mortgage exposure needed by the selected cycle.,12-structure-outline-bernankey-mvp-cycle.md:465-543

@@ -232,6 +232,21 @@ struct SourceMap {
     legacy_revision: String,
     #[serde(default)]
     source: Vec<LegacySource>,
+    /// Exact repository paths cited by catalog provenance that resolve only at
+    /// `legacy_revision`, such as inventory files since repartitioned.
+    #[serde(default)]
+    legacy_path: Vec<LegacyPath>,
+}
+
+#[derive(Debug, Deserialize)]
+struct LegacyPath {
+    path: String,
+}
+
+/// Legacy provenance resolvable through the source map.
+struct Provenance {
+    basenames: BTreeMap<String, String>,
+    paths: BTreeSet<String>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -661,7 +676,7 @@ fn markdown_basenames(source: &str) -> BTreeSet<String> {
     names
 }
 
-fn load_source_map(root: &Path, errors: &mut Vec<String>) -> BTreeMap<String, String> {
+fn load_source_map(root: &Path, errors: &mut Vec<String>) -> Provenance {
     let path = root.join("docs/source-map.toml");
     let source = match fs::read_to_string(&path) {
         Ok(source) => source,
@@ -670,7 +685,7 @@ fn load_source_map(root: &Path, errors: &mut Vec<String>) -> BTreeMap<String, St
                 "{}: could not read provenance source map: {error}",
                 display_path(root, &path).display()
             ));
-            return BTreeMap::new();
+            return Provenance::empty();
         }
     };
     let parsed: SourceMap = match toml::from_str(&source) {
@@ -680,7 +695,7 @@ fn load_source_map(root: &Path, errors: &mut Vec<String>) -> BTreeMap<String, St
                 "{}: invalid provenance source map: {error}",
                 display_path(root, &path).display()
             ));
-            return BTreeMap::new();
+            return Provenance::empty();
         }
     };
     if parsed.schema_version != 1 {
@@ -710,12 +725,58 @@ fn load_source_map(root: &Path, errors: &mut Vec<String>) -> BTreeMap<String, St
             ));
         }
     }
-    map
+    let mut paths = BTreeSet::new();
+    for entry in parsed.legacy_path {
+        if root.join(&entry.path).exists() {
+            errors.push(format!(
+                "docs/source-map.toml: legacy path `{}` still exists; cite it directly",
+                entry.path
+            ));
+        }
+        if !paths.insert(entry.path.clone()) {
+            errors.push(format!(
+                "docs/source-map.toml: duplicate legacy path `{}`",
+                entry.path
+            ));
+        }
+    }
+    Provenance {
+        basenames: map,
+        paths,
+    }
+}
+
+impl Provenance {
+    fn empty() -> Self {
+        Self {
+            basenames: BTreeMap::new(),
+            paths: BTreeSet::new(),
+        }
+    }
+}
+
+/// Repository-relative `catalog/inventory/**.csv` paths cited in `source`.
+fn inventory_path_citations(source: &str) -> BTreeSet<String> {
+    const PREFIX: &str = "catalog/inventory/";
+    let mut paths = BTreeSet::new();
+    for (start, _) in source.match_indices(PREFIX) {
+        let rest = &source[start..];
+        let end = rest
+            .find(|character: char| {
+                !(character.is_ascii_alphanumeric() || matches!(character, '-' | '_' | '.' | '/'))
+            })
+            .unwrap_or(rest.len());
+        let candidate = &rest[..end];
+        if candidate.ends_with(".csv") {
+            paths.insert(candidate.to_owned());
+        }
+    }
+    paths
 }
 
 fn validate_catalog_provenance(
     root: &Path,
-    source_map: &BTreeMap<String, String>,
+    source_map: &Provenance,
     errors: &mut Vec<String>,
 ) -> Result<(), ContentError> {
     let mut csv_files = Vec::new();
@@ -727,9 +788,17 @@ fn validate_catalog_provenance(
     for path in csv_files {
         let source = fs::read_to_string(&path)?;
         for name in markdown_basenames(&source) {
-            if !source_map.contains_key(&name) {
+            if !source_map.basenames.contains_key(&name) {
                 errors.push(format!(
                     "{}: unmapped legacy provenance `{name}`",
+                    display_path(root, &path).display()
+                ));
+            }
+        }
+        for cited in inventory_path_citations(&source) {
+            if !root.join(&cited).is_file() && !source_map.paths.contains(&cited) {
+                errors.push(format!(
+                    "{}: provenance cites missing `{cited}`; add it to docs/source-map.toml legacy_path",
                     display_path(root, &path).display()
                 ));
             }
@@ -1024,6 +1093,31 @@ mod tests {
                 .errors()
                 .iter()
                 .any(|error| error.contains("Depends on cannot target proposal"))
+        );
+    }
+
+    #[test]
+    fn inventory_path_provenance_must_exist_or_be_a_mapped_legacy_path() {
+        let fixture = Fixture::new();
+        let cited = "catalog/inventory/retired/entities.csv";
+        fixture.write(
+            "catalog/entities.csv",
+            &format!("catalog_id,provenance\nperson.test,{cited}\n"),
+        );
+        assert!(fixture.errors().iter().any(|error| {
+            error.contains("provenance cites missing `catalog/inventory/retired/entities.csv`")
+        }));
+        fixture.write(
+            "docs/source-map.toml",
+            &format!("schema_version = 1\nlegacy_revision = \"4f70592a0874d54305125456da4f5359cda0ef6e\"\n\n[[legacy_path]]\npath = \"{cited}\"\n"),
+        );
+        assert_eq!(fixture.errors(), Vec::<String>::new());
+        fixture.write(cited, "catalog_id,provenance\n");
+        assert!(
+            fixture
+                .errors()
+                .iter()
+                .any(|error| error.contains("still exists; cite it directly"))
         );
     }
 

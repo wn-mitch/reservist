@@ -1,6 +1,0 @@
-state_id,transition_kind,provenance
-state.adapter.macro.us.broad.hidden_state,publish_release,12-structure-outline-bernankey-mvp-cycle.md:157-172
-state.office.us.federal_reserve.board_chair.tenure,legal_transition,12-structure-outline-bernankey-mvp-cycle.md:146-155
-state.office.us.federal_reserve.fomc_chair.tenure,legal_transition,12-structure-outline-bernankey-mvp-cycle.md:146-155
-state.person.us.ben_bernankey.cognition,evidence_integration,12-structure-outline-bernankey-mvp-cycle.md:157-172
-state.reference.us.bls.cpi.publication,publish_reference,12-structure-outline-bernankey-mvp-cycle.md:146-155

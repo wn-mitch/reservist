@@ -1,6 +1,0 @@
-catalog_id,authority_source_id,authority_source_kind,provenance
-record.us.federal_reserve.analytical_task,office.us.federal_reserve.board_chair,requesting_office,12-structure-outline-bernankey-mvp-cycle.md:388-457
-record.us.federal_reserve.assessment,staff.us.federal_reserve.markets,authoring_staff_unit,12-structure-outline-bernankey-mvp-cycle.md:388-457
-staff.us.federal_reserve.communications,inst.us.federal_reserve.board,parent_institution,12-structure-outline-bernankey-mvp-cycle.md:397-415
-staff.us.federal_reserve.markets,inst.us.federal_reserve.board,parent_institution,12-structure-outline-bernankey-mvp-cycle.md:397-415
-staff.us.federal_reserve.monetary_affairs,inst.us.federal_reserve.board,parent_institution,12-structure-outline-bernankey-mvp-cycle.md:397-415

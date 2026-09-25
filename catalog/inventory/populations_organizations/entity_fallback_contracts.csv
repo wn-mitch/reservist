@@ -1,0 +1,6 @@
+catalog_id,preserves_or_loses,boundary_item,provenance
+household.us.cohorts,lose,scenario.fallback.FAIL,12-structure-outline-bernankey-mvp-cycle.md:465-543
+pop.us.fixed.rate.homeowners.by.mortgage.vintage,lose,scenario.fallback.FAIL,12-structure-outline-bernankey-mvp-cycle.md:465-543
+pop.us.public.low_attention_residual,lose,scenario.fallback.FAIL,12-structure-outline-bernankey-mvp-cycle.md:465-543
+pop.us.workers.by.sector,lose,scenario.fallback.FAIL,12-structure-outline-bernankey-mvp-cycle.md:465-543
+population.us.person.cells,lose,scenario.fallback.FAIL,12-structure-outline-bernankey-mvp-cycle.md:465-543

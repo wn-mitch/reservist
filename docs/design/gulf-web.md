@@ -21,6 +21,6 @@ identity, scenario readiness, implementation claim, or calibration.
 
 The non-selectable planning records for the historical Gulf lenses and reusable
 Hormuz crisis template live in
-[`catalog/inventory/closure`](../../catalog/inventory/closure/). Their presence
+[`catalog/inventory/scenarios`](../../catalog/inventory/scenarios/). Their presence
 does not make a manifest, opening state, provider, scenario, or calibration
 ready.

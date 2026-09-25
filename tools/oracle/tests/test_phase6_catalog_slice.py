@@ -10,7 +10,13 @@ from tests.support import SCENARIO
 
 
 CATALOG = DEFAULT_CATALOG_DIR
-PHASE6_INVENTORY = CATALOG / "inventory/mvp_phase6"
+COMMITMENT_TRANSITIONS = {
+    "activate_commitment",
+    "breach_commitment",
+    "expire_commitment",
+    "initialize_commitments",
+    "settle_commitment",
+}
 
 
 def read_rows(path: Path) -> list[dict[str, str]]:
@@ -19,38 +25,27 @@ def read_rows(path: Path) -> list[dict[str, str]]:
 
 
 class Phase6CatalogSliceTest(unittest.TestCase):
-    def test_phase6_inventory_is_bounded_and_transition_complete(self) -> None:
+    def test_phase6_commitment_state_is_bounded_and_transition_complete(self) -> None:
         schema = json.loads((CATALOG / "schema.json").read_text(encoding="utf-8"))
-        state_path = PHASE6_INVENTORY / "owned_state.csv"
-        transition_path = PHASE6_INVENTORY / "owned_state_transitions.csv"
-        states = read_rows(state_path)
-        transitions = read_rows(transition_path)
-
-        with state_path.open(newline="", encoding="utf-8") as handle:
-            self.assertEqual(schema["tables"][state_path.name], next(csv.reader(handle)))
-        with transition_path.open(newline="", encoding="utf-8") as handle:
-            self.assertEqual(
-                schema["tables"][transition_path.name], next(csv.reader(handle))
-            )
+        state_path = CATALOG / "owned_state.csv"
+        transition_path = CATALOG / "owned_state_transitions.csv"
+        for path in (state_path, transition_path):
+            with path.open(newline="", encoding="utf-8") as handle:
+                self.assertEqual(schema["tables"][path.name], next(csv.reader(handle)))
+        transitions: dict[str, set[str]] = {}
+        for row in read_rows(transition_path):
+            transitions.setdefault(row["state_id"], set()).add(row["transition_kind"])
+        states = [
+            row
+            for row in read_rows(state_path)
+            if row["owner_id"] == "body.us.federal_reserve.fomc"
+            and "activate_commitment" in transitions.get(row["state_id"], set())
+        ]
 
         self.assertEqual(1, len(states))
         state = states[0]
         self.assertEqual("probe_complete", state["completeness_state"])
-        self.assertEqual("body.us.federal_reserve.fomc", state["owner_id"])
-        self.assertEqual(
-            {
-                "activate_commitment",
-                "breach_commitment",
-                "expire_commitment",
-                "initialize_commitments",
-                "settle_commitment",
-            },
-            {
-                row["transition_kind"]
-                for row in transitions
-                if row["state_id"] == state["state_id"]
-            },
-        )
+        self.assertEqual(COMMITMENT_TRANSITIONS, transitions[state["state_id"]])
 
     def test_complete_selected_slice_is_frozen_as_probe_complete(self) -> None:
         catalog_slice = json.loads(

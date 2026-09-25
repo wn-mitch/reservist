@@ -1,0 +1,14 @@
+scenario_id,catalog_id,relevance,uncertainty_notes,provenance
+scenario.template.gulf.hormuz_crisis,adapter.external.freight_gulf_suez,Coarse freight fallback candidate.,"A dated instance must supply routes, interfaces, and calibration.",doc:index.world.gulf-web
+scenario.template.gulf.hormuz_crisis,adapter.external.gulf_exporters,Coarse energy-supply fallback candidate.,"A dated instance must supply provider modes, interfaces, and calibration.",doc:index.world.gulf-web
+scenario.template.gulf.hormuz_crisis,firm.sa.saudi_aramco,Rich operator candidate for production and route allocation.,"Dated rights, plans, accounts, capacity, and residual share remain incomplete.",doc:index.world.gulf-web
+scenario.template.gulf.hormuz_crisis,institution.ir.oil,Rich Iranian petroleum authority and operator candidate.,"Dated authority, sanctions, accounts, storage, and fallback remain incomplete.",doc:index.world.gulf-web
+scenario.template.gulf.hormuz_crisis,institution.qa.energy_companies,Rich LNG production and shipping candidate.,"Dated owners, trains, contracts, vessels, and fallback remain incomplete.",doc:index.world.gulf-web
+scenario.template.gulf.hormuz_crisis,mechanism.cross_border.chokepoint_shipping,Rich passage queue and witnessed-transit candidate.,"Routes, fleets, security inputs, insurance, crews, and reconciliation remain incomplete.",doc:index.world.gulf-web
+scenario.template.gulf.hormuz_crisis,person.us.kevin_boarsh,"Default Chair candidate; reusable template tests passage risk, shipping and insurance, replacement supply, and responsive political choices.",Compatibility and a dated office mapping require instance review.,doc:index.world.gulf-web
+scenario.template.gulf.hormuz_crisis,region.hormuz,Non-owning passage and security scope.,A dated instance must supply route state and provider modes.,doc:index.world.gulf-web
+scenario.template.gulf.hormuz_crisis,region.middle_east.gulf,Non-owning geographic scope for the Gulf resource system.,"A dated instance must freeze overlaps, law, and infrastructure.",doc:index.world.gulf-web
+scenario.template.gulf.hormuz_crisis,sovereign.iran,Identity-only sovereign composition root and responsive-channel candidate.,"Component owners, interventions, and coarse bundle remain incomplete.",doc:index.world.gulf-web
+scenario.template.gulf.hormuz_crisis,sovereign.qatar,Identity-only sovereign composition root and LNG-system candidate.,"Component owners, contracts, and coarse bundle remain incomplete.",doc:index.world.gulf-web
+scenario.template.gulf.hormuz_crisis,sovereign.saudi_arabia,Identity-only sovereign composition root and replacement-supply candidate.,"Component owners, capacity, and coarse bundle remain incomplete.",doc:index.world.gulf-web
+scenario.template.gulf.hormuz_crisis,sovereign.uae,Identity-only sovereign composition root and bypass-route candidate.,"Component owners, route allocation, and coarse bundle remain incomplete.",doc:index.world.gulf-web

@@ -1,2 +1,0 @@
-probe_id,catalog_id,coverage_status,requirement,uncertainty_notes,provenance
-probe.mvp.chief_person_ownership,person.us.avery_agendaloon,covered,Named office holding preserves separate person cognition and office duties,Authored scenario identity does not assert a historical officeholder,crates/reservist-core/src/cognition/chief.rs replacement_preserves_office_records_and_private_cognition

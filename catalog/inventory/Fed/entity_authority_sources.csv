@@ -1,0 +1,14 @@
+catalog_id,authority_source_id,authority_source_kind,provenance
+body.us.federal_reserve.fomc,legal.us.federal_reserve.act.section_12a,statute,Federal Reserve Act section 12A: https://www.federalreserve.gov/aboutthefed/section12a.htm
+body.us.federal_reserve.fomc,legal.us.federal_reserve.fomc_rules.section_3,rule,FOMC Rules of Organization: https://www.federalreserve.gov/monetarypolicy/files/fomc_rulesorganization.pdf
+inst.us.federal_reserve.new_york,legal.us.federal_reserve.act.section_14,statute,Federal Reserve Act section 14: https://www.federalreserve.gov/aboutthefed/section14.htm
+inst.us.federal_reserve.new_york,legal.us.federal_reserve.domestic_authorization.2006,delegation,Federal Reserve 2006 FOMC historical materials: https://www.federalreserve.gov/monetarypolicy/fomchistorical2006.htm
+office.us.federal_reserve.board_chair,NONE,non_authorizing_phase_1_identity,12-structure-outline-bernankey-mvp-cycle.md:174-177
+office.us.federal_reserve.fomc_chair,NONE,non_authorizing_phase_1_identity,12-structure-outline-bernankey-mvp-cycle.md:174-177
+office.us.federal_reserve.fomc_chair,legal.us.federal_reserve.fomc_rules.section_3,rule,FOMC Rules of Organization: https://www.federalreserve.gov/monetarypolicy/files/fomc_rulesorganization.pdf
+person.us.ben_bernankey,office.us.federal_reserve.board_chair,effective_office_holding,Federal Reserve History: https://www.federalreservehistory.org/people/federal-reserve-chair
+record.us.federal_reserve.analytical_task,office.us.federal_reserve.board_chair,requesting_office,12-structure-outline-bernankey-mvp-cycle.md:388-457
+record.us.federal_reserve.assessment,staff.us.federal_reserve.markets,authoring_staff_unit,12-structure-outline-bernankey-mvp-cycle.md:388-457
+staff.us.federal_reserve.communications,inst.us.federal_reserve.board,parent_institution,12-structure-outline-bernankey-mvp-cycle.md:397-415
+staff.us.federal_reserve.markets,inst.us.federal_reserve.board,parent_institution,12-structure-outline-bernankey-mvp-cycle.md:397-415
+staff.us.federal_reserve.monetary_affairs,inst.us.federal_reserve.board,parent_institution,12-structure-outline-bernankey-mvp-cycle.md:397-415

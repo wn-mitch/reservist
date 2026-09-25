@@ -1,6 +1,0 @@
-catalog_id,variant_id,effective_period,authority_or_eligibility_ref,uncertainty_notes,provenance
-agreement.us.repo.bilateral,variant.2006,2006-03-27/2006-03-28,agreement.us.repo.bilateral,One bounded bilateral repo is selected; no automatic renewal is permitted.,12-structure-outline-bernankey-mvp-cycle.md:299-319
-adapter.market.us.treasury.external_buyer,variant.2006,2006-03-27/2006-03-29,NONE,External demand is a bounded residual schedule rather than a foreign-sector model.,12-structure-outline-bernankey-mvp-cycle.md:299-319
-cohort.us.dealer.primary,variant.2006,2006-03-27/2006-03-29,auth.us.primary_dealer_designation,Aggregate capacity is selected for the bounded cycle.,12-structure-outline-bernankey-mvp-cycle.md:299-319
-inst.us.leveraged_funds,variant.2006,2006-03-27/2006-03-29,NONE,One aggregate leveraged-fund cohort is selected for the repo-triggered sale.,12-structure-outline-bernankey-mvp-cycle.md:299-319
-market.us.treasury.secondary,variant.2006,2006-03-27/2006-03-29,legal.us.federal_reserve.domestic_authorization.2006,Only the 5-10 year maturity bucket is active.,12-structure-outline-bernankey-mvp-cycle.md:299-319

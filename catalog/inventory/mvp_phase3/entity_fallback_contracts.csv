@@ -1,6 +1,0 @@
-catalog_id,preserves_or_loses,boundary_item,provenance
-agreement.us.repo.bilateral,lose,scenario.fallback.FAIL,12-structure-outline-bernankey-mvp-cycle.md:299-319
-adapter.market.us.treasury.external_buyer,lose,scenario.fallback.FAIL,12-structure-outline-bernankey-mvp-cycle.md:299-319
-cohort.us.dealer.primary,lose,scenario.fallback.FAIL,12-structure-outline-bernankey-mvp-cycle.md:299-319
-inst.us.leveraged_funds,lose,scenario.fallback.FAIL,12-structure-outline-bernankey-mvp-cycle.md:299-319
-market.us.treasury.secondary,lose,scenario.fallback.FAIL,12-structure-outline-bernankey-mvp-cycle.md:299-319

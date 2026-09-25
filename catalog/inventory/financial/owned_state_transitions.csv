@@ -1,0 +1,16 @@
+state_id,transition_kind,provenance
+account.burrow.cash_reserves_collateral,accounting; collateral pledge; lending transaction; settlement,07-design-discussion-burrow-composition-probe.md:121
+account.burrow.deposits,accepted account instruction; settlement,06-design-discussion-representation-catalog.md:830-833
+account.burrow.equity,issuance; repurchase; income; revaluation; loss,06-design-discussion-representation-catalog.md:838-841
+account.burrow.funding,contract; draw; repayment; revaluation; loss,06-design-discussion-representation-catalog.md:834-837
+account.burrow.loans,origination; repayment; transfer; impairment; writeoff,06-design-discussion-representation-catalog.md:822-825
+account.burrow.securities,trade; settlement; maturity; pledge; release; loss,06-design-discussion-representation-catalog.md:826-829
+commitment.burrow.remediation,commitment creation; revision; performance; breach; expiry; settlement,06-design-discussion-representation-catalog.md:850-853
+queue.burrow.payment_requests,acceptance; cancellation; processing; settlement; rejection; failure,06-design-discussion-representation-catalog.md:846-849
+record.burrow.accounting_classification,authorized accounting-classification transition; revaluation,07-design-discussion-burrow-composition-probe.md:118
+state.burrow.operating_capacity,authorized investment; reservation; damage; repair; release,06-design-discussion-representation-catalog.md:842-845
+state.cohort.us.dealer.primary.capacity,submit_order,12-structure-outline-bernankey-mvp-cycle.md:299-319
+state.cohort.us.dealer.primary.cash,accounting_entry,12-structure-outline-bernankey-mvp-cycle.md:299-319
+state.cohort.us.dealer.primary.collateral_control,accounting_entry,12-structure-outline-bernankey-mvp-cycle.md:299-319
+state.cohort.us.dealer.primary.repo_claim,accounting_entry,12-structure-outline-bernankey-mvp-cycle.md:299-319
+state.cohort.us.dealer.primary.treasury,accounting_entry,12-structure-outline-bernankey-mvp-cycle.md:299-319

@@ -1,0 +1,6 @@
+catalog_id,authority_source_id,authority_source_kind,provenance
+household.us.cohorts,profile.early_2006.bernankey,scenario_boundary_contract,12-structure-outline-bernankey-mvp-cycle.md:465-543
+pop.us.fixed.rate.homeowners.by.mortgage.vintage,population.us.person.cells,derived_population_view,12-structure-outline-bernankey-mvp-cycle.md:465-543
+pop.us.public.low_attention_residual,population.us.person.cells,derived_population_view,12-structure-outline-bernankey-mvp-cycle.md:465-543
+pop.us.workers.by.sector,population.us.person.cells,derived_population_view,12-structure-outline-bernankey-mvp-cycle.md:465-543
+population.us.person.cells,profile.early_2006.bernankey,scenario_boundary_contract,12-structure-outline-bernankey-mvp-cycle.md:465-543

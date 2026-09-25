@@ -1,2 +1,0 @@
-transmission_id,probe_id,coverage_status,provenance
-tx.mvp.chief.office_duties,probe.mvp.chief_person_ownership,covered,crates/reservist-core/src/cognition/chief.rs replacement_preserves_office_records_and_private_cognition

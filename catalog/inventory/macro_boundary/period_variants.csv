@@ -1,0 +1,2 @@
+catalog_id,variant_id,effective_period,authority_or_eligibility_ref,uncertainty_notes,provenance
+adapter.macro.us.broad,variant.2006,2006-02-01/2006-12-31,profile.early_2006.bernankey,Broad macro behavior is locked by the scenario initialization and release tape.,12-structure-outline-bernankey-mvp-cycle.md:102-143

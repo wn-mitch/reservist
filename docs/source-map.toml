@@ -36,3 +36,6 @@ path = "docs/FABLE_IMPLEMENTATION_PLAN.md"
 [[source]]
 key = "task.md"
 path = "docs/design/task.md"
+
+[[legacy_path]]
+path = "catalog/inventory/fed_treasury/entities.csv"

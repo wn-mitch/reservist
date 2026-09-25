@@ -12,7 +12,6 @@ gates:
 
 catalog-test:
     cargo test -p reservist-content --locked
-    {{python}} -m unittest discover -s catalog -p test_catalog.py -v
 
 catalog-generate:
     {{reservist}} catalog-import {{catalog_dir}}

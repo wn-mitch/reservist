@@ -1,0 +1,3 @@
+state_id,owner_id,state_kind,value_domain,unit,conserved,witness_kind,completeness_state,provenance
+state.outlet.media.loonberg.publication,outlet.media.loonberg,publication,editorial selection framing publication queue omissions and direct audience targets,NONE,false,outlet publication witness,probe_complete,12-structure-outline-bernankey-mvp-cycle.md:465-543
+state.reference.us.bls.cpi.publication,reference.us.bls.cpi,publication,current value and publication revision history,index_points,false,measurement and publication witness,probe_complete,12-structure-outline-bernankey-mvp-cycle.md:81-84

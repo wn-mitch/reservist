@@ -1,2 +1,0 @@
-state_id,owner_id,state_kind,value_domain,unit,conserved,witness_kind,completeness_state,provenance
-state.person.us.avery_agendaloon.cognition,person.us.avery_agendaloon,record,private beliefs memory judgment relationships dispositions and attributable recommendations,NONE,false,private cognition transition witness,probe_complete,scenarios/mvp_2006_cycle/initialization.json

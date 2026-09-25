@@ -1,10 +1,11 @@
+use crate::inventory::{Placement, SHARED, inspect_inventory, record_key};
 use crate::{ContentError, Issue, Row, Tables};
 use csv::ReaderBuilder;
 use serde::Deserialize;
 use serde_json::Value;
 use std::collections::{BTreeMap, BTreeSet, HashMap, HashSet};
 use std::fs;
-use std::path::{Path, PathBuf};
+use std::path::Path;
 
 const UNKNOWN: &str = "UNKNOWN";
 const NONE: &str = "NONE";
@@ -105,18 +106,20 @@ pub struct Eligibility {
 }
 
 #[derive(Clone, Deserialize)]
-struct Schema {
-    tables: BTreeMap<String, Vec<String>>,
+pub(crate) struct Schema {
+    pub(crate) tables: BTreeMap<String, Vec<String>>,
     #[serde(rename = "table_lifecycle")]
     lifecycle: BTreeMap<String, String>,
     #[serde(rename = "table_keys")]
-    keys: BTreeMap<String, Vec<String>>,
+    pub(crate) keys: BTreeMap<String, Vec<String>>,
+    #[serde(rename = "table_placement")]
+    pub(crate) placement: BTreeMap<String, Placement>,
     vocabularies: BTreeMap<String, BTreeSet<String>>,
     field_vocabularies: BTreeMap<String, String>,
     allow_unknown: BTreeMap<String, BTreeSet<String>>,
 }
 
-fn issue(
+pub(crate) fn issue(
     errors: &mut Vec<Issue>,
     category: &str,
     record_id: impl Into<String>,
@@ -135,7 +138,7 @@ fn get<'a>(row: &'a Row, key: &str) -> &'a str {
 fn set(items: &[&str]) -> BTreeSet<String> {
     items.iter().map(|item| (*item).into()).collect()
 }
-fn relative(root: &Path, path: &Path) -> String {
+pub(crate) fn relative(root: &Path, path: &Path) -> String {
     path.strip_prefix(root)
         .unwrap_or(path)
         .to_string_lossy()
@@ -249,6 +252,10 @@ fn load_schema(root: &Path, errors: &mut Vec<Issue>) -> Option<Schema> {
             && schema.keys.get(table).is_some_and(|keys| {
                 !keys.is_empty() && keys.iter().all(|key| fields.contains(key))
             })
+            && schema
+                .placement
+                .get(table)
+                .is_some_and(|placement| placement_fields_exist(placement, fields, &schema.tables))
             && schema.lifecycle.get(table).is_some_and(|kind| {
                 matches!(kind.as_str(), "required" | "deferred" | "inapplicable")
             });
@@ -272,6 +279,34 @@ fn load_schema(root: &Path, errors: &mut Vec<Issue>) -> Option<Schema> {
             issue(errors, "schema", qualified, "unknown vocabulary or field");
         }
     }
+    if schema
+        .placement
+        .keys()
+        .any(|table| !schema.tables.contains_key(table))
+    {
+        issue(
+            errors,
+            "schema",
+            "table_placement",
+            "placement names an unknown table",
+        );
+    }
+    if schema
+        .vocabularies
+        .get("entity_domain")
+        .is_none_or(|domains| {
+            domains
+                .iter()
+                .any(|domain| matches!(domain.as_str(), SHARED | "profiles" | "scenarios"))
+        })
+    {
+        issue(
+            errors,
+            "schema",
+            "entity_domain",
+            "entity domains are missing or reuse a reserved inventory folder name",
+        );
+    }
     if errors.is_empty() {
         Some(schema)
     } else {
@@ -279,7 +314,21 @@ fn load_schema(root: &Path, errors: &mut Vec<Issue>) -> Option<Schema> {
     }
 }
 
-fn read_header(path: &Path) -> Result<Vec<String>, csv::Error> {
+fn placement_fields_exist(
+    placement: &Placement,
+    fields: &[String],
+    tables: &BTreeMap<String, Vec<String>>,
+) -> bool {
+    match placement {
+        Placement::Shared | Placement::AnyScenario => true,
+        Placement::Profile { field } | Placement::Scenario { field } => fields.contains(field),
+        Placement::EntityDomain { field, via } => {
+            fields.contains(field) && via.as_ref().is_none_or(|via| via.resolves_in(tables))
+        }
+    }
+}
+
+pub(crate) fn read_header(path: &Path) -> Result<Vec<String>, csv::Error> {
     let mut reader = ReaderBuilder::new().has_headers(false).from_path(path)?;
     Ok(reader
         .records()
@@ -288,7 +337,11 @@ fn read_header(path: &Path) -> Result<Vec<String>, csv::Error> {
         .map(|record| record.iter().map(str::to_owned).collect())
         .unwrap_or_default())
 }
-fn rows(path: &Path, fields: &[String], trim: bool) -> Result<Vec<(usize, Row)>, csv::Error> {
+pub(crate) fn rows(
+    path: &Path,
+    fields: &[String],
+    trim: bool,
+) -> Result<Vec<(usize, Row)>, csv::Error> {
     let mut reader = ReaderBuilder::new()
         .has_headers(true)
         .flexible(false)
@@ -313,166 +366,6 @@ fn rows(path: &Path, fields: &[String], trim: bool) -> Result<Vec<(usize, Row)>,
         })
         .collect()
 }
-fn inventory_paths(root: &Path, name: &str) -> Result<Vec<PathBuf>, std::io::Error> {
-    let mut paths = Vec::new();
-    for entry in fs::read_dir(root.join("inventory"))? {
-        let entry = entry?;
-        if !entry.file_type()?.is_dir() {
-            continue;
-        }
-        let path = entry.path().join(name);
-        if path.try_exists()? {
-            paths.push(path);
-        }
-    }
-    paths.sort();
-    Ok(paths)
-}
-fn record_key(row: &Row, fields: &[String]) -> Vec<String> {
-    fields
-        .iter()
-        .map(|field| get(row, field).to_owned())
-        .collect()
-}
-
-fn inspect_inventory(root: &Path, schema: &Schema, errors: &mut Vec<Issue>) -> Tables {
-    let mut staged = Tables::new();
-    for (name, fields) in &schema.tables {
-        let mut candidates = Vec::<(PathBuf, usize, Row)>::new();
-        let paths = match inventory_paths(root, name) {
-            Ok(paths) => paths,
-            Err(error) => {
-                issue(
-                    errors,
-                    "schema",
-                    name,
-                    format!("cannot read inventory: {error}"),
-                );
-                staged.insert(name.clone(), Vec::new());
-                continue;
-            }
-        };
-        for path in paths {
-            let header = match read_header(&path) {
-                Ok(header) => header,
-                Err(error) => {
-                    issue(
-                        errors,
-                        "schema",
-                        relative(root, &path),
-                        format!("cannot read CSV header: {error}"),
-                    );
-                    continue;
-                }
-            };
-            let duplicate = header
-                .iter()
-                .filter(|field| header.iter().filter(|other| *other == *field).count() > 1)
-                .cloned()
-                .collect::<BTreeSet<_>>();
-            if !duplicate.is_empty() {
-                issue(
-                    errors,
-                    "schema",
-                    relative(root, &path),
-                    format!(
-                        "duplicate header field(s): {}",
-                        duplicate.into_iter().collect::<Vec<_>>().join(",")
-                    ),
-                );
-                continue;
-            }
-            if header != *fields {
-                let missing: Vec<_> = fields
-                    .iter()
-                    .filter(|f| !header.contains(f))
-                    .cloned()
-                    .collect();
-                let extra: Vec<_> = header
-                    .iter()
-                    .filter(|f| !fields.contains(f))
-                    .cloned()
-                    .collect();
-                issue(
-                    errors,
-                    "schema",
-                    relative(root, &path),
-                    format!(
-                        "header mismatch; missing={missing:?}; extra={extra:?}; expected={fields:?}"
-                    ),
-                );
-                continue;
-            }
-            match rows(&path, fields, true) {
-                Ok(file_rows) => {
-                    for (number, row) in file_rows {
-                        for (field, value) in &row {
-                            if value.is_empty() {
-                                issue(
-                                    errors,
-                                    "schema",
-                                    format!("{}:{number}:{field}", relative(root, &path)),
-                                    "empty authored field; use NONE, null, or an allowed UNKNOWN explicitly",
-                                );
-                            }
-                        }
-                        candidates.push((path.clone(), number, row));
-                    }
-                }
-                Err(error) => issue(
-                    errors,
-                    "schema",
-                    relative(root, &path),
-                    format!("malformed CSV: {error}"),
-                ),
-            }
-        }
-        let keys = &schema.keys[name];
-        let mut grouped: BTreeMap<Vec<String>, Vec<(PathBuf, usize, Row)>> = BTreeMap::new();
-        for item in candidates {
-            let key = record_key(&item.2, keys);
-            if key.iter().any(|value| value == UNKNOWN) {
-                issue(
-                    errors,
-                    "key",
-                    format!("{}:{}", relative(root, &item.0), item.1),
-                    format!("UNKNOWN is not permitted in key {keys:?}"),
-                );
-            }
-            grouped.entry(key).or_default().push(item);
-        }
-        let mut output = Vec::new();
-        for (key, items) in grouped {
-            let records: BTreeSet<Vec<String>> = items
-                .iter()
-                .map(|(_, _, row)| record_key(row, fields))
-                .collect();
-            if records.len() > 1 {
-                let locations = items
-                    .iter()
-                    .map(|(path, line, _)| format!("{}:{line}", relative(root, path)))
-                    .collect::<Vec<_>>()
-                    .join(", ");
-                issue(
-                    errors,
-                    "key",
-                    key.join("|"),
-                    format!("conflicting duplicate key in {locations}"),
-                );
-            } else if let Some((_, _, row)) = items.into_iter().next() {
-                output.push(row);
-            }
-        }
-        output.sort_by_key(|row| {
-            let mut key = record_key(row, keys);
-            key.extend(record_key(row, fields));
-            key
-        });
-        staged.insert(name.clone(), output);
-    }
-    staged
-}
-
 fn normalized_tables(root: &Path, schema: &Schema, errors: &mut Vec<Issue>) -> Tables {
     let mut tables = Tables::new();
     for (name, fields) in &schema.tables {
@@ -520,9 +413,11 @@ pub fn validate_catalog(catalog_dir: &Path) -> Result<Tables, Vec<Issue>> {
     }
     validate(&tables, &schema, catalog_dir, &mut errors);
     validate_campaign_contracts(&tables, &mut errors);
+    crate::composition::validate(&tables, &mut errors);
     let authored = inspect_inventory(catalog_dir, &schema, &mut errors);
     validate(&authored, &schema, catalog_dir, &mut errors);
     validate_campaign_contracts(&authored, &mut errors);
+    crate::composition::validate(&authored, &mut errors);
     for (name, rows) in &tables {
         let mut actual: Vec<_> = rows.iter().collect();
         let mut expected: Vec<_> = authored[name].iter().collect();
@@ -1033,7 +928,10 @@ fn validate(tables: &Tables, schema: &Schema, root: &Path, errors: &mut Vec<Issu
     for row in &tables["relationships.csv"] {
         let id = get(row, "relationship_id");
         for field in ["subject_entry_id", "object_entry_id", "canonical_owner_id"] {
-            if !instances.contains_key(get(row, field)) {
+            // A mapping between two composition roots has no causal owner; the
+            // composition check requires NONE there and nowhere else.
+            let unowned_scope = field == "canonical_owner_id" && get(row, field) == NONE;
+            if !unowned_scope && !instances.contains_key(get(row, field)) {
                 issue(
                     errors,
                     "relationship",
@@ -1865,113 +1763,9 @@ fn product_roles(t: &Tables, instances: &BTreeMap<String, &Row>, errors: &mut Ve
 #[cfg(test)]
 mod tests {
     use super::*;
-    use std::sync::atomic::{AtomicUsize, Ordering};
+    use crate::catalog_fixture::*;
+    use std::path::PathBuf;
 
-    static NEXT_CASE: AtomicUsize = AtomicUsize::new(0);
-
-    fn copy_tree(source: &Path, destination: &Path) {
-        fs::create_dir_all(destination).unwrap();
-        for entry in fs::read_dir(source).unwrap() {
-            let entry = entry.unwrap();
-            let target = destination.join(entry.file_name());
-            if entry.file_type().unwrap().is_dir() {
-                copy_tree(&entry.path(), &target);
-            } else {
-                fs::copy(entry.path(), target).unwrap();
-            }
-        }
-    }
-
-    fn catalog_copy() -> (PathBuf, PathBuf) {
-        let source_root = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../..");
-        let case = std::env::temp_dir().join(format!(
-            "reservist-content-catalog-{}-{}",
-            std::process::id(),
-            NEXT_CASE.fetch_add(1, Ordering::Relaxed),
-        ));
-        let catalog = case.join("catalog");
-        fs::create_dir_all(&catalog).unwrap();
-        fs::copy(
-            source_root.join("catalog/schema.json"),
-            catalog.join("schema.json"),
-        )
-        .unwrap();
-        copy_tree(
-            &source_root.join("catalog/inventory"),
-            &catalog.join("inventory"),
-        );
-        copy_tree(
-            &source_root.join("assets/headshots"),
-            &case.join("assets/headshots"),
-        );
-        for entry in fs::read_dir(source_root.join("catalog")).unwrap() {
-            let path = entry.unwrap().path();
-            if path.extension().is_some_and(|extension| extension == "csv") {
-                fs::copy(&path, catalog.join(path.file_name().unwrap())).unwrap();
-            }
-        }
-        (case, catalog)
-    }
-
-    fn has_category(errors: &[Issue], category: &str) -> bool {
-        errors.iter().any(|issue| issue.category == category)
-    }
-
-    fn mutate_inventory(
-        catalog: &Path,
-        table: &str,
-        key_field: &str,
-        key: &str,
-        field: &str,
-        value: &str,
-    ) {
-        for entry in fs::read_dir(catalog.join("inventory")).unwrap() {
-            let path = entry.unwrap().path().join(table);
-            if !path.is_file() {
-                continue;
-            }
-            let mut reader = ReaderBuilder::new().from_path(&path).unwrap();
-            let headers = reader.headers().unwrap().clone();
-            let key_index = headers
-                .iter()
-                .position(|header| header == key_field)
-                .unwrap();
-            let field_index = headers.iter().position(|header| header == field).unwrap();
-            let mut records = reader.records().collect::<Result<Vec<_>, _>>().unwrap();
-            if let Some(record) = records
-                .iter_mut()
-                .find(|record| record.get(key_index) == Some(key))
-            {
-                *record = record
-                    .iter()
-                    .enumerate()
-                    .map(|(index, original)| {
-                        if index == field_index {
-                            value
-                        } else {
-                            original
-                        }
-                    })
-                    .collect();
-                let mut writer = csv::WriterBuilder::new().from_path(&path).unwrap();
-                writer.write_record(&headers).unwrap();
-                for record in records {
-                    writer.write_record(&record).unwrap();
-                }
-                writer.flush().unwrap();
-                return;
-            }
-        }
-        panic!("missing {table} fixture row {key_field}={key}");
-    }
-
-    fn assert_category(catalog: &Path, category: &str) {
-        match validate_catalog(catalog) {
-            Err(errors) if has_category(&errors, category) => {}
-            Err(errors) => panic!("expected {category}; got {errors:?}"),
-            Ok(_) => panic!("expected {category} failure"),
-        }
-    }
     #[test]
     fn compiles_the_actual_catalog_inventory() {
         let (case, catalog) = catalog_copy();
@@ -1986,7 +1780,8 @@ mod tests {
     #[test]
     fn rejects_isolated_header_drift() {
         let (case, catalog) = catalog_copy();
-        let path = catalog.join("inventory/closure/world_profiles.csv");
+        let path =
+            catalog.join("inventory/profiles/profile.early_2006.bernankey/world_profiles.csv");
         let source = fs::read_to_string(&path).unwrap();
         fs::write(path, source.replacen("provenance", "provenance_drift", 1)).unwrap();
         let result = validate_catalog(&catalog);
@@ -2007,12 +1802,6 @@ mod tests {
         let result = validate_catalog(&catalog);
         fs::remove_dir_all(case).unwrap();
         assert!(matches!(&result, Err(errors) if has_category(errors, "schema")));
-    }
-    fn mutation_case(category: &str, mutation: impl FnOnce(&Path)) {
-        let (case, catalog) = catalog_copy();
-        mutation(&catalog);
-        assert_category(&catalog, category);
-        fs::remove_dir_all(case).unwrap();
     }
 
     #[test]
@@ -2177,7 +1966,9 @@ mod tests {
     #[test]
     fn rejects_inapplicable_table_rows() {
         let (case, catalog) = catalog_copy();
-        let path = catalog.join("inventory/closure/scenario_availability.csv");
+        let folder = catalog.join("inventory/scenarios/scenario.invalid");
+        fs::create_dir_all(&folder).unwrap();
+        let path = folder.join("scenario_availability.csv");
         fs::write(
             path,
             "scenario_id,catalog_id,availability,selected_fidelity,provider_entry_id,uncertainty_notes,provenance\nscenario.invalid,person.us.ben_bernankey,available,NAMED_COGNITION,person.us.ben_bernankey,NONE,test\n",

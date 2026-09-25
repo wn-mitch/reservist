@@ -1,0 +1,4 @@
+transmission_id,probe_id,coverage_status,provenance
+tx.mvp.chief.office_duties,probe.mvp.chief_person_ownership,covered,crates/reservist-core/src/cognition/chief.rs replacement_preserves_office_records_and_private_cognition
+tx.mvp.staff.markets.chair,probe.mvp_2006_cycle.replay_identity,covered,Replay oracle baseline covers staff evidence delivery.
+tx.mvp.statement.primary_dealers,probe.mvp_2006_cycle.replay_identity,covered,Replay oracle baseline covers declared statement delivery.

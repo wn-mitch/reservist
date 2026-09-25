@@ -31,6 +31,17 @@ pub fn import_inventory(catalog_dir: &Path) -> Result<usize, ContentError> {
 /// Validates the authoritative catalog and writes its deterministic evidence views.
 pub fn generate_evidence(catalog_dir: &Path) -> Result<usize, ContentError> {
     let tables = catalog::validate_catalog(catalog_dir).map_err(catalog_error)?;
+    let comparison =
+        crate::source_comparison::compare(&tables, &catalog_dir.join("../docs/design"))?;
+    if !comparison.missing.is_empty() {
+        return Err(ContentError::new(
+            "catalog",
+            format!(
+                "canonical design cites IDs absent from the catalog: {}",
+                comparison.missing.join(", ")
+            ),
+        ));
+    }
     let generated = catalog_dir.join("generated");
     let generated_agent = generated.join("AGENTS.md");
     let agent_contents = generated_agent
@@ -44,6 +55,11 @@ pub fn generate_evidence(catalog_dir: &Path) -> Result<usize, ContentError> {
     if let Some(contents) = agent_contents {
         fs::write(generated.join("AGENTS.md"), contents)?;
     }
+    write_csv(
+        &generated.join("source_comparison.csv"),
+        &["catalog_id", "in_prose", "in_data", "status"],
+        comparison.rows,
+    )?;
     write_csv(
         &generated.join("gaps.csv"),
         &["severity", "category", "record_id", "issue"],
@@ -67,9 +83,21 @@ pub fn generate_evidence(catalog_dir: &Path) -> Result<usize, ContentError> {
 }
 
 fn catalog_error(issues: Vec<crate::Issue>) -> ContentError {
+    let lines = issues
+        .iter()
+        .map(|issue| {
+            format!(
+                "\n  [{}] {}: {}",
+                issue.category, issue.record_id, issue.issue
+            )
+        })
+        .collect::<String>();
     ContentError::new(
         "catalog",
-        format!("catalog validation failed with {} issue(s)", issues.len()),
+        format!(
+            "catalog validation failed with {} issue(s):{lines}",
+            issues.len()
+        ),
     )
 }
 

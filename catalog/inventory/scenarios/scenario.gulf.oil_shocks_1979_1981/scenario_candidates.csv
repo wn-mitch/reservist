@@ -1,0 +1,8 @@
+scenario_id,catalog_id,relevance,uncertainty_notes,provenance
+scenario.gulf.oil_shocks_1979_1981,adapter.external.gulf_exporters,Coarse energy-supply fallback candidate.,"Historical tape, response mode, interfaces, and calibration remain incomplete.",doc:index.world.gulf-web
+scenario.gulf.oil_shocks_1979_1981,industry.arabian_peninsula.petroleum,Producer targets and realized extraction candidate.,"Rights, accounts, capacity, products, and residual shares remain incomplete.",doc:index.world.gulf-web
+scenario.gulf.oil_shocks_1979_1981,mechanism.cross_border.chokepoint_shipping,Tanker delivery and route-capacity candidate.,"Historical routes, fleets, queues, and fallback remain incomplete.",doc:index.world.gulf-web
+scenario.gulf.oil_shocks_1979_1981,person.us.paul_vulture,"Default Chair pairing; lens tests inflation, recession, and replacement-supply choices across the 1979-1981 oil-shock sequence.","Compatible alternatives, office mapping, and opening cognition require review.",doc:index.world.gulf-web
+scenario.gulf.oil_shocks_1979_1981,region.middle_east.gulf,Non-owning geographic scope for the Gulf resource system.,"Period overlaps, law, and infrastructure remain unauthored.",doc:index.world.gulf-web
+scenario.gulf.oil_shocks_1979_1981,sovereign.iran,Identity-only sovereign composition root.,Period component owners and coarse bundle remain incomplete.,doc:index.world.gulf-web
+scenario.gulf.oil_shocks_1979_1981,sovereign.saudi_arabia,Identity-only sovereign composition root and replacement-supply scope.,"Period component owners, capacity, and coarse bundle remain incomplete.",doc:index.world.gulf-web

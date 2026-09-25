@@ -1,0 +1,10 @@
+catalog_id,scope_entry_id,provenance
+adapter.input.amazon_basin.feed_grain,region.sa.aggregate,06-design-discussion-representation-catalog.md:462
+adapter.input.amazon_basin.feed_grain,region.sa.amazon_basin,06-design-discussion-representation-catalog.md:462
+industry.amazon_basin.coffee,region.sa.amazon_basin,06-design-discussion-representation-catalog.md:461
+industry.amazon_basin.forestry,region.sa.amazon_basin,06-design-discussion-representation-catalog.md:461
+industry.amazon_basin.pork,region.sa.amazon_basin,06-design-discussion-representation-catalog.md:461
+industry.sa.coffee.aggregate,region.sa.aggregate,06-design-discussion-representation-catalog.md:512
+industry.sa.forestry.aggregate,region.sa.aggregate,06-design-discussion-representation-catalog.md:512
+industry.sa.pork.aggregate,region.sa.aggregate,06-design-discussion-representation-catalog.md:512
+process.climate_agriculture.amazon_basin,region.sa.amazon_basin,06-design-discussion-representation-catalog.md:460

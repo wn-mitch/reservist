@@ -1,0 +1,2 @@
+catalog_id,variant_id,effective_period,authority_or_eligibility_ref,uncertainty_notes,provenance
+cohort.us.dealer.primary,variant.2006,2006-03-27/2006-03-29,auth.us.primary_dealer_designation,Aggregate capacity is selected for the bounded cycle.,12-structure-outline-bernankey-mvp-cycle.md:299-319

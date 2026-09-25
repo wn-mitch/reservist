@@ -4,11 +4,18 @@
 pub mod authoring;
 pub mod bindings;
 pub mod catalog;
+#[cfg(test)]
+mod catalog_fixture;
+mod composition;
 pub mod frozen;
 pub mod generate;
 pub mod initialization;
+mod inventory;
+#[cfg(test)]
+mod inventory_tests;
 pub mod manifest;
 pub mod slice;
+mod source_comparison;
 
 #[cfg(test)]
 mod m2_dialogue_tests;

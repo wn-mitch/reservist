@@ -1,0 +1,2 @@
+state_id,owner_id,state_kind,value_domain,unit,conserved,witness_kind,completeness_state,provenance
+state.adapter.macro.us.broad.hidden_state,adapter.macro.us.broad,condition,hidden inflation labor housing and release configuration,NONE,false,typed adapter transition and release witness,probe_complete,12-structure-outline-bernankey-mvp-cycle.md:81-84

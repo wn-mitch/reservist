@@ -1,6 +1,0 @@
-state_id,transition_kind,provenance
-state.body.us.federal_reserve.fomc.commitments,activate_commitment,12-structure-outline-bernankey-mvp-cycle.md:551-615
-state.body.us.federal_reserve.fomc.commitments,breach_commitment,12-structure-outline-bernankey-mvp-cycle.md:551-615
-state.body.us.federal_reserve.fomc.commitments,expire_commitment,12-structure-outline-bernankey-mvp-cycle.md:551-615
-state.body.us.federal_reserve.fomc.commitments,initialize_commitments,12-structure-outline-bernankey-mvp-cycle.md:551-615
-state.body.us.federal_reserve.fomc.commitments,settle_commitment,12-structure-outline-bernankey-mvp-cycle.md:551-615

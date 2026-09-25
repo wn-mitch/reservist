@@ -1,0 +1,2 @@
+transmission_id,probe_id,coverage_status,provenance
+tx.mvp.report.chair,probe.mvp_2006_cycle.replay_identity,covered,Replay oracle baseline covers declared report delivery.

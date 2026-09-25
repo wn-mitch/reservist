@@ -1,6 +1,0 @@
-catalog_id,variant_id,effective_period,authority_or_eligibility_ref,uncertainty_notes,provenance
-record.us.federal_reserve.analytical_task,variant.2006,2006-03-27/2006-05-10,office.us.federal_reserve.board_chair,The selected request and commitment-monitoring work persist through the next-cycle review.,12-structure-outline-bernankey-mvp-cycle.md:551-615
-record.us.federal_reserve.assessment,variant.2006,2006-03-27/2006-05-10,staff.us.federal_reserve.markets,The selected assessment dissent next Morning Book and staff review persist through the cycle boundary.,12-structure-outline-bernankey-mvp-cycle.md:551-615
-staff.us.federal_reserve.communications,variant.2006,2006-02-01/2006-12-31,inst.us.federal_reserve.board,Only bounded access methods and capacity are initialized.,12-structure-outline-bernankey-mvp-cycle.md:397-415
-staff.us.federal_reserve.markets,variant.2006,2006-02-01/2006-12-31,inst.us.federal_reserve.board,Only dealer-capacity evidence one follow-up and one displaced deliverable are initialized.,12-structure-outline-bernankey-mvp-cycle.md:388-457
-staff.us.federal_reserve.monetary_affairs,variant.2006,2006-02-01/2006-12-31,inst.us.federal_reserve.board,Only bounded policy methods capacity and one assessment dissent are initialized.,12-structure-outline-bernankey-mvp-cycle.md:388-457
