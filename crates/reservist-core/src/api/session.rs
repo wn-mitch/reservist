@@ -14,7 +14,7 @@ use crate::{
     packages::resolve_package,
     save::{self, ResumeError, SaveFile},
     scenario::ScenarioRuntime,
-    staff::{AnalyticalTask, RequestMode},
+    staff::RequestMode,
     time::Instant,
 };
 
@@ -214,21 +214,21 @@ impl Session {
             }
             CommandAction::RequestFollowUp { mode } => {
                 let mode = mode.mode();
-                if self
-                    .runtime
-                    .tasks
-                    .contains_key("task.markets.dealer_capacity_follow_up")
-                {
+                let definition = crate::request_task::RequestTaskDefinition::for_scenario(
+                    &self.runtime.scenario,
+                )
+                .map_err(|reason| self.reject("runtime_defect", reason))?;
+                if self.runtime.tasks.contains_key(&definition.task_id) {
                     return Err(self.reject(
                         "already_requested",
-                        "the bounded Markets follow-up has already been requested",
+                        format!("{} has already been requested", definition.task_id),
                     ));
                 }
                 let source = self
                     .runtime
                     .latest_player_observation_id()
                     .map_err(|reason| self.reject("missing_evidence", reason))?;
-                let task = AnalyticalTask::markets_follow_up(
+                let task = definition.task(
                     &self.current_time(),
                     &self.runtime.player_records.recipient_id,
                     source,

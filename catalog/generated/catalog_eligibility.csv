@@ -713,7 +713,7 @@ sovereign.zambia,instance,type.sovereign_system.default,SovereignSystem,true,tru
 sovereign.zimbabwe_rhodesia,instance,type.sovereign_system.default,SovereignSystem,false,false,type,not_catalog_eligible
 staff.us.federal_reserve.communications,instance,type.staff_unit.default,StaffUnit,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
 staff.us.federal_reserve.financial_stability,instance,type.staff_unit.default,StaffUnit,false,false,explicit_type|fallback,not_catalog_eligible
-staff.us.federal_reserve.international,instance,type.staff_unit.default,StaffUnit,false,false,explicit_type|fallback,not_catalog_eligible
+staff.us.federal_reserve.international,instance,type.staff_unit.default,StaffUnit,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
 staff.us.federal_reserve.legal,instance,type.staff_unit.default,StaffUnit,false,false,explicit_type|fallback,not_catalog_eligible
 staff.us.federal_reserve.markets,instance,type.staff_unit.default,StaffUnit,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
 staff.us.federal_reserve.monetary_affairs,instance,type.staff_unit.default,StaffUnit,true,true,explicit_type|fallback|relationship|transmission|probe,NONE

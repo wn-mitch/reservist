@@ -713,7 +713,7 @@ profile.early_2006.bernankey,sovereign.zambia,excluded,NONE,NONE,doc:mandate.m4-
 profile.early_2006.bernankey,sovereign.zimbabwe_rhodesia,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,staff.us.federal_reserve.communications,slice_candidate,staff.us.federal_reserve.communications,The bounded FOMC cycle initializes Communications access methods and capacity.,12-structure-outline-bernankey-mvp-cycle.md:397-415,true,manifest_selection
 profile.early_2006.bernankey,staff.us.federal_reserve.financial_stability,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
-profile.early_2006.bernankey,staff.us.federal_reserve.international,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
+profile.early_2006.bernankey,staff.us.federal_reserve.international,reference,NONE,NONE,Early-2006 profile planning index.,true,NONE
 profile.early_2006.bernankey,staff.us.federal_reserve.legal,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,staff.us.federal_reserve.markets,slice_candidate,staff.us.federal_reserve.markets,Chair requests the selected dealer-capacity comparison.,12-structure-outline-bernankey-mvp-cycle.md:388-457,true,manifest_selection
 profile.early_2006.bernankey,staff.us.federal_reserve.monetary_affairs,slice_candidate,staff.us.federal_reserve.monetary_affairs,The meeting packet carries a named policy-method dissent.,12-structure-outline-bernankey-mvp-cycle.md:388-457,true,manifest_selection
@@ -1087,7 +1087,7 @@ profile.volcker_1979,office.media.aftv.anchor_chair,excluded,NONE,NONE,doc:manda
 profile.volcker_1979,office.media.gnbc.anchor_chair,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.volcker_1979,office.media.wool_street_journal.fed_beat,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.volcker_1979,office.us.federal_reserve.board_chair,anchor,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
-profile.volcker_1979,office.us.federal_reserve.chief_of_staff,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,office.us.federal_reserve.chief_of_staff,slice_candidate,NONE,NONE,doc:mandate.m4-proving-lens,true,manifest_selection
 profile.volcker_1979,office.us.federal_reserve.division_director,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.volcker_1979,office.us.federal_reserve.fomc_chair,anchor,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
 profile.volcker_1979,office.us.federal_reserve.governor,slice_candidate,NONE,NONE,doc:mandate.m4-proving-lens,true,manifest_selection
@@ -1147,7 +1147,7 @@ profile.volcker_1979,person.sa.sama_governor,excluded,NONE,NONE,doc:mandate.m4-p
 profile.volcker_1979,person.uk.boe_governor,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.volcker_1979,person.uk.dmo_chief,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.volcker_1979,person.us.alan_greenspaniel,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
-profile.volcker_1979,person.us.avery_agendaloon,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,person.us.avery_agendaloon,slice_candidate,NONE,NONE,doc:mandate.m4-proving-lens,true,manifest_selection
 profile.volcker_1979,person.us.ben_bernankey,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
 profile.volcker_1979,person.us.janet_jackrabbit,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.volcker_1979,person.us.jerome_owl,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
@@ -1455,10 +1455,10 @@ profile.volcker_1979,sovereign.zambia,reference,NONE,NONE,doc:mandate.m4-proving
 profile.volcker_1979,sovereign.zimbabwe_rhodesia,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.volcker_1979,staff.us.federal_reserve.communications,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
 profile.volcker_1979,staff.us.federal_reserve.financial_stability,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
-profile.volcker_1979,staff.us.federal_reserve.international,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,staff.us.federal_reserve.international,slice_candidate,NONE,NONE,doc:mandate.m4-proving-lens,true,manifest_selection
 profile.volcker_1979,staff.us.federal_reserve.legal,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
-profile.volcker_1979,staff.us.federal_reserve.markets,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
-profile.volcker_1979,staff.us.federal_reserve.monetary_affairs,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.volcker_1979,staff.us.federal_reserve.markets,slice_candidate,NONE,NONE,doc:mandate.m4-proving-lens,true,manifest_selection
+profile.volcker_1979,staff.us.federal_reserve.monetary_affairs,slice_candidate,NONE,NONE,doc:mandate.m4-proving-lens,true,manifest_selection
 profile.volcker_1979,staff.us.federal_reserve.ny_markets_group,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.volcker_1979,staff.us.federal_reserve.research,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.volcker_1979,staff.us.federal_reserve.supervision,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE

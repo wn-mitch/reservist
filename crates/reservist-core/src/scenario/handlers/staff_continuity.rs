@@ -16,14 +16,14 @@ impl ScenarioRuntime {
         &mut self,
         mode: RequestMode,
     ) -> Result<AnalyticalTask, String> {
-        const TASK_ID: &str = "task.markets.dealer_capacity_follow_up";
-        if self.tasks.contains_key(TASK_ID) {
-            return Err("the bounded Markets follow-up has already been requested".into());
+        let definition = crate::request_task::RequestTaskDefinition::for_scenario(&self.scenario)?;
+        if self.tasks.contains_key(&definition.task_id) {
+            return Err(format!("{} has already been requested", definition.task_id));
         }
 
         let source_record_id = self.latest_player_observation_id()?;
         let requested_at = self.clock.current_time.to_string();
-        let task = AnalyticalTask::markets_follow_up(
+        let task = definition.task(
             &requested_at,
             &self.player_records.recipient_id,
             source_record_id,
@@ -111,7 +111,7 @@ impl ScenarioRuntime {
                 .map_err(|error| error.to_string())?,
             phase_priority: 25,
             stable_sequence: 100,
-            stable_id: "scheduled.staff.markets.dealer_capacity_follow_up".into(),
+            stable_id: definition.completion_event_id.clone(),
             responsible_owner: task.assigned_unit_id.clone(),
             work_kind: "staff.complete_analytical_task".into(),
             payload: json!({"task_id": task.task_id}),
@@ -177,6 +177,7 @@ impl ScenarioRuntime {
                 .map_err(|error| error.to_string())?;
             AssessmentBuilder
                 .build(
+                    &crate::request_task::RequestTaskDefinition::for_scenario(&self.scenario)?,
                     &task,
                     &self.player_records.list_delivered(),
                     unit,

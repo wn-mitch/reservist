@@ -319,10 +319,12 @@ pub struct RequestView {
 impl MorningBookView {
     pub(crate) fn from_runtime(runtime: &ScenarioRuntime) -> Result<Self, String> {
         let delivered = delivered_items(runtime);
+        let assessment_title =
+            crate::request_task::RequestTaskDefinition::for_scenario(&runtime.scenario)?.title;
         let records = delivered
             .iter()
             .enumerate()
-            .map(|(index, row)| MorningBookItem::from_delivered(index + 1, row))
+            .map(|(index, row)| MorningBookItem::from_delivered(index + 1, row, &assessment_title))
             .collect::<Result<Vec<_>, _>>()?;
         let routing = RoutingAccount::from_runtime(runtime)?;
         let mut lines = vec!["MORNING BOOK".into(), "============".into()];
@@ -337,7 +339,7 @@ impl MorningBookView {
         for item in &records {
             match item.kind.as_str() {
                 "Assessment" => lines.extend([
-                    format!("[{}] Markets follow-up assessment", item.index),
+                    format!("[{}] {}", item.index, assessment_title),
                     format!("    {}", item.summary),
                     format!("    Author: {}", item.author_or_source),
                     format!("    As of: {}", item.as_of),
@@ -392,7 +394,7 @@ impl MorningBookView {
 }
 
 impl MorningBookItem {
-    fn from_delivered(index: usize, row: &Value) -> Result<Self, String> {
+    fn from_delivered(index: usize, row: &Value, assessment_title: &str) -> Result<Self, String> {
         let item = object(row, "item")?;
         let kind = record_kind(item)?.to_owned();
         let record_id = item
@@ -416,7 +418,7 @@ impl MorningBookItem {
                     index,
                     record_id,
                     kind,
-                    title: "Markets follow-up assessment".into(),
+                    title: assessment_title.into(),
                     summary: required(conclusion, "summary")?,
                     author_or_source: required(item, "authoring_unit_id")?,
                     as_of: required(item, "as_of_time")?,
@@ -502,11 +504,27 @@ impl MorningBookItem {
                     .get("label")
                     .and_then(Value::as_str)
                     .unwrap_or("Observed value");
+                // Observations without an authored display line show their
+                // scalar fields in key order.
                 let display = observed
                     .get("display")
                     .or_else(|| observed.get("display_value"))
                     .or_else(|| observed.get("status"))
                     .and_then(Value::as_str)
+                    .map(str::to_owned)
+                    .or_else(|| {
+                        let fields: Vec<String> = observed
+                            .as_object()
+                            .into_iter()
+                            .flatten()
+                            .filter_map(|(key, value)| match value {
+                                Value::String(text) => Some(format!("{key} {text}")),
+                                Value::Number(number) => Some(format!("{key} {number}")),
+                                _ => None,
+                            })
+                            .collect();
+                        (!fields.is_empty()).then(|| fields.join(", "))
+                    })
                     .ok_or("observation lacks display value")?;
                 Ok(Self {
                     index,
@@ -521,16 +539,16 @@ impl MorningBookItem {
                     publication_time: Some(required(item, "publication_time")?),
                     revision_status: Some(required(item, "revision_status")?),
                     measurement_uncertainty: Some(
-                        object(item, "measurement_error")?
-                            .get("display")
-                            .or_else(|| {
-                                object(item, "measurement_error")
-                                    .ok()
-                                    .and_then(|error| error.get("description"))
-                            })
-                            .and_then(Value::as_str)
-                            .ok_or("observation lacks measurement uncertainty")?
-                            .into(),
+                        match item.get("measurement_error") {
+                            Some(Value::String(text)) => Some(text.as_str()),
+                            Some(Value::Object(error)) => error
+                                .get("display")
+                                .or_else(|| error.get("description"))
+                                .and_then(Value::as_str),
+                            _ => None,
+                        }
+                        .ok_or("observation lacks measurement uncertainty")?
+                        .into(),
                     ),
                     unread,
                 })
@@ -687,11 +705,7 @@ impl RecordView {
 
 impl FomcRoomView {
     pub(crate) fn from_runtime(runtime: &ScenarioRuntime) -> Result<Self, String> {
-        let prepared_packages = vec![
-            "WAIT_AND_WARN".into(),
-            "MEASURED_FIRMING".into(),
-            "FIRMING_BIAS".into(),
-        ];
+        let prepared_packages = crate::packages::scenario_package_ids(&runtime.scenario);
         if let Some(decision) = &runtime.fomc_decision {
             let positions = decision
                 .positions
@@ -1348,13 +1362,16 @@ impl RequestView {
             .map_err(|error| error.to_string())?
             .display_name
             .clone();
+        let wording =
+            crate::request_task::RequestTaskDefinition::for_scenario(&runtime.scenario)?.wording;
         let tradeoff = if task.displaced_deliverable_id.is_some() {
-            "delays the foreign-demand appendix past the decision deadline"
+            wording.displacement_tradeoff
         } else {
-            "uses the Markets unit's remaining uncommitted capacity"
+            wording.capacity_tradeoff
         };
         let text = format!(
-            "Ask Markets to {}\nOwner:    {} ({})\nExpected: {}\nTradeoff: {}",
+            "Ask {} to {}\nOwner:    {} ({})\nExpected: {}\nTradeoff: {}",
+            wording.unit_label,
             lower_first(&task.question_template),
             task.assigned_unit_id,
             owning_unit_label,

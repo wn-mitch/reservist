@@ -43,5 +43,5 @@ Every committed fixture reseals byte-for-byte and parity passes.
 
 **Not established:** as-published November SOMA and M-1 levels, Iranian
 production after August, evidence for the withdrawal rate, the East-West
-line's construction dates, the 1979
-calendar-and-folders interaction, and events after November.
+line's construction dates, the
+calendar-and-folders interaction in this instance, and events after November.

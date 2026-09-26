@@ -16,8 +16,10 @@ use crate::{ScenarioArgs, render_run};
 pub(crate) struct SaveArgs {
     #[command(flatten)]
     source: ScenarioArgs,
-    #[arg(long, default_value = "MEASURED_FIRMING")]
-    package: String,
+    /// Policy package ID; defaults to the scenario's first authored package,
+    /// or MEASURED_FIRMING for the built-in 2006 set.
+    #[arg(long)]
+    package: Option<String>,
     #[arg(long, default_value="NORMAL", value_parser=["NONE","NORMAL","ACCELERATED","DECLINED","MISSED"])]
     request: String,
     #[arg(long, default_value_t = 0)]
@@ -44,9 +46,13 @@ pub(crate) struct ResumeArgs {
 pub(crate) fn save(args: SaveArgs) -> Result<(), ContentError> {
     let scenario = validate_scenario_with_catalog(&args.source.scenario, &args.source.catalog)?;
     let request = (args.request != "NONE").then_some(args.request.as_str());
+    let package = args
+        .package
+        .clone()
+        .unwrap_or_else(|| reservist_core::api::default_package_id(&scenario));
     let checkpoint = checkpoint_after(
         &scenario,
-        &args.package,
+        &package,
         request,
         args.after_events,
         Some(args.source.scenario.display().to_string()),

@@ -85,9 +85,10 @@ struct ScenarioArgs {
 struct RunArgs {
     #[command(flatten)]
     source: ScenarioArgs,
-    /// Policy package ID; the scenario's authored packages, or the 2006 set.
-    #[arg(long, default_value = "MEASURED_FIRMING")]
-    package: String,
+    /// Policy package ID; defaults to the scenario's first authored package,
+    /// or MEASURED_FIRMING for the built-in 2006 set.
+    #[arg(long)]
+    package: Option<String>,
     #[arg(long, default_value="NORMAL", value_parser=["NONE","NORMAL","ACCELERATED","DECLINED","MISSED"])]
     request: String,
     #[arg(long)]
@@ -188,7 +189,11 @@ fn execute(command: Command) -> Result<(), ContentError> {
             let scenario =
                 validate_scenario_with_catalog(&args.source.scenario, &args.source.catalog)?;
             let request = (args.request != "NONE").then_some(args.request.as_str());
-            let run = run_scenario(&scenario, &args.package, request, args.until.as_deref())
+            let package = args
+                .package
+                .clone()
+                .unwrap_or_else(|| reservist_core::api::default_package_id(&scenario));
+            let run = run_scenario(&scenario, &package, request, args.until.as_deref())
                 .map_err(runtime_error)?;
             if let Some(path) = args.transcript {
                 std::fs::write(path, run.transcript_bytes())?;

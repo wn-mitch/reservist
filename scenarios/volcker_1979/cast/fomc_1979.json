@@ -675,5 +675,11 @@
       ],
       "affirmative_threshold": 1
     }
+  },
+  "chief_of_staff": {
+    "display_name": "Avery Agendaloon",
+    "effective_period": "1979-08-06/1979-12-31",
+    "office_id": "office.us.federal_reserve.chief_of_staff",
+    "person_id": "person.us.avery_agendaloon"
   }
 }

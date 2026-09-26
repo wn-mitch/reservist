@@ -138,7 +138,6 @@ pub(crate) fn package_by_id(package_id: &str) -> Result<PolicyPackage, PackageEr
 
 /// The packages a scenario prepares: its authored packages in authored order,
 /// or the built-in 2006 packages when it authors none.
-#[cfg(any(test, feature = "tooling"))]
 pub(crate) fn scenario_package_ids(scenario: &crate::api::FrozenScenario) -> Vec<String> {
     match scenario
         .authority_content
@@ -152,6 +151,18 @@ pub(crate) fn scenario_package_ids(scenario: &crate::api::FrozenScenario) -> Vec
         None => ["WAIT_AND_WARN", "MEASURED_FIRMING", "FIRMING_BIAS"]
             .map(str::to_owned)
             .to_vec(),
+    }
+}
+
+/// The package a session opens with when none is named: the first authored
+/// package, or the built-in 2006 default.
+pub(crate) fn default_package_id(scenario: &crate::api::FrozenScenario) -> String {
+    match scenario.authority_content.get("packages") {
+        Some(_) => scenario_package_ids(scenario)
+            .into_iter()
+            .next()
+            .unwrap_or_default(),
+        None => "MEASURED_FIRMING".into(),
     }
 }
 

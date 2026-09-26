@@ -3,9 +3,9 @@ identity inventory:
   typed-subject coverage: 742/742 (100.0%)
   identity inventory is not runtime readiness
 catalog contract:
-  catalog-eligible instances: 251/742
+  catalog-eligible instances: 252/742
   early-2006 profile assignment: 1484/742
-  slice-candidate catalog closure: 60/76
+  slice-candidate catalog closure: 65/81
   external channels with one residual: 7/7
   external provider/interface rows: 67
   probe-referenced product source + destination/market coverage: 7/7
@@ -17,7 +17,7 @@ runtime boundary:
   scenario representation manifest: "manifest.mvp_2006_cycle" ("sha256:095a1bbddec1e10557bac9ba19075e70587b603ebc83ec37fcd8f9efb998305a")
   scenario representation manifest: "manifest.mvp_2006_cycle" ("sha256:493ca02478ebd045bc2ab5720ef3ef65410f4557f97410570a4576a39578d066")
   scenario representation manifest: "manifest.mvp_2006_cycle" ("sha256:d9f745b948d7cf2d76e364ff08664a0fcf3347a41485e107a18b02297bca2ce4")
-  scenario representation manifest: "manifest.volcker_1979" ("sha256:ca71fd46db5a4cc4f493c7ae352ae63f8031445be1ce1f926be1f13a100540c3")
+  scenario representation manifest: "manifest.volcker_1979" ("sha256:0c94f427938536b420dcf11ec0aeb8535ad91f3d1b9f63b5fe5f6b629ef97a89")
   scenario representation manifest: "manifest.volcker_1979_11" ("sha256:8373bde3d59264c2d9ca20efd7fd0dbf8d0cda4f3fbb0c0d898eb0bfee23f4e9")
   required manifest contents: identity clades; owner classes; fidelity tiers; residual mappings; protected population dimensions; permitted cell transitions; boundary-interface versions; adapter status; initialization reconciliation; fallbacks; replay hash
   no geographic-completeness percentage is defined

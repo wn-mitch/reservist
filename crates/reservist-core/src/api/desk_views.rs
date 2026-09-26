@@ -6,7 +6,7 @@ use crate::{
         AccessDecision, DisplacedWork, RoutingPlanner, RoutingRequest, TaskForecast,
         UnitAvailability, resolve_access,
     },
-    staff::{AnalyticalTask, RequestMode},
+    staff::RequestMode,
     time::Instant,
 };
 
@@ -254,10 +254,12 @@ impl Session {
         };
         let policy = self.routing_policy()?;
         let artifacts = self.routing_artifacts()?;
+        let definition =
+            crate::request_task::RequestTaskDefinition::for_scenario(&self.runtime.scenario)?;
         for artifact in &artifacts {
             if let AccessDecision::Conflict(conflict) = resolve_access(
                 artifact,
-                "staff.us.federal_reserve.monetary_affairs",
+                &definition.routing.conflict_requesting_unit_id,
                 &policy,
             ) {
                 view.access_conflicts.push(AccessConflictView {
@@ -290,7 +292,7 @@ impl Session {
             if *mode == RequestMode::Declined {
                 continue;
             }
-            let task = AnalyticalTask::markets_follow_up(&now, actor, "record.forecast", *mode);
+            let task = definition.task(&now, actor, "record.forecast", *mode);
             if Instant::parse(&task.expected_completion).map_err(|error| error.to_string())?
                 < self.runtime.clock.current_time
             {
@@ -340,17 +342,15 @@ impl Session {
                 })
             })
             .collect::<Result<Vec<_>, String>>()?;
-        let deadline =
-            AnalyticalTask::markets_follow_up(&now, actor, "record.forecast", RequestMode::Normal)
-                .decision_deadline;
+        let deadline = definition.decision_deadline.clone();
         if self.runtime.clock.current_time
             <= Instant::parse(&deadline).map_err(|error| error.to_string())?
         {
             let plan = RoutingPlanner::plan(RoutingRequest {
-                request_id: "request.dealer_capacity".into(),
+                request_id: definition.routing.request_id.clone(),
                 requested_at: now,
-                requesting_unit_id: "staff.us.federal_reserve.markets".into(),
-                requested_scope: "scope.staff.markets.confidential".into(),
+                requesting_unit_id: definition.routing.planning_unit_id.clone(),
+                requested_scope: definition.routing.requested_scope.clone(),
                 deadline,
                 delivered_artifacts: artifacts,
                 unit_availability: availability,

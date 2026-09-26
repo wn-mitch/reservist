@@ -31,3 +31,8 @@ pub use ops::{RequestTiming, View};
 pub use receipt::Receipt;
 pub use session::{Rejected, Session};
 pub use workflow::validate_interaction_contract;
+
+/// The package a session opens with when the caller names none.
+pub fn default_package_id(scenario: &FrozenScenario) -> String {
+    crate::packages::default_package_id(scenario)
+}

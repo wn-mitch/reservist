@@ -28,7 +28,476 @@
       ],
       "capacity_units": 2,
       "standing_deliverables": []
+    },
+    {
+      "unit_id": "staff.us.federal_reserve.international",
+      "display_name": "Division of International Finance",
+      "access_scopes": [
+        "profile.chair_scoped",
+        "scope.staff.international.confidential"
+      ],
+      "methods": [
+        "oil_market_assessment",
+        "balance_of_payments_projection"
+      ],
+      "capacity_units": 2,
+      "standing_deliverables": [
+        {
+          "deliverable_id": "deliverable.international.weekly_oil_note",
+          "title": "Weekly oil-market note",
+          "due_time": "1979-08-13T12:00:00-04:00",
+          "decision_deadline": "1979-08-14T09:30:00-04:00",
+          "capacity_units": 1
+        }
+      ]
     }
   ],
-  "evidence_deliveries": []
+  "routing_policy": {
+    "scope_policies": [
+      {
+        "scope_id": "scope.staff.international.confidential",
+        "routine_recipient_unit_ids": [
+          "staff.us.federal_reserve.international"
+        ],
+        "conflict_choices": [
+          {
+            "choice_id": "routing.international.confidential.restricted_joint_work",
+            "kind": "RESTRICTED_JOINT_WORK",
+            "provider_unit_id": "staff.us.federal_reserve.international",
+            "delivery_delay_minutes": 15,
+            "added_uncertainty": [
+              "The requesting unit receives a bounded joint reading rather than the source file."
+            ],
+            "capacity_units": 1,
+            "tradeoff": "Consumes an International Finance slot and keeps source detail restricted.",
+            "summary_fields": [
+              "announcement",
+              "capacity"
+            ]
+          },
+          {
+            "choice_id": "routing.international.confidential.sanitized_summary",
+            "kind": "SANITIZED_SUMMARY",
+            "provider_unit_id": "staff.us.federal_reserve.international",
+            "delivery_delay_minutes": 30,
+            "added_uncertainty": [
+              "Source-specific tanker reporting is removed from the summary."
+            ],
+            "capacity_units": 1,
+            "tradeoff": "Preserves confidentiality but weakens the reading of actual liftings.",
+            "summary_fields": [
+              "announcement",
+              "capacity"
+            ]
+          },
+          {
+            "choice_id": "routing.international.confidential.authorized_grant",
+            "kind": "AUTHORIZED_GRANT",
+            "provider_unit_id": null,
+            "delivery_delay_minutes": 45,
+            "added_uncertainty": [],
+            "capacity_units": 0,
+            "tradeoff": "Broadens access after authorization and delays the decision-support route.",
+            "summary_fields": []
+          }
+        ]
+      }
+    ],
+    "forecast_policy": {
+      "live_with_uncertainty_tradeoff": "Proceed now with a conditional judgment based only on accessible delivered evidence.",
+      "decline_tradeoff": "Do not provide a deadline assessment when no authorized, capacity-feasible route remains."
+    }
+  },
+  "evidence_deliveries": [
+    {
+      "delivery": {
+        "delivery_id": "delivery.staff.international.saudi_output_stages",
+        "recipient_id": "staff.us.federal_reserve.international",
+        "item_id": "evidence.international.saudi_output_stages",
+        "delivery_time": "1979-08-06T09:00:00-04:00",
+        "access_scope": "scope.staff.international.confidential",
+        "provenance": "record.international.oil_market_file.1979_08",
+        "delivery_witness": "scenario.staff.opening_delivery"
+      },
+      "item": {
+        "item_id": "evidence.international.saudi_output_stages",
+        "proposition": "Saudi Arabia announced a 9.5 mb/d third-quarter ceiling; that is intent, not output. Installed capacity is about 10.5 mb/d, liftings are seen only through lagged tanker estimates, and U.S. deliveries and access are observed separately.",
+        "source": "staff.us.federal_reserve.international",
+        "reference_period": "1979-07/1979-08",
+        "observed_value": {
+          "announcement": "9.5 mb/d ceiling effective 1979-07-01",
+          "capacity": "about 10.5 mb/d installed sustainable capacity (GAO, January 1978)",
+          "production": "weekly liftings estimated from tanker and terminal reports, about two weeks late",
+          "delivery": "U.S. import receipts reported monthly",
+          "access": "no U.S. restriction on Saudi crude in force"
+        },
+        "uncertainty": [
+          {
+            "kind": "measurement",
+            "description": "Tanker-based liftings estimates lag and are revised."
+          },
+          {
+            "kind": "strategic",
+            "description": "Saudi officials may state output above or below actual liftings."
+          }
+        ]
+      }
+    }
+  ],
+  "folder_options": [
+    {
+      "option_id": "folder.option.propose_alt_a_ease",
+      "line": "Place ALT_A_EASE before the Committee for its separate decision.",
+      "binding": {
+        "kind": "PROPOSED_PACKAGE",
+        "binding_id": "binding.folder.propose_alt_a_ease",
+        "package_id": "ALT_A_EASE",
+        "authority_id": "clause.fra.12a.fomc_direction"
+      },
+      "required_evidence_ids": [],
+      "mutual_exclusion_groups": [
+        "policy_package"
+      ],
+      "reservations": [],
+      "assessment": "The Committee retains approval authority; the proposal does not execute a market operation."
+    },
+    {
+      "option_id": "folder.option.propose_alt_b_hold",
+      "line": "Place ALT_B_HOLD before the Committee for its separate decision.",
+      "binding": {
+        "kind": "PROPOSED_PACKAGE",
+        "binding_id": "binding.folder.propose_alt_b_hold",
+        "package_id": "ALT_B_HOLD",
+        "authority_id": "clause.fra.12a.fomc_direction"
+      },
+      "required_evidence_ids": [],
+      "mutual_exclusion_groups": [
+        "policy_package"
+      ],
+      "reservations": [],
+      "assessment": "The Committee retains approval authority; the proposal does not execute a market operation."
+    },
+    {
+      "option_id": "folder.option.propose_firm_band",
+      "line": "Place FIRM_BAND before the Committee for its separate decision.",
+      "binding": {
+        "kind": "PROPOSED_PACKAGE",
+        "binding_id": "binding.folder.propose_firm_band",
+        "package_id": "FIRM_BAND",
+        "authority_id": "clause.fra.12a.fomc_direction"
+      },
+      "required_evidence_ids": [],
+      "mutual_exclusion_groups": [
+        "policy_package"
+      ],
+      "reservations": [],
+      "assessment": "The Committee retains approval authority; the proposal does not execute a market operation."
+    },
+    {
+      "option_id": "folder.option.propose_alt_c_firm",
+      "line": "Place ALT_C_FIRM before the Committee for its separate decision.",
+      "binding": {
+        "kind": "PROPOSED_PACKAGE",
+        "binding_id": "binding.folder.propose_alt_c_firm",
+        "package_id": "ALT_C_FIRM",
+        "authority_id": "clause.fra.12a.fomc_direction"
+      },
+      "required_evidence_ids": [],
+      "mutual_exclusion_groups": [
+        "policy_package"
+      ],
+      "reservations": [],
+      "assessment": "The Committee retains approval authority; the proposal does not execute a market operation."
+    },
+    {
+      "option_id": "folder.option.propose_reserves_path",
+      "line": "Place RESERVES_PATH before the Committee for its separate decision.",
+      "binding": {
+        "kind": "PROPOSED_PACKAGE",
+        "binding_id": "binding.folder.propose_reserves_path",
+        "package_id": "RESERVES_PATH",
+        "authority_id": "clause.fra.12a.fomc_direction"
+      },
+      "required_evidence_ids": [],
+      "mutual_exclusion_groups": [
+        "policy_package"
+      ],
+      "reservations": [],
+      "assessment": "The Committee retains approval authority; the proposal does not execute a market operation."
+    },
+    {
+      "option_id": "folder.option.request_normal_liftings_assessment",
+      "line": "Ask International Finance how much of the announced Saudi increase is actually lifting.",
+      "binding": {
+        "kind": "STAFF_REQUEST",
+        "binding_id": "binding.folder.request_normal_liftings_assessment",
+        "task_id": "task.international.saudi_liftings_follow_up",
+        "mode": "NORMAL"
+      },
+      "required_evidence_ids": [],
+      "mutual_exclusion_groups": [
+        "liftings_request"
+      ],
+      "routing_choice_ids": [],
+      "reservations": [
+        {
+          "owner_id": "staff.us.federal_reserve.international",
+          "allocation": 1,
+          "starts_at": "1979-08-06T09:00:00-04:00",
+          "releases_at": "1979-08-09T16:00:00-04:00",
+          "expected_payoff": "Saudi liftings assessment",
+          "release_condition": "The staff task completes, is declined, missed, or cancelled through its lifecycle."
+        }
+      ],
+      "assessment": "Uses one International Finance slot without displacing the weekly oil note. The assessment remains uncertain until delivery.",
+      "released_reservation_ids": []
+    },
+    {
+      "option_id": "folder.option.request_accelerated_liftings_assessment",
+      "line": "Ask International Finance for the Saudi liftings assessment early.",
+      "binding": {
+        "kind": "STAFF_REQUEST",
+        "binding_id": "binding.folder.request_accelerated_liftings_assessment",
+        "task_id": "task.international.saudi_liftings_follow_up",
+        "mode": "ACCELERATED"
+      },
+      "required_evidence_ids": [],
+      "mutual_exclusion_groups": [
+        "liftings_request"
+      ],
+      "routing_choice_ids": [],
+      "reservations": [
+        {
+          "owner_id": "staff.us.federal_reserve.international",
+          "allocation": 2,
+          "starts_at": "1979-08-06T09:00:00-04:00",
+          "releases_at": "1979-08-08T12:00:00-04:00",
+          "expected_payoff": "Saudi liftings assessment",
+          "release_condition": "The staff task completes, is declined, missed, or cancelled through its lifecycle."
+        }
+      ],
+      "assessment": "Uses both International Finance slots and pushes the weekly oil note past the Committee meeting.",
+      "released_reservation_ids": [
+        "calendar.capacity.deliverable.international.weekly_oil_note"
+      ]
+    },
+    {
+      "option_id": "folder.option.request_declined_liftings_assessment",
+      "line": "Decline the bounded International Finance follow-up.",
+      "binding": {
+        "kind": "STAFF_REQUEST",
+        "binding_id": "binding.folder.request_declined_liftings_assessment",
+        "task_id": "task.international.saudi_liftings_follow_up",
+        "mode": "DECLINED"
+      },
+      "required_evidence_ids": [],
+      "mutual_exclusion_groups": [
+        "liftings_request"
+      ],
+      "routing_choice_ids": [],
+      "reservations": [],
+      "assessment": "No analytical capacity is reserved and no follow-up assessment is produced.",
+      "released_reservation_ids": []
+    },
+    {
+      "option_id": "routing.international.confidential.restricted_joint_work",
+      "line": "Please prepare a restricted joint reading of the Saudi file for Monetary Policy.",
+      "binding": {
+        "kind": "EVIDENCE_ROUTE",
+        "binding_id": "binding.routing.international.confidential.restricted_joint_work",
+        "artifact_id": "evidence.international.saudi_output_stages",
+        "requesting_unit_id": "staff.us.federal_reserve.monetary_affairs",
+        "choice_id": "routing.international.confidential.restricted_joint_work",
+        "delivery_delay_minutes": 15,
+        "delivery_scope": "scope.staff.international.confidential.joint"
+      },
+      "required_evidence_ids": [
+        "evidence.international.saudi_output_stages"
+      ],
+      "mutual_exclusion_groups": [
+        "saudi_evidence_route"
+      ],
+      "routing_choice_ids": [
+        "routing.international.confidential.restricted_joint_work"
+      ],
+      "released_reservation_ids": [],
+      "reservations": [
+        {
+          "owner_id": "staff.us.federal_reserve.international",
+          "allocation": 1,
+          "starts_at": "1979-08-06T09:00:00-04:00",
+          "releases_at": "1979-08-06T09:15:00-04:00",
+          "expected_payoff": "A scope-limited evidence delivery to Monetary Policy",
+          "release_condition": "The dated routing work reaches its delivery boundary."
+        }
+      ],
+      "assessment": "Routes the International Finance file to Monetary Policy under the chosen access terms.",
+      "commits_on_speaking": true
+    },
+    {
+      "option_id": "routing.international.confidential.sanitized_summary",
+      "line": "Route a sanitized summary of the Saudi file to Monetary Policy.",
+      "binding": {
+        "kind": "EVIDENCE_ROUTE",
+        "binding_id": "binding.routing.international.confidential.sanitized_summary",
+        "artifact_id": "evidence.international.saudi_output_stages",
+        "requesting_unit_id": "staff.us.federal_reserve.monetary_affairs",
+        "choice_id": "routing.international.confidential.sanitized_summary",
+        "delivery_delay_minutes": 30,
+        "delivery_scope": "scope.staff.international.confidential.sanitized"
+      },
+      "required_evidence_ids": [
+        "evidence.international.saudi_output_stages"
+      ],
+      "mutual_exclusion_groups": [
+        "saudi_evidence_route"
+      ],
+      "routing_choice_ids": [
+        "routing.international.confidential.sanitized_summary"
+      ],
+      "released_reservation_ids": [],
+      "reservations": [
+        {
+          "owner_id": "staff.us.federal_reserve.international",
+          "allocation": 1,
+          "starts_at": "1979-08-06T09:00:00-04:00",
+          "releases_at": "1979-08-06T09:30:00-04:00",
+          "expected_payoff": "A scope-limited evidence delivery to Monetary Policy",
+          "release_condition": "The dated routing work reaches its delivery boundary."
+        }
+      ],
+      "assessment": "Routes the International Finance file to Monetary Policy under the chosen access terms.",
+      "commits_on_speaking": true
+    },
+    {
+      "option_id": "routing.international.confidential.authorized_grant",
+      "line": "Authorize Monetary Policy to read the Saudi file directly.",
+      "binding": {
+        "kind": "EVIDENCE_ROUTE",
+        "binding_id": "binding.routing.international.confidential.authorized_grant",
+        "artifact_id": "evidence.international.saudi_output_stages",
+        "requesting_unit_id": "staff.us.federal_reserve.monetary_affairs",
+        "choice_id": "routing.international.confidential.authorized_grant",
+        "delivery_delay_minutes": 45,
+        "delivery_scope": "scope.staff.international.confidential"
+      },
+      "required_evidence_ids": [
+        "evidence.international.saudi_output_stages"
+      ],
+      "mutual_exclusion_groups": [
+        "saudi_evidence_route"
+      ],
+      "routing_choice_ids": [
+        "routing.international.confidential.authorized_grant"
+      ],
+      "released_reservation_ids": [],
+      "reservations": [],
+      "assessment": "Routes the International Finance file to Monetary Policy under the chosen access terms.",
+      "commits_on_speaking": true
+    }
+  ],
+  "folders": [
+    {
+      "folder_id": "folder.policy_cycle",
+      "title": "Policy cycle"
+    },
+    {
+      "folder_id": "folder.staff_followup",
+      "title": "Staff follow-up"
+    }
+  ],
+  "request_task": {
+    "task_id": "task.international.saudi_liftings_follow_up",
+    "title": "International Finance liftings assessment",
+    "question_template": "Estimate how much of the announced Saudi production increase is actually lifting and reaching the United States.",
+    "subject_refs": [
+      "system.sa.petroleum.policy",
+      "system.sa.petroleum.operations",
+      "market.global.crude"
+    ],
+    "assigned_unit_id": "staff.us.federal_reserve.international",
+    "decision_deadline": "1979-08-14T09:30:00-04:00",
+    "access_requirements": [
+      "profile.chair_scoped",
+      "scope.staff.international.confidential"
+    ],
+    "normal": {
+      "expected_completion": "1979-08-09T16:00:00-04:00",
+      "capacity_units": 1
+    },
+    "accelerated": {
+      "expected_completion": "1979-08-08T12:00:00-04:00",
+      "capacity_units": 2
+    },
+    "missed_completion": "1979-08-14T12:00:00-04:00",
+    "displaced_deliverable_id": "deliverable.international.weekly_oil_note",
+    "displaced_revised_due_time": "1979-08-15T12:00:00-04:00",
+    "required_unit_evidence_id": "evidence.international.saudi_output_stages",
+    "completion_event_id": "scheduled.staff.international.saudi_liftings_follow_up",
+    "routing": {
+      "request_id": "request.saudi_liftings",
+      "planning_unit_id": "staff.us.federal_reserve.international",
+      "requested_scope": "scope.staff.international.confidential",
+      "conflict_requesting_unit_id": "staff.us.federal_reserve.monetary_affairs"
+    },
+    "wording": {
+      "unit_label": "International Finance",
+      "displacement_tradeoff": "delays the weekly oil note past the Committee meeting",
+      "capacity_tradeoff": "uses International Finance's remaining uncommitted capacity"
+    },
+    "assessment": {
+      "record_id": "assessment.international.saudi_liftings_follow_up",
+      "conclusion_distribution": [
+        {
+          "proposition": "oil_supply_relief",
+          "estimate": 0.35,
+          "lower": 0.2,
+          "upper": 0.55,
+          "confidence": 0.6,
+          "summary": "Most of the announced Saudi increase is plausibly lifting, but spot prices and import costs reflect earlier shortfalls and will ease slowly.",
+          "uncertainty_kind": "measurement"
+        }
+      ],
+      "assumptions": [
+        "Tanker reports cover most Ras Tanura and Ju'aymah loadings.",
+        "The third-quarter ceiling holds through September."
+      ],
+      "unavailable_or_stale_inputs": [
+        {
+          "kind": "measurement",
+          "description": "Liftings estimates lag about two weeks and are revised.",
+          "evidence_refs": [
+            "evidence.international.saudi_output_stages"
+          ]
+        },
+        {
+          "kind": "strategic",
+          "description": "Official statements may overstate or understate liftings.",
+          "evidence_refs": [
+            "evidence.international.saudi_output_stages"
+          ]
+        },
+        {
+          "kind": "institutional",
+          "description": "U.S. import receipts for August are not yet reported.",
+          "evidence_refs": []
+        }
+      ],
+      "package_alternative_assessments": {
+        "ALT_A_EASE": "Easing now bets on an oil relief the liftings evidence does not yet show.",
+        "ALT_B_HOLD": "Holding leaves the oil-driven price surge to run through wages.",
+        "FIRM_BAND": "A modest firming leans against the second-round effects of higher import costs.",
+        "ALT_C_FIRM": "A larger firming leans harder against second-round effects at more output risk.",
+        "RESERVES_PATH": "A reserves path controls money growth regardless of the oil reading."
+      },
+      "dissent": [
+        {
+          "dissenting_unit_id": "staff.us.federal_reserve.monetary_affairs",
+          "basis": "Monetary Policy weighs money growth above the oil reading and does not infer that supply relief changes the policy choice."
+        }
+      ],
+      "confidence": 0.6,
+      "expected_next_information": "Late-August tanker estimates and July U.S. import receipts."
+    }
+  }
 }

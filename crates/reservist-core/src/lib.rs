@@ -45,6 +45,7 @@ pub(crate) mod player;
 pub(crate) mod population;
 pub(crate) mod postmortem;
 pub(crate) mod records;
+pub(crate) mod request_task;
 pub(crate) mod resources;
 pub(crate) mod routing;
 pub(crate) mod scenario;

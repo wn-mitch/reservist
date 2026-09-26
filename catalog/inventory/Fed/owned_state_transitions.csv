@@ -47,6 +47,11 @@ state.schedule.us.federal_reserve.blackout.current,initialize_schedule,12-struct
 state.schedule.us.federal_reserve.fomc.calendar,initialize_schedule,12-structure-outline-bernankey-mvp-cycle.md:278-285
 state.staff.us.federal_reserve.communications.work,release_capacity,12-structure-outline-bernankey-mvp-cycle.md:397-415
 state.staff.us.federal_reserve.communications.work,reserve_capacity,12-structure-outline-bernankey-mvp-cycle.md:397-415
+state.staff.us.federal_reserve.international.evidence,integrate_scoped_delivery,doc:mandate.m4-proving-lens
+state.staff.us.federal_reserve.international.work,displace_work,doc:mandate.m4-proving-lens
+state.staff.us.federal_reserve.international.work,record_deadline_result,doc:mandate.m4-proving-lens
+state.staff.us.federal_reserve.international.work,release_capacity,doc:mandate.m4-proving-lens
+state.staff.us.federal_reserve.international.work,reserve_capacity,doc:mandate.m4-proving-lens
 state.staff.us.federal_reserve.markets.evidence,integrate_scoped_delivery,12-structure-outline-bernankey-mvp-cycle.md:388-457
 state.staff.us.federal_reserve.markets.work,displace_work,12-structure-outline-bernankey-mvp-cycle.md:388-457
 state.staff.us.federal_reserve.markets.work,record_deadline_result,12-structure-outline-bernankey-mvp-cycle.md:388-457

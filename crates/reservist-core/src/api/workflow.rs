@@ -22,7 +22,7 @@ use crate::{
     folder::{AdmissionContext, BoundAction, FolderBook, FolderContext},
     packages::resolve_package,
     routing::{AuthoredRoutingPolicy, DeliveredArtifact, EvidenceUncertainty},
-    staff::{AnalyticalTask, RequestMode},
+    staff::RequestMode,
     time::Instant,
 };
 
@@ -104,12 +104,8 @@ pub fn validate_interaction_contract(scenario: &FrozenScenario) -> Result<(), St
                     .map_err(|error| error.to_string())?;
             }
             BoundAction::StaffRequest { task_id, mode, .. } => {
-                let task = AnalyticalTask::markets_follow_up(
-                    at,
-                    "actor.validation",
-                    "record.validation",
-                    *mode,
-                );
+                let task = crate::request_task::RequestTaskDefinition::for_scenario(scenario)?
+                    .task(at, "actor.validation", "record.validation", *mode);
                 if task.task_id != *task_id {
                     return Err(format!("unsupported staff task binding: {task_id}"));
                 }
@@ -252,6 +248,16 @@ pub(super) fn finding_rules(scenario: &FrozenScenario) -> Result<Vec<FindingRule
 }
 
 impl Session {
+    /// The first authored folder, which staff-bound commands open by default.
+    pub fn primary_folder_id(&self) -> Result<String, String> {
+        self.runtime.scenario.authority_content["staff"]["folders"]
+            .as_array()
+            .and_then(|folders| folders.first())
+            .and_then(|folder| folder["folder_id"].as_str())
+            .map(str::to_owned)
+            .ok_or_else(|| "Missing authored folders.".into())
+    }
+
     pub fn next_command_id(&self) -> String {
         format!("command.{}", self.runtime.ledger.next_event_id())
     }
@@ -821,7 +827,8 @@ impl Session {
             .map(|option| option.option_id.clone())
             .ok_or("No reviewed folder option binds that command.")?;
         if self.interaction.active_folder.is_none() {
-            self.open_folder("folder.policy_cycle")?;
+            let folder = self.primary_folder_id()?;
+            self.open_folder(&folder)?;
         }
         self.pencil_option(&id)
     }
@@ -870,7 +877,10 @@ impl Session {
                             .all(|id| self.runtime.player_records.contains(id))
                 }
                 BoundAction::StaffRequest { task_id, mode, .. } => {
-                    let task = AnalyticalTask::markets_follow_up(
+                    let task = crate::request_task::RequestTaskDefinition::for_scenario(
+                        &self.runtime.scenario,
+                    )?
+                    .task(
                         &self.current_time(),
                         actor,
                         "record.forecast",

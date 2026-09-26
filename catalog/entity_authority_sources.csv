@@ -21,5 +21,6 @@ record.us.federal_reserve.analytical_task,office.us.federal_reserve.board_chair,
 record.us.federal_reserve.assessment,staff.us.federal_reserve.markets,authoring_staff_unit,12-structure-outline-bernankey-mvp-cycle.md:388-457
 reference.us.bls.cpi,institution.us.bls,publishing_institution,12-structure-outline-bernankey-mvp-cycle.md:174-177
 staff.us.federal_reserve.communications,inst.us.federal_reserve.board,parent_institution,12-structure-outline-bernankey-mvp-cycle.md:397-415
+staff.us.federal_reserve.international,inst.us.federal_reserve.board,parent_institution,doc:mandate.m4-proving-lens
 staff.us.federal_reserve.markets,inst.us.federal_reserve.board,parent_institution,12-structure-outline-bernankey-mvp-cycle.md:397-415
 staff.us.federal_reserve.monetary_affairs,inst.us.federal_reserve.board,parent_institution,12-structure-outline-bernankey-mvp-cycle.md:397-415

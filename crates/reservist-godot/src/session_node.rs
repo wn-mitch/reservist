@@ -13,8 +13,6 @@ use serde_json::{Map, Value, json};
 
 use crate::serialization::{dictionary_to_value, value_to_dictionary};
 
-const DEFAULT_PACKAGE_ID: &str = "MEASURED_FIRMING";
-
 #[derive(GodotClass)]
 #[class(base=Node)]
 pub struct ReservistSession {
@@ -44,8 +42,11 @@ impl ReservistSession {
         let candidate = (|| {
             let scenario = frozen::validate_scenario(&path)
                 .map_err(|error| (error.category, error.message))?;
-            let session = Session::new(&scenario, DEFAULT_PACKAGE_ID)
-                .map_err(|error| (error.category, error.reason))?;
+            let session = Session::new(
+                &scenario,
+                &reservist_core::api::default_package_id(&scenario),
+            )
+            .map_err(|error| (error.category, error.reason))?;
             Ok::<_, (String, String)>((scenario, session))
         })();
 

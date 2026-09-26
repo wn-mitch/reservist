@@ -444,20 +444,6 @@ fn requested() -> TaskStatus {
     TaskStatus::Requested
 }
 impl AnalyticalTask {
-    pub(crate) fn markets_follow_up(
-        requested_at: &str,
-        requester_id: &str,
-        source_record_id: &str,
-        mode: RequestMode,
-    ) -> Self {
-        let (expected_completion, accelerated) = match mode {
-            RequestMode::Normal => ("2006-03-27T16:00:00-05:00", false),
-            RequestMode::Accelerated => ("2006-03-27T12:00:00-05:00", true),
-            RequestMode::Declined => (requested_at, false),
-            RequestMode::Missed => ("2006-03-28T10:00:00-05:00", false),
-        };
-        Self { task_id: "task.markets.dealer_capacity_follow_up".into(), question_template: "Compare current dealer inventory and financing capacity with the last four refundings.".into(), subject_refs: vec!["cohort.us.dealer.primary".into(), "market.us.treasury.secondary".into()], requester_id: requester_id.into(), assigned_unit_id: "staff.us.federal_reserve.markets".into(), requested_at: requested_at.into(), expected_completion: expected_completion.into(), decision_deadline: "2006-03-28T08:30:00-05:00".into(), access_requirements: vec!["profile.chair_scoped".into(), "scope.staff.markets.confidential".into()], source_record_ids: vec![source_record_id.into()], capacity_units: if accelerated { 2 } else { 1 }, mode, displaced_deliverable_id: accelerated.then(|| "deliverable.markets.foreign_demand_appendix".into()), displaced_revised_due_time: accelerated.then(|| "2006-03-28T10:30:00-05:00".into()), status: TaskStatus::Requested, result_witness: None }
-    }
     pub(crate) fn with_result(&self, status: TaskStatus, witness: impl Into<String>) -> Self {
         let mut task = self.clone();
         task.status = status;
@@ -520,6 +506,7 @@ pub(crate) struct AssessmentBuilder;
 impl AssessmentBuilder {
     pub(crate) fn build(
         &self,
+        definition: &crate::request_task::RequestTaskDefinition,
         task: &AnalyticalTask,
         player_records: &[Value],
         unit: &StaffUnit,
@@ -555,7 +542,7 @@ impl AssessmentBuilder {
                 "task source was not delivered to the player: {missing:?}"
             )));
         }
-        let dealer_evidence_id = "evidence.markets.dealer_capacity.refundings";
+        let dealer_evidence_id = definition.required_unit_evidence_id.as_str();
         if !unit
             .evidence
             .list_delivered()
@@ -568,16 +555,17 @@ impl AssessmentBuilder {
                     == Some(dealer_evidence_id)
             })
         {
-            return Err(AssessmentBoundaryError(
-                "Markets lacks its scoped dealer-capacity evidence".into(),
-            ));
+            return Err(AssessmentBoundaryError(format!(
+                "{} lacks its scoped evidence {dealer_evidence_id}",
+                unit.unit_id
+            )));
         }
         let public_source = task
             .source_record_ids
             .first()
             .expect("validated task source")
             .clone();
-        Ok(Assessment { record_id: "assessment.markets.dealer_capacity_follow_up".into(), task_reference: task.task_id.clone(), as_of_time: completed_at.into(), authoring_unit_id: unit.unit_id.clone(), conclusion_distribution: vec![ConclusionDistribution { proposition: "financial_condition_sensitivity".into(), estimate: 0.86, lower: 0.68, upper: 0.95, confidence: 0.71, summary: "Dealer balance-sheet constraints make another firming step more likely to amplify interest-sensitive financial conditions.".into(), uncertainty_kind: UncertaintyKind::Model }], supporting_evidence: vec![dealer_evidence_id.into()], contrary_evidence: vec![public_source.clone()], assumptions: vec!["Recent refundings are comparable after adjusting for maturity-bucket supply.".into(), "Observed financing indications remain available through the meeting window.".into()], unavailable_or_stale_inputs: vec![UncertaintyNote { kind: UncertaintyKind::Measurement, description: "Two dealer inventory submissions are one business day stale.".into(), evidence_refs: vec![dealer_evidence_id.into()] }, UncertaintyNote { kind: UncertaintyKind::Strategic, description: "Dealer balance-sheet submissions may frame capacity conservatively.".into(), evidence_refs: vec![dealer_evidence_id.into()] }, UncertaintyNote { kind: UncertaintyKind::Institutional, description: "Foreign-demand appendix is outside this task's accepted scope.".into(), evidence_refs: vec![] }, UncertaintyNote { kind: UncertaintyKind::Reflexive, description: "The Committee's language may change the financing conditions assessed here.".into(), evidence_refs: vec![] }, UncertaintyNote { kind: UncertaintyKind::Aleatory, description: "Order flow at the meeting remains irreducibly uncertain.".into(), evidence_refs: vec![] }], package_alternative_assessments: BTreeMap::from([("FIRMING_BIAS".into(), "Largest risk of amplifying dealer and housing sensitivity.".into()), ("MEASURED_FIRMING".into(), "Material amplification risk despite conditional language.".into()), ("WAIT_AND_WARN".into(), "Avoids the mechanical step but may loosen the expected path.".into())]), dissent: vec![AssessmentDissent { dissenting_unit_id: "staff.us.federal_reserve.monetary_affairs".into(), basis: "Monetary Affairs considers the inflation release stronger evidence than the dealer-capacity comparison and does not infer the same policy constraint.".into(), evidence_refs: vec![public_source] }], confidence: 0.71, expected_next_information: "Updated dealer financing indications after the Committee decision.".into() })
+        Ok(definition.assessment(task, &unit.unit_id, completed_at, &public_source))
     }
 }
 
@@ -658,7 +646,8 @@ mod tests {
             ),
         };
         unit.evidence.deliver(&json!({"recipient_id":"staff.us.federal_reserve.markets","access_scope":"scope.staff.markets.confidential","item_id":"evidence.markets.dealer_capacity.refundings"}), &json!({"item_id":"evidence.markets.dealer_capacity.refundings"})).unwrap();
-        let task = AnalyticalTask::markets_follow_up(
+        let definition = crate::request_task::RequestTaskDefinition::builtin();
+        let task = definition.task(
             "2006-03-27T09:00:00-05:00",
             "player",
             "observation.public",
@@ -666,6 +655,7 @@ mod tests {
         );
         let assessment = AssessmentBuilder
             .build(
+                &definition,
                 &task,
                 &[json!({"item":{"observation_id":"observation.public"}})],
                 &unit,

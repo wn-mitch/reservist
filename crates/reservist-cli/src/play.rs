@@ -9,8 +9,10 @@ use reservist_core::api::{
 pub(crate) struct PlayArgs {
     #[command(flatten)]
     source: crate::ScenarioArgs,
-    #[arg(long, default_value = "MEASURED_FIRMING")]
-    package: String,
+    /// Policy package ID; defaults to the scenario's first authored package,
+    /// or MEASURED_FIRMING for the built-in 2006 set.
+    #[arg(long)]
+    package: Option<String>,
 }
 
 const COMMANDS: &str = "Commands: inspect <number> | ask markets [accelerated] | advance | book | verbs | fomc | propose <package> | operations | statement | wire | review | quit";
@@ -113,7 +115,7 @@ fn perform(session: &mut Session, command: &str) -> Result<Input, ContentError> 
             submit(
                 session,
                 CommandAction::OpenFolder {
-                    folder_id: "folder.policy_cycle".into(),
+                    folder_id: session.primary_folder_id().map_err(failure)?,
                 },
             ),
             "folder has no folder projection",
@@ -344,7 +346,11 @@ pub(crate) fn scripted(
 
 pub(crate) fn run(args: PlayArgs) -> Result<(), ContentError> {
     let scenario = validate_scenario_with_catalog(&args.source.scenario, &args.source.catalog)?;
-    let mut session = Session::new(&scenario, &args.package).map_err(failure)?;
+    let package = args
+        .package
+        .clone()
+        .unwrap_or_else(|| reservist_core::api::default_package_id(&scenario));
+    let mut session = Session::new(&scenario, &package).map_err(failure)?;
     println!("{}", session.view(View::Book).map_err(failure)?.text());
     if !io::stdin().is_terminal() {
         return Ok(());
