@@ -1,5 +1,7 @@
 mod handlers;
 pub(crate) mod runtime;
+#[cfg(test)]
+mod selection_tests;
 
 #[cfg(any(test, feature = "tooling"))]
 pub(crate) use runtime::RunResult;

@@ -14,7 +14,7 @@ use crate::{
     },
     packages::package_by_id,
     records::{ReceiptStage, StageReceipt},
-    scenario::runtime::{DynamicWork, ScenarioRuntime},
+    scenario::runtime::{DynamicWork, ScenarioRuntime, present, present_mut},
     settlement::envelope::{SettlementEnvelope, SettlementStatus},
     state::TypedTransition,
 };
@@ -24,7 +24,7 @@ impl ScenarioRuntime {
         &mut self,
         scheduled: &ScheduledEvent,
     ) -> Result<(), String> {
-        let maturity = self.repo.process_non_roll(
+        let maturity = present_mut(&mut self.repo, "bilateral repo agreement")?.process_non_roll(
             &scheduled.due_time.to_string(),
             &self.accounting,
             &scheduled.stable_id,
@@ -37,7 +37,7 @@ impl ScenarioRuntime {
             .ok_or("repo non-roll did not record a maturity witness")?
             .event_id
             .clone();
-        self.leveraged_funds
+        present_mut(&mut self.leveraged_funds, "leveraged fund cohort")?
             .record_liquidity_deficit(maturity.liquidity_deficit, &witness);
         Ok(())
     }
@@ -255,8 +255,7 @@ impl ScenarioRuntime {
             status: crate::commitments::CommitmentStatus::Active,
             history: vec![],
         };
-        let activated = self
-            .commitments
+        let activated = present_mut(&mut self.commitments, "FOMC commitment book")?
             .create(commitment.clone(), &mut self.ledger)
             .map_err(|error| error.to_string())?;
         self.policy_commitment_id = Some(commitment.commitment_id.clone());
@@ -316,7 +315,7 @@ impl ScenarioRuntime {
             return TreasuryOrder::new(
                 "order.new_york_desk.firming",
                 DeskExecutor::OWNER_ID,
-                &self.market.bucket_id,
+                &present(&self.market, "Treasury secondary market")?.bucket_id,
                 OrderSide::Sell,
                 Decimal::from(5),
                 Decimal::new(9860, 4),
@@ -326,7 +325,7 @@ impl ScenarioRuntime {
         TreasuryOrder::new(
             "order.new_york_desk.maintenance",
             DeskExecutor::OWNER_ID,
-            &self.market.bucket_id,
+            &present(&self.market, "Treasury secondary market")?.bucket_id,
             OrderSide::Buy,
             Decimal::from(5),
             Decimal::new(9900, 4),
@@ -334,32 +333,62 @@ impl ScenarioRuntime {
         )
     }
 
-    pub(crate) fn account_map(&self) -> BTreeMap<String, BTreeMap<String, String>> {
-        BTreeMap::from([
+    pub(crate) fn account_map(&self) -> Result<BTreeMap<String, BTreeMap<String, String>>, String> {
+        Ok(BTreeMap::from([
             (
-                self.dealers.participant_id.clone(),
+                present(&self.dealers, "primary dealer cohort")?
+                    .participant_id
+                    .clone(),
                 BTreeMap::from([
-                    ("cash".into(), self.dealers.cash_account.clone()),
-                    ("treasury".into(), self.dealers.treasury_account.clone()),
-                ]),
-            ),
-            (
-                self.leveraged_funds.participant_id.clone(),
-                BTreeMap::from([
-                    ("cash".into(), self.leveraged_funds.cash_account.clone()),
+                    (
+                        "cash".into(),
+                        present(&self.dealers, "primary dealer cohort")?
+                            .cash_account
+                            .clone(),
+                    ),
                     (
                         "treasury".into(),
-                        self.leveraged_funds.treasury_account.clone(),
+                        present(&self.dealers, "primary dealer cohort")?
+                            .treasury_account
+                            .clone(),
                     ),
                 ]),
             ),
             (
-                self.external_buyer.participant_id.clone(),
+                present(&self.leveraged_funds, "leveraged fund cohort")?
+                    .participant_id
+                    .clone(),
                 BTreeMap::from([
-                    ("cash".into(), self.external_buyer.cash_account.clone()),
+                    (
+                        "cash".into(),
+                        present(&self.leveraged_funds, "leveraged fund cohort")?
+                            .cash_account
+                            .clone(),
+                    ),
                     (
                         "treasury".into(),
-                        self.external_buyer.treasury_account.clone(),
+                        present(&self.leveraged_funds, "leveraged fund cohort")?
+                            .treasury_account
+                            .clone(),
+                    ),
+                ]),
+            ),
+            (
+                present(&self.external_buyer, "external Treasury buyer")?
+                    .participant_id
+                    .clone(),
+                BTreeMap::from([
+                    (
+                        "cash".into(),
+                        present(&self.external_buyer, "external Treasury buyer")?
+                            .cash_account
+                            .clone(),
+                    ),
+                    (
+                        "treasury".into(),
+                        present(&self.external_buyer, "external Treasury buyer")?
+                            .treasury_account
+                            .clone(),
                     ),
                 ]),
             ),
@@ -376,7 +405,7 @@ impl ScenarioRuntime {
                     ),
                 ]),
             ),
-        ])
+        ]))
     }
 
     pub(crate) fn run_market_cycle(
@@ -386,12 +415,19 @@ impl ScenarioRuntime {
         execution_witness: &str,
     ) -> Result<(), String> {
         let orders = [
-            self.dealers
-                .order(&self.accounting, &self.market.bucket_id, execution_witness)?,
-            self.leveraged_funds
-                .order(&self.accounting, &self.market.bucket_id)?,
-            self.external_buyer
-                .order(&self.market.bucket_id, execution_witness)?,
+            present(&self.dealers, "primary dealer cohort")?.order(
+                &self.accounting,
+                &present(&self.market, "Treasury secondary market")?.bucket_id,
+                execution_witness,
+            )?,
+            present(&self.leveraged_funds, "leveraged fund cohort")?.order(
+                &self.accounting,
+                &present(&self.market, "Treasury secondary market")?.bucket_id,
+            )?,
+            present(&self.external_buyer, "external Treasury buyer")?.order(
+                &present(&self.market, "Treasury secondary market")?.bucket_id,
+                execution_witness,
+            )?,
             self.desk_market_order(action_results, execution_witness)?,
         ];
         for order in &orders {
@@ -404,9 +440,14 @@ impl ScenarioRuntime {
                 Some(&order.source_witness),
             );
         }
-        let dealer_capacity =
-            BTreeMap::from([(self.dealers.participant_id.clone(), self.dealers.capacity)]);
-        let clearing = self.market.clear(&orders, &dealer_capacity)?;
+        let dealer_capacity = BTreeMap::from([(
+            present(&self.dealers, "primary dealer cohort")?
+                .participant_id
+                .clone(),
+            present(&self.dealers, "primary dealer cohort")?.capacity,
+        )]);
+        let clearing = present_mut(&mut self.market, "Treasury secondary market")?
+            .clear(&orders, &dealer_capacity)?;
         self.latest_market_result = Some(clearing.clone());
         let market_event = self
             .registry
@@ -446,8 +487,7 @@ impl ScenarioRuntime {
                     .transaction_id
                     .clone()
                     .ok_or("committed market settlement has no transaction identifier")?;
-                let mut repo_envelope = self
-                    .repo
+                let mut repo_envelope = present_mut(&mut self.repo, "bilateral repo agreement")?
                     .settlement_envelope(&scheduled.due_time.to_string(), Some(transaction_id))?;
                 let repo_prepared = repo_envelope
                     .prepare(&mut self.accounting, Some(&mut self.ledger))
@@ -461,7 +501,7 @@ impl ScenarioRuntime {
                 };
                 self.latest_repo_settlement = Some(settlement.clone());
                 if settlement.status == SettlementStatus::Committed {
-                    self.repo.mark_settled()?;
+                    present_mut(&mut self.repo, "bilateral repo agreement")?.mark_settled()?;
                 }
                 repo_settlement = Some(settlement);
             }
@@ -517,7 +557,7 @@ impl ScenarioRuntime {
         SettlementEnvelope::for_treasury_fills(
             envelope_id,
             fills,
-            &self.account_map(),
+            &self.account_map()?,
             effective_time,
             Some(causal_parent.into()),
         )

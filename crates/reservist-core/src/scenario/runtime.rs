@@ -83,20 +83,28 @@ pub(crate) struct ScenarioRuntime {
     pub(crate) tasks: BTreeMap<String, AnalyticalTask>,
     pub(crate) assessments: BTreeMap<String, Assessment>,
     pub(crate) accounting: AccountingLedger,
-    pub(crate) repo: BilateralRepoAgreement,
-    pub(crate) dealers: DealerCohort,
-    pub(crate) leveraged_funds: LeveragedFundCohort,
-    pub(crate) external_buyer: ExternalBuyerResidual,
-    pub(crate) market: TreasurySecondaryMarket,
-    pub(crate) population: PersonPopulation,
-    pub(crate) households: HouseholdCohorts,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub(crate) repo: Option<BilateralRepoAgreement>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub(crate) dealers: Option<DealerCohort>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub(crate) leveraged_funds: Option<LeveragedFundCohort>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub(crate) external_buyer: Option<ExternalBuyerResidual>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub(crate) market: Option<TreasurySecondaryMarket>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub(crate) population: Option<PersonPopulation>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub(crate) households: Option<HouseholdCohorts>,
     pub(crate) population_views: Vec<PopulationView>,
     pub(crate) claims: ClaimRegistry,
     pub(crate) audience_router: DirectAudienceRouter,
     pub(crate) communication_acts: Vec<CommunicationAct>,
     pub(crate) reports: Vec<Report>,
     pub(crate) audience_receptions: Vec<AudienceReception>,
-    pub(crate) commitments: CommitmentBook,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub(crate) commitments: Option<CommitmentBook>,
     pub(crate) monitoring: MonitoringBook,
     pub(crate) receipts: Vec<StageReceipt>,
     pub(crate) fomc_decision: Option<FomcDecision>,
@@ -159,81 +167,102 @@ impl ScenarioRuntime {
         let staff = StaffDirectory::from_value(&scenario.authority_content["staff"])
             .map_err(|error| error.to_string())?;
         let value = |owner, state| opening_value(scenario, owner, state);
-        let market_state = value(
-            "market.us.treasury.secondary",
-            "state.market.us.treasury.secondary.clearing",
-        )?;
-        let max_iterations = market_state
-            .get("max_iterations")
-            .and_then(Value::as_u64)
-            .and_then(|count| usize::try_from(count).ok())
-            .ok_or("market max_iterations must be a positive integer")?;
-        if max_iterations == 0 {
-            return Err("market max_iterations must be positive".into());
-        }
-        let market =
-            TreasurySecondaryMarket::new(string(&market_state, "bucket_id")?, max_iterations);
-        let dealers = DealerCohort::from_state(
-            "cohort.us.dealer.primary",
-            &value(
-                "cohort.us.dealer.primary",
-                "state.cohort.us.dealer.primary.capacity",
-            )?,
-        )?;
-        let leveraged_funds = LeveragedFundCohort::from_state(
-            "inst.us.leveraged_funds",
-            &value(
-                "inst.us.leveraged_funds",
-                "state.inst.us.leveraged_funds.behavior",
-            )?,
-        )?;
-        let external_buyer = ExternalBuyerResidual::from_state(
-            "adapter.market.us.treasury.external_buyer",
-            &value(
-                "adapter.market.us.treasury.external_buyer",
-                "state.adapter.market.us.treasury.external_buyer.demand",
-            )?,
-        )?;
-        let repo = BilateralRepoAgreement::from_state(
-            "agreement.us.repo.bilateral",
-            &value(
-                "agreement.us.repo.bilateral",
-                "state.agreement.us.repo.bilateral.contract",
-            )?,
-        )?;
-        let population = PersonPopulation::from_state(&value(
-            "population.us.person.cells",
-            "state.population.us.person.cells.mass",
-        )?)?;
-        let households = HouseholdCohorts::from_state(
-            &value(
-                "household.us.cohorts",
-                "state.household.us.cohorts.allocations",
-            )?,
-            &population,
-        )?;
-        let population_views = PopLensProjector::new(&population, &households).project_all(&[
-            PopLensDefinition {
-                lens_id: "pop.us.workers.by.sector".into(),
-                display_label: "Workers sensitive to labor risk".into(),
-                selected_cell_ids: vec!["cell.us.employment_exposed".into()],
-                mandate_channel: "employment mandate".into(),
-            },
-            PopLensDefinition {
-                lens_id: "pop.us.fixed.rate.homeowners.by.mortgage.vintage".into(),
-                display_label: "Households sensitive to borrowing costs".into(),
-                selected_cell_ids: vec!["cell.us.mortgage_exposed".into()],
-                mandate_channel: "housing and credit transmission".into(),
-            },
-        ])?;
-        let commitments = CommitmentBook::from_state(
-            FomcBody::BODY_ID,
-            &value(
-                FomcBody::BODY_ID,
-                "state.body.us.federal_reserve.fomc.commitments",
-            )?,
-        )
-        .map_err(|error| error.to_string())?;
+        let selected = selected_ids(scenario)?;
+        let has = |owner: &str| selected.contains(owner);
+        let market = if has("market.us.treasury.secondary") {
+            Some(treasury_market(&value(
+                "market.us.treasury.secondary",
+                "state.market.us.treasury.secondary.clearing",
+            )?)?)
+        } else {
+            None
+        };
+        let dealers = has("cohort.us.dealer.primary")
+            .then(|| {
+                DealerCohort::from_state(
+                    "cohort.us.dealer.primary",
+                    &value(
+                        "cohort.us.dealer.primary",
+                        "state.cohort.us.dealer.primary.capacity",
+                    )?,
+                )
+            })
+            .transpose()?;
+        let leveraged_funds = has("inst.us.leveraged_funds")
+            .then(|| {
+                LeveragedFundCohort::from_state(
+                    "inst.us.leveraged_funds",
+                    &value(
+                        "inst.us.leveraged_funds",
+                        "state.inst.us.leveraged_funds.behavior",
+                    )?,
+                )
+            })
+            .transpose()?;
+        let external_buyer = has("adapter.market.us.treasury.external_buyer")
+            .then(|| {
+                ExternalBuyerResidual::from_state(
+                    "adapter.market.us.treasury.external_buyer",
+                    &value(
+                        "adapter.market.us.treasury.external_buyer",
+                        "state.adapter.market.us.treasury.external_buyer.demand",
+                    )?,
+                )
+            })
+            .transpose()?;
+        let repo = has("agreement.us.repo.bilateral")
+            .then(|| {
+                BilateralRepoAgreement::from_state(
+                    "agreement.us.repo.bilateral",
+                    &value(
+                        "agreement.us.repo.bilateral",
+                        "state.agreement.us.repo.bilateral.contract",
+                    )?,
+                )
+            })
+            .transpose()?;
+        let (population, households, population_views) = if has("population.us.person.cells") {
+            let population = PersonPopulation::from_state(&value(
+                "population.us.person.cells",
+                "state.population.us.person.cells.mass",
+            )?)?;
+            let households = HouseholdCohorts::from_state(
+                &value(
+                    "household.us.cohorts",
+                    "state.household.us.cohorts.allocations",
+                )?,
+                &population,
+            )?;
+            let views = PopLensProjector::new(&population, &households).project_all(&[
+                PopLensDefinition {
+                    lens_id: "pop.us.workers.by.sector".into(),
+                    display_label: "Workers sensitive to labor risk".into(),
+                    selected_cell_ids: vec!["cell.us.employment_exposed".into()],
+                    mandate_channel: "employment mandate".into(),
+                },
+                PopLensDefinition {
+                    lens_id: "pop.us.fixed.rate.homeowners.by.mortgage.vintage".into(),
+                    display_label: "Households sensitive to borrowing costs".into(),
+                    selected_cell_ids: vec!["cell.us.mortgage_exposed".into()],
+                    mandate_channel: "housing and credit transmission".into(),
+                },
+            ])?;
+            (Some(population), Some(households), views)
+        } else {
+            (None, None, Vec::new())
+        };
+        let commitments = has(FomcBody::BODY_ID)
+            .then(|| {
+                CommitmentBook::from_state(
+                    FomcBody::BODY_ID,
+                    &value(
+                        FomcBody::BODY_ID,
+                        "state.body.us.federal_reserve.fomc.commitments",
+                    )?,
+                )
+                .map_err(|error| error.to_string())
+            })
+            .transpose()?;
         let seed = scenario
             .initialization
             .get("seed")
@@ -337,6 +366,11 @@ impl ScenarioRuntime {
             "NONE",
             None,
         );
+        // The 2006 intermeeting inflation path and failed-settlement review exist only
+        // with the 2006 macro adapter and repo agreement they describe.
+        if !(has("adapter.macro.us.broad") && runtime.repo.is_some()) {
+            return Ok(runtime);
+        }
         let path = runtime.ledger.append(start,"aleatory_path_registered","adapter.macro.us.broad",json!({"draw_bounds":{"annualized_core_inflation":[2.95,3.9]},"mechanism_class":IntermeetingCompressor::MECHANISM_CLASS,"path_id":IntermeetingCompressor::PATH_ID}),"profile.chair_scoped",Some(&started.event_id));
         runtime
             .monitoring
@@ -685,19 +719,95 @@ impl ScenarioRuntime {
         Ok(delivered.event_id)
     }
     pub(crate) fn material_snapshot(&self) -> Value {
-        json!({"accounting":self.accounting.snapshot_for_hash(),"canonical_registry":self.registry.state_hash(),"households":self.households.snapshot_for_hash(),"population":self.population.snapshot_for_hash(),"treasury_market":self.market.snapshot_for_hash()})
+        let mut snapshot = json!({"accounting":self.accounting.snapshot_for_hash(),"canonical_registry":self.registry.state_hash()});
+        insert_some(
+            &mut snapshot,
+            "households",
+            self.households
+                .as_ref()
+                .map(HouseholdCohorts::snapshot_for_hash),
+        );
+        insert_some(
+            &mut snapshot,
+            "population",
+            self.population
+                .as_ref()
+                .map(PersonPopulation::snapshot_for_hash),
+        );
+        insert_some(
+            &mut snapshot,
+            "treasury_market",
+            self.market
+                .as_ref()
+                .map(TreasurySecondaryMarket::snapshot_for_hash),
+        );
+        snapshot
     }
     pub(crate) fn material_state_hash(&self) -> String {
         sha256(&self.material_snapshot())
     }
     pub(crate) fn state_snapshot(&self) -> Value {
         let mut snapshot = json!({
-            "accounting":self.accounting.snapshot_for_hash(),"canonical_registry_hash":self.registry.state_hash(),"dealer_cohort":self.dealers.snapshot_for_hash(),"external_buyer":self.external_buyer.snapshot_for_hash(),"leveraged_funds":self.leveraged_funds.snapshot_for_hash(),
+            "accounting":self.accounting.snapshot_for_hash(),"canonical_registry_hash":self.registry.state_hash(),
             "participants":self.participants.iter().map(LimitedParticipant::snapshot_for_hash).collect::<Vec<_>>(),"audience_delivery":self.audience_router.snapshot_for_hash(),"communication_acts":self.communication_acts.iter().map(CommunicationAct::to_dict).collect::<Vec<_>>(),
-            "commitments":self.commitments.snapshot_for_hash(),"compression":self.compression.snapshot_for_hash(),"households":self.households.snapshot_for_hash(),"population":self.population.snapshot_for_hash(),"population_views":self.population_views.iter().map(PopulationView::to_dict).collect::<Vec<_>>(),"monitoring":self.monitoring.snapshot_for_hash(),
-            "next_morning_book":self.next_morning_book.as_ref().map(NextMorningBook::to_dict),"reports":self.reports.iter().map(Report::to_dict).collect::<Vec<_>>(),"repo_agreement":self.repo.snapshot_for_hash(),"staff":self.staff.snapshot_for_hash(),
-            "staff_assessments":self.assessments.iter().map(|(id,value)|(id.clone(),value.to_value())).collect::<BTreeMap<_,_>>(),"staff_tasks":self.tasks.iter().map(|(id,value)|(id.clone(),value.to_value())).collect::<BTreeMap<_,_>>(),"staff_review":self.staff_review.as_ref().map(StaffReview::to_dict),"treasury_market":self.market.snapshot_for_hash(),
+            "compression":self.compression.snapshot_for_hash(),"population_views":self.population_views.iter().map(PopulationView::to_dict).collect::<Vec<_>>(),"monitoring":self.monitoring.snapshot_for_hash(),
+            "next_morning_book":self.next_morning_book.as_ref().map(NextMorningBook::to_dict),"reports":self.reports.iter().map(Report::to_dict).collect::<Vec<_>>(),"staff":self.staff.snapshot_for_hash(),
+            "staff_assessments":self.assessments.iter().map(|(id,value)|(id.clone(),value.to_value())).collect::<BTreeMap<_,_>>(),"staff_tasks":self.tasks.iter().map(|(id,value)|(id.clone(),value.to_value())).collect::<BTreeMap<_,_>>(),"staff_review":self.staff_review.as_ref().map(StaffReview::to_dict),
         });
+        insert_some(
+            &mut snapshot,
+            "dealer_cohort",
+            self.dealers.as_ref().map(DealerCohort::snapshot_for_hash),
+        );
+        insert_some(
+            &mut snapshot,
+            "external_buyer",
+            self.external_buyer
+                .as_ref()
+                .map(ExternalBuyerResidual::snapshot_for_hash),
+        );
+        insert_some(
+            &mut snapshot,
+            "leveraged_funds",
+            self.leveraged_funds
+                .as_ref()
+                .map(LeveragedFundCohort::snapshot_for_hash),
+        );
+        insert_some(
+            &mut snapshot,
+            "commitments",
+            self.commitments
+                .as_ref()
+                .map(CommitmentBook::snapshot_for_hash),
+        );
+        insert_some(
+            &mut snapshot,
+            "households",
+            self.households
+                .as_ref()
+                .map(HouseholdCohorts::snapshot_for_hash),
+        );
+        insert_some(
+            &mut snapshot,
+            "population",
+            self.population
+                .as_ref()
+                .map(PersonPopulation::snapshot_for_hash),
+        );
+        insert_some(
+            &mut snapshot,
+            "repo_agreement",
+            self.repo
+                .as_ref()
+                .map(BilateralRepoAgreement::snapshot_for_hash),
+        );
+        insert_some(
+            &mut snapshot,
+            "treasury_market",
+            self.market
+                .as_ref()
+                .map(TreasurySecondaryMarket::snapshot_for_hash),
+        );
         if let Some(chief) = &self.chief {
             snapshot["chief"] = serde_json::to_value(chief).expect("chief state serializes");
         }
@@ -716,12 +826,18 @@ impl ScenarioRuntime {
     }
     #[cfg(any(test, feature = "tooling"))]
     pub(crate) fn endogeneity_report(&self) -> Vec<Value> {
-        vec![
-            json!({"proposition":"treasury_secondary.price_and_allocation","source":TreasurySecondaryMarket::MARKET_ID,"source_kind":"ENDOGENOUS_MARKET"}),
-            json!({"proposition":"repo.non_roll_and_liquidity_deficit","source":self.repo.agreement_id,"source_kind":"ENDOGENOUS_AGREEMENT"}),
-            json!({"proposition":"treasury_secondary.external_duration_demand","source":self.external_buyer.participant_id,"source_kind":"BOUNDARY_ADAPTER"}),
-            json!({"proposition":"macro.release_values","source":"adapter.macro.us.broad","source_kind":"BOUNDARY_ADAPTER"}),
-        ]
+        let mut report = Vec::new();
+        if self.market.is_some() {
+            report.push(json!({"proposition":"treasury_secondary.price_and_allocation","source":TreasurySecondaryMarket::MARKET_ID,"source_kind":"ENDOGENOUS_MARKET"}));
+        }
+        if let Some(repo) = &self.repo {
+            report.push(json!({"proposition":"repo.non_roll_and_liquidity_deficit","source":repo.agreement_id,"source_kind":"ENDOGENOUS_AGREEMENT"}));
+        }
+        if let Some(buyer) = &self.external_buyer {
+            report.push(json!({"proposition":"treasury_secondary.external_duration_demand","source":buyer.participant_id,"source_kind":"BOUNDARY_ADAPTER"}));
+        }
+        report.push(json!({"proposition":"macro.release_values","source":"adapter.macro.us.broad","source_kind":"BOUNDARY_ADAPTER"}));
+        report
     }
     #[cfg(any(test, feature = "tooling"))]
     pub(crate) fn result(&self) -> Result<RunResult, String> {
@@ -754,8 +870,8 @@ impl ScenarioRuntime {
                 .collect(),
             commitments: self
                 .commitments
-                .all()
-                .into_iter()
+                .iter()
+                .flat_map(CommitmentBook::all)
                 .map(|row| row.to_dict())
                 .collect(),
             monitoring_obligations: self
@@ -848,4 +964,51 @@ fn build_registry(scenario: &FrozenScenario) -> Result<CanonicalRegistry, String
             .map_err(|error| error.to_string())?;
     }
     Ok(registry)
+}
+
+/// Adds `key` only when the subsystem exists, so scenarios without it hash
+/// exactly as their selection implies and 2006 snapshots stay unchanged.
+fn insert_some(snapshot: &mut Value, key: &str, value: Option<Value>) {
+    if let Some(value) = value {
+        snapshot[key] = value;
+    }
+}
+
+fn selected_ids(scenario: &FrozenScenario) -> Result<BTreeSet<String>, String> {
+    array(&scenario.manifest, "selected_entries")?
+        .iter()
+        .map(|entry| string(entry, "catalog_id").map(str::to_owned))
+        .collect()
+}
+
+fn treasury_market(state: &Value) -> Result<TreasurySecondaryMarket, String> {
+    let max_iterations = state
+        .get("max_iterations")
+        .and_then(Value::as_u64)
+        .and_then(|count| usize::try_from(count).ok())
+        .ok_or("market max_iterations must be a positive integer")?;
+    if max_iterations == 0 {
+        return Err("market max_iterations must be positive".into());
+    }
+    Ok(TreasurySecondaryMarket::new(
+        string(state, "bucket_id")?,
+        max_iterations,
+    ))
+}
+
+/// Borrows a scenario subsystem, failing when the selection omits it.
+pub(crate) fn present<'a, T>(field: &'a Option<T>, name: &str) -> Result<&'a T, String> {
+    field
+        .as_ref()
+        .ok_or_else(|| format!("scenario does not select the {name}"))
+}
+
+/// Mutably borrows a scenario subsystem, failing when the selection omits it.
+pub(crate) fn present_mut<'a, T>(
+    field: &'a mut Option<T>,
+    name: &str,
+) -> Result<&'a mut T, String> {
+    field
+        .as_mut()
+        .ok_or_else(|| format!("scenario does not select the {name}"))
 }

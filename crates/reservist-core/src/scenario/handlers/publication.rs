@@ -11,7 +11,7 @@ use crate::{
     markets::treasury_secondary::{ClearingStatus, TreasurySecondaryMarket},
     media::loonberg::LoonbergOutlet,
     records::{ReceiptStage, StageReceipt},
-    scenario::runtime::{DynamicWork, ScenarioRuntime},
+    scenario::runtime::{DynamicWork, ScenarioRuntime, present, present_mut},
     state::TypedTransition,
     time::Instant,
 };
@@ -93,10 +93,15 @@ impl ScenarioRuntime {
                 Some(&parent),
             );
             parent = revised.event_id;
-            if reception.recipient_id == self.dealers.participant_id {
-                self.dealers.revise_from_publication(&reception, &parent);
-            } else if reception.recipient_id == self.leveraged_funds.participant_id {
-                self.leveraged_funds
+            if reception.recipient_id
+                == present(&self.dealers, "primary dealer cohort")?.participant_id
+            {
+                present_mut(&mut self.dealers, "primary dealer cohort")?
+                    .revise_from_publication(&reception, &parent);
+            } else if reception.recipient_id
+                == present(&self.leveraged_funds, "leveraged fund cohort")?.participant_id
+            {
+                present_mut(&mut self.leveraged_funds, "leveraged fund cohort")?
                     .revise_from_publication(&reception, &parent);
             }
         }
@@ -117,8 +122,12 @@ impl ScenarioRuntime {
                 .or_default();
             witnesses.insert(reception.recipient_id.clone(), intended.event_id);
             let required = BTreeSet::from([
-                self.dealers.participant_id.clone(),
-                self.leveraged_funds.participant_id.clone(),
+                present(&self.dealers, "primary dealer cohort")?
+                    .participant_id
+                    .clone(),
+                present(&self.leveraged_funds, "leveraged fund cohort")?
+                    .participant_id
+                    .clone(),
             ]);
             if witnesses.keys().cloned().collect::<BTreeSet<_>>() == required
                 && !self
@@ -283,15 +292,13 @@ impl ScenarioRuntime {
             status: crate::commitments::CommitmentStatus::Active,
             history: vec![],
         };
-        let activated = self
-            .commitments
+        let activated = present_mut(&mut self.commitments, "FOMC commitment book")?
             .create(commitment.clone(), &mut self.ledger)
             .map_err(|error| error.to_string())?;
         self.communication_commitment_id = Some(commitment.commitment_id.clone());
 
         if let Some(policy_id) = self.policy_commitment_id.clone() {
-            let policy = self
-                .commitments
+            let policy = present_mut(&mut self.commitments, "FOMC commitment book")?
                 .commitment(&policy_id)
                 .map_err(|error| error.to_string())?
                 .clone();
@@ -421,24 +428,26 @@ impl ScenarioRuntime {
         effective_time: &str,
     ) -> Result<(), String> {
         let dealer_witness = order_witnesses
-            .get(&self.dealers.participant_id)
+            .get(&present(&self.dealers, "primary dealer cohort")?.participant_id)
             .ok_or("publication market cycle lacks dealer order witness")?;
         let fund_witness = order_witnesses
-            .get(&self.leveraged_funds.participant_id)
+            .get(&present(&self.leveraged_funds, "leveraged fund cohort")?.participant_id)
             .ok_or("publication market cycle lacks leveraged-fund order witness")?;
         let orders = vec![
-            self.dealers.publication_order(
+            present(&self.dealers, "primary dealer cohort")?.publication_order(
                 &self.accounting,
-                &self.market.bucket_id,
+                &present(&self.market, "Treasury secondary market")?.bucket_id,
                 dealer_witness,
             )?,
-            self.leveraged_funds.publication_order(
+            present(&self.leveraged_funds, "leveraged fund cohort")?.publication_order(
                 &self.accounting,
-                &self.market.bucket_id,
+                &present(&self.market, "Treasury secondary market")?.bucket_id,
                 fund_witness,
             )?,
-            self.external_buyer
-                .order(&self.market.bucket_id, source_event_id)?,
+            present(&self.external_buyer, "external Treasury buyer")?.order(
+                &present(&self.market, "Treasury secondary market")?.bucket_id,
+                source_event_id,
+            )?,
         ];
         for order in &orders {
             self.ledger.append(
@@ -450,9 +459,14 @@ impl ScenarioRuntime {
                 Some(&order.source_witness),
             );
         }
-        let capacities =
-            BTreeMap::from([(self.dealers.participant_id.clone(), self.dealers.capacity)]);
-        let clearing = self.market.clear(&orders, &capacities)?;
+        let capacities = BTreeMap::from([(
+            present(&self.dealers, "primary dealer cohort")?
+                .participant_id
+                .clone(),
+            present(&self.dealers, "primary dealer cohort")?.capacity,
+        )]);
+        let clearing = present_mut(&mut self.market, "Treasury secondary market")?
+            .clear(&orders, &capacities)?;
         self.latest_publication_market_result = Some(clearing.clone());
         let market_event = self
             .registry

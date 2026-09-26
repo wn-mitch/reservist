@@ -16,7 +16,7 @@ use crate::{
     staff::{RequestMode, TaskStatus},
 };
 
-fn m1_fixture() -> FrozenScenario {
+pub(crate) fn m1_fixture() -> FrozenScenario {
     macro_rules! document {
         ($path:literal) => {
             serde_json::from_str::<Value>(include_str!(concat!(
@@ -166,13 +166,20 @@ fn accounting_repo_and_population_contracts_hold_over_the_frozen_cycle() {
     let mut runtime = runtime("WAIT_AND_WARN", None);
     runtime
         .population
+        .as_ref()
+        .unwrap()
         .assert_conserved()
         .expect("opening person mass reconciles");
     runtime
         .households
-        .assert_allocations(&runtime.population)
+        .as_ref()
+        .unwrap()
+        .assert_allocations(runtime.population.as_ref().unwrap())
         .expect("opening household allocations reconcile");
-    assert_eq!(runtime.population.expected_total, 10_000_000);
+    assert_eq!(
+        runtime.population.as_ref().unwrap().expected_total,
+        10_000_000
+    );
     assert!(runtime.population_views.iter().all(|view| {
         view.person_count > 0
             && !view.material_exposures.is_empty()
@@ -183,15 +190,28 @@ fn accounting_repo_and_population_contracts_hold_over_the_frozen_cycle() {
                 .contains("economy_score")
     }));
 
-    while runtime.repo.status == RepoStatus::Active {
+    while runtime.repo.as_ref().unwrap().status == RepoStatus::Active {
         assert!(runtime.advance_next().expect("scheduled event advances"));
     }
-    assert_eq!(runtime.repo.status, RepoStatus::NonRollPending);
-    assert_eq!(runtime.leveraged_funds.liquidity_deficit, Decimal::from(24));
-    assert!(runtime.leveraged_funds.deficit_witness.is_some());
+    assert_eq!(
+        runtime.repo.as_ref().unwrap().status,
+        RepoStatus::NonRollPending
+    );
+    assert_eq!(
+        runtime.leveraged_funds.as_ref().unwrap().liquidity_deficit,
+        Decimal::from(24)
+    );
+    assert!(
+        runtime
+            .leveraged_funds
+            .as_ref()
+            .unwrap()
+            .deficit_witness
+            .is_some()
+    );
 
     runtime.run_all().expect("remaining M1 cycle completes");
-    assert_eq!(runtime.repo.status, RepoStatus::Settled);
+    assert_eq!(runtime.repo.as_ref().unwrap().status, RepoStatus::Settled);
     runtime
         .accounting
         .assert_conserved()

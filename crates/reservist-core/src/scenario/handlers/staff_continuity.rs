@@ -4,7 +4,7 @@ use crate::{
     clock::ScheduledEvent,
     cognition::revise_from_assessment,
     postmortem::{EpistemicLabel, NextMorningBook, PostmortemBuilder, PostmortemLink, StaffReview},
-    scenario::runtime::ScenarioRuntime,
+    scenario::runtime::{ScenarioRuntime, present_mut},
     staff::{
         AnalyticalTask, Assessment, AssessmentBuilder, DeliverableStatus, RequestMode, TaskStatus,
     },
@@ -307,8 +307,7 @@ impl ScenarioRuntime {
             .get("commitment_id")
             .and_then(Value::as_str)
             .ok_or("commitment expiry missing commitment_id")?;
-        let expired = self
-            .commitments
+        let expired = present_mut(&mut self.commitments, "FOMC commitment book")?
             .expire(
                 commitment_id,
                 &scheduled.due_time.to_string(),
