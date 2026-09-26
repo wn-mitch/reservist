@@ -41,6 +41,8 @@ pub(crate) fn catalog_copy() -> (PathBuf, PathBuf) {
         &catalog.join("inventory"),
     );
     copy_tree(&source_root.join("assets"), &case.join("assets"));
+    // Asset validation checks that the Godot import cache stays ignored.
+    fs::copy(source_root.join(".gitignore"), case.join(".gitignore")).unwrap();
     for entry in fs::read_dir(source_root.join("catalog")).unwrap() {
         let path = entry.unwrap().path();
         if path.extension().is_some_and(|extension| extension == "csv") {

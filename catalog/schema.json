@@ -51,6 +51,8 @@
     "resource_system": ["petroleum"],
     "capacity_effect": ["production_capacity", "export_route_capacity"],
     "site_kind": ["field", "route", "terminal"],
+    "approval_state": ["approved", "candidate", "superseded"],
+    "asset_rights": ["project_generated", "licensed", "public_domain"],
     "sovereign_facet": ["governing_authority", "fiscal_accounts", "monetary_accounts", "external_relationships", "trade_production", "trade_demand", "response_table", "water_sanitation", "food", "energy", "shelter_thermal", "health", "transport_logistics", "payments_finance", "communications", "public_order_security", "strategic_materiel"]
   },
   "tables": {
@@ -105,6 +107,7 @@
     "project_sites.csv": ["site_id", "site_kind", "sovereign_id", "description", "provenance"],
     "project_technologies.csv": ["technology_id", "resource", "capacity_effect", "description", "provenance"],
     "project_envelopes.csv": ["envelope_id", "resource", "site_id", "technology_id", "eligible_owner_ids", "capacity_min_kbd", "capacity_max_kbd", "cost_min_usd_bn", "cost_max_usd_bn", "lead_time_min_weeks", "lead_time_max_weeks", "permission_refs", "dependency_ids", "uncertainty_notes", "provenance"],
+    "presentation_assets.csv": ["asset_id", "asset_role", "asset_path", "approval_state", "source_ref", "rights", "width_px", "height_px", "crop", "focal_point", "import_preset", "provenance"],
     "interaction_finding_rules.csv": ["finding_id", "witness_kind", "receipt_status", "minimum_matches", "points", "verdict", "provenance"]
   },
   "table_lifecycle": {
@@ -159,6 +162,7 @@
     "project_sites.csv": "deferred",
     "project_technologies.csv": "deferred",
     "project_envelopes.csv": "deferred",
+    "presentation_assets.csv": "deferred",
     "interaction_finding_rules.csv": "required"
   },
   "table_keys": {
@@ -213,6 +217,7 @@
     "project_sites.csv": ["site_id"],
     "project_technologies.csv": ["technology_id"],
     "project_envelopes.csv": ["envelope_id"],
+    "presentation_assets.csv": ["asset_id"],
     "interaction_finding_rules.csv": ["finding_id"]
   },
   "table_placement": {
@@ -267,6 +272,7 @@
     "project_sites.csv": {"kind": "shared"},
     "project_technologies.csv": {"kind": "shared"},
     "project_envelopes.csv": {"kind": "shared"},
+    "presentation_assets.csv": {"kind": "shared"},
     "interaction_finding_rules.csv": {"kind": "any_scenario"}
   },
   "field_vocabularies": {
@@ -317,6 +323,9 @@
     "project_technologies.csv.resource": "resource_system",
     "project_technologies.csv.capacity_effect": "capacity_effect",
     "project_envelopes.csv.resource": "resource_system",
+    "presentation_assets.csv.asset_role": "asset_role",
+    "presentation_assets.csv.approval_state": "approval_state",
+    "presentation_assets.csv.rights": "asset_rights",
     "sovereign_facet_exceptions.csv.facet": "sovereign_facet"
   },
   "allow_unknown": {

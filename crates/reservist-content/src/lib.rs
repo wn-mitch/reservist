@@ -1,6 +1,7 @@
 #![forbid(unsafe_code)]
 //! Offline compilation of authored catalogs and frozen scenarios.
 
+mod assets;
 pub mod authoring;
 pub mod bindings;
 pub mod catalog;

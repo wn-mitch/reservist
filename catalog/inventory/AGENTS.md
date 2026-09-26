@@ -4,7 +4,7 @@ Inventory CSV files are the partitioned authored source for catalog import. Keep
 
 Rows live in exactly three folder shapes, and `table_placement` in `../schema.json` decides which one:
 
-- `<domain>/` holds rows that belong to one catalog entry. The folder name equals that entry's `entities.csv` domain. `shared/` holds catalog-wide tables such as types, probes, instruments, the research backlog, and the registered project sites, technologies, and feasible-project envelopes.
+- `<domain>/` holds rows that belong to one catalog entry. The folder name equals that entry's `entities.csv` domain. `shared/` holds catalog-wide tables such as types, probes, instruments, the research backlog, the registered project sites, technologies, and feasible-project envelopes, and presentation asset metadata.
 - `profiles/<profile_id>/` holds rows keyed by a dated world profile.
 - `scenarios/<scenario_id>/` holds rows keyed by a scenario or template, plus the campaign tables of the fixture that uses them.
 

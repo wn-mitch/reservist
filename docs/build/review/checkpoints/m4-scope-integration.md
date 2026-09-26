@@ -31,5 +31,14 @@ deep-set sovereigns name researched role holders, and the seven external
 channels follow a researched 1979 composition. The catalog validates and the
 2006 fixtures reseal unchanged.
 
-**Not established:** no M4 runtime, opening state, calibration, or art beyond
-the existing Chair portraits.
+**Inspected after the asset contract:** `presentation_assets.csv` gives each
+of the 14 images under `assets/` a stable asset ID, role, approval state,
+source reference, rights, dimensions, crop, focal point, and pinned import
+preset. Catalog validation reads PNG headers, checks each `.import` file,
+rejects unregistered images and import caches, requires transparency for
+actor cutouts, and binds `presentation_refs.csv` only to approved assets of the
+matching role. Fixture tests cover all four roles; the repository holds only
+portraits and one event illustration.
+
+**Not established:** calibration, and approved actor cutouts, background
+plates, and species guides.

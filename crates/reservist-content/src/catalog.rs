@@ -433,6 +433,11 @@ pub fn validate_catalog(catalog_dir: &Path) -> Result<Tables, Vec<Issue>> {
     crate::composition::validate(&tables, &mut errors);
     crate::sovereign::validate(&tables, &mut errors);
     crate::projects::validate(&tables, &mut errors);
+    crate::assets::validate_assets(
+        &tables,
+        catalog_dir.parent().unwrap_or(catalog_dir),
+        &mut errors,
+    );
     let authored = inspect_inventory(catalog_dir, &schema, &mut errors);
     validate(&authored, &schema, catalog_dir, &mut errors);
     validate_campaign_contracts(&authored, &mut errors);
