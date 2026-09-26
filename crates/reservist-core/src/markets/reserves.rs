@@ -87,6 +87,13 @@ pub(crate) struct WeekResult {
 }
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+pub(crate) struct PendingRate {
+    /// Local "YYYY-MM-DD" date from which the rate applies.
+    pub effective_date: String,
+    pub rate_bp: i64,
+}
+
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub(crate) struct ReservesMarket {
     pub currency: Decimal,
     pub demand_deposits: Decimal,
@@ -107,6 +114,9 @@ pub(crate) struct ReservesMarket {
     pub money_demand: MoneyDemand,
     pub regime: OperatingRegime,
     pub last_funds_rate_bp: i64,
+    /// A determined discount rate awaiting its local effective date.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub pending_discount: Option<PendingRate>,
     pub seed: u64,
     pub history: Vec<WeekResult>,
 }
@@ -164,6 +174,7 @@ impl ReservesMarket {
             },
             regime,
             last_funds_rate_bp: integer(state, "opening_funds_rate_bp")?,
+            pending_discount: None,
             seed,
             history: Vec::new(),
         };
@@ -212,6 +223,39 @@ impl ReservesMarket {
         }
         self.discount_rate_bp = rate_bp;
         Ok(())
+    }
+
+    /// Schedules a determined discount rate for its local effective date.
+    pub(crate) fn schedule_discount_rate(
+        &mut self,
+        effective_date: String,
+        rate_bp: i64,
+    ) -> Result<(), String> {
+        if rate_bp <= 0 {
+            return Err("discount rate must be positive".into());
+        }
+        self.pending_discount = Some(PendingRate {
+            effective_date,
+            rate_bp,
+        });
+        Ok(())
+    }
+
+    /// Applies a pending discount rate once its effective date has arrived.
+    pub(crate) fn apply_due_discount(&mut self, local_date: &str) -> Option<i64> {
+        let due = self
+            .pending_discount
+            .as_ref()
+            .is_some_and(|pending| pending.effective_date.as_str() <= local_date);
+        if !due {
+            return None;
+        }
+        let rate = self
+            .pending_discount
+            .take()
+            .map(|pending| pending.rate_bp)?;
+        self.discount_rate_bp = rate;
+        Some(rate)
     }
 
     pub(crate) fn set_marginal_managed_ratio(&mut self, ratio: Decimal) -> Result<(), String> {

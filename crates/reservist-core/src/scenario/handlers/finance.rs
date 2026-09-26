@@ -160,7 +160,9 @@ impl ScenarioRuntime {
             Some(&decision_event.event_id),
         );
 
-        if !constituent_actions.is_empty() {
+        // Adopted sessions admit the slate at the meeting; runs by package
+        // choice already scheduled their constituent actions at the start.
+        if self.calendar.is_some() && !constituent_actions.is_empty() {
             self.schedule_constituent_actions(
                 &admitted_id,
                 &constituent_actions,

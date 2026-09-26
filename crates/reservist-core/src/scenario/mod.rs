@@ -1,4 +1,4 @@
-mod handlers;
+pub(crate) mod handlers;
 #[cfg(test)]
 mod reserves_cycle_tests;
 pub(crate) mod runtime;

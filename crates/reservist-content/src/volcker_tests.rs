@@ -121,3 +121,24 @@ fn every_roster_root_is_selected_passively_and_never_owns_work() {
     let error = run_scenario(&owned, "FIRM_BAND", None, None).unwrap_err();
     assert!(error.contains("cannot own scheduled work"), "{error}");
 }
+
+#[test]
+fn the_discount_rate_takes_effect_on_its_local_settlement_date() {
+    let effective = events("FIRM_BAND", "discount_rate_effective");
+    assert_eq!(effective.len(), 1);
+    assert_eq!(effective[0]["payload"]["rate_bp"], 1050);
+    assert_eq!(
+        effective[0]["payload"]["local_date"], "1979-08-22",
+        "first clearing on or after August 17"
+    );
+    assert!(events("ALT_B_HOLD", "discount_rate_effective").is_empty());
+}
+
+#[test]
+fn a_wrong_daylight_offset_fails_calendar_validation() {
+    let mut frozen = scenario();
+    frozen.initialization["scheduled_events"][2]["due_time"] =
+        Value::from("1979-08-14T08:30:00-05:00");
+    let error = reservist_core::calendars::validate_calendars(&frozen).unwrap_err();
+    assert!(error.contains("offset of -240"), "{error}");
+}

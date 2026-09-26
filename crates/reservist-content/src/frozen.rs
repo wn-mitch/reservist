@@ -105,6 +105,19 @@ pub fn authority_content(scenario_dir: &Path) -> Result<Value, ContentError> {
         }
         authority.insert("packages".into(), Value::Array(authored));
     }
+    // Local calendars interpret canonical instants when a scenario authors them.
+    let calendars = json_files(&scenario_dir.join("calendars"))?;
+    if !calendars.is_empty() {
+        authority.insert(
+            "calendars".into(),
+            Value::Array(
+                calendars
+                    .into_iter()
+                    .map(reservist_core::canon::load_json)
+                    .collect::<Result<Vec<_>, _>>()?,
+            ),
+        );
+    }
     let campaign_path = scenario_dir.join("campaign/campaign.json");
     if campaign_path.try_exists()? {
         authority.insert("campaign".into(), serde_json::json!({
@@ -513,6 +526,10 @@ fn validate_documents(
         .map_err(|message| ContentError::new("fidelity_permission", message))?;
     reservist_core::api::validate_interaction_contract(&frozen)
         .map_err(|message| ContentError::new("interaction_contract", message))?;
+    reservist_core::channels::validate_channels(&frozen)
+        .map_err(|message| ContentError::new("channel_contract", message))?;
+    reservist_core::calendars::validate_calendars(&frozen)
+        .map_err(|message| ContentError::new("calendar", message))?;
     Ok(frozen)
 }
 

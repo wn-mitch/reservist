@@ -328,7 +328,84 @@ handler!(
     ["constituent.decide"],
     Authority,
     ["state.market.us.federal_funds.conditions"],
-    ["state.market.us.federal_funds.conditions", "ledger.witness"],
+    [
+        "state.market.us.federal_funds.conditions",
+        "state.channel.iran_sanctions",
+        "ledger.witness"
+    ],
+    None
+);
+
+handler!(
+    PetroleumWeekHandler,
+    handle_petroleum_week,
+    "petroleum-week",
+    [
+        "petroleum.realize_week",
+        "petroleum.record_outage",
+        "petroleum.demote"
+    ],
+    Agreement,
+    ["state.petroleum.policy"],
+    ["state.petroleum.operations", "ledger.witness"],
+    None
+);
+handler!(
+    PetroleumPolicyHandler,
+    handle_petroleum_announcement,
+    "petroleum-announcement",
+    ["petroleum.announce_target"],
+    Authority,
+    [],
+    [
+        "state.petroleum.policy",
+        "state.player_records",
+        "ledger.witness"
+    ],
+    None
+);
+handler!(
+    PetroleumEstimateHandler,
+    handle_petroleum_estimate,
+    "petroleum-estimate",
+    ["petroleum.publish_estimate"],
+    Media,
+    ["state.petroleum.operations"],
+    ["state.player_records", "ledger.witness"],
+    None
+);
+
+handler!(
+    EnergyWeekHandler,
+    handle_energy_week,
+    "energy-week",
+    ["energy.clear_week", "energy.record_restriction"],
+    Agreement,
+    ["state.petroleum.operations"],
+    [
+        "state.market.global.crude.conditions",
+        "state.player_records",
+        "ledger.witness"
+    ],
+    None
+);
+
+handler!(
+    SanctionsWorkHandler,
+    handle_sanctions_work,
+    "iran-sanctions",
+    [
+        "iran.record_occurrence",
+        "sanctions.record_order",
+        "sanctions.advance_day"
+    ],
+    Monitoring,
+    [],
+    [
+        "state.channel.iran_sanctions",
+        "state.player_records",
+        "ledger.witness"
+    ],
     None
 );
 
@@ -356,6 +433,26 @@ static DECLARATIONS: &[Declaration] = &[
     Declaration {
         meta: ReservesWorkHandler::META,
         invoke: ReservesWorkHandler::invoke,
+    },
+    Declaration {
+        meta: PetroleumWeekHandler::META,
+        invoke: PetroleumWeekHandler::invoke,
+    },
+    Declaration {
+        meta: EnergyWeekHandler::META,
+        invoke: EnergyWeekHandler::invoke,
+    },
+    Declaration {
+        meta: SanctionsWorkHandler::META,
+        invoke: SanctionsWorkHandler::invoke,
+    },
+    Declaration {
+        meta: PetroleumPolicyHandler::META,
+        invoke: PetroleumPolicyHandler::invoke,
+    },
+    Declaration {
+        meta: PetroleumEstimateHandler::META,
+        invoke: PetroleumEstimateHandler::invoke,
     },
     Declaration {
         meta: FomcWorkHandler::META,

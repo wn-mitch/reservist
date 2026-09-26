@@ -133,7 +133,8 @@
           "clause.fra.14d.board_review_determination"
         ],
         "parameters": {
-          "rate_bp": 1050
+          "rate_bp": 1050,
+          "calendar_id": "calendar.us.new_york"
         },
         "decision_time": "1979-08-16T15:00:00-04:00",
         "requires": [
@@ -218,7 +219,8 @@
           "clause.fra.14d.board_review_determination"
         ],
         "parameters": {
-          "rate_bp": 1050
+          "rate_bp": 1050,
+          "calendar_id": "calendar.us.new_york"
         },
         "decision_time": "1979-08-16T15:00:00-04:00",
         "requires": [

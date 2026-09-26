@@ -17,6 +17,6 @@ runtime boundary:
   scenario representation manifest: "manifest.mvp_2006_cycle" ("sha256:095a1bbddec1e10557bac9ba19075e70587b603ebc83ec37fcd8f9efb998305a")
   scenario representation manifest: "manifest.mvp_2006_cycle" ("sha256:493ca02478ebd045bc2ab5720ef3ef65410f4557f97410570a4576a39578d066")
   scenario representation manifest: "manifest.mvp_2006_cycle" ("sha256:d9f745b948d7cf2d76e364ff08664a0fcf3347a41485e107a18b02297bca2ce4")
-  scenario representation manifest: "manifest.volcker_1979" ("sha256:8cd10b46498549cbd982cedf74885a0a18e6bfa07804e7eb5fc93f10cab0e31d")
+  scenario representation manifest: "manifest.volcker_1979" ("sha256:8a65ebf26d2923d2e0e0990bb9072b5802a142465f3df0b3d3742ea26d3c0feb")
   required manifest contents: identity clades; owner classes; fidelity tiers; residual mappings; protected population dimensions; permitted cell transitions; boundary-interface versions; adapter status; initialization reconciliation; fallbacks; replay hash
   no geographic-completeness percentage is defined

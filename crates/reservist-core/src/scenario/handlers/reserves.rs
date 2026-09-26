@@ -65,6 +65,25 @@ impl ScenarioRuntime {
 
     /// Clears one maintenance week of the reserves market.
     pub(crate) fn handle_reserves_week(&mut self, event: &ScheduledEvent) -> Result<(), String> {
+        if let Some(calendar) = event.payload["calendar_id"].as_str() {
+            let date = crate::calendars::local_date(
+                &self.scenario,
+                calendar,
+                &event.due_time.to_string(),
+            )?;
+            if let Some(rate) =
+                present_mut(&mut self.reserves, "reserves market")?.apply_due_discount(&date)
+            {
+                self.ledger.append(
+                    &event.due_time.to_string(),
+                    "discount_rate_effective",
+                    reserves::MARKET_ID,
+                    json!({"rate_bp": rate, "local_date": date}),
+                    "profile.chair_scoped",
+                    Some(&event.stable_id),
+                );
+            }
+        }
         let result = present_mut(&mut self.reserves, "reserves market")?.clear_week();
         self.ledger.append(
             &event.due_time.to_string(),

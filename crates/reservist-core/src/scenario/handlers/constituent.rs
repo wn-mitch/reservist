@@ -90,15 +90,12 @@ impl ScenarioRuntime {
         if action.authority_refs.is_empty() {
             return Ok(("unauthorized: no authority cited".into(), json!([])));
         }
+        let target = action.parameters["target_owner"]
+            .as_str()
+            .unwrap_or(reserves::MARKET_ID);
         for reference in &action.authority_refs {
             let permitted = self.legal.clause(reference, at).is_ok_and(|clause| {
-                clause.permits(
-                    &action.owner_id,
-                    reserves::MARKET_ID,
-                    &action.action_id,
-                    at,
-                    false,
-                )
+                clause.permits(&action.owner_id, target, &action.action_id, at, false)
             });
             if !permitted {
                 return Ok((
@@ -164,13 +161,32 @@ impl ScenarioRuntime {
                 let rate = parameters["rate_bp"]
                     .as_i64()
                     .ok_or("discount determination needs rate_bp")?;
-                present_mut(&mut self.reserves, "reserves market")?.set_discount_rate(rate)?;
+                // With a calendar, the rate takes effect on the local settlement date.
+                match parameters["calendar_id"].as_str() {
+                    Some(calendar) => {
+                        let effective =
+                            crate::calendars::settlement_date(&self.scenario, calendar, at)?;
+                        present_mut(&mut self.reserves, "reserves market")?
+                            .schedule_discount_rate(effective, rate)?;
+                    }
+                    None => {
+                        present_mut(&mut self.reserves, "reserves market")?
+                            .set_discount_rate(rate)?;
+                    }
+                }
             }
             "board.set_marginal_requirement" => {
                 let ratio: Decimal =
                     amount(&parameters["ratio"]).map_err(|error| error.to_string())?;
                 present_mut(&mut self.reserves, "reserves market")?
                     .set_marginal_managed_ratio(ratio)?;
+            }
+            "sanctions.execute_block" => {
+                present_mut(&mut self.sanctions, "Iran sanctions channel")?.execute_block()?;
+            }
+            "sanctions.coordinate_foreign_branches" => {
+                present_mut(&mut self.sanctions, "Iran sanctions channel")?
+                    .coordinate_foreign_branches()?;
             }
             other => {
                 return Err(format!(

@@ -51,6 +51,11 @@ impl Instant {
         Ok(Self { timestamp, ..self })
     }
 
+    /// The canonical UTC instant, independent of the displayed offset.
+    pub(crate) fn utc_string(&self) -> String {
+        self.timestamp.to_string()
+    }
+
     pub(crate) fn seconds_since(self, earlier: Self) -> i64 {
         self.timestamp.as_second() - earlier.timestamp.as_second()
     }

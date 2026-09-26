@@ -107,6 +107,13 @@ pub(crate) struct ScenarioRuntime {
     pub(crate) commitments: Option<CommitmentBook>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub(crate) reserves: Option<crate::markets::reserves::ReservesMarket>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub(crate) crude: Option<crate::markets::crude::CrudeMarket>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub(crate) sanctions: Option<crate::channels::iran_sanctions::SanctionsChannel>,
+    /// Sovereign petroleum systems keyed by sovereign ID.
+    #[serde(default, skip_serializing_if = "BTreeMap::is_empty")]
+    pub(crate) petroleum: BTreeMap<String, crate::scenario::handlers::petroleum::PetroleumSystem>,
     /// Selected composition roots: identity only, never dispatched or owning state.
     #[serde(default, skip_serializing_if = "BTreeSet::is_empty")]
     pub(crate) composition_roots: BTreeSet<String>,
@@ -289,6 +296,28 @@ impl ScenarioRuntime {
             })
             .transpose()?;
         let composition_roots = composition_roots(scenario, &selected)?;
+        let crude = has(crate::markets::crude::MARKET_ID)
+            .then(|| {
+                crate::markets::crude::CrudeMarket::from_state(&value(
+                    crate::markets::crude::MARKET_ID,
+                    crate::markets::crude::STATE_ID,
+                )?)
+            })
+            .transpose()?;
+        crate::channels::validate_channels(scenario)?;
+        crate::calendars::validate_calendars(scenario)?;
+        let sanctions = has(crate::channels::iran_sanctions::STATE_OWNER)
+            .then(|| {
+                crate::channels::iran_sanctions::SanctionsChannel::from_state(&value(
+                    crate::channels::iran_sanctions::STATE_OWNER,
+                    crate::channels::iran_sanctions::STATE_ID,
+                )?)
+            })
+            .transpose()?;
+        let petroleum = crate::scenario::handlers::petroleum::systems_from_opening(
+            array(&scenario.initialization, "opening_state")?,
+            &selected,
+        )?;
         let events = array(&scenario.initialization, "scheduled_events")?
             .iter()
             .chain(array(&scenario.tape, "events")?)
@@ -362,6 +391,9 @@ impl ScenarioRuntime {
             reserves,
             constituent_outcomes: BTreeMap::new(),
             composition_roots,
+            petroleum,
+            crude,
+            sanctions,
             monitoring: MonitoringBook::new(),
             receipts: Vec::new(),
             fomc_decision: None,
@@ -389,6 +421,19 @@ impl ScenarioRuntime {
             "NONE",
             None,
         );
+        // A package run by choice admits its constituent actions at the start;
+        // each owner decides at its own time, independent of the FOMC vote.
+        if !adopted {
+            let package =
+                resolve_package(scenario, package_id).map_err(|error| error.to_string())?;
+            if !package.constituent_actions.is_empty() {
+                runtime.schedule_constituent_actions(
+                    &package.package_id,
+                    &package.constituent_actions,
+                    &started.event_id,
+                )?;
+            }
+        }
         // The 2006 intermeeting inflation path and failed-settlement review exist only
         // with the 2006 macro adapter and repo agreement they describe.
         if !(has("adapter.macro.us.broad") && runtime.repo.is_some()) {
@@ -850,6 +895,15 @@ impl ScenarioRuntime {
         );
         if let Some(chief) = &self.chief {
             snapshot["chief"] = serde_json::to_value(chief).expect("chief state serializes");
+        }
+        if let Some(sanctions) = &self.sanctions {
+            snapshot["iran_sanctions_channel"] = json!(sanctions);
+        }
+        if let Some(crude) = &self.crude {
+            snapshot["crude_market"] = json!(crude);
+        }
+        if !self.petroleum.is_empty() {
+            snapshot["petroleum"] = json!(self.petroleum);
         }
         if !self.composition_roots.is_empty() {
             snapshot["composition_roots"] = json!(self.composition_roots);
