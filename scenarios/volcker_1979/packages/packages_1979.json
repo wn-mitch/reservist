@@ -1,0 +1,284 @@
+[
+  {
+    "package_id": "ALT_A_EASE",
+    "proposing_subject": "office.us.federal_reserve.fomc_chair",
+    "policy_actions": [
+      "desk.set_rate_band"
+    ],
+    "communication_commitment": null,
+    "authority_requirements": [
+      "clause.fra.12a.fomc_direction",
+      "clause.fomc.rules.section3.vote"
+    ],
+    "known_downside": "Easing toward the midpoint could validate inflation expectations while money growth runs above range.",
+    "activation_state": "PREPARED",
+    "revision_history": [],
+    "action_parameters": {
+      "desk.set_rate_band": {
+        "low_bp": 975,
+        "high_bp": 1050
+      }
+    },
+    "directive_terms": {
+      "expiry_time": "1979-09-18T09:30:00-04:00",
+      "authority_refs": [
+        "clause.fra.14.reserve_bank_open_market_power",
+        "clause.domestic_authorization.1979.paragraph1"
+      ]
+    },
+    "constituent_actions": [],
+    "position_rules": [
+      {
+        "belief": "inflation_persistence",
+        "position": "OPPOSE",
+        "stated_basis": "Inflation persistence is too high to ease.",
+        "at_least": 0.6
+      }
+    ]
+  },
+  {
+    "package_id": "ALT_B_HOLD",
+    "proposing_subject": "office.us.federal_reserve.fomc_chair",
+    "policy_actions": [
+      "desk.set_rate_band"
+    ],
+    "communication_commitment": null,
+    "authority_requirements": [
+      "clause.fra.12a.fomc_direction",
+      "clause.fomc.rules.section3.vote"
+    ],
+    "known_downside": "Holding prevailing conditions leaves money growth near the top of its range and signals little resolve.",
+    "activation_state": "PREPARED",
+    "revision_history": [],
+    "action_parameters": {
+      "desk.set_rate_band": {
+        "low_bp": 1025,
+        "high_bp": 1100
+      }
+    },
+    "directive_terms": {
+      "expiry_time": "1979-09-18T09:30:00-04:00",
+      "authority_refs": [
+        "clause.fra.14.reserve_bank_open_market_power",
+        "clause.domestic_authorization.1979.paragraph1"
+      ]
+    },
+    "constituent_actions": [],
+    "position_rules": [
+      {
+        "belief": "inflation_persistence",
+        "position": "OPPOSE",
+        "stated_basis": "Holding steady does too little against inflation.",
+        "at_least": 0.85
+      },
+      {
+        "belief": "aggregates_emphasis",
+        "position": "OPPOSE",
+        "stated_basis": "The directive tolerates too much money growth.",
+        "at_least": 0.9
+      }
+    ]
+  },
+  {
+    "package_id": "FIRM_BAND",
+    "proposing_subject": "office.us.federal_reserve.fomc_chair",
+    "policy_actions": [
+      "desk.set_rate_band"
+    ],
+    "communication_commitment": null,
+    "authority_requirements": [
+      "clause.fra.12a.fomc_direction",
+      "clause.fomc.rules.section3.vote"
+    ],
+    "known_downside": "A modest firming with a higher discount rate may deepen a recession already under way.",
+    "activation_state": "PREPARED",
+    "revision_history": [],
+    "action_parameters": {
+      "desk.set_rate_band": {
+        "low_bp": 1075,
+        "high_bp": 1125
+      }
+    },
+    "directive_terms": {
+      "expiry_time": "1979-09-18T09:30:00-04:00",
+      "authority_refs": [
+        "clause.fra.14.reserve_bank_open_market_power",
+        "clause.domestic_authorization.1979.paragraph1"
+      ]
+    },
+    "constituent_actions": [
+      {
+        "action_id": "discount.propose_rate",
+        "owner_id": "inst.us.federal_reserve.new_york",
+        "authority_refs": [
+          "clause.fra.14d.discount_rate_setting"
+        ],
+        "parameters": {
+          "rate_bp": 1050
+        },
+        "decision_time": "1979-08-15T15:00:00-04:00",
+        "position_rules": [
+          {
+            "belief": "inflation_persistence",
+            "position": "OPPOSE",
+            "stated_basis": "Inflation does not warrant a higher discount rate.",
+            "below": 0.5
+          }
+        ]
+      },
+      {
+        "action_id": "discount.determine_rate",
+        "owner_id": "inst.us.federal_reserve.board",
+        "authority_refs": [
+          "clause.fra.14d.board_review_determination"
+        ],
+        "parameters": {
+          "rate_bp": 1050
+        },
+        "decision_time": "1979-08-16T15:00:00-04:00",
+        "requires": [
+          "discount.propose_rate"
+        ],
+        "position_rules": [
+          {
+            "belief": "recession_risk",
+            "position": "OPPOSE",
+            "stated_basis": "A higher discount rate would deepen the recession.",
+            "at_least": 0.95
+          }
+        ]
+      }
+    ],
+    "position_rules": [
+      {
+        "belief": "recession_risk",
+        "position": "OPPOSE",
+        "stated_basis": "Firming now risks deepening the recession.",
+        "at_least": 0.88
+      },
+      {
+        "belief": "aggregates_emphasis",
+        "position": "OPPOSE",
+        "stated_basis": "Money growth may run too fast before the funds rate responds.",
+        "at_least": 0.9
+      }
+    ]
+  },
+  {
+    "package_id": "ALT_C_FIRM",
+    "proposing_subject": "office.us.federal_reserve.fomc_chair",
+    "policy_actions": [
+      "desk.set_rate_band"
+    ],
+    "communication_commitment": null,
+    "authority_requirements": [
+      "clause.fra.12a.fomc_direction",
+      "clause.fomc.rules.section3.vote"
+    ],
+    "known_downside": "A larger firming risks a sharper downturn and strains the thrift industry.",
+    "activation_state": "PREPARED",
+    "revision_history": [],
+    "action_parameters": {
+      "desk.set_rate_band": {
+        "low_bp": 1075,
+        "high_bp": 1150
+      }
+    },
+    "directive_terms": {
+      "expiry_time": "1979-09-18T09:30:00-04:00",
+      "authority_refs": [
+        "clause.fra.14.reserve_bank_open_market_power",
+        "clause.domestic_authorization.1979.paragraph1"
+      ]
+    },
+    "constituent_actions": [
+      {
+        "action_id": "discount.propose_rate",
+        "owner_id": "inst.us.federal_reserve.new_york",
+        "authority_refs": [
+          "clause.fra.14d.discount_rate_setting"
+        ],
+        "parameters": {
+          "rate_bp": 1050
+        },
+        "decision_time": "1979-08-15T15:00:00-04:00",
+        "position_rules": [
+          {
+            "belief": "inflation_persistence",
+            "position": "OPPOSE",
+            "stated_basis": "Inflation does not warrant a higher discount rate.",
+            "below": 0.5
+          }
+        ]
+      },
+      {
+        "action_id": "discount.determine_rate",
+        "owner_id": "inst.us.federal_reserve.board",
+        "authority_refs": [
+          "clause.fra.14d.board_review_determination"
+        ],
+        "parameters": {
+          "rate_bp": 1050
+        },
+        "decision_time": "1979-08-16T15:00:00-04:00",
+        "requires": [
+          "discount.propose_rate"
+        ],
+        "position_rules": [
+          {
+            "belief": "recession_risk",
+            "position": "OPPOSE",
+            "stated_basis": "A higher discount rate would deepen the recession.",
+            "at_least": 0.95
+          }
+        ]
+      }
+    ],
+    "position_rules": [
+      {
+        "belief": "recession_risk",
+        "position": "OPPOSE",
+        "stated_basis": "A larger firming risks a sharper downturn.",
+        "at_least": 0.8
+      }
+    ]
+  },
+  {
+    "package_id": "RESERVES_PATH",
+    "proposing_subject": "office.us.federal_reserve.fomc_chair",
+    "policy_actions": [
+      "desk.set_reserves_path"
+    ],
+    "communication_commitment": null,
+    "authority_requirements": [
+      "clause.fra.12a.fomc_direction",
+      "clause.fomc.rules.section3.vote"
+    ],
+    "known_downside": "An untested reserves procedure would make the funds rate volatile and its effects hard to read.",
+    "activation_state": "PREPARED",
+    "revision_history": [],
+    "action_parameters": {
+      "desk.set_reserves_path": {
+        "nonborrowed_path": "39.7",
+        "tolerance_low_bp": 1050,
+        "tolerance_high_bp": 1300
+      }
+    },
+    "directive_terms": {
+      "expiry_time": "1979-09-18T09:30:00-04:00",
+      "authority_refs": [
+        "clause.fra.14.reserve_bank_open_market_power",
+        "clause.domestic_authorization.1979.paragraph1"
+      ]
+    },
+    "constituent_actions": [],
+    "position_rules": [
+      {
+        "belief": "aggregates_emphasis",
+        "position": "OPPOSE",
+        "stated_basis": "The Committee is not prepared to abandon funds-rate control.",
+        "below": 0.55
+      }
+    ]
+  }
+]

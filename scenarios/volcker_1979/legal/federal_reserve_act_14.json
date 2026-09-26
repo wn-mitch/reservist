@@ -1,0 +1,53 @@
+{
+  "instrument_id": "legal.us.federal_reserve.act.section_14",
+  "title": "Federal Reserve Act section 14",
+  "source_url": "https://www.federalreserve.gov/aboutthefed/section14.htm",
+  "clauses": [
+    {
+      "clause_id": "clause.fra.14.reserve_bank_open_market_power",
+      "effective_from": "1913-12-23T00:00:00-05:00",
+      "effective_until": "2100-01-01T00:00:00-05:00",
+      "authorized_subjects": [
+        "inst.us.federal_reserve.new_york"
+      ],
+      "target_owners": [
+        "market.us.federal_funds"
+      ],
+      "permitted_effects": [
+        "desk.set_rate_band",
+        "desk.set_reserves_path"
+      ],
+      "requires_certified_fomc_decision": true
+    },
+    {
+      "clause_id": "clause.fra.14d.discount_rate_setting",
+      "effective_from": "1935-08-23T00:00:00-04:00",
+      "effective_until": "2100-01-01T00:00:00-05:00",
+      "authorized_subjects": [
+        "inst.us.federal_reserve.new_york"
+      ],
+      "target_owners": [
+        "market.us.federal_funds"
+      ],
+      "permitted_effects": [
+        "discount.propose_rate"
+      ],
+      "requires_certified_fomc_decision": false
+    },
+    {
+      "clause_id": "clause.fra.14d.board_review_determination",
+      "effective_from": "1935-08-23T00:00:00-04:00",
+      "effective_until": "2100-01-01T00:00:00-05:00",
+      "authorized_subjects": [
+        "inst.us.federal_reserve.board"
+      ],
+      "target_owners": [
+        "market.us.federal_funds"
+      ],
+      "permitted_effects": [
+        "discount.determine_rate"
+      ],
+      "requires_certified_fomc_decision": false
+    }
+  ]
+}

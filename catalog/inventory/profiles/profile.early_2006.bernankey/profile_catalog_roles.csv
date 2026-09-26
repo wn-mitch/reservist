@@ -285,6 +285,7 @@ profile.early_2006.bernankey,instrument.cross_border.capital_controls,reference,
 profile.early_2006.bernankey,legal.us.dodd_frank,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,legal.us.federal_reserve.act.section_12a,reference,NONE,Selected FOMC authority clause is effective.,Statutory source for collective FOMC direction.,Federal Reserve Act section 12A: https://www.federalreserve.gov/aboutthefed/section12a.htm
 profile.early_2006.bernankey,legal.us.federal_reserve.act.section_14,reference,NONE,Selected Reserve Bank power clause is effective.,Statutory source for Reserve Bank open-market power.,Federal Reserve Act section 14: https://www.federalreserve.gov/aboutthefed/section14.htm
+profile.early_2006.bernankey,legal.us.federal_reserve.domestic_authorization.1979,excluded,NONE,NONE,Authored for the 1979 opening; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,legal.us.federal_reserve.domestic_authorization.2006,reference,NONE,Selected domestic authorization is effective.,Delegation source for bounded Desk execution.,Federal Reserve 2006 FOMC historical materials: https://www.federalreserve.gov/monetarypolicy/fomchistorical2006.htm
 profile.early_2006.bernankey,legal.us.federal_reserve.fomc_rules.section_3,reference,NONE,Selected voting rule is effective.,Procedure source for collective authorization.,FOMC Rules of Organization: https://www.federalreserve.gov/monetarypolicy/files/fomc_rulesorganization.pdf
 profile.early_2006.bernankey,legal.us.federal_reserve.section_13_3,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
@@ -295,6 +296,7 @@ profile.early_2006.bernankey,market.product.global.timber,reserve,adapter.extern
 profile.early_2006.bernankey,market.us.corporate_bond,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,market.us.equity,slice_candidate,NONE,Future manifest selection plus effective-period initialization.,Dependency-closed Treasury-duration or secured-funding candidate.,Early-2006 profile planning index.
 profile.early_2006.bernankey,market.us.fed_funds,slice_candidate,NONE,Future manifest selection plus effective-period initialization.,Dependency-closed Treasury-duration or secured-funding candidate.,Early-2006 profile planning index.
+profile.early_2006.bernankey,market.us.federal_funds,excluded,NONE,NONE,Authored for the 1979 opening; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,market.us.mbs_tba,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,market.us.sofr_futures,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,market.us.treasury.auction,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
@@ -471,6 +473,7 @@ profile.early_2006.bernankey,reference.us.bls.cpi,reference,NONE,NONE,Typed iden
 profile.early_2006.bernankey,reference.us.consumer_price_index,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,reference.us.federal_reserve.acm_term_premium,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,reference.us.federal_reserve.effr,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
+profile.early_2006.bernankey,reference.us.federal_reserve.h6,excluded,NONE,NONE,Authored for the 1979 opening; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,reference.us.federal_reserve.obfr,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,reference.us.nyfed.effr,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,reference.us.nyfed.obfr,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
@@ -515,6 +518,17 @@ profile.early_2006.bernankey,region.us.federal_reserve_districts,reference,NONE,
 profile.early_2006.bernankey,region.us.home_district,reference,NONE,NONE,Non-owning scope used by the Burrow composition contract.,Early-2006 profile planning index.
 profile.early_2006.bernankey,region.us.metros,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
 profile.early_2006.bernankey,region.us.states,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.
+profile.early_2006.bernankey,role_holder.fomc.1979.balles,excluded,NONE,NONE,Authored for the 1979 opening; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,role_holder.fomc.1979.black,excluded,NONE,NONE,Authored for the 1979 opening; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,role_holder.fomc.1979.coldwell,excluded,NONE,NONE,Authored for the 1979 opening; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,role_holder.fomc.1979.kimbrel,excluded,NONE,NONE,Authored for the 1979 opening; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,role_holder.fomc.1979.mayo,excluded,NONE,NONE,Authored for the 1979 opening; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,role_holder.fomc.1979.partee,excluded,NONE,NONE,Authored for the 1979 opening; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,role_holder.fomc.1979.rice,excluded,NONE,NONE,Authored for the 1979 opening; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,role_holder.fomc.1979.schultz,excluded,NONE,NONE,Authored for the 1979 opening; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,role_holder.fomc.1979.teeters,excluded,NONE,NONE,Authored for the 1979 opening; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,role_holder.fomc.1979.timlen,excluded,NONE,NONE,Authored for the 1979 opening; not reviewed for 2006.,doc:mandate.m4-proving-lens
+profile.early_2006.bernankey,role_holder.fomc.1979.wallich,excluded,NONE,NONE,Authored for the 1979 opening; not reviewed for 2006.,doc:mandate.m4-proving-lens
 profile.early_2006.bernankey,role_holder.fomc.governor_1,slice_candidate,role_holder.fomc.governor_1,Bounded 2006 meeting roster is selected.,Supplies one deterministic sourced participant position and vote.,12-structure-outline-bernankey-mvp-cycle.md:226-232
 profile.early_2006.bernankey,role_holder.fomc.governor_2,slice_candidate,role_holder.fomc.governor_2,Bounded 2006 meeting roster is selected.,Supplies one deterministic sourced participant position and vote.,12-structure-outline-bernankey-mvp-cycle.md:226-232
 profile.early_2006.bernankey,schedule.us.federal_reserve.blackout,reference,NONE,NONE,Typed identity or non-causal scope retained for reference.,Early-2006 profile planning index.

@@ -304,6 +304,7 @@ interface.us_duration.demand_schedule,false,true,data_only
 legal.us.dodd_frank,false,true,data_only
 legal.us.federal_reserve.act.section_12a,false,true,data_only
 legal.us.federal_reserve.act.section_14,false,true,data_only
+legal.us.federal_reserve.domestic_authorization.1979,false,true,data_only
 legal.us.federal_reserve.domestic_authorization.2006,false,true,data_only
 legal.us.federal_reserve.fomc_rules.section_3,false,true,data_only
 legal.us.federal_reserve.section_13_3,false,true,data_only
@@ -314,6 +315,7 @@ market.product.global.timber,false,true,data_only
 market.us.corporate_bond,false,true,data_only
 market.us.equity,false,true,data_only
 market.us.fed_funds,false,true,data_only
+market.us.federal_funds,false,true,data_only
 market.us.mbs_tba,false,true,data_only
 market.us.sofr_futures,false,true,data_only
 market.us.treasury.auction,false,true,data_only
@@ -492,6 +494,7 @@ reference.us.bls.cpi,false,true,data_only
 reference.us.consumer_price_index,false,true,data_only
 reference.us.federal_reserve.acm_term_premium,false,true,data_only
 reference.us.federal_reserve.effr,false,true,data_only
+reference.us.federal_reserve.h6,false,true,data_only
 reference.us.federal_reserve.obfr,false,true,data_only
 reference.us.nyfed.effr,false,true,data_only
 reference.us.nyfed.obfr,false,true,data_only
@@ -536,6 +539,17 @@ region.us.federal_reserve_districts,false,true,data_only
 region.us.home_district,false,true,data_only
 region.us.metros,false,true,data_only
 region.us.states,false,true,data_only
+role_holder.fomc.1979.balles,false,true,data_only
+role_holder.fomc.1979.black,false,true,data_only
+role_holder.fomc.1979.coldwell,false,true,data_only
+role_holder.fomc.1979.kimbrel,false,true,data_only
+role_holder.fomc.1979.mayo,false,true,data_only
+role_holder.fomc.1979.partee,false,true,data_only
+role_holder.fomc.1979.rice,false,true,data_only
+role_holder.fomc.1979.schultz,false,true,data_only
+role_holder.fomc.1979.teeters,false,true,data_only
+role_holder.fomc.1979.timlen,false,true,data_only
+role_holder.fomc.1979.wallich,false,true,data_only
 role_holder.fomc.governor_1,false,true,data_only
 role_holder.fomc.governor_2,false,true,data_only
 schedule.us.federal_reserve.blackout,false,true,data_only

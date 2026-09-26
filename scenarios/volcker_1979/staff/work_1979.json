@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "units": [
+    {
+      "unit_id": "staff.us.federal_reserve.monetary_affairs",
+      "display_name": "Office of Staff Director for Monetary Policy",
+      "access_scopes": [
+        "profile.chair_scoped",
+        "scope.staff.monetary_affairs.internal"
+      ],
+      "methods": [
+        "policy_alternative_assessment",
+        "aggregate_projection"
+      ],
+      "capacity_units": 2,
+      "standing_deliverables": []
+    },
+    {
+      "unit_id": "staff.us.federal_reserve.markets",
+      "display_name": "Manager for Domestic Operations",
+      "access_scopes": [
+        "profile.chair_scoped",
+        "scope.staff.markets.confidential"
+      ],
+      "methods": [
+        "reserve_projection",
+        "money_market_assessment"
+      ],
+      "capacity_units": 2,
+      "standing_deliverables": []
+    }
+  ],
+  "evidence_deliveries": []
+}

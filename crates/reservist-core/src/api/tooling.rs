@@ -31,6 +31,11 @@ impl OracleRun {
     }
 }
 
+/// The policy packages a frozen scenario prepares, in authored order.
+pub fn scenario_package_ids(scenario: &FrozenScenario) -> Vec<String> {
+    crate::packages::scenario_package_ids(scenario)
+}
+
 pub fn run_scenario(
     scenario: &FrozenScenario,
     package: &str,

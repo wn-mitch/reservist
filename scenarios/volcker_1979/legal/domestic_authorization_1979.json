@@ -1,0 +1,24 @@
+{
+  "instrument_id": "legal.us.federal_reserve.domestic_authorization.1979",
+  "title": "1979 Authorization for Domestic Open Market Operations",
+  "source_url": "https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf",
+  "note": "In force throughout 1979; the exact 1979 reaffirmation date is unverified.",
+  "clauses": [
+    {
+      "clause_id": "clause.domestic_authorization.1979.paragraph1",
+      "effective_from": "1979-01-01T00:00:00-05:00",
+      "effective_until": "2100-01-01T00:00:00-05:00",
+      "authorized_subjects": [
+        "inst.us.federal_reserve.new_york"
+      ],
+      "target_owners": [
+        "market.us.federal_funds"
+      ],
+      "permitted_effects": [
+        "desk.set_rate_band",
+        "desk.set_reserves_path"
+      ],
+      "requires_certified_fomc_decision": true
+    }
+  ]
+}

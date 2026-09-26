@@ -9,7 +9,7 @@ use reservist_core::api::{
 pub(crate) struct PlayArgs {
     #[command(flatten)]
     source: crate::ScenarioArgs,
-    #[arg(long,default_value="MEASURED_FIRMING",value_parser=["WAIT_AND_WARN","MEASURED_FIRMING","FIRMING_BIAS"])]
+    #[arg(long, default_value = "MEASURED_FIRMING")]
     package: String,
 }
 

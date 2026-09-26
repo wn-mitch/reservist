@@ -3,4 +3,5 @@ adapter.market.us.treasury.external_buyer,variant.2006,2006-03-27/2006-03-29,NON
 adapter.market.us.treasury_demand.phase2,variant.2006,2006-03-27/2006-03-29,NONE,Temporary adapter applies only to the bounded Phase 2 cycle.,12-structure-outline-bernankey-mvp-cycle.md:260-264
 agreement.us.repo.bilateral,variant.2006,2006-03-27/2006-03-28,agreement.us.repo.bilateral,One bounded bilateral repo is selected; no automatic renewal is permitted.,12-structure-outline-bernankey-mvp-cycle.md:299-319
 inst.us.leveraged_funds,variant.2006,2006-03-27/2006-03-29,NONE,One aggregate leveraged-fund cohort is selected for the repo-triggered sale.,12-structure-outline-bernankey-mvp-cycle.md:299-319
+market.us.federal_funds,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
 market.us.treasury.secondary,variant.2006,2006-03-27/2006-03-29,legal.us.federal_reserve.domestic_authorization.2006,Only the 5-10 year maturity bucket is active.,12-structure-outline-bernankey-mvp-cycle.md:299-319

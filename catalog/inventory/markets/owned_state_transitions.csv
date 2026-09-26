@@ -11,4 +11,7 @@ state.inst.us.leveraged_funds.cash,accounting_entry,12-structure-outline-bernank
 state.inst.us.leveraged_funds.collateral_encumbrance,accounting_entry,12-structure-outline-bernankey-mvp-cycle.md:299-319
 state.inst.us.leveraged_funds.repo_obligation,accounting_entry,12-structure-outline-bernankey-mvp-cycle.md:299-319
 state.inst.us.leveraged_funds.treasury,accounting_entry,12-structure-outline-bernankey-mvp-cycle.md:299-319
+state.market.us.federal_funds.conditions,adopt_regime,https://fraser.stlouisfed.org/title/federal-reserve-bulletin-62
+state.market.us.federal_funds.conditions,clear_week,https://fraser.stlouisfed.org/title/federal-reserve-bulletin-62
+state.market.us.federal_funds.conditions,set_discount_rate,https://fraser.stlouisfed.org/title/federal-reserve-bulletin-62
 state.market.us.treasury.secondary.clearing,record_market_clearing,12-structure-outline-bernankey-mvp-cycle.md:299-319

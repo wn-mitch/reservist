@@ -1,0 +1,22 @@
+{
+  "instrument_id": "legal.us.federal_reserve.fomc_rules.section_3",
+  "title": "FOMC Rules of Organization section 3",
+  "source_url": "https://www.federalreserve.gov/monetarypolicy/rules_authorizations.htm",
+  "clauses": [
+    {
+      "clause_id": "clause.fomc.rules.section3.vote",
+      "effective_from": "1935-08-23T00:00:00-04:00",
+      "effective_until": "2100-01-01T00:00:00-05:00",
+      "authorized_subjects": [
+        "body.us.federal_reserve.fomc"
+      ],
+      "target_owners": [
+        "body.us.federal_reserve.fomc"
+      ],
+      "permitted_effects": [
+        "procedure.vote"
+      ],
+      "requires_certified_fomc_decision": false
+    }
+  ]
+}

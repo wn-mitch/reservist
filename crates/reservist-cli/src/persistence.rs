@@ -16,7 +16,7 @@ use crate::{ScenarioArgs, render_run};
 pub(crate) struct SaveArgs {
     #[command(flatten)]
     source: ScenarioArgs,
-    #[arg(long, default_value="MEASURED_FIRMING", value_parser=["WAIT_AND_WARN","MEASURED_FIRMING","FIRMING_BIAS"])]
+    #[arg(long, default_value = "MEASURED_FIRMING")]
     package: String,
     #[arg(long, default_value="NORMAL", value_parser=["NONE","NORMAL","ACCELERATED","DECLINED","MISSED"])]
     request: String,

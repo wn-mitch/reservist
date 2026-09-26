@@ -285,6 +285,7 @@ instrument.cross_border.capital_controls,instance,type.legal_instrument.default,
 legal.us.dodd_frank,instance,type.legal_instrument.statute,LegalInstrument,false,false,explicit_type|fallback,not_catalog_eligible
 legal.us.federal_reserve.act.section_12a,instance,type.legal_instrument.default,LegalInstrument,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
 legal.us.federal_reserve.act.section_14,instance,type.legal_instrument.default,LegalInstrument,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
+legal.us.federal_reserve.domestic_authorization.1979,instance,type.legal_instrument.default,LegalInstrument,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
 legal.us.federal_reserve.domestic_authorization.2006,instance,type.legal_instrument.default,LegalInstrument,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
 legal.us.federal_reserve.fomc_rules.section_3,instance,type.legal_instrument.default,LegalInstrument,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
 legal.us.federal_reserve.section_13_3,instance,type.legal_instrument.default,LegalInstrument,false,false,explicit_type|fallback,not_catalog_eligible
@@ -295,6 +296,7 @@ market.product.global.timber,instance,type.market.product,Market,false,false,exp
 market.us.corporate_bond,instance,type.market.default,Market,false,false,explicit_type|fallback,not_catalog_eligible
 market.us.equity,instance,type.market.default,Market,false,false,explicit_type|fallback,not_catalog_eligible
 market.us.fed_funds,instance,type.market.default,Market,false,false,explicit_type|fallback,not_catalog_eligible
+market.us.federal_funds,instance,type.market.default,Market,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
 market.us.mbs_tba,instance,type.market.default,Market,false,false,explicit_type|fallback,not_catalog_eligible
 market.us.sofr_futures,instance,type.market.default,Market,false,false,explicit_type|fallback,not_catalog_eligible
 market.us.treasury.auction,instance,type.market.default,Market,false,false,explicit_type|fallback,not_catalog_eligible
@@ -345,8 +347,8 @@ office.us.federal_reserve.chief_of_staff,instance,type.office.default,Office,tru
 office.us.federal_reserve.division_director,instance,type.office.default,Office,false,false,explicit_type|fallback,not_catalog_eligible
 office.us.federal_reserve.fomc_chair,instance,type.office.default,Office,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
 office.us.federal_reserve.governor,instance,type.office.default,Office,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
-office.us.federal_reserve.ny_president,instance,type.office.default,Office,false,false,explicit_type|fallback,not_catalog_eligible
-office.us.federal_reserve.reserve_bank_president,instance,type.office.default,Office,false,false,explicit_type|fallback,not_catalog_eligible
+office.us.federal_reserve.ny_president,instance,type.office.default,Office,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
+office.us.federal_reserve.reserve_bank_president,instance,type.office.default,Office,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
 office.us.federal_reserve.vice_chair,instance,type.office.default,Office,false,false,explicit_type|fallback,not_catalog_eligible
 office.us.federal_reserve.vice_chair_supervision,instance,type.office.default,Office,false,false,explicit_type|fallback,not_catalog_eligible
 office.us.treasury.secretary,instance,type.office.default,Office,false,false,explicit_type|fallback,not_catalog_eligible
@@ -406,7 +408,7 @@ person.us.ben_bernankey,instance,type.person.default,Person,true,true,explicit_t
 person.us.janet_jackrabbit,instance,type.person.default,Person,false,false,explicit_type|fallback,not_catalog_eligible
 person.us.jerome_owl,instance,type.person.default,Person,false,false,explicit_type|fallback,not_catalog_eligible
 person.us.kevin_boarsh,instance,type.person.default,Person,false,false,explicit_type|fallback,not_catalog_eligible
-person.us.paul_vulture,instance,type.person.default,Person,false,false,explicit_type|fallback|relationship,not_catalog_eligible
+person.us.paul_vulture,instance,type.person.default,Person,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
 person.us.primary_dealer.rates_head,instance,type.person.default,Person,false,false,explicit_type|fallback,not_catalog_eligible
 person.us.treasury.secretary,instance,type.person.default,Person,false,false,explicit_type|fallback,not_catalog_eligible
 pop.us.affluent.homeowners,instance,type.pop_lens.default,PopLens,false,false,explicit_type|fallback,not_catalog_eligible
@@ -471,6 +473,7 @@ reference.us.bls.cpi,instance,type.published_reference.default,PublishedReferenc
 reference.us.consumer_price_index,instance,type.published_reference.statistical_measurement,PublishedReference,false,false,explicit_type|fallback,not_catalog_eligible
 reference.us.federal_reserve.acm_term_premium,instance,type.published_reference.default,PublishedReference,false,false,explicit_type|fallback,not_catalog_eligible
 reference.us.federal_reserve.effr,instance,type.published_reference.default,PublishedReference,false,false,explicit_type|fallback,not_catalog_eligible
+reference.us.federal_reserve.h6,instance,type.published_reference.default,PublishedReference,false,false,explicit_type|fallback|relationship|transmission,not_catalog_eligible
 reference.us.federal_reserve.obfr,instance,type.published_reference.default,PublishedReference,false,false,explicit_type|fallback,not_catalog_eligible
 reference.us.nyfed.effr,instance,type.published_reference.default,PublishedReference,false,false,explicit_type|fallback,not_catalog_eligible
 reference.us.nyfed.obfr,instance,type.published_reference.default,PublishedReference,false,false,explicit_type|fallback,not_catalog_eligible
@@ -515,6 +518,17 @@ region.us.federal_reserve_districts,instance,type.region.default,Region,false,fa
 region.us.home_district,instance,type.region.aggregate_scope,Region,false,false,explicit_type|fallback|relationship,not_catalog_eligible
 region.us.metros,instance,type.region.default,Region,false,false,explicit_type|fallback,not_catalog_eligible
 region.us.states,instance,type.region.default,Region,false,false,explicit_type|fallback,not_catalog_eligible
+role_holder.fomc.1979.balles,instance,type.person.default,Person,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
+role_holder.fomc.1979.black,instance,type.person.default,Person,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
+role_holder.fomc.1979.coldwell,instance,type.person.default,Person,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
+role_holder.fomc.1979.kimbrel,instance,type.person.default,Person,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
+role_holder.fomc.1979.mayo,instance,type.person.default,Person,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
+role_holder.fomc.1979.partee,instance,type.person.default,Person,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
+role_holder.fomc.1979.rice,instance,type.person.default,Person,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
+role_holder.fomc.1979.schultz,instance,type.person.default,Person,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
+role_holder.fomc.1979.teeters,instance,type.person.default,Person,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
+role_holder.fomc.1979.timlen,instance,type.person.default,Person,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
+role_holder.fomc.1979.wallich,instance,type.person.default,Person,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
 role_holder.fomc.governor_1,instance,type.person.default,Person,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
 role_holder.fomc.governor_2,instance,type.person.default,Person,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
 schedule.us.federal_reserve.blackout,instance,type.scheduled_process.default,ScheduledProcess,true,true,explicit_type|fallback|relationship|transmission|probe,NONE

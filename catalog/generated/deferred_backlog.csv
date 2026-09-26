@@ -134,8 +134,6 @@ identity_only,mechanism.us.fedwire.securities,NONE,research_content,NONE,doc:man
 identity_only,mechanism.us.nss,NONE,research_content,NONE,doc:mandate.m4-proving-lens
 identity_only,mechanism.water.arabian_peninsula,NONE,research_content,NONE,doc:mandate.m4-proving-lens
 identity_only,office.us.federal_reserve.division_director,NONE,research_content,NONE,doc:mandate.m4-proving-lens
-identity_only,office.us.federal_reserve.ny_president,NONE,research_content,NONE,doc:mandate.m4-proving-lens
-identity_only,office.us.federal_reserve.reserve_bank_president,NONE,research_content,NONE,doc:mandate.m4-proving-lens
 identity_only,office.us.federal_reserve.vice_chair,NONE,research_content,NONE,doc:mandate.m4-proving-lens
 identity_only,office.us.federal_reserve.vice_chair_supervision,NONE,research_content,NONE,doc:mandate.m4-proving-lens
 identity_only,office.us.treasury.secretary,NONE,research_content,NONE,doc:mandate.m4-proving-lens

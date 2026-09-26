@@ -7,7 +7,7 @@ use reservist_content::{
     frozen::{default_catalog_dir, seal_scenario, validate_scenario_with_catalog},
 };
 use reservist_core::{
-    api::tooling::{OracleRun, run_scenario},
+    api::tooling::{OracleRun, run_scenario, scenario_package_ids},
     canon::canonical_bytes,
 };
 use serde_json::Value;
@@ -85,7 +85,8 @@ struct ScenarioArgs {
 struct RunArgs {
     #[command(flatten)]
     source: ScenarioArgs,
-    #[arg(long, default_value="MEASURED_FIRMING", value_parser=["WAIT_AND_WARN","MEASURED_FIRMING","FIRMING_BIAS"])]
+    /// Policy package ID; the scenario's authored packages, or the 2006 set.
+    #[arg(long, default_value = "MEASURED_FIRMING")]
     package: String,
     #[arg(long, default_value="NORMAL", value_parser=["NONE","NORMAL","ACCELERATED","DECLINED","MISSED"])]
     request: String,
@@ -202,7 +203,8 @@ fn execute(command: Command) -> Result<(), ContentError> {
         Command::ReplayCheck(args) => {
             let scenario = validate_scenario_with_catalog(&args.scenario, &args.catalog)?;
             let mut rows = Vec::new();
-            for package in ["WAIT_AND_WARN", "MEASURED_FIRMING", "FIRMING_BIAS"] {
+            for package in scenario_package_ids(&scenario) {
+                let package = package.as_str();
                 let first = run_scenario(&scenario, package, Some("NORMAL"), None)
                     .map_err(runtime_error)?;
                 let second = run_scenario(&scenario, package, Some("NORMAL"), None)

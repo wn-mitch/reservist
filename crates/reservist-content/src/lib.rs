@@ -26,6 +26,8 @@ mod m2_dialogue_tests;
 mod m2_tests;
 #[cfg(test)]
 mod m3_tests;
+#[cfg(test)]
+mod volcker_tests;
 
 use std::collections::BTreeMap;
 

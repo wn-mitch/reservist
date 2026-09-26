@@ -83,7 +83,7 @@ profile.volcker_1979,body.il.cabinet,excluded,NONE,NONE,Not reviewed for the 197
 profile.volcker_1979,body.jp.cabinet,reference,NONE,NONE,Researched 1979 role holder or Fed body; identity retained for reference.,doc:mandate.m4-proving-lens
 profile.volcker_1979,body.opec,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,body.us.federal_reserve.board_voting,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
-profile.volcker_1979,body.us.federal_reserve.fomc,reference,NONE,NONE,Researched 1979 role holder or Fed body; identity retained for reference.,doc:mandate.m4-proving-lens
+profile.volcker_1979,body.us.federal_reserve.fomc,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
 profile.volcker_1979,body.us.federal_reserve.reserve_bank_boards,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,body.us.treasury.tbac,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,coalition.il.governing_parties,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
@@ -165,8 +165,8 @@ profile.volcker_1979,inst.us.clearing.cme,excluded,NONE,NONE,Not reviewed for th
 profile.volcker_1979,inst.us.clearing.ficc,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,inst.us.cme,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,inst.us.depository.dtcc,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
-profile.volcker_1979,inst.us.federal_reserve.board,reference,NONE,NONE,Researched 1979 role holder or Fed body; identity retained for reference.,doc:mandate.m4-proving-lens
-profile.volcker_1979,inst.us.federal_reserve.new_york,reference,NONE,NONE,Researched 1979 role holder or Fed body; identity retained for reference.,doc:mandate.m4-proving-lens
+profile.volcker_1979,inst.us.federal_reserve.board,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
+profile.volcker_1979,inst.us.federal_reserve.new_york,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
 profile.volcker_1979,inst.us.federal_reserve.reserve_banks_other,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,inst.us.fhlb.system,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,inst.us.ficc,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
@@ -283,10 +283,11 @@ profile.volcker_1979,institution.ve.foreign_ministry,reference,NONE,NONE,Researc
 profile.volcker_1979,institution.ve.presidency,reference,NONE,NONE,Researched 1979 role holder or Fed body; identity retained for reference.,doc:mandate.m4-proving-lens
 profile.volcker_1979,instrument.cross_border.capital_controls,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,legal.us.dodd_frank,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
-profile.volcker_1979,legal.us.federal_reserve.act.section_12a,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
-profile.volcker_1979,legal.us.federal_reserve.act.section_14,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
+profile.volcker_1979,legal.us.federal_reserve.act.section_12a,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
+profile.volcker_1979,legal.us.federal_reserve.act.section_14,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
+profile.volcker_1979,legal.us.federal_reserve.domestic_authorization.1979,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
 profile.volcker_1979,legal.us.federal_reserve.domestic_authorization.2006,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
-profile.volcker_1979,legal.us.federal_reserve.fomc_rules.section_3,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
+profile.volcker_1979,legal.us.federal_reserve.fomc_rules.section_3,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
 profile.volcker_1979,legal.us.federal_reserve.section_13_3,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,market.global.fx_spot_forward_basis,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,market.product.global.coffee,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
@@ -295,6 +296,7 @@ profile.volcker_1979,market.product.global.timber,excluded,NONE,NONE,Not reviewe
 profile.volcker_1979,market.us.corporate_bond,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,market.us.equity,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,market.us.fed_funds,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
+profile.volcker_1979,market.us.federal_funds,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
 profile.volcker_1979,market.us.mbs_tba,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,market.us.sofr_futures,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,market.us.treasury.auction,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
@@ -340,13 +342,13 @@ profile.volcker_1979,network.media.the_herd,excluded,NONE,NONE,Not reviewed for 
 profile.volcker_1979,office.media.aftv.anchor_chair,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,office.media.gnbc.anchor_chair,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,office.media.wool_street_journal.fed_beat,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
-profile.volcker_1979,office.us.federal_reserve.board_chair,anchor,NONE,NONE,Player identity or required Chair office for the 1979 profile.,doc:mandate.m4-proving-lens
+profile.volcker_1979,office.us.federal_reserve.board_chair,anchor,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
 profile.volcker_1979,office.us.federal_reserve.chief_of_staff,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,office.us.federal_reserve.division_director,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
-profile.volcker_1979,office.us.federal_reserve.fomc_chair,anchor,NONE,NONE,Player identity or required Chair office for the 1979 profile.,doc:mandate.m4-proving-lens
-profile.volcker_1979,office.us.federal_reserve.governor,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
-profile.volcker_1979,office.us.federal_reserve.ny_president,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
-profile.volcker_1979,office.us.federal_reserve.reserve_bank_president,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
+profile.volcker_1979,office.us.federal_reserve.fomc_chair,anchor,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
+profile.volcker_1979,office.us.federal_reserve.governor,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
+profile.volcker_1979,office.us.federal_reserve.ny_president,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
+profile.volcker_1979,office.us.federal_reserve.reserve_bank_president,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
 profile.volcker_1979,office.us.federal_reserve.vice_chair,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,office.us.federal_reserve.vice_chair_supervision,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,office.us.treasury.secretary,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
@@ -406,7 +408,7 @@ profile.volcker_1979,person.us.ben_bernankey,excluded,NONE,NONE,Not reviewed for
 profile.volcker_1979,person.us.janet_jackrabbit,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,person.us.jerome_owl,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,person.us.kevin_boarsh,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
-profile.volcker_1979,person.us.paul_vulture,anchor,NONE,NONE,Player identity or required Chair office for the 1979 profile.,doc:mandate.m4-proving-lens
+profile.volcker_1979,person.us.paul_vulture,anchor,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
 profile.volcker_1979,person.us.primary_dealer.rates_head,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,person.us.treasury.secretary,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,pop.us.affluent.homeowners,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
@@ -454,7 +456,7 @@ profile.volcker_1979,record.us.federal_reserve.discount_rate,excluded,NONE,NONE,
 profile.volcker_1979,record.us.federal_reserve.institutional_project,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,record.us.federal_reserve.iorb,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,record.us.federal_reserve.legacy_dossier,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
-profile.volcker_1979,record.us.federal_reserve.policy_package,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
+profile.volcker_1979,record.us.federal_reserve.policy_package,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
 profile.volcker_1979,record.us.federal_reserve.stage_receipt,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,record.us.federal_reserve.target_range,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,record.us.treasury.esf,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
@@ -471,6 +473,7 @@ profile.volcker_1979,reference.us.bls.cpi,excluded,NONE,NONE,Not reviewed for th
 profile.volcker_1979,reference.us.consumer_price_index,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,reference.us.federal_reserve.acm_term_premium,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,reference.us.federal_reserve.effr,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
+profile.volcker_1979,reference.us.federal_reserve.h6,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
 profile.volcker_1979,reference.us.federal_reserve.obfr,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,reference.us.nyfed.effr,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,reference.us.nyfed.obfr,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
@@ -515,10 +518,21 @@ profile.volcker_1979,region.us.federal_reserve_districts,excluded,NONE,NONE,Not 
 profile.volcker_1979,region.us.home_district,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,region.us.metros,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,region.us.states,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
+profile.volcker_1979,role_holder.fomc.1979.balles,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
+profile.volcker_1979,role_holder.fomc.1979.black,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
+profile.volcker_1979,role_holder.fomc.1979.coldwell,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
+profile.volcker_1979,role_holder.fomc.1979.kimbrel,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
+profile.volcker_1979,role_holder.fomc.1979.mayo,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
+profile.volcker_1979,role_holder.fomc.1979.partee,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
+profile.volcker_1979,role_holder.fomc.1979.rice,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
+profile.volcker_1979,role_holder.fomc.1979.schultz,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
+profile.volcker_1979,role_holder.fomc.1979.teeters,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
+profile.volcker_1979,role_holder.fomc.1979.timlen,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
+profile.volcker_1979,role_holder.fomc.1979.wallich,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
 profile.volcker_1979,role_holder.fomc.governor_1,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,role_holder.fomc.governor_2,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,schedule.us.federal_reserve.blackout,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
-profile.volcker_1979,schedule.us.federal_reserve.fomc,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
+profile.volcker_1979,schedule.us.federal_reserve.fomc,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
 profile.volcker_1979,schedule.us.treasury.auction,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,scheduled_process.unknown.call_report_calendar,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,sovereign.afghanistan,reference,NONE,NONE,Roster sovereign on the profile date; identity-only composition root.,doc:mandate.m4-proving-lens

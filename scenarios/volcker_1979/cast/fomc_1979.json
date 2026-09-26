@@ -1,0 +1,679 @@
+{
+  "schema_version": 1,
+  "meeting_id": "meeting.fomc.1979_08",
+  "chair_id": "person.us.paul_vulture",
+  "chair_office": "office.us.federal_reserve.fomc_chair",
+  "quorum": 7,
+  "affirmative_threshold": 7,
+  "participants": [
+    {
+      "participant_id": "role_holder.fomc.1979.schultz",
+      "display_name": "Vice Chairman",
+      "office_id": "office.us.federal_reserve.governor",
+      "effective_period": "1979-08-06/1979-09-18",
+      "beliefs": [
+        {
+          "proposition": "inflation_persistence",
+          "estimate": 0.7,
+          "lower": 0.58,
+          "upper": 0.8,
+          "confidence": 0.7,
+          "as_of_time": "1979-08-06T09:00:00-04:00",
+          "source_ledger": [
+            {
+              "source_id": "record.us.federal_reserve.fomc_minutes",
+              "evidence_id": "record.fomc.1979_07_11",
+              "observed_at": "1979-08-06T09:00:00-04:00",
+              "uncertainty_kind": "model",
+              "note": "Centrist; followed the Chairman. Aug 14: against easing, feared a fragile economy and consumer debt, favored moderate tightening, generally Alt C but funds range 10.5-11.25; against a discount move then."
+            }
+          ]
+        },
+        {
+          "proposition": "recession_risk",
+          "estimate": 0.5,
+          "lower": 0.38,
+          "upper": 0.6,
+          "confidence": 0.7,
+          "as_of_time": "1979-08-06T09:00:00-04:00",
+          "source_ledger": [
+            {
+              "source_id": "record.us.federal_reserve.fomc_minutes",
+              "evidence_id": "record.fomc.1979_07_11",
+              "observed_at": "1979-08-06T09:00:00-04:00",
+              "uncertainty_kind": "model",
+              "note": "Centrist; followed the Chairman. Aug 14: against easing, feared a fragile economy and consumer debt, favored moderate tightening, generally Alt C but funds range 10.5-11.25; against a discount move then."
+            }
+          ]
+        },
+        {
+          "proposition": "aggregates_emphasis",
+          "estimate": 0.4,
+          "lower": 0.28,
+          "upper": 0.5,
+          "confidence": 0.7,
+          "as_of_time": "1979-08-06T09:00:00-04:00",
+          "source_ledger": [
+            {
+              "source_id": "record.us.federal_reserve.fomc_minutes",
+              "evidence_id": "record.fomc.1979_07_11",
+              "observed_at": "1979-08-06T09:00:00-04:00",
+              "uncertainty_kind": "model",
+              "note": "Centrist; followed the Chairman. Aug 14: against easing, feared a fragile economy and consumer debt, favored moderate tightening, generally Alt C but funds range 10.5-11.25; against a discount move then."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "participant_id": "role_holder.fomc.1979.wallich",
+      "display_name": "Governor (seat 2)",
+      "office_id": "office.us.federal_reserve.governor",
+      "effective_period": "1979-08-06/1979-09-18",
+      "beliefs": [
+        {
+          "proposition": "inflation_persistence",
+          "estimate": 0.9,
+          "lower": 0.78,
+          "upper": 1.0,
+          "confidence": 0.7,
+          "as_of_time": "1979-08-06T09:00:00-04:00",
+          "source_ledger": [
+            {
+              "source_id": "record.us.federal_reserve.fomc_minutes",
+              "evidence_id": "record.fomc.1979_07_11",
+              "observed_at": "1979-08-06T09:00:00-04:00",
+              "uncertainty_kind": "model",
+              "note": "Hawk. Dissented July 11 because M1 range was too high; dissented on Board discount votes Mar 30 and May 25 for increases. Aug 14 warned of 15-20% inflation in the next expansion."
+            }
+          ]
+        },
+        {
+          "proposition": "recession_risk",
+          "estimate": 0.3,
+          "lower": 0.18,
+          "upper": 0.4,
+          "confidence": 0.7,
+          "as_of_time": "1979-08-06T09:00:00-04:00",
+          "source_ledger": [
+            {
+              "source_id": "record.us.federal_reserve.fomc_minutes",
+              "evidence_id": "record.fomc.1979_07_11",
+              "observed_at": "1979-08-06T09:00:00-04:00",
+              "uncertainty_kind": "model",
+              "note": "Hawk. Dissented July 11 because M1 range was too high; dissented on Board discount votes Mar 30 and May 25 for increases. Aug 14 warned of 15-20% inflation in the next expansion."
+            }
+          ]
+        },
+        {
+          "proposition": "aggregates_emphasis",
+          "estimate": 0.5,
+          "lower": 0.38,
+          "upper": 0.6,
+          "confidence": 0.7,
+          "as_of_time": "1979-08-06T09:00:00-04:00",
+          "source_ledger": [
+            {
+              "source_id": "record.us.federal_reserve.fomc_minutes",
+              "evidence_id": "record.fomc.1979_07_11",
+              "observed_at": "1979-08-06T09:00:00-04:00",
+              "uncertainty_kind": "model",
+              "note": "Hawk. Dissented July 11 because M1 range was too high; dissented on Board discount votes Mar 30 and May 25 for increases. Aug 14 warned of 15-20% inflation in the next expansion."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "participant_id": "role_holder.fomc.1979.coldwell",
+      "display_name": "Governor (seat 3)",
+      "office_id": "office.us.federal_reserve.governor",
+      "effective_period": "1979-08-06/1979-09-18",
+      "beliefs": [
+        {
+          "proposition": "inflation_persistence",
+          "estimate": 0.9,
+          "lower": 0.78,
+          "upper": 1.0,
+          "confidence": 0.7,
+          "as_of_time": "1979-08-06T09:00:00-04:00",
+          "source_ledger": [
+            {
+              "source_id": "record.us.federal_reserve.fomc_minutes",
+              "evidence_id": "record.fomc.1979_07_11",
+              "observed_at": "1979-08-06T09:00:00-04:00",
+              "uncertainty_kind": "model",
+              "note": "Hawk. Aug 14: 'its role at the moment is to fight inflation'. Proposed M1 4-7%, funds 10.5-11.5%. Lone Board dissent Aug 31 for a +0.5 discount rise. FOMC dissent Sept 18 for tighter policy."
+            }
+          ]
+        },
+        {
+          "proposition": "recession_risk",
+          "estimate": 0.3,
+          "lower": 0.18,
+          "upper": 0.4,
+          "confidence": 0.7,
+          "as_of_time": "1979-08-06T09:00:00-04:00",
+          "source_ledger": [
+            {
+              "source_id": "record.us.federal_reserve.fomc_minutes",
+              "evidence_id": "record.fomc.1979_07_11",
+              "observed_at": "1979-08-06T09:00:00-04:00",
+              "uncertainty_kind": "model",
+              "note": "Hawk. Aug 14: 'its role at the moment is to fight inflation'. Proposed M1 4-7%, funds 10.5-11.5%. Lone Board dissent Aug 31 for a +0.5 discount rise. FOMC dissent Sept 18 for tighter policy."
+            }
+          ]
+        },
+        {
+          "proposition": "aggregates_emphasis",
+          "estimate": 0.4,
+          "lower": 0.28,
+          "upper": 0.5,
+          "confidence": 0.7,
+          "as_of_time": "1979-08-06T09:00:00-04:00",
+          "source_ledger": [
+            {
+              "source_id": "record.us.federal_reserve.fomc_minutes",
+              "evidence_id": "record.fomc.1979_07_11",
+              "observed_at": "1979-08-06T09:00:00-04:00",
+              "uncertainty_kind": "model",
+              "note": "Hawk. Aug 14: 'its role at the moment is to fight inflation'. Proposed M1 4-7%, funds 10.5-11.5%. Lone Board dissent Aug 31 for a +0.5 discount rise. FOMC dissent Sept 18 for tighter policy."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "participant_id": "role_holder.fomc.1979.partee",
+      "display_name": "Governor (seat 4)",
+      "office_id": "office.us.federal_reserve.governor",
+      "effective_period": "1979-08-06/1979-09-18",
+      "beliefs": [
+        {
+          "proposition": "inflation_persistence",
+          "estimate": 0.6,
+          "lower": 0.48,
+          "upper": 0.7,
+          "confidence": 0.7,
+          "as_of_time": "1979-08-06T09:00:00-04:00",
+          "source_ledger": [
+            {
+              "source_id": "record.us.federal_reserve.fomc_minutes",
+              "evidence_id": "record.fomc.1979_07_11",
+              "observed_at": "1979-08-06T09:00:00-04:00",
+              "uncertainty_kind": "model",
+              "note": "Moderate dove, guided by the aggregates. Aug 14: feared 'a very serious recession' but accepted a little firming because aggregates ran high; proposed funds 10.75-11.25 or 10.5-11.25. Dissented on Sept 18 discount rise."
+            }
+          ]
+        },
+        {
+          "proposition": "recession_risk",
+          "estimate": 0.8,
+          "lower": 0.68,
+          "upper": 0.9,
+          "confidence": 0.7,
+          "as_of_time": "1979-08-06T09:00:00-04:00",
+          "source_ledger": [
+            {
+              "source_id": "record.us.federal_reserve.fomc_minutes",
+              "evidence_id": "record.fomc.1979_07_11",
+              "observed_at": "1979-08-06T09:00:00-04:00",
+              "uncertainty_kind": "model",
+              "note": "Moderate dove, guided by the aggregates. Aug 14: feared 'a very serious recession' but accepted a little firming because aggregates ran high; proposed funds 10.75-11.25 or 10.5-11.25. Dissented on Sept 18 discount rise."
+            }
+          ]
+        },
+        {
+          "proposition": "aggregates_emphasis",
+          "estimate": 0.6,
+          "lower": 0.48,
+          "upper": 0.7,
+          "confidence": 0.7,
+          "as_of_time": "1979-08-06T09:00:00-04:00",
+          "source_ledger": [
+            {
+              "source_id": "record.us.federal_reserve.fomc_minutes",
+              "evidence_id": "record.fomc.1979_07_11",
+              "observed_at": "1979-08-06T09:00:00-04:00",
+              "uncertainty_kind": "model",
+              "note": "Moderate dove, guided by the aggregates. Aug 14: feared 'a very serious recession' but accepted a little firming because aggregates ran high; proposed funds 10.75-11.25 or 10.5-11.25. Dissented on Sept 18 discount rise."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "participant_id": "role_holder.fomc.1979.teeters",
+      "display_name": "Governor (seat 5)",
+      "office_id": "office.us.federal_reserve.governor",
+      "effective_period": "1979-08-06/1979-09-18",
+      "beliefs": [
+        {
+          "proposition": "inflation_persistence",
+          "estimate": 0.5,
+          "lower": 0.38,
+          "upper": 0.6,
+          "confidence": 0.7,
+          "as_of_time": "1979-08-06T09:00:00-04:00",
+          "source_ledger": [
+            {
+              "source_id": "record.us.federal_reserve.fomc_minutes",
+              "evidence_id": "record.fomc.1979_07_11",
+              "observed_at": "1979-08-06T09:00:00-04:00",
+              "uncertainty_kind": "model",
+              "note": "Dove. Aug 14: 'I don't want to do very much now'; accepted minor tightening but urged readiness to reverse; opposed an asymmetric directive. Dissented on Sept 18 discount rise."
+            }
+          ]
+        },
+        {
+          "proposition": "recession_risk",
+          "estimate": 0.85,
+          "lower": 0.73,
+          "upper": 0.95,
+          "confidence": 0.7,
+          "as_of_time": "1979-08-06T09:00:00-04:00",
+          "source_ledger": [
+            {
+              "source_id": "record.us.federal_reserve.fomc_minutes",
+              "evidence_id": "record.fomc.1979_07_11",
+              "observed_at": "1979-08-06T09:00:00-04:00",
+              "uncertainty_kind": "model",
+              "note": "Dove. Aug 14: 'I don't want to do very much now'; accepted minor tightening but urged readiness to reverse; opposed an asymmetric directive. Dissented on Sept 18 discount rise."
+            }
+          ]
+        },
+        {
+          "proposition": "aggregates_emphasis",
+          "estimate": 0.3,
+          "lower": 0.18,
+          "upper": 0.4,
+          "confidence": 0.7,
+          "as_of_time": "1979-08-06T09:00:00-04:00",
+          "source_ledger": [
+            {
+              "source_id": "record.us.federal_reserve.fomc_minutes",
+              "evidence_id": "record.fomc.1979_07_11",
+              "observed_at": "1979-08-06T09:00:00-04:00",
+              "uncertainty_kind": "model",
+              "note": "Dove. Aug 14: 'I don't want to do very much now'; accepted minor tightening but urged readiness to reverse; opposed an asymmetric directive. Dissented on Sept 18 discount rise."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "participant_id": "role_holder.fomc.1979.rice",
+      "display_name": "Governor (seat 6)",
+      "office_id": "office.us.federal_reserve.governor",
+      "effective_period": "1979-08-06/1979-09-18",
+      "beliefs": [
+        {
+          "proposition": "inflation_persistence",
+          "estimate": 0.45,
+          "lower": 0.33,
+          "upper": 0.55,
+          "confidence": 0.7,
+          "as_of_time": "1979-08-06T09:00:00-04:00",
+          "source_ledger": [
+            {
+              "source_id": "record.us.federal_reserve.fomc_minutes",
+              "evidence_id": "record.fomc.1979_07_11",
+              "observed_at": "1979-08-06T09:00:00-04:00",
+              "uncertainty_kind": "model",
+              "note": "Dove. Dissented Aug 14 (wanted steady money market conditions), Aug 30, and Sept 18 FOMC votes, and on the Sept 18 discount rise."
+            }
+          ]
+        },
+        {
+          "proposition": "recession_risk",
+          "estimate": 0.9,
+          "lower": 0.78,
+          "upper": 1.0,
+          "confidence": 0.7,
+          "as_of_time": "1979-08-06T09:00:00-04:00",
+          "source_ledger": [
+            {
+              "source_id": "record.us.federal_reserve.fomc_minutes",
+              "evidence_id": "record.fomc.1979_07_11",
+              "observed_at": "1979-08-06T09:00:00-04:00",
+              "uncertainty_kind": "model",
+              "note": "Dove. Dissented Aug 14 (wanted steady money market conditions), Aug 30, and Sept 18 FOMC votes, and on the Sept 18 discount rise."
+            }
+          ]
+        },
+        {
+          "proposition": "aggregates_emphasis",
+          "estimate": 0.3,
+          "lower": 0.18,
+          "upper": 0.4,
+          "confidence": 0.7,
+          "as_of_time": "1979-08-06T09:00:00-04:00",
+          "source_ledger": [
+            {
+              "source_id": "record.us.federal_reserve.fomc_minutes",
+              "evidence_id": "record.fomc.1979_07_11",
+              "observed_at": "1979-08-06T09:00:00-04:00",
+              "uncertainty_kind": "model",
+              "note": "Dove. Dissented Aug 14 (wanted steady money market conditions), Aug 30, and Sept 18 FOMC votes, and on the Sept 18 discount rise."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "participant_id": "role_holder.fomc.1979.timlen",
+      "display_name": "First Vice President, New York (voting alternate)",
+      "office_id": "office.us.federal_reserve.ny_president",
+      "effective_period": "1979-08-06/1979-09-18",
+      "beliefs": [
+        {
+          "proposition": "inflation_persistence",
+          "estimate": 0.75,
+          "lower": 0.63,
+          "upper": 0.85,
+          "confidence": 0.7,
+          "as_of_time": "1979-08-06T09:00:00-04:00",
+          "source_ledger": [
+            {
+              "source_id": "record.us.federal_reserve.fomc_minutes",
+              "evidence_id": "record.fomc.1979_07_11",
+              "observed_at": "1979-08-06T09:00:00-04:00",
+              "uncertainty_kind": "model",
+              "note": "Hawk-leaning ('trained in the traditions of Benjamin Strong, Allan Sproul, and Paul Volcker'); favored gradual tightening."
+            }
+          ]
+        },
+        {
+          "proposition": "recession_risk",
+          "estimate": 0.45,
+          "lower": 0.33,
+          "upper": 0.55,
+          "confidence": 0.7,
+          "as_of_time": "1979-08-06T09:00:00-04:00",
+          "source_ledger": [
+            {
+              "source_id": "record.us.federal_reserve.fomc_minutes",
+              "evidence_id": "record.fomc.1979_07_11",
+              "observed_at": "1979-08-06T09:00:00-04:00",
+              "uncertainty_kind": "model",
+              "note": "Hawk-leaning ('trained in the traditions of Benjamin Strong, Allan Sproul, and Paul Volcker'); favored gradual tightening."
+            }
+          ]
+        },
+        {
+          "proposition": "aggregates_emphasis",
+          "estimate": 0.5,
+          "lower": 0.38,
+          "upper": 0.6,
+          "confidence": 0.7,
+          "as_of_time": "1979-08-06T09:00:00-04:00",
+          "source_ledger": [
+            {
+              "source_id": "record.us.federal_reserve.fomc_minutes",
+              "evidence_id": "record.fomc.1979_07_11",
+              "observed_at": "1979-08-06T09:00:00-04:00",
+              "uncertainty_kind": "model",
+              "note": "Hawk-leaning ('trained in the traditions of Benjamin Strong, Allan Sproul, and Paul Volcker'); favored gradual tightening."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "participant_id": "role_holder.fomc.1979.balles",
+      "display_name": "President, San Francisco",
+      "office_id": "office.us.federal_reserve.reserve_bank_president",
+      "effective_period": "1979-08-06/1979-09-18",
+      "beliefs": [
+        {
+          "proposition": "inflation_persistence",
+          "estimate": 0.8,
+          "lower": 0.68,
+          "upper": 0.9,
+          "confidence": 0.7,
+          "as_of_time": "1979-08-06T09:00:00-04:00",
+          "source_ledger": [
+            {
+              "source_id": "record.us.federal_reserve.fomc_minutes",
+              "evidence_id": "record.fomc.1979_07_11",
+              "observed_at": "1979-08-06T09:00:00-04:00",
+              "uncertainty_kind": "model",
+              "note": "Monetarist-leaning hawk by August. Favored ease in May; on Aug 14 leaned Alt C, wanted M2 at 5-9% and a half-point discount rise. Dissented Sept 18 for tighter policy."
+            }
+          ]
+        },
+        {
+          "proposition": "recession_risk",
+          "estimate": 0.4,
+          "lower": 0.28,
+          "upper": 0.5,
+          "confidence": 0.7,
+          "as_of_time": "1979-08-06T09:00:00-04:00",
+          "source_ledger": [
+            {
+              "source_id": "record.us.federal_reserve.fomc_minutes",
+              "evidence_id": "record.fomc.1979_07_11",
+              "observed_at": "1979-08-06T09:00:00-04:00",
+              "uncertainty_kind": "model",
+              "note": "Monetarist-leaning hawk by August. Favored ease in May; on Aug 14 leaned Alt C, wanted M2 at 5-9% and a half-point discount rise. Dissented Sept 18 for tighter policy."
+            }
+          ]
+        },
+        {
+          "proposition": "aggregates_emphasis",
+          "estimate": 0.8,
+          "lower": 0.68,
+          "upper": 0.9,
+          "confidence": 0.7,
+          "as_of_time": "1979-08-06T09:00:00-04:00",
+          "source_ledger": [
+            {
+              "source_id": "record.us.federal_reserve.fomc_minutes",
+              "evidence_id": "record.fomc.1979_07_11",
+              "observed_at": "1979-08-06T09:00:00-04:00",
+              "uncertainty_kind": "model",
+              "note": "Monetarist-leaning hawk by August. Favored ease in May; on Aug 14 leaned Alt C, wanted M2 at 5-9% and a half-point discount rise. Dissented Sept 18 for tighter policy."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "participant_id": "role_holder.fomc.1979.black",
+      "display_name": "President, Richmond",
+      "office_id": "office.us.federal_reserve.reserve_bank_president",
+      "effective_period": "1979-08-06/1979-09-18",
+      "beliefs": [
+        {
+          "proposition": "inflation_persistence",
+          "estimate": 0.85,
+          "lower": 0.73,
+          "upper": 0.95,
+          "confidence": 0.7,
+          "as_of_time": "1979-08-06T09:00:00-04:00",
+          "source_ledger": [
+            {
+              "source_id": "record.us.federal_reserve.fomc_minutes",
+              "evidence_id": "record.fomc.1979_07_11",
+              "observed_at": "1979-08-06T09:00:00-04:00",
+              "uncertainty_kind": "model",
+              "note": "Monetarist hawk. Dissented Aug 14 for lower aggregate ranges and an aggregates directive. Dissented Sept 18 for tighter policy."
+            }
+          ]
+        },
+        {
+          "proposition": "recession_risk",
+          "estimate": 0.35,
+          "lower": 0.23,
+          "upper": 0.45,
+          "confidence": 0.7,
+          "as_of_time": "1979-08-06T09:00:00-04:00",
+          "source_ledger": [
+            {
+              "source_id": "record.us.federal_reserve.fomc_minutes",
+              "evidence_id": "record.fomc.1979_07_11",
+              "observed_at": "1979-08-06T09:00:00-04:00",
+              "uncertainty_kind": "model",
+              "note": "Monetarist hawk. Dissented Aug 14 for lower aggregate ranges and an aggregates directive. Dissented Sept 18 for tighter policy."
+            }
+          ]
+        },
+        {
+          "proposition": "aggregates_emphasis",
+          "estimate": 0.95,
+          "lower": 0.83,
+          "upper": 1.0,
+          "confidence": 0.7,
+          "as_of_time": "1979-08-06T09:00:00-04:00",
+          "source_ledger": [
+            {
+              "source_id": "record.us.federal_reserve.fomc_minutes",
+              "evidence_id": "record.fomc.1979_07_11",
+              "observed_at": "1979-08-06T09:00:00-04:00",
+              "uncertainty_kind": "model",
+              "note": "Monetarist hawk. Dissented Aug 14 for lower aggregate ranges and an aggregates directive. Dissented Sept 18 for tighter policy."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "participant_id": "role_holder.fomc.1979.kimbrel",
+      "display_name": "President, Atlanta",
+      "office_id": "office.us.federal_reserve.reserve_bank_president",
+      "effective_period": "1979-08-06/1979-09-18",
+      "beliefs": [
+        {
+          "proposition": "inflation_persistence",
+          "estimate": 0.8,
+          "lower": 0.68,
+          "upper": 0.9,
+          "confidence": 0.7,
+          "as_of_time": "1979-08-06T09:00:00-04:00",
+          "source_ledger": [
+            {
+              "source_id": "record.us.federal_reserve.fomc_minutes",
+              "evidence_id": "record.fomc.1979_07_11",
+              "observed_at": "1979-08-06T09:00:00-04:00",
+              "uncertainty_kind": "model",
+              "note": "Hawk-leaning. Dissented for tighter policy in March 1979 with Volcker, Coldwell and Wallich. Aug 14 wanted 'some degree of additional restraint'."
+            }
+          ]
+        },
+        {
+          "proposition": "recession_risk",
+          "estimate": 0.4,
+          "lower": 0.28,
+          "upper": 0.5,
+          "confidence": 0.7,
+          "as_of_time": "1979-08-06T09:00:00-04:00",
+          "source_ledger": [
+            {
+              "source_id": "record.us.federal_reserve.fomc_minutes",
+              "evidence_id": "record.fomc.1979_07_11",
+              "observed_at": "1979-08-06T09:00:00-04:00",
+              "uncertainty_kind": "model",
+              "note": "Hawk-leaning. Dissented for tighter policy in March 1979 with Volcker, Coldwell and Wallich. Aug 14 wanted 'some degree of additional restraint'."
+            }
+          ]
+        },
+        {
+          "proposition": "aggregates_emphasis",
+          "estimate": 0.5,
+          "lower": 0.38,
+          "upper": 0.6,
+          "confidence": 0.7,
+          "as_of_time": "1979-08-06T09:00:00-04:00",
+          "source_ledger": [
+            {
+              "source_id": "record.us.federal_reserve.fomc_minutes",
+              "evidence_id": "record.fomc.1979_07_11",
+              "observed_at": "1979-08-06T09:00:00-04:00",
+              "uncertainty_kind": "model",
+              "note": "Hawk-leaning. Dissented for tighter policy in March 1979 with Volcker, Coldwell and Wallich. Aug 14 wanted 'some degree of additional restraint'."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "participant_id": "role_holder.fomc.1979.mayo",
+      "display_name": "President, Chicago",
+      "office_id": "office.us.federal_reserve.reserve_bank_president",
+      "effective_period": "1979-08-06/1979-09-18",
+      "beliefs": [
+        {
+          "proposition": "inflation_persistence",
+          "estimate": 0.85,
+          "lower": 0.73,
+          "upper": 0.95,
+          "confidence": 0.7,
+          "as_of_time": "1979-08-06T09:00:00-04:00",
+          "source_ledger": [
+            {
+              "source_id": "record.us.federal_reserve.fomc_minutes",
+              "evidence_id": "record.fomc.1979_07_11",
+              "observed_at": "1979-08-06T09:00:00-04:00",
+              "uncertainty_kind": "model",
+              "note": "Hawk-leaning. Aug 14: 'Inflation is our number one enemy'; favored 11% central funds rate, 10.5-11.5 range."
+            }
+          ]
+        },
+        {
+          "proposition": "recession_risk",
+          "estimate": 0.4,
+          "lower": 0.28,
+          "upper": 0.5,
+          "confidence": 0.7,
+          "as_of_time": "1979-08-06T09:00:00-04:00",
+          "source_ledger": [
+            {
+              "source_id": "record.us.federal_reserve.fomc_minutes",
+              "evidence_id": "record.fomc.1979_07_11",
+              "observed_at": "1979-08-06T09:00:00-04:00",
+              "uncertainty_kind": "model",
+              "note": "Hawk-leaning. Aug 14: 'Inflation is our number one enemy'; favored 11% central funds rate, 10.5-11.5 range."
+            }
+          ]
+        },
+        {
+          "proposition": "aggregates_emphasis",
+          "estimate": 0.4,
+          "lower": 0.28,
+          "upper": 0.5,
+          "confidence": 0.7,
+          "as_of_time": "1979-08-06T09:00:00-04:00",
+          "source_ledger": [
+            {
+              "source_id": "record.us.federal_reserve.fomc_minutes",
+              "evidence_id": "record.fomc.1979_07_11",
+              "observed_at": "1979-08-06T09:00:00-04:00",
+              "uncertainty_kind": "model",
+              "note": "Hawk-leaning. Aug 14: 'Inflation is our number one enemy'; favored 11% central funds rate, 10.5-11.5 range."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "decision_bodies": {
+    "inst.us.federal_reserve.board": {
+      "member_participant_ids": [
+        "role_holder.fomc.1979.schultz",
+        "role_holder.fomc.1979.wallich",
+        "role_holder.fomc.1979.coldwell",
+        "role_holder.fomc.1979.partee",
+        "role_holder.fomc.1979.teeters",
+        "role_holder.fomc.1979.rice"
+      ],
+      "affirmative_threshold": 4,
+      "chair_votes_yes": true
+    },
+    "inst.us.federal_reserve.new_york": {
+      "member_participant_ids": [
+        "role_holder.fomc.1979.timlen"
+      ],
+      "affirmative_threshold": 1
+    }
+  }
+}
