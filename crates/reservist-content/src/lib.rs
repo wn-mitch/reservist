@@ -14,6 +14,7 @@ mod inventory;
 #[cfg(test)]
 mod inventory_tests;
 pub mod manifest;
+mod projects;
 pub mod slice;
 mod source_comparison;
 mod sovereign;

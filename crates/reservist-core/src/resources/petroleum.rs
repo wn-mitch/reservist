@@ -166,6 +166,41 @@ impl PetroleumOperations {
         Ok(())
     }
 
+    /// Adds commissioned project capacity. Production capacity joins a rich
+    /// representation as a named facility so facilities and residual still
+    /// reconcile; export-route capacity widens terminal throughput.
+    pub(crate) fn commission(
+        &mut self,
+        effect: crate::resources::projects::CapacityEffect,
+        facility_id: &str,
+        added_kbd: Decimal,
+    ) -> Result<(), String> {
+        use crate::resources::projects::CapacityEffect;
+        if added_kbd <= Decimal::ZERO {
+            return Err("commissioned capacity must be positive".into());
+        }
+        match effect {
+            CapacityEffect::ExportRouteCapacity => self.terminal_capacity_kbd += added_kbd,
+            CapacityEffect::ProductionCapacity => {
+                self.capacity_kbd += added_kbd;
+                if self.is_rich() {
+                    match self
+                        .facilities
+                        .iter_mut()
+                        .find(|facility| facility.facility_id == facility_id)
+                    {
+                        Some(facility) => facility.capacity_kbd += added_kbd,
+                        None => self.facilities.push(Facility {
+                            facility_id: facility_id.into(),
+                            capacity_kbd: added_kbd,
+                        }),
+                    }
+                }
+            }
+        }
+        self.reconcile()
+    }
+
     /// Realizes one week against the policy target within capacity.
     pub(crate) fn realize(&mut self, target_kbd: Decimal) -> Realization {
         let week = u32::try_from(self.history.len()).unwrap_or(u32::MAX) + 1;
@@ -313,6 +348,39 @@ mod tests {
         assert!(
             PetroleumOperations::from_state("x", &bad).is_err(),
             "unreconciled detail fails closed"
+        );
+    }
+
+    #[test]
+    fn commissioned_capacity_keeps_rich_facilities_reconciled() {
+        use crate::resources::projects::CapacityEffect;
+        let facilities = json!([{"facility_id": "facility.sa.ghawar", "capacity_kbd": "5500"},
+                                {"facility_id": "facility.sa.abqaiq", "capacity_kbd": "1500"}]);
+        let mut rich =
+            operations(json!({"facilities": facilities, "residual_capacity_kbd": "3800"}));
+        rich.commission(
+            CapacityEffect::ProductionCapacity,
+            "project.sa.new_field",
+            Decimal::from(400),
+        )
+        .unwrap();
+        assert_eq!(rich.capacity_kbd, Decimal::from(11200));
+        assert_eq!(rich.facilities.len(), 3);
+        rich.commission(
+            CapacityEffect::ExportRouteCapacity,
+            "project.sa.line",
+            Decimal::from(1850),
+        )
+        .unwrap();
+        assert_eq!(rich.terminal_capacity_kbd, Decimal::from(10850));
+        assert_eq!(
+            rich.capacity_kbd,
+            Decimal::from(11200),
+            "a route adds no production"
+        );
+        assert!(
+            rich.commission(CapacityEffect::ExportRouteCapacity, "x", Decimal::ZERO)
+                .is_err()
         );
     }
 }

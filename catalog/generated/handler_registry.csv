@@ -5,6 +5,7 @@ staff-completion,staff.complete_analytical_task;staff.route_evidence,25,state.re
 phase-one-checkpoint,phase_1.checkpoint,30,,ledger.witness,,,,
 repo-non-roll,repo.process_non_roll,35,state.agreement.us.repo.bilateral.contract,state.agreement.us.repo.bilateral.contract;state.inst.us.leveraged_funds.behavior;ledger.witness,,,,
 reserves-week,reserves.clear_week,35,state.market.us.federal_funds.conditions,state.market.us.federal_funds.conditions;ledger.witness,,,,
+project-work,project.act,35,,state.petroleum.projects;ledger.witness,,,,
 petroleum-week,petroleum.realize_week;petroleum.record_outage;petroleum.demote,35,state.petroleum.policy,state.petroleum.operations;ledger.witness,,,,
 energy-week,energy.clear_week;energy.record_restriction,35,state.petroleum.operations,state.market.global.crude.conditions;state.player_records;ledger.witness,,,,
 iran-sanctions,iran.record_occurrence;sanctions.record_order;sanctions.advance_day,70,,state.channel.iran_sanctions;state.player_records;ledger.witness,,,,

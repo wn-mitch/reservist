@@ -432,11 +432,13 @@ pub fn validate_catalog(catalog_dir: &Path) -> Result<Tables, Vec<Issue>> {
     validate_campaign_contracts(&tables, &mut errors);
     crate::composition::validate(&tables, &mut errors);
     crate::sovereign::validate(&tables, &mut errors);
+    crate::projects::validate(&tables, &mut errors);
     let authored = inspect_inventory(catalog_dir, &schema, &mut errors);
     validate(&authored, &schema, catalog_dir, &mut errors);
     validate_campaign_contracts(&authored, &mut errors);
     crate::composition::validate(&authored, &mut errors);
     crate::sovereign::validate(&authored, &mut errors);
+    crate::projects::validate(&authored, &mut errors);
     for (name, rows) in &tables {
         let mut actual: Vec<_> = rows.iter().collect();
         let mut expected: Vec<_> = authored[name].iter().collect();

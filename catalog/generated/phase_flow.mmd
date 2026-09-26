@@ -5,6 +5,7 @@ flowchart LR
     P30["30: phase_1.checkpoint"]
     P35["35: repo.process_non_roll"]
     P35["35: reserves.clear_week"]
+    P35["35: project.act"]
     P35["35: petroleum.realize_week\npetroleum.record_outage\npetroleum.demote"]
     P35["35: energy.clear_week\nenergy.record_restriction"]
     P70["70: iran.record_occurrence\nsanctions.record_order\nsanctions.advance_day"]
@@ -23,6 +24,7 @@ flowchart LR
     P20 --> P25
     P25 --> P30
     P30 --> P35
+    P35 --> P35
     P35 --> P35
     P35 --> P35
     P35 --> P35

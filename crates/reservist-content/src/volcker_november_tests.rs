@@ -137,3 +137,59 @@ fn the_committee_continues_the_path_and_refuses_a_return_to_the_band() {
     assert_eq!(dissents("SLOWER_PATH_FULL"), ["partee", "teeters", "rice"]);
     assert_eq!(dissents("RETURN_TO_BAND").len(), 11);
 }
+
+fn with_recorded_project(owner: &str, envelope: &str) -> reservist_core::api::FrozenScenario {
+    let mut scenario = scenario();
+    let event = |id: &str, due: &str, sequence: u64, payload: Value| {
+        serde_json::json!({"stable_id": id, "due_time": due, "phase_priority": 35,
+            "stable_sequence": sequence, "responsible_owner": owner, "work_kind": "project.act",
+            "payload": payload, "calendar_id": "calendar.us.new_york", "requires_session": false})
+    };
+    let events = scenario.tape["events"].as_array_mut().unwrap();
+    events.push(event(
+        "recorded.project.propose",
+        "1979-11-06T10:00:00-05:00",
+        900,
+        serde_json::json!({"verb": "propose", "project_id": "project.sa.test_line",
+            "envelope_id": envelope, "capacity_kbd": "1850", "lead_time_weeks": 234}),
+    ));
+    events.push(event(
+        "recorded.project.finance",
+        "1979-11-07T10:00:00-05:00",
+        901,
+        serde_json::json!({"verb": "finance", "project_id": "project.sa.test_line"}),
+    ));
+    scenario
+}
+
+#[test]
+fn recorded_projects_build_only_inside_registered_envelopes() {
+    let operations = "system.sa.petroleum.operations";
+    let run = run_scenario(
+        &with_recorded_project(operations, "envelope.sa.east_west_crude"),
+        "CONTINUE_PATH_FULL",
+        None,
+        None,
+    )
+    .unwrap();
+    let project = &run.state_snapshot["projects"]["projects"]["project.sa.test_line"];
+    assert_eq!(project["status"], "building");
+    assert_eq!(project["started_on"], "1979-11-07");
+    for (owner, envelope, expected) in [
+        (operations, "envelope.sa.invented_field", "not a registered"),
+        (
+            "system.ir.petroleum.operations",
+            "envelope.sa.east_west_crude",
+            "not eligible",
+        ),
+    ] {
+        let error = run_scenario(
+            &with_recorded_project(owner, envelope),
+            "CONTINUE_PATH_FULL",
+            None,
+            None,
+        )
+        .unwrap_err();
+        assert!(error.contains(expected), "{error}");
+    }
+}

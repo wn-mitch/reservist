@@ -25,7 +25,11 @@ struct ChannelSpec {
 const CHANNELS: &[ChannelSpec] = &[
     ChannelSpec {
         id: "channel.energy_supply",
-        inputs: &["petroleum.announce_target", "petroleum.record_outage"],
+        inputs: &[
+            "petroleum.announce_target",
+            "petroleum.record_outage",
+            "project.act",
+        ],
         interventions: &[],
         state_owner: None,
     },

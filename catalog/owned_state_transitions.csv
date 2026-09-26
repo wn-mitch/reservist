@@ -122,6 +122,7 @@ state.system.kw.petroleum.policy.posture,announce_target,https://cdn.ca9.uscourt
 state.system.sa.petroleum.operations.operations,demote,https://www.gao.gov/assets/id-78-32.pdf
 state.system.sa.petroleum.operations.operations,realize_week,https://www.gao.gov/assets/id-78-32.pdf
 state.system.sa.petroleum.operations.operations,record_outage,https://www.gao.gov/assets/id-78-32.pdf
+state.system.sa.petroleum.operations.projects,propose;finance;resize;delay;accelerate;mothball;expand;cancel;commission,https://search.library.wisc.edu/digital/AFG3UGPJ3A3TZD82/text/AQC7UEBHNFSHW78J
 state.system.sa.petroleum.policy.posture,announce_target,https://cdn.ca9.uscourts.gov/datastore/library/2013/02/26/California_crude-oil.pdf
 state.system.su.petroleum.operations.operations,demote,doc:mandate.m4-proving-lens
 state.system.su.petroleum.operations.operations,realize_week,doc:mandate.m4-proving-lens

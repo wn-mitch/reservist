@@ -111,6 +111,9 @@ pub(crate) struct ScenarioRuntime {
     pub(crate) crude: Option<crate::markets::crude::CrudeMarket>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub(crate) sanctions: Option<crate::channels::iran_sanctions::SanctionsChannel>,
+    /// Projects inside the feasible-project envelopes frozen on selected owners.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub(crate) projects: Option<crate::resources::projects::ProjectBook>,
     /// Sovereign petroleum systems keyed by sovereign ID.
     #[serde(default, skip_serializing_if = "BTreeMap::is_empty")]
     pub(crate) petroleum: BTreeMap<String, crate::scenario::handlers::petroleum::PetroleumSystem>,
@@ -318,6 +321,7 @@ impl ScenarioRuntime {
             array(&scenario.initialization, "opening_state")?,
             &selected,
         )?;
+        let projects = crate::scenario::handlers::projects::book_from_scenario(scenario)?;
         let events = array(&scenario.initialization, "scheduled_events")?
             .iter()
             .chain(array(&scenario.tape, "events")?)
@@ -392,6 +396,7 @@ impl ScenarioRuntime {
             constituent_outcomes: BTreeMap::new(),
             composition_roots,
             petroleum,
+            projects,
             crude,
             sanctions,
             monitoring: MonitoringBook::new(),
@@ -898,6 +903,9 @@ impl ScenarioRuntime {
         }
         if let Some(sanctions) = &self.sanctions {
             snapshot["iran_sanctions_channel"] = json!(sanctions);
+        }
+        if let Some(projects) = &self.projects {
+            snapshot["projects"] = json!(projects);
         }
         if let Some(crude) = &self.crude {
             snapshot["crude_market"] = json!(crude);

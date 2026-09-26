@@ -409,6 +409,17 @@ handler!(
     None
 );
 
+handler!(
+    ProjectWorkHandler,
+    handle_project_work,
+    "project-work",
+    ["project.act"],
+    Agreement,
+    [],
+    ["state.petroleum.projects", "ledger.witness"],
+    None
+);
+
 static DECLARATIONS: &[Declaration] = &[
     Declaration {
         meta: OpenWorkHandler::META,
@@ -433,6 +444,10 @@ static DECLARATIONS: &[Declaration] = &[
     Declaration {
         meta: ReservesWorkHandler::META,
         invoke: ReservesWorkHandler::invoke,
+    },
+    Declaration {
+        meta: ProjectWorkHandler::META,
+        invoke: ProjectWorkHandler::invoke,
     },
     Declaration {
         meta: PetroleumWeekHandler::META,

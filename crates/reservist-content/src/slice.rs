@@ -106,6 +106,7 @@ pub fn freeze_catalog_slice_from_tables(
         }
     }
 
+    let mut envelopes = crate::projects::envelopes_by_owner(tables);
     let mut entries = Vec::with_capacity(selected.len());
     for catalog_id in selected {
         let entity = entities.get(&catalog_id).ok_or_else(|| {
@@ -143,6 +144,11 @@ pub fn freeze_catalog_slice_from_tables(
             "permitted_fidelity_tiers": permitted.into_iter().collect::<Vec<_>>(),
             "source_definition_version": required(entity, "definition_version")?,
         }));
+        // Only owners eligible for a feasible-project envelope carry the key.
+        if let Some(owned) = envelopes.remove(&catalog_id) {
+            let entry = entries.last_mut().expect("entry was just pushed");
+            entry["project_envelopes"] = Value::Array(owned);
+        }
     }
     let mut result = serde_json::json!({
         "catalog_definition_hash": "",

@@ -166,6 +166,7 @@ impl ScenarioRuntime {
             }
             _ => {}
         }
+        self.commission_projects(&at, &event.stable_id)?;
         let mut realized = Vec::<(String, Realization)>::new();
         let only = event.payload["sovereign_id"].as_str().map(str::to_owned);
         for (sovereign, system) in &mut self.petroleum {

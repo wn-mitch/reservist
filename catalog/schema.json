@@ -49,6 +49,8 @@
     "recognition_treatment": ["recognized", "recognized_non_un", "derecognized_by_us", "disputed", "unrecognized_claimant"],
     "roster_status": ["complete", "partial", "NONE"],
     "resource_system": ["petroleum"],
+    "capacity_effect": ["production_capacity", "export_route_capacity"],
+    "site_kind": ["field", "route", "terminal"],
     "sovereign_facet": ["governing_authority", "fiscal_accounts", "monetary_accounts", "external_relationships", "trade_production", "trade_demand", "response_table", "water_sanitation", "food", "energy", "shelter_thermal", "health", "transport_logistics", "payments_finance", "communications", "public_order_security", "strategic_materiel"]
   },
   "tables": {
@@ -100,6 +102,9 @@
     "sovereign_bundles.csv": ["profile_id", "sovereign_id", "governing_authority", "fiscal_accounts", "monetary_accounts", "external_relationships", "trade_production", "trade_demand", "response_table", "water_sanitation", "food", "energy", "shelter_thermal", "health", "transport_logistics", "payments_finance", "communications", "public_order_security", "strategic_materiel", "notes", "provenance"],
     "sovereign_facet_exceptions.csv": ["profile_id", "sovereign_id", "facet", "reason", "provenance"],
     "sovereign_resource_systems.csv": ["profile_id", "sovereign_id", "resource", "policy_owner", "operations_owner", "notes", "provenance"],
+    "project_sites.csv": ["site_id", "site_kind", "sovereign_id", "description", "provenance"],
+    "project_technologies.csv": ["technology_id", "resource", "capacity_effect", "description", "provenance"],
+    "project_envelopes.csv": ["envelope_id", "resource", "site_id", "technology_id", "eligible_owner_ids", "capacity_min_kbd", "capacity_max_kbd", "cost_min_usd_bn", "cost_max_usd_bn", "lead_time_min_weeks", "lead_time_max_weeks", "permission_refs", "dependency_ids", "uncertainty_notes", "provenance"],
     "interaction_finding_rules.csv": ["finding_id", "witness_kind", "receipt_status", "minimum_matches", "points", "verdict", "provenance"]
   },
   "table_lifecycle": {
@@ -151,6 +156,9 @@
     "sovereign_bundles.csv": "deferred",
     "sovereign_facet_exceptions.csv": "deferred",
     "sovereign_resource_systems.csv": "deferred",
+    "project_sites.csv": "deferred",
+    "project_technologies.csv": "deferred",
+    "project_envelopes.csv": "deferred",
     "interaction_finding_rules.csv": "required"
   },
   "table_keys": {
@@ -202,6 +210,9 @@
     "sovereign_bundles.csv": ["profile_id", "sovereign_id"],
     "sovereign_facet_exceptions.csv": ["profile_id", "sovereign_id", "facet"],
     "sovereign_resource_systems.csv": ["profile_id", "sovereign_id", "resource"],
+    "project_sites.csv": ["site_id"],
+    "project_technologies.csv": ["technology_id"],
+    "project_envelopes.csv": ["envelope_id"],
     "interaction_finding_rules.csv": ["finding_id"]
   },
   "table_placement": {
@@ -253,6 +264,9 @@
     "sovereign_bundles.csv": {"kind": "profile", "field": "profile_id"},
     "sovereign_facet_exceptions.csv": {"kind": "profile", "field": "profile_id"},
     "sovereign_resource_systems.csv": {"kind": "profile", "field": "profile_id"},
+    "project_sites.csv": {"kind": "shared"},
+    "project_technologies.csv": {"kind": "shared"},
+    "project_envelopes.csv": {"kind": "shared"},
     "interaction_finding_rules.csv": {"kind": "any_scenario"}
   },
   "field_vocabularies": {
@@ -299,6 +313,10 @@
     "sovereign_rosters.csv.recognition_treatment": "recognition_treatment",
     "world_profiles.csv.roster_status": "roster_status",
     "sovereign_resource_systems.csv.resource": "resource_system",
+    "project_sites.csv.site_kind": "site_kind",
+    "project_technologies.csv.resource": "resource_system",
+    "project_technologies.csv.capacity_effect": "capacity_effect",
+    "project_envelopes.csv.resource": "resource_system",
     "sovereign_facet_exceptions.csv.facet": "sovereign_facet"
   },
   "allow_unknown": {

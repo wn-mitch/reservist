@@ -16,7 +16,7 @@ foreign-branch compliance. Iran withdraws a daily share of unblocked official
 deposits once it announces intent.
 
 **Observed on `scenarios/volcker_1979_11`:** the instance of
-`template.volcker_lens` seals as `sha256:e1a4a79e…e2be` and replays
+`template.volcker_lens` seals as `sha256:8373bde3…f4e9` and replays
 identically for all five packages. It opens November 5 under the reserves
 path with a 12% discount rate. Weekly funds clear at 13.53–13.65% against
 recorded weekly averages of 13.1–13.77%.
@@ -30,8 +30,18 @@ recorded weekly averages of 13.1–13.77%.
 | Return to a funds band | 1–11, rejected | none |
 
 Moving execution before the 08:10 order leaves both actions unauthorized.
+
+Feasible-project envelopes are catalog rows naming a registered site, a
+registered technology, eligible owners, and capacity, cost, and lead-time
+ranges. The slice freezes them onto their owners. The Abqaiq–Yanbu crude line
+is the one 1979 envelope, pinned to its observed 1.85 mb/d, $1.6 billion, and
+4.5 years. A recorded project inside it builds; an unregistered envelope or an
+ineligible owner fails the run, and catalog validation rejects unregistered
+sites and technologies. Completed capacity commissions into operations at the
+next weekly realization.
 Every committed fixture reseals byte-for-byte and parity passes.
 
 **Not established:** as-published November SOMA and M-1 levels, Iranian
-production after August, evidence for the withdrawal rate, the 1979
+production after August, evidence for the withdrawal rate, the East-West
+line's construction dates, the 1979
 calendar-and-folders interaction, and events after November.
