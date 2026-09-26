@@ -706,9 +706,49 @@ pub fn eligibility_details(tables: &Tables) -> BTreeMap<String, Eligibility> {
         .filter(|row| get(row, "status") == "complete")
         .map(|row| get(row, "catalog_id").to_owned())
         .collect::<HashSet<_>>();
+    let roster_roots = tables
+        .get("sovereign_rosters.csv")
+        .into_iter()
+        .flatten()
+        .filter(|row| {
+            matches!(
+                get(row, "recognition_treatment"),
+                "recognized" | "recognized_non_un"
+            )
+        })
+        .map(|row| get(row, "sovereign_id").to_owned())
+        .collect::<HashSet<_>>();
     let mut details = BTreeMap::new();
     for (id, row) in &entities {
         if get(row, "entry_class") != "instance" {
+            continue;
+        }
+        if get(row, "identity_clade") == "SovereignSystem" {
+            // A sovereign root is eligible through its type and a root roster row;
+            // it owns no state, so relationships, transmissions, and probes do not apply.
+            let mut missing = Vec::new();
+            let mut scopes = Vec::new();
+            for (present, scope) in [
+                (type_ids.contains(get(row, "instance_of")), "type"),
+                (roster_roots.contains(id), "roster"),
+            ] {
+                if present {
+                    scopes.push(scope.into())
+                } else {
+                    missing.push(scope.into())
+                }
+            }
+            if get(row, "selectable_in_manifest") != "true" {
+                missing = vec!["not_catalog_eligible".into()];
+            }
+            details.insert(
+                id.clone(),
+                Eligibility {
+                    eligible: missing.is_empty(),
+                    missing,
+                    scopes,
+                },
+            );
             continue;
         }
         let mut scopes = Vec::new();

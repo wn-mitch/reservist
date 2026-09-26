@@ -82,7 +82,17 @@ impl ScenarioManifest {
                     format!("missing catalog entry {catalog_id}"),
                 )
             })?;
-            if entry.get("completeness_state").and_then(Value::as_str) != Some("probe_complete") {
+            // Composition roots are identity-only; every other entry must be probe complete.
+            let root = entry
+                .get("identity_clade")
+                .and_then(Value::as_str)
+                .is_some_and(|clade| {
+                    reservist_core::fidelity::COMPOSITION_ROOT_CLADES.contains(&clade)
+                });
+            let completeness = entry.get("completeness_state").and_then(Value::as_str);
+            if completeness != Some("probe_complete")
+                && !(root && completeness == Some("identity_only"))
+            {
                 return Err(ContentError::new(
                     "manifest_closure",
                     format!("entry is not probe_complete: {catalog_id}"),

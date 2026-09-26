@@ -14,7 +14,9 @@ path in a reserves market whose requirements bind only covered member banks.
 Meetings without a published statement time release no statement.
 
 **Observed on `scenarios/volcker_1979`:** the fixture seals as
-`sha256:3f476fd2…1803` and replays identically for all five packages.
+`sha256:8cd10b46…e31d` and replays identically for all five packages. All
+161 roster roots are selected as identity-only composition roots; they own no
+state or scheduled work, and adding them left every transcript byte unchanged.
 August 1979 magnitudes open the market: M-1 of $373.3 billion, required
 reserves near $40.1 billion, borrowing near $0.8 billion, and a 10% discount
 rate. With twelve voters and researched leanings:

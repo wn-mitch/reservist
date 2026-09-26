@@ -107,6 +107,9 @@ pub(crate) struct ScenarioRuntime {
     pub(crate) commitments: Option<CommitmentBook>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub(crate) reserves: Option<crate::markets::reserves::ReservesMarket>,
+    /// Selected composition roots: identity only, never dispatched or owning state.
+    #[serde(default, skip_serializing_if = "BTreeSet::is_empty")]
+    pub(crate) composition_roots: BTreeSet<String>,
     /// Outcomes of constituent actions decided outside the FOMC, by action ID.
     #[serde(default, skip_serializing_if = "BTreeMap::is_empty")]
     pub(crate) constituent_outcomes: BTreeMap<String, String>,
@@ -285,6 +288,7 @@ impl ScenarioRuntime {
                 )
             })
             .transpose()?;
+        let composition_roots = composition_roots(scenario, &selected)?;
         let events = array(&scenario.initialization, "scheduled_events")?
             .iter()
             .chain(array(&scenario.tape, "events")?)
@@ -357,6 +361,7 @@ impl ScenarioRuntime {
             commitments,
             reserves,
             constituent_outcomes: BTreeMap::new(),
+            composition_roots,
             monitoring: MonitoringBook::new(),
             receipts: Vec::new(),
             fomc_decision: None,
@@ -846,6 +851,9 @@ impl ScenarioRuntime {
         if let Some(chief) = &self.chief {
             snapshot["chief"] = serde_json::to_value(chief).expect("chief state serializes");
         }
+        if !self.composition_roots.is_empty() {
+            snapshot["composition_roots"] = json!(self.composition_roots);
+        }
         if !self.constituent_outcomes.is_empty() {
             snapshot["constituent_outcomes"] = json!(self.constituent_outcomes);
         }
@@ -1049,4 +1057,35 @@ pub(crate) fn present_mut<'a, T>(
     field
         .as_mut()
         .ok_or_else(|| format!("scenario does not select the {name}"))
+}
+
+/// Selected entries whose clade is a composition root. Roots own no work:
+/// a scheduled event that names one as its responsible owner is rejected.
+fn composition_roots(
+    scenario: &FrozenScenario,
+    selected: &BTreeSet<String>,
+) -> Result<BTreeSet<String>, String> {
+    let roots = array(&scenario.catalog_slice, "entries")?
+        .iter()
+        .filter(|entry| {
+            entry["identity_clade"]
+                .as_str()
+                .is_some_and(|clade| crate::fidelity::COMPOSITION_ROOT_CLADES.contains(&clade))
+        })
+        .filter_map(|entry| entry["catalog_id"].as_str())
+        .filter(|id| selected.contains(*id))
+        .map(str::to_owned)
+        .collect::<BTreeSet<_>>();
+    for event in array(&scenario.initialization, "scheduled_events")?
+        .iter()
+        .chain(array(&scenario.tape, "events")?)
+    {
+        let owner = event["responsible_owner"].as_str().unwrap_or_default();
+        if roots.contains(owner) {
+            return Err(format!(
+                "composition root {owner} cannot own scheduled work"
+            ));
+        }
+    }
+    Ok(roots)
 }
