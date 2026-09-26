@@ -21,3 +21,12 @@ profile through a typed coarse component bundle; implements recorded and
 responsive provider channels, deterministic rich-to-coarse reconciliation,
 supported transition closure, UTC and local-calendar composition, feasible
 project envelopes, approved asset pipeline coverage, and broader world content.
+
+M4 acceptance still requires: approved Jimmy Darter and William Biller
+portraits, actor cutouts, and one shared scene; a post-meeting staff review and
+scorecard for 1979 that do not assume 2006 settlement witnesses; researched
+November 1979 money and SOMA levels, late-1979 Iranian production, and evidence
+for the Iranian withdrawal rate; the campaign endpoint that fixes the scenario
+identifier; and typed necessity-system schemas before any necessity facet
+leaves its derived owner. Later lenses and the Hormuz template follow
+acceptance.

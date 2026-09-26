@@ -11,4 +11,6 @@
 
 `just check` builds and tests the locked workspace, checks formatting and strict Clippy, validates dependency and Godot boundaries, compares native/oracle parity, runs catalog and oracle suites, validates the scenario, and executes Godot boundary tests. `just docs-check` now validates the compiled documentation boundary as part of that gate.
 
+`just --set scenario scenarios/volcker_1979 cli-play` plays the M4 opening through the calendar-and-folders interaction; `scenarios/volcker_1979_11` is the November 1979 instance. Without `--package`, native commands use the scenario's first authored package, or `MEASURED_FIRMING` for the 2006 set.
+
 Market laboratory commands remain tooling-only: `just market-lab`, sweep, compare, suite, tier, ablate, policy, ecology, and runtime composition. They do not alter the ordinary session or Godot projection.

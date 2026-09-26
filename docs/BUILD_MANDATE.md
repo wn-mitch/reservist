@@ -4,7 +4,7 @@
 **Status:** `index`
 **Depends on:** `none`
 
-This non-normative front door routes the authorized build. M1 through M3 are accepted as implemented; their evidence is in [the build review](BUILD_REVIEW.md). M4 provider and world expansion is the next milestone, scoped by [the M4 proving lens](build/mandate/m4-proving-lens.md). Runway interfaces do not count as implemented mechanics.
+This non-normative front door routes the authorized build. M1 through M3 are accepted as implemented; their evidence is in [the build review](BUILD_REVIEW.md). M4 provider and world expansion, scoped by [the M4 proving lens](build/mandate/m4-proving-lens.md), is implemented in slices and awaits acceptance; the remaining obligations are listed in the milestone order. Runway interfaces do not count as implemented mechanics.
 
 ## Mandate leaves
 

@@ -4,7 +4,7 @@
 **Status:** `index`
 **Depends on:** `none`
 
-M1 and M2 were accepted on jj change `mkstwyuv`. M3 was accepted on change `nryypxus`. Production uses Rust and Godot; Python remains only in oracle tooling. M4 provider/world expansion is not implemented by those acceptances.
+M1 and M2 were accepted on jj change `mkstwyuv`. M3 was accepted on change `nryypxus`. Production uses Rust and Godot; Python remains only in oracle tooling. M4 slices are implemented on the working stack through change `royxwrun` and are not yet accepted; their evidence is in the Volcker checkpoints.
 
 ## Current system
 

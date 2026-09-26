@@ -13,4 +13,6 @@ M2 and M3 start paused. Reading and previewing do not advance the calendar or re
 
 M3 executes all seven canonical Chair succession causes through frozen rule references, retains official burdens and records, selects authored successor programs, and exposes distinct player-safe chairmanship dossiers. Versioned reviews support acceptance, Chair response, evidence-backed revision, and supplemental work with dated capacity costs. The final endpoint closes ordinary gameplay until required review disposition, then records a terminal campaign dossier that persists through save and replay.
 
-No inspected type or interface is claimed as M4 provider response, broader world content, economic calibration, or player-comprehension evidence.
+**Inspected through working change `royxwrun` (M4, not accepted):** the runtime builds only the subsystems a scenario selects. Sovereign roots are identity-only and own no state or work. Petroleum policy and operations are separate owners, and access restrictions never alter upstream state. External channels declare RECORDED or RESPONSIVE modes; Iran sanctions implementation is RESPONSIVE. Local calendars interpret UTC instants. Dated instances freeze their template. Feasible-project envelopes bound physical development. Presentation assets carry validated metadata. Staff request tasks are scenario content, with the 2006 task as the built-in default.
+
+No inspected type or interface is claimed as broader world content, economic calibration, or player-comprehension evidence.
