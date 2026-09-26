@@ -11,7 +11,7 @@ use super::{
     workflow::InteractionState,
 };
 use crate::{
-    packages::package_by_id,
+    packages::resolve_package,
     save::{self, ResumeError, SaveFile},
     scenario::ScenarioRuntime,
     staff::{AnalyticalTask, RequestMode},
@@ -275,7 +275,7 @@ impl Session {
                         "The Committee has already recorded its decision.",
                     ));
                 }
-                package_by_id(&package_id)
+                resolve_package(&self.runtime.scenario, &package_id)
                     .map_err(|reason| self.reject("unknown_package", reason.to_string()))?;
                 self.runtime.package_id = package_id;
                 while self.runtime.fomc_decision.is_none()

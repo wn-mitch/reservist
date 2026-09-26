@@ -20,7 +20,7 @@ use crate::{
     campaign::{CampaignState, ReviewDisposition, ReviewRecord, SuccessionCause},
     canon::sha256,
     folder::{AdmissionContext, BoundAction, FolderBook, FolderContext},
-    packages::package_by_id,
+    packages::resolve_package,
     routing::{AuthoredRoutingPolicy, DeliveredArtifact, EvidenceUncertainty},
     staff::{AnalyticalTask, RequestMode},
     time::Instant,
@@ -98,7 +98,7 @@ pub fn validate_interaction_contract(scenario: &FrozenScenario) -> Result<(), St
                 authority_id,
                 ..
             } => {
-                package_by_id(package_id).map_err(|error| error.to_string())?;
+                resolve_package(scenario, package_id).map_err(|error| error.to_string())?;
                 legal
                     .clause(authority_id, at)
                     .map_err(|error| error.to_string())?;
@@ -863,7 +863,7 @@ impl Session {
                             .clock
                             .queue()
                             .any(|event| event.work_kind == "fomc.meeting")
-                        && package_by_id(package_id).is_ok()
+                        && resolve_package(&self.runtime.scenario, package_id).is_ok()
                         && option
                             .required_evidence_ids
                             .iter()

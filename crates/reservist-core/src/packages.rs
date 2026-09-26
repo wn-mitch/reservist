@@ -1,3 +1,5 @@
+use std::collections::BTreeMap;
+
 use serde::{Deserialize, Serialize};
 use serde_json::{Value, json};
 
@@ -11,6 +13,34 @@ pub(crate) struct PolicyPackage {
     pub known_downside: String,
     pub activation_state: String,
     pub revision_history: Vec<Value>,
+    /// Parameters for directive effects, keyed by effect ID.
+    #[serde(default, skip_serializing_if = "BTreeMap::is_empty")]
+    pub action_parameters: BTreeMap<String, Value>,
+    /// Actions owned outside the FOMC that the slate admits together; each is
+    /// decided, authorized, and executed by its own owner.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub constituent_actions: Vec<ConstituentAction>,
+    /// Directive expiry and authority references; absent for the 2006 packages,
+    /// which keep their built-in directive terms.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub directive_terms: Option<DirectiveTerms>,
+}
+
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub(crate) struct ConstituentAction {
+    pub action_id: String,
+    pub owner_id: String,
+    pub authority_refs: Vec<String>,
+    #[serde(default)]
+    pub parameters: Value,
+}
+
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub(crate) struct DirectiveTerms {
+    pub expiry_time: String,
+    pub authority_refs: Vec<String>,
 }
 
 impl PolicyPackage {
@@ -66,5 +96,91 @@ pub(crate) fn package_by_id(package_id: &str) -> Result<PolicyPackage, PackageEr
         known_downside: downside.into(),
         activation_state: "PREPARED".into(),
         revision_history: Vec::new(),
+        action_parameters: BTreeMap::new(),
+        constituent_actions: Vec::new(),
+        directive_terms: None,
     })
+}
+
+/// Resolves a package from the scenario's authored package content, falling
+/// back to the built-in packages only for scenarios that author none.
+pub(crate) fn resolve_package(
+    scenario: &crate::api::FrozenScenario,
+    package_id: &str,
+) -> Result<PolicyPackage, PackageError> {
+    let Some(authored) = scenario.authority_content.get("packages") else {
+        return package_by_id(package_id);
+    };
+    authored
+        .as_array()
+        .into_iter()
+        .flatten()
+        .find(|package| package["package_id"] == package_id)
+        .ok_or_else(|| PackageError(package_id.into()))
+        .and_then(|package| {
+            serde_json::from_value(package.clone())
+                .map_err(|error| PackageError(format!("{package_id}: {error}")))
+        })
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::simulation_gates::m1_fixture;
+
+    fn authored() -> Value {
+        json!([{
+            "package_id": "HOLD_BAND",
+            "proposing_subject": "office.us.federal_reserve.fomc_chair",
+            "policy_actions": ["desk.set_rate_regime"],
+            "communication_commitment": null,
+            "authority_requirements": ["clause.fra.12a.fomc_direction"],
+            "known_downside": "Money growth may keep drifting above range.",
+            "activation_state": "PREPARED",
+            "revision_history": [],
+            "action_parameters": {"desk.set_rate_regime": {"band_bp": [1075, 1125]}},
+            "constituent_actions": [{
+                "action_id": "discount.propose_rate",
+                "owner_id": "inst.us.federal_reserve.new_york",
+                "authority_refs": ["clause.fra.14d.discount_rate"],
+                "parameters": {"rate_bp": 1000}
+            }],
+            "directive_terms": {
+                "expiry_time": "1979-09-18T09:00:00-04:00",
+                "authority_refs": ["clause.fra.14.reserve_bank_open_market_power"]
+            }
+        }])
+    }
+
+    #[test]
+    fn authored_packages_replace_the_built_in_set() {
+        let mut scenario = m1_fixture();
+        scenario.authority_content["packages"] = authored();
+        let package = resolve_package(&scenario, "HOLD_BAND").unwrap();
+        assert_eq!(
+            package.constituent_actions[0].owner_id,
+            "inst.us.federal_reserve.new_york"
+        );
+        assert_eq!(
+            package.directive_terms.unwrap().expiry_time,
+            "1979-09-18T09:00:00-04:00"
+        );
+        assert!(resolve_package(&scenario, "WAIT_AND_WARN").is_err());
+    }
+
+    #[test]
+    fn scenarios_without_authored_packages_keep_the_built_in_set() {
+        let package = resolve_package(&m1_fixture(), "WAIT_AND_WARN").unwrap();
+        assert_eq!(package, package_by_id("WAIT_AND_WARN").unwrap());
+        assert!(package.to_dict().get("constituent_actions").is_none());
+    }
+
+    #[test]
+    fn malformed_authored_packages_fail_closed() {
+        let mut scenario = m1_fixture();
+        let mut packages = authored();
+        packages[0]["constituent_actions"][0]["unexpected"] = json!(true);
+        scenario.authority_content["packages"] = packages;
+        assert!(resolve_package(&scenario, "HOLD_BAND").is_err());
+    }
 }

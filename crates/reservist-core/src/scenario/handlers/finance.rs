@@ -12,7 +12,7 @@ use crate::{
     markets::treasury_secondary::{
         OrderSide, TreasuryFill, TreasuryOrder, TreasurySecondaryMarket,
     },
-    packages::package_by_id,
+    packages::resolve_package,
     records::{ReceiptStage, StageReceipt},
     scenario::runtime::{DynamicWork, ScenarioRuntime, present, present_mut},
     settlement::envelope::{SettlementEnvelope, SettlementStatus},
@@ -54,7 +54,8 @@ impl ScenarioRuntime {
             );
             return Ok(());
         }
-        let package = package_by_id(
+        let package = resolve_package(
+            &self.scenario,
             self.admitted_package_id
                 .as_deref()
                 .unwrap_or(&self.package_id),

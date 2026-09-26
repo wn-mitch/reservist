@@ -25,7 +25,7 @@ use crate::{
     media::loonberg::Report,
     monitoring::MonitoringBook,
     observation::{EvidenceDelivery, Observation, ObservationSystem},
-    packages::package_by_id,
+    packages::resolve_package,
     participants::{DealerCohort, ExternalBuyerResidual, LeveragedFundCohort},
     player::PlayerRecordStore,
     population::{
@@ -143,7 +143,7 @@ impl ScenarioRuntime {
         package_id: &str,
         request_mode: Option<RequestMode>,
     ) -> Result<Self, String> {
-        package_by_id(package_id).map_err(|error| error.to_string())?;
+        resolve_package(scenario, package_id).map_err(|error| error.to_string())?;
         crate::phase::Registry::new()?;
         crate::fidelity::validate_selected(scenario)?;
         let player_id = string(&scenario.initialization, "player_id")?;

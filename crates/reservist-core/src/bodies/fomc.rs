@@ -176,17 +176,24 @@ impl FomcBody<'_> {
             ],
             source_record_id: format!("record.package.{suffix}"),
             effective_time: at_time.into(),
-            expiry_time: "2006-03-29T17:00:00-05:00".into(),
+            expiry_time: package
+                .directive_terms
+                .as_ref()
+                .map_or("2006-03-29T17:00:00-05:00", |terms| &terms.expiry_time)
+                .into(),
             reason: reason.into(),
         };
         let directive = if authorization.approved_effects.is_empty() {
             None
         } else {
             let mut authority_refs = authorization.authority_refs.clone();
-            authority_refs.extend([
-                "clause.fra.14.reserve_bank_open_market_power".into(),
-                "clause.domestic_authorization.2006.paragraph4".into(),
-            ]);
+            match &package.directive_terms {
+                Some(terms) => authority_refs.extend(terms.authority_refs.iter().cloned()),
+                None => authority_refs.extend([
+                    "clause.fra.14.reserve_bank_open_market_power".into(),
+                    "clause.domestic_authorization.2006.paragraph4".into(),
+                ]),
+            }
             Some(Directive {
                 directive_id: format!("directive.{suffix}"),
                 issuing_body: Self::BODY_ID.into(),

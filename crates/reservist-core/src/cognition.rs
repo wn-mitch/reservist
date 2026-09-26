@@ -350,6 +350,9 @@ mod tests {
             known_downside: "x".into(),
             activation_state: "PREPARED".into(),
             revision_history: vec![],
+            action_parameters: Default::default(),
+            constituent_actions: vec![],
+            directive_terms: None,
         };
         assert_eq!(
             participant.position_for(&package).unwrap().position,

@@ -38,33 +38,73 @@ pub fn scenario_hash(
     }))
 }
 
-pub fn authority_content(scenario_dir: &Path) -> Result<Value, ContentError> {
-    let mut legal_paths = std::fs::read_dir(scenario_dir.join("legal"))?
+/// JSON files in `folder`, sorted by path; a missing folder yields none.
+fn json_files(folder: &Path) -> Result<Vec<std::path::PathBuf>, ContentError> {
+    if !folder.try_exists()? {
+        return Ok(Vec::new());
+    }
+    let mut paths = std::fs::read_dir(folder)?
         .map(|entry| entry.map(|entry| entry.path()))
         .collect::<Result<Vec<_>, _>>()?;
-    legal_paths.retain(|path| {
+    paths.retain(|path| {
         path.extension()
             .is_some_and(|extension| extension == "json")
     });
-    legal_paths.sort();
+    paths.sort();
+    Ok(paths)
+}
+
+/// The single JSON document a scenario keeps in `folder`.
+fn single_json(scenario_dir: &Path, folder: &str) -> Result<Value, ContentError> {
+    let paths = json_files(&scenario_dir.join(folder))?;
+    match paths.as_slice() {
+        [path] => Ok(reservist_core::canon::load_json(path)?),
+        _ => Err(ContentError::new(
+            "authority",
+            format!(
+                "{folder}/ must contain exactly one JSON document; found {}",
+                paths.len()
+            ),
+        )),
+    }
+}
+
+pub fn authority_content(scenario_dir: &Path) -> Result<Value, ContentError> {
+    if !scenario_dir.join("legal").is_dir() {
+        return Err(ContentError::new(
+            "authority",
+            "scenario has no legal/ folder",
+        ));
+    }
     let mut authority = serde_json::Map::new();
-    authority.insert(
-        "cast".into(),
-        reservist_core::canon::load_json(scenario_dir.join("cast/fomc_2006.json"))?,
-    );
+    authority.insert("cast".into(), single_json(scenario_dir, "cast")?);
     authority.insert(
         "legal".into(),
         Value::Array(
-            legal_paths
+            json_files(&scenario_dir.join("legal"))?
                 .into_iter()
                 .map(reservist_core::canon::load_json)
                 .collect::<Result<Vec<_>, _>>()?,
         ),
     );
-    authority.insert(
-        "staff".into(),
-        reservist_core::canon::load_json(scenario_dir.join("staff/work_2006.json"))?,
-    );
+    authority.insert("staff".into(), single_json(scenario_dir, "staff")?);
+    // Authored policy packages replace the built-in 2006 packages when present.
+    let packages = json_files(&scenario_dir.join("packages"))?;
+    if !packages.is_empty() {
+        let mut authored = Vec::new();
+        for path in packages {
+            match reservist_core::canon::load_json(&path)? {
+                Value::Array(rows) => authored.extend(rows),
+                _ => {
+                    return Err(ContentError::new(
+                        "authority",
+                        format!("{} must hold an array of packages", path.display()),
+                    ));
+                }
+            }
+        }
+        authority.insert("packages".into(), Value::Array(authored));
+    }
     let campaign_path = scenario_dir.join("campaign/campaign.json");
     if campaign_path.try_exists()? {
         authority.insert("campaign".into(), serde_json::json!({

@@ -78,7 +78,7 @@ pub(crate) struct ForecastPolicy {
     pub(crate) decline_tradeoff: String,
 }
 
-/// Authored content loaded from `staff/work_2006.json` by the content boundary.
+/// Authored content loaded from the scenario's `staff/` document by the content boundary.
 /// The planner deliberately receives this owned policy rather than scenario data.
 #[derive(Clone, Debug, Eq, PartialEq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
