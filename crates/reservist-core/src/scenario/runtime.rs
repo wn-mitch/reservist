@@ -105,6 +105,11 @@ pub(crate) struct ScenarioRuntime {
     pub(crate) audience_receptions: Vec<AudienceReception>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub(crate) commitments: Option<CommitmentBook>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub(crate) reserves: Option<crate::markets::reserves::ReservesMarket>,
+    /// Outcomes of constituent actions decided outside the FOMC, by action ID.
+    #[serde(default, skip_serializing_if = "BTreeMap::is_empty")]
+    pub(crate) constituent_outcomes: BTreeMap<String, String>,
     pub(crate) monitoring: MonitoringBook,
     pub(crate) receipts: Vec<StageReceipt>,
     pub(crate) fomc_decision: Option<FomcDecision>,
@@ -269,6 +274,17 @@ impl ScenarioRuntime {
             .and_then(Value::as_u64)
             .ok_or("initialization seed must be a nonnegative integer")?;
         let router_seed = i64::try_from(seed).map_err(|error| error.to_string())?;
+        let reserves = has(crate::markets::reserves::MARKET_ID)
+            .then(|| {
+                crate::markets::reserves::ReservesMarket::from_state(
+                    &value(
+                        crate::markets::reserves::MARKET_ID,
+                        crate::markets::reserves::STATE_ID,
+                    )?,
+                    seed,
+                )
+            })
+            .transpose()?;
         let events = array(&scenario.initialization, "scheduled_events")?
             .iter()
             .chain(array(&scenario.tape, "events")?)
@@ -339,6 +355,8 @@ impl ScenarioRuntime {
             reports: Vec::new(),
             audience_receptions: Vec::new(),
             commitments,
+            reserves,
+            constituent_outcomes: BTreeMap::new(),
             monitoring: MonitoringBook::new(),
             receipts: Vec::new(),
             fomc_decision: None,
@@ -544,6 +562,9 @@ impl ScenarioRuntime {
         if event.work_kind == "macro.publish_intermeeting_release" {
             return self.handle_intermeeting_release(event);
         }
+        if event.work_kind == "reserves.publish_week" {
+            return self.handle_reserves_release(event);
+        }
         let measured = self
             .registry
             .apply(
@@ -741,6 +762,13 @@ impl ScenarioRuntime {
                 .as_ref()
                 .map(TreasurySecondaryMarket::snapshot_for_hash),
         );
+        insert_some(
+            &mut snapshot,
+            "reserves_market",
+            self.reserves
+                .as_ref()
+                .map(crate::markets::reserves::ReservesMarket::snapshot_for_hash),
+        );
         snapshot
     }
     pub(crate) fn material_state_hash(&self) -> String {
@@ -808,8 +836,18 @@ impl ScenarioRuntime {
                 .as_ref()
                 .map(TreasurySecondaryMarket::snapshot_for_hash),
         );
+        insert_some(
+            &mut snapshot,
+            "reserves_market",
+            self.reserves
+                .as_ref()
+                .map(crate::markets::reserves::ReservesMarket::snapshot_for_hash),
+        );
         if let Some(chief) = &self.chief {
             snapshot["chief"] = serde_json::to_value(chief).expect("chief state serializes");
+        }
+        if !self.constituent_outcomes.is_empty() {
+            snapshot["constituent_outcomes"] = json!(self.constituent_outcomes);
         }
         if self.calendar.is_some() {
             snapshot["admitted_package_id"] = serde_json::to_value(&self.admitted_package_id)

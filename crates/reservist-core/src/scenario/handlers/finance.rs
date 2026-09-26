@@ -9,6 +9,7 @@ use crate::{
     clock::ScheduledEvent,
     commitments::Commitment,
     execution::desk::DeskExecutor,
+    markets::reserves,
     markets::treasury_secondary::{
         OrderSide, TreasuryFill, TreasuryOrder, TreasurySecondaryMarket,
     },
@@ -111,6 +112,13 @@ impl ScenarioRuntime {
             .get("affirmative_threshold")
             .and_then(serde_json::Value::as_u64)
             .ok_or("cast missing affirmative_threshold")? as usize;
+        let action_parameters = package.action_parameters.clone();
+        let constituent_actions = package.constituent_actions.clone();
+        let admitted_id = package.package_id.clone();
+        let directive_expiry = package
+            .directive_terms
+            .as_ref()
+            .map(|terms| terms.expiry_time.clone());
         let decision = FomcBody {
             legal: &self.legal,
             chair_id,
@@ -152,6 +160,13 @@ impl ScenarioRuntime {
             Some(&decision_event.event_id),
         );
 
+        if !constituent_actions.is_empty() {
+            self.schedule_constituent_actions(
+                &admitted_id,
+                &constituent_actions,
+                &decision_event.event_id,
+            )?;
+        }
         let Some(directive) = decision.directive.as_ref() else {
             self.record_receipt(
                 StageReceipt {
@@ -166,8 +181,7 @@ impl ScenarioRuntime {
                 },
                 Some(&decision_event.event_id),
             );
-            self.schedule_statement_publication(&decision, &decision_event.event_id)?;
-            return Ok(());
+            return self.schedule_statement_publication(&decision, &decision_event.event_id);
         };
 
         let action_results = directive
@@ -179,6 +193,11 @@ impl ScenarioRuntime {
                     directive,
                     effect,
                     &scheduled.due_time.to_string(),
+                    if reserves::is_regime_effect(effect) {
+                        reserves::MARKET_ID
+                    } else {
+                        DeskExecutor::MARKET_ID
+                    },
                 )
             })
             .collect::<Vec<_>>();
@@ -219,11 +238,20 @@ impl ScenarioRuntime {
             },
             Some(&execution_event.event_id),
         );
-        self.run_market_cycle(&action_results, scheduled, &execution_event.event_id)?;
+        self.apply_reserves_regime(
+            &action_results,
+            &action_parameters,
+            scheduled,
+            &execution_event.event_id,
+        )?;
+        if self.market.is_some() {
+            self.run_market_cycle(&action_results, scheduled, &execution_event.event_id)?;
+        }
         self.activate_policy_commitment(
             &decision,
             &execution_event.event_id,
             &scheduled.due_time.to_string(),
+            directive_expiry.as_deref(),
         )?;
         self.schedule_statement_publication(&decision, &execution_event.event_id)
     }
@@ -233,6 +261,7 @@ impl ScenarioRuntime {
         decision: &FomcDecision,
         source_witness: &str,
         at_time: &str,
+        expiry: Option<&str>,
     ) -> Result<(), String> {
         if decision.directive.is_none() || self.policy_commitment_id.is_some() {
             return Ok(());
@@ -245,7 +274,7 @@ impl ScenarioRuntime {
                 "Maintain the authorized operating stance through the declared review horizon."
                     .into(),
             created_at: at_time.into(),
-            expires_at: "2006-04-28T17:00:00-04:00".into(),
+            expires_at: expiry.unwrap_or("2006-04-28T17:00:00-04:00").into(),
             reserved_resource: "institutional_policy_capacity".into(),
             reserved_units: 1,
             source_refs: vec![
@@ -276,10 +305,19 @@ impl ScenarioRuntime {
         decision: &FomcDecision,
         causal_parent: &str,
     ) -> Result<(), String> {
-        let due_time = self
-            .fomc_calendar
-            .statement_time(&decision.meeting_id)
-            .map_err(|error| error.to_string())?;
+        // Meetings without a published statement time (as in 1979) release no
+        // post-meeting statement; the decision stays in institutional records.
+        let Ok(due_time) = self.fomc_calendar.statement_time(&decision.meeting_id) else {
+            self.ledger.append(
+                &decision.authorization.effective_time,
+                "fomc_decision_unpublished",
+                FomcBody::BODY_ID,
+                json!({"authorization_id": decision.authorization.authorization_id}),
+                "profile.chair_scoped",
+                Some(causal_parent),
+            );
+            return Ok(());
+        };
         self.schedule(ScheduledEvent {
             due_time: crate::time::Instant::parse(due_time).map_err(|error| error.to_string())?,
             phase_priority: 50,

@@ -4,6 +4,7 @@ Authority class: canonical. This folder owns accounting, markets, the real econo
 
 - [Accounting and settlement](accounting-and-settlement.md)
 - [Markets, clearing, and prices](markets-clearing-and-prices.md)
+- [Reserves and operating regimes](reserves-and-operating-regimes.md)
 - [Real-economy network](real-economy-network.md)
 - [Opening conditions and transmission](opening-conditions-and-transmission.md)
 - [Economic fidelity and tolerances](economic-fidelity-and-tolerances.md)

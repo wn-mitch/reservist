@@ -9,11 +9,15 @@ impl DeskExecutor {
     pub(crate) const OWNER_ID: &'static str = "inst.us.federal_reserve.new_york";
     pub(crate) const MARKET_ID: &'static str = "market.us.treasury.secondary";
 
+    /// Executes one directive leg against `market_id`. The directive's authority
+    /// references beyond the FOMC decision clauses form its delegation chain,
+    /// which must include section 14 and at least one domestic authorization.
     pub(crate) fn execute(
         legal: &LegalRegistry,
         directive: &Directive,
         requested_effect: &str,
         at_time: &str,
+        market_id: &str,
     ) -> ActionResult {
         let command_id = format!(
             "command.desk.{}",
@@ -56,27 +60,33 @@ impl DeskExecutor {
                 "The certified directive is not effective at the requested execution time.".into(),
             );
         }
-        let required = [
+        const DECISION: [&str; 2] = [
             "clause.fra.12a.fomc_direction",
             "clause.fomc.rules.section3.vote",
-            "clause.fra.14.reserve_bank_open_market_power",
-            "clause.domestic_authorization.2006.paragraph4",
         ];
+        const SECTION_14: &str = "clause.fra.14.reserve_bank_open_market_power";
+        let delegation = directive
+            .authority_refs
+            .iter()
+            .filter(|reference| !DECISION.contains(&reference.as_str()))
+            .collect::<Vec<_>>();
         if directive.issuing_body != "body.us.federal_reserve.fomc"
-            || !required.iter().all(|id| {
+            || !DECISION.iter().all(|id| {
                 directive
                     .authority_refs
                     .iter()
                     .any(|reference| reference == id)
             })
+            || !delegation.iter().any(|reference| *reference == SECTION_14)
+            || delegation.len() < 2
         {
             return reject(
                 ActionStatus::RejectedNoApplicableDelegation,
                 "The directive lacks the required FOMC authority and Desk delegation chain.".into(),
             );
         }
-        let mut clauses = Vec::with_capacity(2);
-        for id in &required[2..] {
+        let mut clauses = Vec::with_capacity(delegation.len());
+        for id in &delegation {
             match legal.clause(id, at_time) {
                 Ok(clause) => clauses.push(clause),
                 Err(error) => {
@@ -87,18 +97,17 @@ impl DeskExecutor {
                 }
             }
         }
+        let treasury = market_id == Self::MARKET_ID;
         if !clauses.iter().all(|clause| {
-            clause.permits(
-                Self::OWNER_ID,
-                Self::MARKET_ID,
-                requested_effect,
-                at_time,
-                true,
-            )
+            clause.permits(Self::OWNER_ID, market_id, requested_effect, at_time, true)
         }) {
             return reject(
                 ActionStatus::RejectedNoApplicableDelegation,
-                "The 2006 domestic authorization does not cover the requested leg.".into(),
+                if treasury {
+                    "The 2006 domestic authorization does not cover the requested leg.".into()
+                } else {
+                    "The domestic authorization does not cover the requested leg.".into()
+                },
             );
         }
         ActionResult {
@@ -108,7 +117,11 @@ impl DeskExecutor {
             status: ActionStatus::Executed,
             realized_effect: Some(requested_effect.into()),
             failure_stage: None,
-            reason: "The Desk submitted the authorized operation to the Treasury market.".into(),
+            reason: if treasury {
+                "The Desk submitted the authorized operation to the Treasury market.".into()
+            } else {
+                "The Desk adopted the authorized operating regime in the reserves market.".into()
+            },
             witness_refs: vec![directive.directive_id.clone()],
         }
     }

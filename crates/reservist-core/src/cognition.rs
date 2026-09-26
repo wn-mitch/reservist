@@ -184,10 +184,40 @@ impl LimitedParticipant {
             beliefs: BeliefLedger::new(beliefs)?,
         })
     }
+    /// Applies authored belief tests; the first match sets the position.
+    pub(crate) fn position_on(
+        &self,
+        rules: &[crate::packages::PositionRule],
+    ) -> Result<ParticipantPosition, BeliefError> {
+        let mut propositions = Vec::new();
+        for rule in rules {
+            let estimate = self.beliefs.estimate(&rule.belief)?;
+            propositions.push(rule.belief.clone());
+            if rule.matches(estimate.estimate) {
+                return Ok(ParticipantPosition {
+                    participant_id: self.participant_id.clone(),
+                    office_id: self.office_id.clone(),
+                    position: rule.position.clone(),
+                    stated_basis: rule.stated_basis.clone(),
+                    belief_provenance: self.beliefs.provenance(&propositions)?,
+                });
+            }
+        }
+        Ok(ParticipantPosition {
+            participant_id: self.participant_id.clone(),
+            office_id: self.office_id.clone(),
+            position: PositionKind::Support,
+            stated_basis: "The proposal falls within the participant's tolerances.".into(),
+            belief_provenance: self.beliefs.provenance(&propositions)?,
+        })
+    }
     pub(crate) fn position_for(
         &self,
         package: &PolicyPackage,
     ) -> Result<ParticipantPosition, BeliefError> {
+        if !package.position_rules.is_empty() {
+            return self.position_on(&package.position_rules);
+        }
         let inflation = self.beliefs.estimate("inflation_persistence")?;
         let housing = self.beliefs.estimate("housing_credit_sensitivity")?;
         let financial_conditions = self
@@ -353,6 +383,7 @@ mod tests {
             action_parameters: Default::default(),
             constituent_actions: vec![],
             directive_terms: None,
+            position_rules: vec![],
         };
         assert_eq!(
             participant.position_for(&package).unwrap().position,

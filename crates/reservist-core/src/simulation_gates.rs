@@ -154,6 +154,7 @@ fn authority_chain_rejects_a_directive_leg_outside_its_certified_scope() {
         directive,
         "desk.raise_target_range_50bp",
         "2006-03-28T09:00:00-05:00",
+        DeskExecutor::MARKET_ID,
     );
 
     assert_eq!(result.status, ActionStatus::RejectedOutsideDirective);

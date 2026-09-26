@@ -24,6 +24,31 @@ pub(crate) struct PolicyPackage {
     /// which keep their built-in directive terms.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub directive_terms: Option<DirectiveTerms>,
+    /// Ordered belief tests voting participants apply to this package; the
+    /// first match sets the position, and no match means support.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub position_rules: Vec<PositionRule>,
+}
+
+/// One belief test: a participant whose estimate for `belief` falls in
+/// [`at_least`, `below`) takes `position` for the stated reason.
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub(crate) struct PositionRule {
+    pub belief: String,
+    #[serde(default)]
+    pub at_least: Option<f64>,
+    #[serde(default)]
+    pub below: Option<f64>,
+    pub position: crate::cognition::PositionKind,
+    pub stated_basis: String,
+}
+
+impl PositionRule {
+    pub(crate) fn matches(&self, estimate: f64) -> bool {
+        self.at_least.is_none_or(|floor| estimate >= floor)
+            && self.below.is_none_or(|ceiling| estimate < ceiling)
+    }
 }
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
@@ -34,6 +59,14 @@ pub(crate) struct ConstituentAction {
     pub authority_refs: Vec<String>,
     #[serde(default)]
     pub parameters: Value,
+    /// Belief tests the deciding owner's voting members apply.
+    #[serde(default)]
+    pub position_rules: Vec<PositionRule>,
+    /// Instant at which the owner decides.
+    pub decision_time: String,
+    /// Constituent actions that must already be adopted.
+    #[serde(default)]
+    pub requires: Vec<String>,
 }
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
@@ -99,6 +132,7 @@ pub(crate) fn package_by_id(package_id: &str) -> Result<PolicyPackage, PackageEr
         action_parameters: BTreeMap::new(),
         constituent_actions: Vec::new(),
         directive_terms: None,
+        position_rules: Vec::new(),
     })
 }
 
@@ -143,7 +177,8 @@ mod tests {
                 "action_id": "discount.propose_rate",
                 "owner_id": "inst.us.federal_reserve.new_york",
                 "authority_refs": ["clause.fra.14d.discount_rate"],
-                "parameters": {"rate_bp": 1000}
+                "parameters": {"rate_bp": 1000},
+                "decision_time": "1979-08-16T15:00:00-04:00"
             }],
             "directive_terms": {
                 "expiry_time": "1979-09-18T09:00:00-04:00",

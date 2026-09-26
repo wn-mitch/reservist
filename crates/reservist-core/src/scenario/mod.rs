@@ -1,4 +1,6 @@
 mod handlers;
+#[cfg(test)]
+mod reserves_cycle_tests;
 pub(crate) mod runtime;
 #[cfg(test)]
 mod selection_tests;

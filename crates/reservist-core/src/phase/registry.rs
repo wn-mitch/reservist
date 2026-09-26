@@ -118,10 +118,14 @@ handler!(
     "macro-release",
     [
         "macro.publish_release",
-        "macro.publish_intermeeting_release"
+        "macro.publish_intermeeting_release",
+        "reserves.publish_week"
     ],
     Release,
-    ["state.adapter.macro.us.broad.hidden_state"],
+    [
+        "state.adapter.macro.us.broad.hidden_state",
+        "state.market.us.federal_funds.conditions"
+    ],
     [
         "state.adapter.macro.us.broad.hidden_state",
         "state.reference.us.bls.cpi.publication",
@@ -306,6 +310,28 @@ handler!(
     None
 );
 
+handler!(
+    ReservesWorkHandler,
+    handle_reserves_week,
+    "reserves-week",
+    ["reserves.clear_week"],
+    Agreement,
+    ["state.market.us.federal_funds.conditions"],
+    ["state.market.us.federal_funds.conditions", "ledger.witness"],
+    None
+);
+
+handler!(
+    ConstituentWorkHandler,
+    handle_constituent_decision,
+    "constituent-decision",
+    ["constituent.decide"],
+    Authority,
+    ["state.market.us.federal_funds.conditions"],
+    ["state.market.us.federal_funds.conditions", "ledger.witness"],
+    None
+);
+
 static DECLARATIONS: &[Declaration] = &[
     Declaration {
         meta: OpenWorkHandler::META,
@@ -328,8 +354,16 @@ static DECLARATIONS: &[Declaration] = &[
         invoke: RepoWorkHandler::invoke,
     },
     Declaration {
+        meta: ReservesWorkHandler::META,
+        invoke: ReservesWorkHandler::invoke,
+    },
+    Declaration {
         meta: FomcWorkHandler::META,
         invoke: FomcWorkHandler::invoke,
+    },
+    Declaration {
+        meta: ConstituentWorkHandler::META,
+        invoke: ConstituentWorkHandler::invoke,
     },
     Declaration {
         meta: StatementWorkHandler::META,
