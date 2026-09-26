@@ -289,6 +289,7 @@ profile.early_2006.bernankey,legal.us.federal_reserve.domestic_authorization.197
 profile.early_2006.bernankey,legal.us.federal_reserve.domestic_authorization.2006,reference,NONE,Selected domestic authorization is effective.,Federal Reserve 2006 FOMC historical materials: https://www.federalreserve.gov/monetarypolicy/fomchistorical2006.htm,true,NONE
 profile.early_2006.bernankey,legal.us.federal_reserve.fomc_rules.section_3,reference,NONE,Selected voting rule is effective.,FOMC Rules of Organization: https://www.federalreserve.gov/monetarypolicy/files/fomc_rulesorganization.pdf,true,NONE
 profile.early_2006.bernankey,legal.us.federal_reserve.section_13_3,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
+profile.early_2006.bernankey,market.global.crude,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
 profile.early_2006.bernankey,market.global.fx_spot_forward_basis,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,market.product.global.coffee,reserve,adapter.external.external_world,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.,false,manifest_selection|promotion_requirements
 profile.early_2006.bernankey,market.product.global.pork,reserve,adapter.external.external_world,"Source-backed opening state, covered probes, and named-plus-residual reconciliation.",Early-2006 profile planning index.,false,manifest_selection|promotion_requirements
@@ -471,6 +472,7 @@ profile.early_2006.bernankey,reference.unknown.vix,reference,NONE,NONE,Early-200
 profile.early_2006.bernankey,reference.us.bea.pce,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,reference.us.bls.cpi,reference,NONE,NONE,Early-2006 profile planning index.,true,NONE
 profile.early_2006.bernankey,reference.us.consumer_price_index,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
+profile.early_2006.bernankey,reference.us.doe.petroleum_estimates,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,reference.us.federal_reserve.acm_term_premium,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,reference.us.federal_reserve.effr,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,reference.us.federal_reserve.h6,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
@@ -720,6 +722,24 @@ profile.early_2006.bernankey,staff.us.federal_reserve.supervision,reference,NONE
 profile.early_2006.bernankey,staff.us.treasury.debt_management,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,staff.us.treasury.ofr,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,stateful.us.treasury.duration_supply,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
+profile.early_2006.bernankey,system.gb.petroleum.operations,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.early_2006.bernankey,system.gb.petroleum.policy,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.early_2006.bernankey,system.iq.petroleum.operations,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.early_2006.bernankey,system.iq.petroleum.policy,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.early_2006.bernankey,system.ir.petroleum.operations,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.early_2006.bernankey,system.ir.petroleum.policy,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.early_2006.bernankey,system.jp.petroleum.operations,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.early_2006.bernankey,system.jp.petroleum.policy,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.early_2006.bernankey,system.kw.petroleum.operations,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.early_2006.bernankey,system.kw.petroleum.policy,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.early_2006.bernankey,system.sa.petroleum.operations,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.early_2006.bernankey,system.sa.petroleum.policy,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.early_2006.bernankey,system.su.petroleum.operations,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.early_2006.bernankey,system.su.petroleum.policy,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.early_2006.bernankey,system.us.petroleum.operations,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.early_2006.bernankey,system.us.petroleum.policy,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.early_2006.bernankey,system.ve.petroleum.operations,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
+profile.early_2006.bernankey,system.ve.petroleum.policy,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
 profile.volcker_1979,adapter.demand.global.coffee,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.volcker_1979,adapter.demand.global.pork,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.volcker_1979,adapter.demand.global.timber,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
@@ -1010,6 +1030,7 @@ profile.volcker_1979,legal.us.federal_reserve.domestic_authorization.1979,slice_
 profile.volcker_1979,legal.us.federal_reserve.domestic_authorization.2006,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
 profile.volcker_1979,legal.us.federal_reserve.fomc_rules.section_3,slice_candidate,NONE,NONE,doc:mandate.m4-proving-lens,true,manifest_selection
 profile.volcker_1979,legal.us.federal_reserve.section_13_3,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,market.global.crude,slice_candidate,NONE,NONE,doc:mandate.m4-proving-lens,true,manifest_selection
 profile.volcker_1979,market.global.fx_spot_forward_basis,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.volcker_1979,market.product.global.coffee,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.volcker_1979,market.product.global.pork,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
@@ -1192,6 +1213,7 @@ profile.volcker_1979,reference.unknown.vix,excluded,NONE,NONE,doc:mandate.m4-pro
 profile.volcker_1979,reference.us.bea.pce,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.volcker_1979,reference.us.bls.cpi,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
 profile.volcker_1979,reference.us.consumer_price_index,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,reference.us.doe.petroleum_estimates,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.volcker_1979,reference.us.federal_reserve.acm_term_premium,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.volcker_1979,reference.us.federal_reserve.effr,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.volcker_1979,reference.us.federal_reserve.h6,slice_candidate,NONE,NONE,doc:mandate.m4-proving-lens,false,manifest_selection
@@ -1441,3 +1463,21 @@ profile.volcker_1979,staff.us.federal_reserve.supervision,excluded,NONE,NONE,doc
 profile.volcker_1979,staff.us.treasury.debt_management,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.volcker_1979,staff.us.treasury.ofr,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.volcker_1979,stateful.us.treasury.duration_supply,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,system.gb.petroleum.operations,slice_candidate,NONE,NONE,doc:mandate.m4-proving-lens,true,manifest_selection
+profile.volcker_1979,system.gb.petroleum.policy,slice_candidate,NONE,NONE,doc:mandate.m4-proving-lens,true,manifest_selection
+profile.volcker_1979,system.iq.petroleum.operations,slice_candidate,NONE,NONE,doc:mandate.m4-proving-lens,true,manifest_selection
+profile.volcker_1979,system.iq.petroleum.policy,slice_candidate,NONE,NONE,doc:mandate.m4-proving-lens,true,manifest_selection
+profile.volcker_1979,system.ir.petroleum.operations,slice_candidate,NONE,NONE,doc:mandate.m4-proving-lens,true,manifest_selection
+profile.volcker_1979,system.ir.petroleum.policy,slice_candidate,NONE,NONE,doc:mandate.m4-proving-lens,true,manifest_selection
+profile.volcker_1979,system.jp.petroleum.operations,slice_candidate,NONE,NONE,doc:mandate.m4-proving-lens,true,manifest_selection
+profile.volcker_1979,system.jp.petroleum.policy,slice_candidate,NONE,NONE,doc:mandate.m4-proving-lens,true,manifest_selection
+profile.volcker_1979,system.kw.petroleum.operations,slice_candidate,NONE,NONE,doc:mandate.m4-proving-lens,true,manifest_selection
+profile.volcker_1979,system.kw.petroleum.policy,slice_candidate,NONE,NONE,doc:mandate.m4-proving-lens,true,manifest_selection
+profile.volcker_1979,system.sa.petroleum.operations,slice_candidate,NONE,NONE,doc:mandate.m4-proving-lens,true,manifest_selection
+profile.volcker_1979,system.sa.petroleum.policy,slice_candidate,NONE,NONE,doc:mandate.m4-proving-lens,true,manifest_selection
+profile.volcker_1979,system.su.petroleum.operations,slice_candidate,NONE,NONE,doc:mandate.m4-proving-lens,true,manifest_selection
+profile.volcker_1979,system.su.petroleum.policy,slice_candidate,NONE,NONE,doc:mandate.m4-proving-lens,true,manifest_selection
+profile.volcker_1979,system.us.petroleum.operations,slice_candidate,NONE,NONE,doc:mandate.m4-proving-lens,true,manifest_selection
+profile.volcker_1979,system.us.petroleum.policy,slice_candidate,NONE,NONE,doc:mandate.m4-proving-lens,true,manifest_selection
+profile.volcker_1979,system.ve.petroleum.operations,slice_candidate,NONE,NONE,doc:mandate.m4-proving-lens,true,manifest_selection
+profile.volcker_1979,system.ve.petroleum.policy,slice_candidate,NONE,NONE,doc:mandate.m4-proving-lens,true,manifest_selection

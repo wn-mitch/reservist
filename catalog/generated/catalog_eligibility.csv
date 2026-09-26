@@ -289,6 +289,7 @@ legal.us.federal_reserve.domestic_authorization.1979,instance,type.legal_instrum
 legal.us.federal_reserve.domestic_authorization.2006,instance,type.legal_instrument.default,LegalInstrument,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
 legal.us.federal_reserve.fomc_rules.section_3,instance,type.legal_instrument.default,LegalInstrument,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
 legal.us.federal_reserve.section_13_3,instance,type.legal_instrument.default,LegalInstrument,false,false,explicit_type|fallback,not_catalog_eligible
+market.global.crude,instance,type.market.default,Market,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
 market.global.fx_spot_forward_basis,instance,type.market.default,Market,false,false,explicit_type|fallback|transmission,not_catalog_eligible
 market.product.global.coffee,instance,type.market.product,Market,false,false,explicit_type|fallback|transmission,not_catalog_eligible
 market.product.global.pork,instance,type.market.product,Market,false,false,explicit_type|fallback|transmission,not_catalog_eligible
@@ -471,6 +472,7 @@ reference.unknown.vix,instance,type.published_reference.market_index,PublishedRe
 reference.us.bea.pce,instance,type.published_reference.default,PublishedReference,false,false,explicit_type|fallback|relationship|transmission,not_catalog_eligible
 reference.us.bls.cpi,instance,type.published_reference.default,PublishedReference,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
 reference.us.consumer_price_index,instance,type.published_reference.statistical_measurement,PublishedReference,false,false,explicit_type|fallback,not_catalog_eligible
+reference.us.doe.petroleum_estimates,instance,type.published_reference.default,PublishedReference,false,false,explicit_type|fallback|relationship|transmission,not_catalog_eligible
 reference.us.federal_reserve.acm_term_premium,instance,type.published_reference.default,PublishedReference,false,false,explicit_type|fallback,not_catalog_eligible
 reference.us.federal_reserve.effr,instance,type.published_reference.default,PublishedReference,false,false,explicit_type|fallback,not_catalog_eligible
 reference.us.federal_reserve.h6,instance,type.published_reference.default,PublishedReference,false,false,explicit_type|fallback|relationship|transmission,not_catalog_eligible
@@ -720,3 +722,21 @@ staff.us.federal_reserve.supervision,instance,type.staff_unit.default,StaffUnit,
 staff.us.treasury.debt_management,instance,type.staff_unit.default,StaffUnit,false,false,explicit_type|fallback,not_catalog_eligible
 staff.us.treasury.ofr,instance,type.staff_unit.default,StaffUnit,false,false,explicit_type|fallback,not_catalog_eligible
 stateful.us.treasury.duration_supply,instance,type.stateful_external_process.default,StatefulExternalProcess,false,false,explicit_type|fallback,not_catalog_eligible
+system.gb.petroleum.operations,instance,type.mechanical.resource_operation,MechanicalSystem,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
+system.gb.petroleum.policy,instance,type.mechanical_system.default,MechanicalSystem,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
+system.iq.petroleum.operations,instance,type.mechanical.resource_operation,MechanicalSystem,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
+system.iq.petroleum.policy,instance,type.mechanical_system.default,MechanicalSystem,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
+system.ir.petroleum.operations,instance,type.mechanical.resource_operation,MechanicalSystem,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
+system.ir.petroleum.policy,instance,type.mechanical_system.default,MechanicalSystem,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
+system.jp.petroleum.operations,instance,type.mechanical.resource_operation,MechanicalSystem,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
+system.jp.petroleum.policy,instance,type.mechanical_system.default,MechanicalSystem,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
+system.kw.petroleum.operations,instance,type.mechanical.resource_operation,MechanicalSystem,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
+system.kw.petroleum.policy,instance,type.mechanical_system.default,MechanicalSystem,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
+system.sa.petroleum.operations,instance,type.mechanical.resource_operation,MechanicalSystem,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
+system.sa.petroleum.policy,instance,type.mechanical_system.default,MechanicalSystem,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
+system.su.petroleum.operations,instance,type.mechanical.resource_operation,MechanicalSystem,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
+system.su.petroleum.policy,instance,type.mechanical_system.default,MechanicalSystem,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
+system.us.petroleum.operations,instance,type.mechanical.resource_operation,MechanicalSystem,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
+system.us.petroleum.policy,instance,type.mechanical_system.default,MechanicalSystem,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
+system.ve.petroleum.operations,instance,type.mechanical.resource_operation,MechanicalSystem,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
+system.ve.petroleum.policy,instance,type.mechanical_system.default,MechanicalSystem,true,true,explicit_type|fallback|relationship|transmission|probe,NONE

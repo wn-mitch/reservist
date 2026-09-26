@@ -289,6 +289,7 @@ profile.volcker_1979,legal.us.federal_reserve.domestic_authorization.1979,slice_
 profile.volcker_1979,legal.us.federal_reserve.domestic_authorization.2006,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,legal.us.federal_reserve.fomc_rules.section_3,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
 profile.volcker_1979,legal.us.federal_reserve.section_13_3,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
+profile.volcker_1979,market.global.crude,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
 profile.volcker_1979,market.global.fx_spot_forward_basis,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,market.product.global.coffee,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,market.product.global.pork,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
@@ -471,6 +472,7 @@ profile.volcker_1979,reference.unknown.vix,excluded,NONE,NONE,Not reviewed for t
 profile.volcker_1979,reference.us.bea.pce,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,reference.us.bls.cpi,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,reference.us.consumer_price_index,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
+profile.volcker_1979,reference.us.doe.petroleum_estimates,reference,NONE,NONE,Published reference.,doc:mandate.m4-proving-lens
 profile.volcker_1979,reference.us.federal_reserve.acm_term_premium,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,reference.us.federal_reserve.effr,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,reference.us.federal_reserve.h6,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
@@ -720,3 +722,21 @@ profile.volcker_1979,staff.us.federal_reserve.supervision,excluded,NONE,NONE,Not
 profile.volcker_1979,staff.us.treasury.debt_management,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,staff.us.treasury.ofr,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,stateful.us.treasury.duration_supply,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
+profile.volcker_1979,system.gb.petroleum.operations,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
+profile.volcker_1979,system.gb.petroleum.policy,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
+profile.volcker_1979,system.iq.petroleum.operations,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
+profile.volcker_1979,system.iq.petroleum.policy,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
+profile.volcker_1979,system.ir.petroleum.operations,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
+profile.volcker_1979,system.ir.petroleum.policy,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
+profile.volcker_1979,system.jp.petroleum.operations,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
+profile.volcker_1979,system.jp.petroleum.policy,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
+profile.volcker_1979,system.kw.petroleum.operations,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
+profile.volcker_1979,system.kw.petroleum.policy,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
+profile.volcker_1979,system.sa.petroleum.operations,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
+profile.volcker_1979,system.sa.petroleum.policy,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
+profile.volcker_1979,system.su.petroleum.operations,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
+profile.volcker_1979,system.su.petroleum.policy,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
+profile.volcker_1979,system.us.petroleum.operations,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
+profile.volcker_1979,system.us.petroleum.policy,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
+profile.volcker_1979,system.ve.petroleum.operations,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
+profile.volcker_1979,system.ve.petroleum.policy,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens

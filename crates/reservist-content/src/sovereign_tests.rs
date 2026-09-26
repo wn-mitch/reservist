@@ -278,7 +278,7 @@ fn resource_policy_and_operations_stay_distinct() {
 
     let mut world = World::valid();
     world.resources.push(format!(
-        "{PROFILE},sovereign.iran,petroleum,DERIVED,DERIVED,NONE,test"
+        "{PROFILE},sovereign.iran,petroleum,system.ir.petroleum.policy,system.ir.petroleum.operations,NONE,test"
     ));
     check(&world, nothing, None);
 }
@@ -422,8 +422,9 @@ fn with_holders(lines: Vec<String>) -> impl FnOnce(&Path) {
 #[test]
 fn institutions_hold_role_components_over_dated_periods() {
     let mut world = World::valid();
-    world.resources[0] =
-        format!("{PROFILE},sovereign.saudi_arabia,petroleum,DERIVED,DERIVED,NONE,test");
+    world.resources[0] = format!(
+        "{PROFILE},sovereign.saudi_arabia,petroleum,system.sa.petroleum.policy,system.sa.petroleum.operations,NONE,test"
+    );
     // One holder may exercise both petroleum roles; the components stay distinct.
     check(
         &world,

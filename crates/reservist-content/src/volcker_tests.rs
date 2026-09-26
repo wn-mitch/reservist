@@ -142,3 +142,22 @@ fn a_wrong_daylight_offset_fails_calendar_validation() {
     let error = reservist_core::calendars::validate_calendars(&frozen).unwrap_err();
     assert!(error.contains("offset of -240"), "{error}");
 }
+
+#[test]
+fn petroleum_and_crude_run_weekly_with_distinct_evidence() {
+    let run = run_scenario(&scenario(), "FIRM_BAND", None, None).unwrap();
+    let saudi = &run.state_snapshot["petroleum"]["sovereign.saudi_arabia"]["operations"];
+    assert_eq!(
+        saudi["facilities"].as_array().unwrap().len(),
+        5,
+        "Saudi operations are rich"
+    );
+    assert_eq!(saudi["history"].as_array().unwrap().len(), 3);
+    let text = serde_json::to_string(&run.transcript).unwrap();
+    assert!(
+        text.contains("petroleum.exports_estimated")
+            && text.contains("energy.spot_crude_and_us_imports")
+    );
+    let crude = &run.state_snapshot["crude_market"]["history"];
+    assert_eq!(crude.as_array().unwrap().len(), 3);
+}

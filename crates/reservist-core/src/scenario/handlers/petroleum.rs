@@ -167,7 +167,11 @@ impl ScenarioRuntime {
             _ => {}
         }
         let mut realized = Vec::<(String, Realization)>::new();
+        let only = event.payload["sovereign_id"].as_str().map(str::to_owned);
         for (sovereign, system) in &mut self.petroleum {
+            if only.as_ref().is_some_and(|only| only != sovereign) {
+                continue;
+            }
             let target = system.policy.production_target_kbd;
             realized.push((sovereign.clone(), system.operations.realize(target)));
         }

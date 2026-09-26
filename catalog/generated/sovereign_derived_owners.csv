@@ -841,8 +841,6 @@ system.gb.governing_authority,sovereign.united_kingdom
 system.gb.health,sovereign.united_kingdom
 system.gb.monetary_accounts,sovereign.united_kingdom
 system.gb.payments_finance,sovereign.united_kingdom
-system.gb.petroleum.operations,sovereign.united_kingdom
-system.gb.petroleum.policy,sovereign.united_kingdom
 system.gb.public_order_security,sovereign.united_kingdom
 system.gb.response_table,sovereign.united_kingdom
 system.gb.shelter_thermal,sovereign.united_kingdom
@@ -1149,8 +1147,6 @@ system.iq.governing_authority,sovereign.iraq
 system.iq.health,sovereign.iraq
 system.iq.monetary_accounts,sovereign.iraq
 system.iq.payments_finance,sovereign.iraq
-system.iq.petroleum.operations,sovereign.iraq
-system.iq.petroleum.policy,sovereign.iraq
 system.iq.public_order_security,sovereign.iraq
 system.iq.response_table,sovereign.iraq
 system.iq.shelter_thermal,sovereign.iraq
@@ -1168,8 +1164,6 @@ system.ir.governing_authority,sovereign.iran
 system.ir.health,sovereign.iran
 system.ir.monetary_accounts,sovereign.iran
 system.ir.payments_finance,sovereign.iran
-system.ir.petroleum.operations,sovereign.iran
-system.ir.petroleum.policy,sovereign.iran
 system.ir.public_order_security,sovereign.iran
 system.ir.response_table,sovereign.iran
 system.ir.shelter_thermal,sovereign.iran
@@ -1255,8 +1249,6 @@ system.jp.governing_authority,sovereign.japan
 system.jp.health,sovereign.japan
 system.jp.monetary_accounts,sovereign.japan
 system.jp.payments_finance,sovereign.japan
-system.jp.petroleum.operations,sovereign.japan
-system.jp.petroleum.policy,sovereign.japan
 system.jp.public_order_security,sovereign.japan
 system.jp.response_table,sovereign.japan
 system.jp.shelter_thermal,sovereign.japan
@@ -1376,8 +1368,6 @@ system.kw.governing_authority,sovereign.kuwait
 system.kw.health,sovereign.kuwait
 system.kw.monetary_accounts,sovereign.kuwait
 system.kw.payments_finance,sovereign.kuwait
-system.kw.petroleum.operations,sovereign.kuwait
-system.kw.petroleum.policy,sovereign.kuwait
 system.kw.public_order_security,sovereign.kuwait
 system.kw.response_table,sovereign.kuwait
 system.kw.shelter_thermal,sovereign.kuwait
@@ -2109,8 +2099,6 @@ system.sa.governing_authority,sovereign.saudi_arabia
 system.sa.health,sovereign.saudi_arabia
 system.sa.monetary_accounts,sovereign.saudi_arabia
 system.sa.payments_finance,sovereign.saudi_arabia
-system.sa.petroleum.operations,sovereign.saudi_arabia
-system.sa.petroleum.policy,sovereign.saudi_arabia
 system.sa.public_order_security,sovereign.saudi_arabia
 system.sa.response_table,sovereign.saudi_arabia
 system.sa.shelter_thermal,sovereign.saudi_arabia
@@ -2315,8 +2303,6 @@ system.su.governing_authority,sovereign.ussr
 system.su.health,sovereign.ussr
 system.su.monetary_accounts,sovereign.ussr
 system.su.payments_finance,sovereign.ussr
-system.su.petroleum.operations,sovereign.ussr
-system.su.petroleum.policy,sovereign.ussr
 system.su.public_order_security,sovereign.ussr
 system.su.response_table,sovereign.ussr
 system.su.shelter_thermal,sovereign.ussr
@@ -2555,8 +2541,6 @@ system.us.governing_authority,sovereign.united_states
 system.us.health,sovereign.united_states
 system.us.monetary_accounts,sovereign.united_states
 system.us.payments_finance,sovereign.united_states
-system.us.petroleum.operations,sovereign.united_states
-system.us.petroleum.policy,sovereign.united_states
 system.us.public_order_security,sovereign.united_states
 system.us.response_table,sovereign.united_states
 system.us.shelter_thermal,sovereign.united_states
@@ -2608,8 +2592,6 @@ system.ve.governing_authority,sovereign.venezuela
 system.ve.health,sovereign.venezuela
 system.ve.monetary_accounts,sovereign.venezuela
 system.ve.payments_finance,sovereign.venezuela
-system.ve.petroleum.operations,sovereign.venezuela
-system.ve.petroleum.policy,sovereign.venezuela
 system.ve.public_order_security,sovereign.venezuela
 system.ve.response_table,sovereign.venezuela
 system.ve.shelter_thermal,sovereign.venezuela

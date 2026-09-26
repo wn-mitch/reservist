@@ -1,10 +1,10 @@
 profile_id,sovereign_id,resource,policy_owner,operations_owner,notes,provenance
-profile.volcker_1979,sovereign.iran,petroleum,DERIVED,DERIVED,Deep-set petroleum extension; holders are dated HOLDS_ROLE rows.,doc:mandate.m4-proving-lens
-profile.volcker_1979,sovereign.iraq,petroleum,DERIVED,DERIVED,Deep-set petroleum extension; holders are dated HOLDS_ROLE rows.,doc:mandate.m4-proving-lens
-profile.volcker_1979,sovereign.japan,petroleum,DERIVED,DERIVED,Deep-set petroleum extension; holders are dated HOLDS_ROLE rows.,doc:mandate.m4-proving-lens
-profile.volcker_1979,sovereign.kuwait,petroleum,DERIVED,DERIVED,Deep-set petroleum extension; holders are dated HOLDS_ROLE rows.,doc:mandate.m4-proving-lens
-profile.volcker_1979,sovereign.saudi_arabia,petroleum,DERIVED,DERIVED,Deep-set petroleum extension; holders are dated HOLDS_ROLE rows.,doc:mandate.m4-proving-lens
-profile.volcker_1979,sovereign.united_kingdom,petroleum,DERIVED,DERIVED,Deep-set petroleum extension; holders are dated HOLDS_ROLE rows.,doc:mandate.m4-proving-lens
-profile.volcker_1979,sovereign.united_states,petroleum,DERIVED,DERIVED,Deep-set petroleum extension; holders are dated HOLDS_ROLE rows.,doc:mandate.m4-proving-lens
-profile.volcker_1979,sovereign.ussr,petroleum,DERIVED,DERIVED,Deep-set petroleum extension; holders are dated HOLDS_ROLE rows.,doc:mandate.m4-proving-lens
-profile.volcker_1979,sovereign.venezuela,petroleum,DERIVED,DERIVED,Deep-set petroleum extension; holders are dated HOLDS_ROLE rows.,doc:mandate.m4-proving-lens
+profile.volcker_1979,sovereign.iran,petroleum,system.ir.petroleum.policy,system.ir.petroleum.operations,Promoted petroleum components with researched 1979 state; holders are dated HOLDS_ROLE rows.,doc:mandate.m4-proving-lens
+profile.volcker_1979,sovereign.iraq,petroleum,system.iq.petroleum.policy,system.iq.petroleum.operations,Promoted petroleum components with researched 1979 state; holders are dated HOLDS_ROLE rows.,doc:mandate.m4-proving-lens
+profile.volcker_1979,sovereign.japan,petroleum,system.jp.petroleum.policy,system.jp.petroleum.operations,Promoted petroleum components with researched 1979 state; holders are dated HOLDS_ROLE rows.,doc:mandate.m4-proving-lens
+profile.volcker_1979,sovereign.kuwait,petroleum,system.kw.petroleum.policy,system.kw.petroleum.operations,Promoted petroleum components with researched 1979 state; holders are dated HOLDS_ROLE rows.,doc:mandate.m4-proving-lens
+profile.volcker_1979,sovereign.saudi_arabia,petroleum,system.sa.petroleum.policy,system.sa.petroleum.operations,Promoted petroleum components with researched 1979 state; holders are dated HOLDS_ROLE rows.,doc:mandate.m4-proving-lens
+profile.volcker_1979,sovereign.united_kingdom,petroleum,system.gb.petroleum.policy,system.gb.petroleum.operations,Promoted petroleum components with researched 1979 state; holders are dated HOLDS_ROLE rows.,doc:mandate.m4-proving-lens
+profile.volcker_1979,sovereign.united_states,petroleum,system.us.petroleum.policy,system.us.petroleum.operations,Promoted petroleum components with researched 1979 state; holders are dated HOLDS_ROLE rows.,doc:mandate.m4-proving-lens
+profile.volcker_1979,sovereign.ussr,petroleum,system.su.petroleum.policy,system.su.petroleum.operations,Promoted petroleum components with researched 1979 state; holders are dated HOLDS_ROLE rows.,doc:mandate.m4-proving-lens
+profile.volcker_1979,sovereign.venezuela,petroleum,system.ve.petroleum.policy,system.ve.petroleum.operations,Promoted petroleum components with researched 1979 state; holders are dated HOLDS_ROLE rows.,doc:mandate.m4-proving-lens
