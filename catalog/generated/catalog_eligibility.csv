@@ -202,7 +202,7 @@ institution.iq.finance_ministry,instance,type.institution.default,Institution,fa
 institution.iq.foreign_ministry,instance,type.institution.default,Institution,false,false,explicit_type|fallback|relationship,not_catalog_eligible
 institution.iq.oil_ministry,instance,type.institution.default,Institution,false,false,explicit_type|fallback|relationship,not_catalog_eligible
 institution.iq.revolutionary_command_council,instance,type.institution.default,Institution,false,false,explicit_type|fallback|relationship,not_catalog_eligible
-institution.ir.central_bank,instance,type.institution.default,Institution,false,false,explicit_type|fallback|relationship,not_catalog_eligible
+institution.ir.central_bank,instance,type.institution.default,Institution,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
 institution.ir.finance_ministry,instance,type.institution.default,Institution,false,false,explicit_type|fallback|relationship,not_catalog_eligible
 institution.ir.foreign_ministry,instance,type.institution.default,Institution,false,false,explicit_type|fallback|relationship,not_catalog_eligible
 institution.ir.interim_government,instance,type.institution.default,Institution,false,false,explicit_type|fallback|relationship,not_catalog_eligible
@@ -283,6 +283,7 @@ institution.ve.foreign_ministry,instance,type.institution.default,Institution,fa
 institution.ve.presidency,instance,type.institution.default,Institution,false,false,explicit_type|fallback|relationship,not_catalog_eligible
 instrument.cross_border.capital_controls,instance,type.legal_instrument.default,LegalInstrument,false,false,explicit_type|fallback,not_catalog_eligible
 legal.us.dodd_frank,instance,type.legal_instrument.statute,LegalInstrument,false,false,explicit_type|fallback,not_catalog_eligible
+legal.us.executive_order.12170,instance,type.legal_instrument.default,LegalInstrument,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
 legal.us.federal_reserve.act.section_12a,instance,type.legal_instrument.default,LegalInstrument,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
 legal.us.federal_reserve.act.section_14,instance,type.legal_instrument.default,LegalInstrument,true,true,explicit_type|fallback|relationship|transmission|probe,NONE
 legal.us.federal_reserve.domestic_authorization.1979,instance,type.legal_instrument.default,LegalInstrument,true,true,explicit_type|fallback|relationship|transmission|probe,NONE

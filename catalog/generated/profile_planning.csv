@@ -202,7 +202,7 @@ profile.early_2006.bernankey,institution.iq.finance_ministry,excluded,NONE,NONE,
 profile.early_2006.bernankey,institution.iq.foreign_ministry,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,institution.iq.oil_ministry,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,institution.iq.revolutionary_command_council,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
-profile.early_2006.bernankey,institution.ir.central_bank,reserve,adapter.external.emerging_markets,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.,false,manifest_selection|promotion_requirements
+profile.early_2006.bernankey,institution.ir.central_bank,reserve,adapter.external.emerging_markets,Distinct modeled authority or balance-sheet action; independently researched opening state and history; interface-compatible transmissions; complete named-plus-residual reconciliation.,Early-2006 profile planning index.,true,manifest_selection|promotion_requirements
 profile.early_2006.bernankey,institution.ir.finance_ministry,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,institution.ir.foreign_ministry,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,institution.ir.interim_government,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
@@ -283,6 +283,7 @@ profile.early_2006.bernankey,institution.ve.foreign_ministry,excluded,NONE,NONE,
 profile.early_2006.bernankey,institution.ve.presidency,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.early_2006.bernankey,instrument.cross_border.capital_controls,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
 profile.early_2006.bernankey,legal.us.dodd_frank,reference,NONE,NONE,Early-2006 profile planning index.,false,NONE
+profile.early_2006.bernankey,legal.us.executive_order.12170,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
 profile.early_2006.bernankey,legal.us.federal_reserve.act.section_12a,reference,NONE,Selected FOMC authority clause is effective.,Federal Reserve Act section 12A: https://www.federalreserve.gov/aboutthefed/section12a.htm,true,NONE
 profile.early_2006.bernankey,legal.us.federal_reserve.act.section_14,reference,NONE,Selected Reserve Bank power clause is effective.,Federal Reserve Act section 14: https://www.federalreserve.gov/aboutthefed/section14.htm,true,NONE
 profile.early_2006.bernankey,legal.us.federal_reserve.domestic_authorization.1979,excluded,NONE,NONE,doc:mandate.m4-proving-lens,true,NONE
@@ -943,7 +944,7 @@ profile.volcker_1979,institution.iq.finance_ministry,reference,NONE,NONE,doc:man
 profile.volcker_1979,institution.iq.foreign_ministry,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.volcker_1979,institution.iq.oil_ministry,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.volcker_1979,institution.iq.revolutionary_command_council,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
-profile.volcker_1979,institution.ir.central_bank,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,institution.ir.central_bank,slice_candidate,NONE,NONE,doc:mandate.m4-proving-lens,true,manifest_selection
 profile.volcker_1979,institution.ir.finance_ministry,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.volcker_1979,institution.ir.foreign_ministry,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.volcker_1979,institution.ir.interim_government,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
@@ -1024,6 +1025,7 @@ profile.volcker_1979,institution.ve.foreign_ministry,reference,NONE,NONE,doc:man
 profile.volcker_1979,institution.ve.presidency,reference,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.volcker_1979,instrument.cross_border.capital_controls,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
 profile.volcker_1979,legal.us.dodd_frank,excluded,NONE,NONE,doc:mandate.m4-proving-lens,false,NONE
+profile.volcker_1979,legal.us.executive_order.12170,slice_candidate,NONE,NONE,doc:mandate.m4-proving-lens,true,manifest_selection
 profile.volcker_1979,legal.us.federal_reserve.act.section_12a,slice_candidate,NONE,NONE,doc:mandate.m4-proving-lens,true,manifest_selection
 profile.volcker_1979,legal.us.federal_reserve.act.section_14,slice_candidate,NONE,NONE,doc:mandate.m4-proving-lens,true,manifest_selection
 profile.volcker_1979,legal.us.federal_reserve.domestic_authorization.1979,slice_candidate,NONE,NONE,doc:mandate.m4-proving-lens,true,manifest_selection

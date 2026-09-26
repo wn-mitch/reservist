@@ -1,0 +1,2 @@
+state_id,owner_id,state_kind,value_domain,unit,conserved,witness_kind,completeness_state,provenance
+state.legal.us.executive_order.12170.effective_clauses,legal.us.executive_order.12170,authority,effective bounded clause identifiers,NONE,false,legal source citation,probe_complete,https://archives.federalregister.gov/issue_slice/1979/11/15/65729-65731.pdf

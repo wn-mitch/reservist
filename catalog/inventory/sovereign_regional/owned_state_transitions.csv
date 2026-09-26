@@ -1,4 +1,9 @@
 state_id,transition_kind,provenance
+state.institution.ir.central_bank.us_dollar_assets,advance_day,https://www.csmonitor.com/1989/0914/enew.html
+state.institution.ir.central_bank.us_dollar_assets,coordinate_foreign_branches,https://www.csmonitor.com/1989/0914/enew.html
+state.institution.ir.central_bank.us_dollar_assets,execute_block,https://www.csmonitor.com/1989/0914/enew.html
+state.institution.ir.central_bank.us_dollar_assets,record_order,https://www.csmonitor.com/1989/0914/enew.html
+state.institution.ir.central_bank.us_dollar_assets,record_withdrawal_intent,https://www.csmonitor.com/1989/0914/enew.html
 state.system.gb.petroleum.operations.operations,demote,doc:mandate.m4-proving-lens
 state.system.gb.petroleum.operations.operations,realize_week,doc:mandate.m4-proving-lens
 state.system.gb.petroleum.operations.operations,record_outage,doc:mandate.m4-proving-lens

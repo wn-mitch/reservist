@@ -14,7 +14,7 @@ path in a reserves market whose requirements bind only covered member banks.
 Meetings without a published statement time release no statement.
 
 **Observed on `scenarios/volcker_1979`:** the fixture seals as
-`sha256:8cd10b46…e31d` and replays identically for all five packages. All
+`sha256:a9c7b063…88f6` and replays identically for all five packages. All
 161 roster roots are selected as identity-only composition roots; they own no
 state or scheduled work, and adding them left every transcript byte unchanged.
 August 1979 magnitudes open the market: M-1 of $373.3 billion, required
@@ -34,4 +34,5 @@ $373.3 billion. M1, M2, and M3 still reseal byte-for-byte and parity passes.
 
 **Not established:** the calendar-and-folders interaction for 1979, macro
 releases beyond weekly money and funds data, calibration of money demand and
-borrowing, the September and October cycles, and any foreign channel.
+borrowing, and the September and October cycles. The November instance
+records the first responsive foreign channel.

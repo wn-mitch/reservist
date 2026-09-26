@@ -55,6 +55,8 @@ household.us.cohorts,lose,scenario.fallback.FAIL,12-structure-outline-bernankey-
 inst.us.federal_reserve.board,lose,scenario.fallback.FAIL,12-structure-outline-bernankey-mvp-cycle.md:195-285
 inst.us.federal_reserve.new_york,lose,scenario.fallback.FAIL,12-structure-outline-bernankey-mvp-cycle.md:195-285
 inst.us.leveraged_funds,lose,scenario.fallback.FAIL,12-structure-outline-bernankey-mvp-cycle.md:299-319
+institution.ir.central_bank,lose,scenario.fallback.FAIL,doc:mandate.m4-proving-lens
+legal.us.executive_order.12170,lose,scenario.fallback.FAIL,doc:mandate.m4-proving-lens
 legal.us.federal_reserve.act.section_12a,lose,scenario.fallback.FAIL,12-structure-outline-bernankey-mvp-cycle.md:195-285
 legal.us.federal_reserve.act.section_14,lose,scenario.fallback.FAIL,12-structure-outline-bernankey-mvp-cycle.md:195-285
 legal.us.federal_reserve.domestic_authorization.1979,lose,scenario.fallback.FAIL,doc:mandate.m4-proving-lens

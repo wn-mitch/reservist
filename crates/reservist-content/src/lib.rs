@@ -28,6 +28,8 @@ mod m2_tests;
 #[cfg(test)]
 mod m3_tests;
 #[cfg(test)]
+mod volcker_november_tests;
+#[cfg(test)]
 mod volcker_tests;
 
 use std::collections::BTreeMap;

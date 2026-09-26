@@ -30,5 +30,6 @@ M1 and M2 were accepted on jj change `mkstwyuv`. M3 was accepted on change `nryy
 - [Regional atlas](build/review/checkpoints/regional-atlas.md)
 - [M4 scope integration](build/review/checkpoints/m4-scope-integration.md)
 - [Volcker opening](build/review/checkpoints/volcker-opening.md)
+- [Volcker November](build/review/checkpoints/volcker-november.md)
 
 Canonical rules live in [the current design](CURRENT_DESIGN_BIBLE.md). Authorized unfinished work lives in [the mandate](BUILD_MANDATE.md). Evidence here reports what was inspected or run; it does not promote a proposal or infer calibration, economic plausibility, or player understanding.

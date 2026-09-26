@@ -1,2 +1,2 @@
 catalog_id,variant_id,effective_period,authority_or_eligibility_ref,uncertainty_notes,provenance
-inst.us.treasury,variant.1979,1979-08-06/1979-08-06,profile.volcker_1979,"Department of the Treasury; G. William Miller became Secretary on 1979-08-06, succeeding Blumenthal; confidence high",https://en.wikipedia.org/wiki/G._William_Miller
+inst.us.treasury,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,"Department of the Treasury; G. William Miller became Secretary on 1979-08-06, succeeding Blumenthal; confidence high",https://en.wikipedia.org/wiki/G._William_Miller

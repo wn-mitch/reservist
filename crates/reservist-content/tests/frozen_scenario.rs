@@ -330,21 +330,29 @@ fn every_committed_fixture_reseals_byte_identically() {
         "initialization.json",
         "tape/releases.json",
     ];
-    for name in [
-        "mvp_2006_cycle_m1",
-        "mvp_2006_cycle",
-        "mvp_2006_campaign_m3",
-    ] {
-        let target = std::env::temp_dir().join(format!(
-            "reservist-content-reseal-{name}-{}",
-            std::process::id()
-        ));
-        let _ = std::fs::remove_dir_all(&target);
-        copy_tree(&project_root().join("scenarios").join(name), &target);
+    let scenarios = project_root().join("scenarios");
+    let root = std::env::temp_dir().join(format!(
+        "reservist-content-every-fixture-{}",
+        std::process::id()
+    ));
+    let _ = std::fs::remove_dir_all(&root);
+    // Dated instances resolve their template beside the scenario folder.
+    copy_tree(&scenarios.join("templates"), &root.join("templates"));
+    let mut names: Vec<String> = std::fs::read_dir(&scenarios)
+        .unwrap()
+        .map(|entry| entry.unwrap().path())
+        .filter(|path| path.join("manifest.json").is_file())
+        .map(|path| path.file_name().unwrap().to_string_lossy().into_owned())
+        .collect();
+    names.sort();
+    assert!(names.len() >= 5, "fixtures: {names:?}");
+    for name in names {
+        let target = root.join(&name);
+        copy_tree(&scenarios.join(&name), &target);
         let before = frozen.map(|file| std::fs::read(target.join(file)).unwrap());
         seal_scenario(&target, &catalog()).unwrap_or_else(|error| panic!("{name}: {error}"));
         let after = frozen.map(|file| std::fs::read(target.join(file)).unwrap());
         assert!(before == after, "{name} changed on reseal");
-        let _ = std::fs::remove_dir_all(target);
     }
+    let _ = std::fs::remove_dir_all(root);
 }

@@ -302,6 +302,7 @@ interface.import_supply.index,false,true,data_only
 interface.import_supply.product_schedule,false,true,data_only
 interface.us_duration.demand_schedule,false,true,data_only
 legal.us.dodd_frank,false,true,data_only
+legal.us.executive_order.12170,false,true,data_only
 legal.us.federal_reserve.act.section_12a,false,true,data_only
 legal.us.federal_reserve.act.section_14,false,true,data_only
 legal.us.federal_reserve.domestic_authorization.1979,false,true,data_only

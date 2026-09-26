@@ -3,48 +3,49 @@ adapter.macro.us.broad,variant.2006,2006-02-01/2006-12-31,profile.early_2006.ber
 adapter.market.us.treasury.external_buyer,variant.2006,2006-03-27/2006-03-29,NONE,External demand is a bounded residual schedule rather than a foreign-sector model.,12-structure-outline-bernankey-mvp-cycle.md:299-319
 adapter.market.us.treasury_demand.phase2,variant.2006,2006-03-27/2006-03-29,NONE,Temporary adapter applies only to the bounded Phase 2 cycle.,12-structure-outline-bernankey-mvp-cycle.md:260-264
 agreement.us.repo.bilateral,variant.2006,2006-03-27/2006-03-28,agreement.us.repo.bilateral,One bounded bilateral repo is selected; no automatic renewal is permitted.,12-structure-outline-bernankey-mvp-cycle.md:299-319
-body.jp.cabinet,variant.1979,1979-08-06/1979-08-06,profile.volcker_1979,"Cabinet of Japan (first Ōhira Cabinet, PM Masayoshi Ōhira); active; confidence high",https://en.wikipedia.org/wiki/Masayoshi_%C5%8Chira
-body.us.federal_reserve.fomc,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
+body.jp.cabinet,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,"Cabinet of Japan (first Ōhira Cabinet, PM Masayoshi Ōhira); active; confidence high",https://en.wikipedia.org/wiki/Masayoshi_%C5%8Chira
+body.us.federal_reserve.fomc,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
 body.us.federal_reserve.fomc,variant.2006,2006-02-01/2006-12-31,legal.us.federal_reserve.fomc_rules.section_3,Bounded MVP roster rather than the complete historical Committee.,12-structure-outline-bernankey-mvp-cycle.md:226-232
 cohort.us.dealer.primary,variant.2006,2006-03-27/2006-03-29,auth.us.primary_dealer_designation,Aggregate capacity is selected for the bounded cycle.,12-structure-outline-bernankey-mvp-cycle.md:299-319
 household.us.cohorts,variant.2006,2006-03-27/2006-03-28,profile.early_2006.bernankey,Only two bounded household summaries are selected.,12-structure-outline-bernankey-mvp-cycle.md:465-543
-inst.us.federal_reserve.board,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
+inst.us.federal_reserve.board,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
 inst.us.federal_reserve.board,variant.2006,2006-02-01/2006-12-31,legal.us.federal_reserve.fomc_rules.section_3,The MVP preserves Board identity without assigning FOMC or SOMA powers to it.,12-structure-outline-bernankey-mvp-cycle.md:195-205
-inst.us.federal_reserve.new_york,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
+inst.us.federal_reserve.new_york,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
 inst.us.federal_reserve.new_york,variant.2006,2006-01-31/2007-01-30,legal.us.federal_reserve.domestic_authorization.2006,Only selected Desk effects are represented.,12-structure-outline-bernankey-mvp-cycle.md:260-264
 inst.us.leveraged_funds,variant.2006,2006-03-27/2006-03-29,NONE,One aggregate leveraged-fund cohort is selected for the repo-triggered sale.,12-structure-outline-bernankey-mvp-cycle.md:299-319
-inst.us.treasury,variant.1979,1979-08-06/1979-08-06,profile.volcker_1979,"Department of the Treasury; G. William Miller became Secretary on 1979-08-06, succeeding Blumenthal; confidence high",https://en.wikipedia.org/wiki/G._William_Miller
-institution.ir.central_bank,variant.1979,1979-08-06/1979-08-06,profile.volcker_1979,Bank Markazi Iran (renamed Central Bank of the Islamic Republic of Iran in 1979; exact rename date UNVERIFIED); active; name on this date UNVERIFIED; confidence medium,https://en.wikipedia.org/wiki/Central_Bank_of_Iran
-institution.jp.boj,variant.1979,1979-08-06/1979-08-06,profile.volcker_1979,"Bank of Japan; Under the 1942 Act, before the 1997-98 independence reform; confidence high",https://en.wikipedia.org/wiki/Bank_of_Japan
-institution.jp.mof,variant.1979,1979-08-06/1979-08-06,profile.volcker_1979,Ministry of Finance (Ōkura-shō); active; confidence high,https://en.wikipedia.org/wiki/Ministry_of_Finance_(Japan)
-institution.sa.energy_ministry,variant.1979,1979-08-06/1979-08-06,profile.volcker_1979,Ministry of Petroleum and Mineral Resources (Minister Ahmed Zaki Yamani); Yamani minister 1962-03-09 to 1986-10-05; confidence high,https://en.wikipedia.org/wiki/Ministry_of_Energy_(Saudi_Arabia)
-institution.sa.sama,variant.1979,1979-08-06/1979-08-06,profile.volcker_1979,Saudi Arabian Monetary Agency (SAMA); active; confidence high,https://en.wikipedia.org/wiki/Saudi_Central_Bank
-institution.uk.boe,variant.1979,1979-08-06/1979-08-06,profile.volcker_1979,Bank of England; Nationalised in 1946; not operationally independent (independence came in 1998); confidence high,https://en.wikipedia.org/wiki/Bank_of_England
-institution.uk.government,variant.1979,1979-08-06/1979-08-06,profile.volcker_1979,HM Government: the Cabinet under PM Margaret Thatcher (first Thatcher ministry); active; confidence high,https://en.wikipedia.org/wiki/First_Thatcher_ministry
-legal.us.federal_reserve.act.section_12a,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
+inst.us.treasury,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,"Department of the Treasury; G. William Miller became Secretary on 1979-08-06, succeeding Blumenthal; confidence high",https://en.wikipedia.org/wiki/G._William_Miller
+institution.ir.central_bank,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,"Bank Markazi Iran, same legal subject.",https://www.csmonitor.com/1989/0914/enew.html
+institution.jp.boj,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,"Bank of Japan; Under the 1942 Act, before the 1997-98 independence reform; confidence high",https://en.wikipedia.org/wiki/Bank_of_Japan
+institution.jp.mof,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Ministry of Finance (Ōkura-shō); active; confidence high,https://en.wikipedia.org/wiki/Ministry_of_Finance_(Japan)
+institution.sa.energy_ministry,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Ministry of Petroleum and Mineral Resources (Minister Ahmed Zaki Yamani); Yamani minister 1962-03-09 to 1986-10-05; confidence high,https://en.wikipedia.org/wiki/Ministry_of_Energy_(Saudi_Arabia)
+institution.sa.sama,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Saudi Arabian Monetary Agency (SAMA); active; confidence high,https://en.wikipedia.org/wiki/Saudi_Central_Bank
+institution.uk.boe,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Bank of England; Nationalised in 1946; not operationally independent (independence came in 1998); confidence high,https://en.wikipedia.org/wiki/Bank_of_England
+institution.uk.government,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,HM Government: the Cabinet under PM Margaret Thatcher (first Thatcher ministry); active; confidence high,https://en.wikipedia.org/wiki/First_Thatcher_ministry
+legal.us.executive_order.12170,variant.1979,1979-11-05/1979-12-31,profile.volcker_1979,Selectable from the November opening; its clauses take effect when the order issues at 08:10 EST on 1979-11-14.,https://archives.federalregister.gov/issue_slice/1979/11/15/65729-65731.pdf
+legal.us.federal_reserve.act.section_12a,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
 legal.us.federal_reserve.act.section_12a,variant.2006,1935-08-23/2100-01-01,legal.us.federal_reserve.act.section_12a,Only the selected FOMC-direction clause is encoded.,Federal Reserve Act section 12A: https://www.federalreserve.gov/aboutthefed/section12a.htm
-legal.us.federal_reserve.act.section_14,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
+legal.us.federal_reserve.act.section_14,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
 legal.us.federal_reserve.act.section_14,variant.2006,1935-08-23/2100-01-01,legal.us.federal_reserve.act.section_14,Only the selected Reserve Bank open-market clause is encoded.,Federal Reserve Act section 14: https://www.federalreserve.gov/aboutthefed/section14.htm
-legal.us.federal_reserve.domestic_authorization.1979,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
+legal.us.federal_reserve.domestic_authorization.1979,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
 legal.us.federal_reserve.domestic_authorization.2006,variant.2006,2006-01-31/2007-01-30,legal.us.federal_reserve.domestic_authorization.2006,Only the MVP execution clause is encoded.,Federal Reserve 2006 FOMC historical materials: https://www.federalreserve.gov/monetarypolicy/fomchistorical2006.htm
-legal.us.federal_reserve.fomc_rules.section_3,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
+legal.us.federal_reserve.fomc_rules.section_3,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
 legal.us.federal_reserve.fomc_rules.section_3,variant.2006,2005-01-01/2007-01-01,legal.us.federal_reserve.fomc_rules.section_3,Only the selected voting-procedure clause is encoded.,FOMC Rules of Organization: https://www.federalreserve.gov/monetarypolicy/files/fomc_rulesorganization.pdf
-market.global.crude,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
-market.us.federal_funds,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
+market.global.crude,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
+market.us.federal_funds,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
 market.us.treasury.secondary,variant.2006,2006-03-27/2006-03-29,legal.us.federal_reserve.domestic_authorization.2006,Only the 5-10 year maturity bucket is active.,12-structure-outline-bernankey-mvp-cycle.md:299-319
-office.us.federal_reserve.board_chair,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
+office.us.federal_reserve.board_chair,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
 office.us.federal_reserve.board_chair,variant.2006,2006-02-01/2006-12-31,rel.holds.ben_bernankey.board_chair,Action authority is intentionally deferred to Phase 2.,12-structure-outline-bernankey-mvp-cycle.md:102-143
 office.us.federal_reserve.chief_of_staff,variant.2006,2006-02-01/2006-12-31,NONE,Individual role-holder identity remains intentionally bounded.,12-structure-outline-bernankey-mvp-cycle.md:226-232
-office.us.federal_reserve.fomc_chair,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
+office.us.federal_reserve.fomc_chair,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
 office.us.federal_reserve.fomc_chair,variant.2006,2006-02-01/2006-12-31,rel.holds.ben_bernankey.fomc_chair,Action authority is intentionally deferred to Phase 2.,12-structure-outline-bernankey-mvp-cycle.md:102-143
-office.us.federal_reserve.governor,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
+office.us.federal_reserve.governor,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
 office.us.federal_reserve.governor,variant.2006,2006-02-01/2006-12-31,legal.us.federal_reserve.fomc_rules.section_3,Only two fictional bounded role-holders are initialized.,12-structure-outline-bernankey-mvp-cycle.md:226-232
-office.us.federal_reserve.ny_president,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
-office.us.federal_reserve.reserve_bank_president,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
+office.us.federal_reserve.ny_president,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
+office.us.federal_reserve.reserve_bank_president,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
 outlet.media.loonberg,variant.2006,2006-03-27/2006-03-28,institution.media.loonberg,Only one FOMC statement and one direct-delivery report are selected.,12-structure-outline-bernankey-mvp-cycle.md:465-543
 person.us.avery_agendaloon,variant.2006,2006-02-01/2006-12-31,office.us.federal_reserve.chief_of_staff,Authored scenario person selected only for the bounded 2006 officeholding.,scenarios/mvp_2006_cycle/initialization.json
 person.us.ben_bernankey,variant.2006,2006-02-01/2006-12-31,profile.early_2006.bernankey,The playable identity is fixed to the early-2006 profile.,12-structure-outline-bernankey-mvp-cycle.md:102-143
-person.us.paul_vulture,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
+person.us.paul_vulture,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
 pop.us.fixed.rate.homeowners.by.mortgage.vintage,variant.2006,2006-03-27/2006-03-28,population.us.person.cells,The lens is a scenario projection and not a national estimate.,12-structure-outline-bernankey-mvp-cycle.md:465-543
 pop.us.public.low_attention_residual,variant.2006,2006-03-27/2006-03-28,population.us.person.cells,The residual is a bounded direct audience and not a general media model.,12-structure-outline-bernankey-mvp-cycle.md:465-543
 pop.us.workers.by.sector,variant.2006,2006-03-27/2006-03-28,population.us.person.cells,The lens is a scenario projection and not a national estimate.,12-structure-outline-bernankey-mvp-cycle.md:465-543
@@ -54,205 +55,205 @@ record.us.federal_reserve.analytical_task,variant.2006,2006-03-27/2006-05-10,off
 record.us.federal_reserve.assessment,variant.2006,2006-03-27/2006-05-10,staff.us.federal_reserve.markets,The selected assessment dissent next Morning Book and staff review persist through the cycle boundary.,12-structure-outline-bernankey-mvp-cycle.md:551-615
 record.us.federal_reserve.authorization_decision,variant.2006,2006-03-27/2006-03-29,legal.us.federal_reserve.fomc_rules.section_3,Only the selected meeting decision is represented.,12-structure-outline-bernankey-mvp-cycle.md:195-285
 record.us.federal_reserve.directive,variant.2006,2006-03-27/2006-03-29,legal.us.federal_reserve.act.section_12a,Only the selected meeting directive is represented.,12-structure-outline-bernankey-mvp-cycle.md:195-285
-record.us.federal_reserve.policy_package,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
+record.us.federal_reserve.policy_package,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
 record.us.federal_reserve.policy_package,variant.2006,2006-03-27/2006-03-29,legal.us.federal_reserve.fomc_rules.section_3,Only three prepared MVP packages and their revision history are represented.,12-structure-outline-bernankey-mvp-cycle.md:233-245
 record.us.federal_reserve.stage_receipt,variant.2006,2006-03-27/2006-03-29,NONE,Only policy-chain receipts for the bounded cycle are represented.,12-structure-outline-bernankey-mvp-cycle.md:195-285
 reference.us.bls.cpi,variant.2006,2006-02-01/2006-12-31,institution.us.bls,Release details are locked by the scenario tape.,12-structure-outline-bernankey-mvp-cycle.md:102-143
-role_holder.fomc.1979.balles,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
-role_holder.fomc.1979.black,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
-role_holder.fomc.1979.coldwell,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
-role_holder.fomc.1979.kimbrel,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
-role_holder.fomc.1979.mayo,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
-role_holder.fomc.1979.partee,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
-role_holder.fomc.1979.rice,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
-role_holder.fomc.1979.schultz,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
-role_holder.fomc.1979.teeters,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
-role_holder.fomc.1979.timlen,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
-role_holder.fomc.1979.wallich,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
+role_holder.fomc.1979.balles,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
+role_holder.fomc.1979.black,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
+role_holder.fomc.1979.coldwell,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
+role_holder.fomc.1979.kimbrel,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
+role_holder.fomc.1979.mayo,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
+role_holder.fomc.1979.partee,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
+role_holder.fomc.1979.rice,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
+role_holder.fomc.1979.schultz,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
+role_holder.fomc.1979.teeters,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
+role_holder.fomc.1979.timlen,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
+role_holder.fomc.1979.wallich,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
 role_holder.fomc.governor_1,variant.2006,2006-02-01/2006-12-31,legal.us.federal_reserve.fomc_rules.section_3,Fictional bounded participant rather than a historical identity.,12-structure-outline-bernankey-mvp-cycle.md:226-232
 role_holder.fomc.governor_2,variant.2006,2006-02-01/2006-12-31,legal.us.federal_reserve.fomc_rules.section_3,Fictional bounded participant rather than a historical identity.,12-structure-outline-bernankey-mvp-cycle.md:226-232
 schedule.us.federal_reserve.blackout,variant.2006,2006-03-21/2006-05-10,schedule.us.federal_reserve.fomc,The bounded cycle derives blackout windows for the decision and next-cycle Morning Book.,12-structure-outline-bernankey-mvp-cycle.md:551-615
-schedule.us.federal_reserve.fomc,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
+schedule.us.federal_reserve.fomc,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
 schedule.us.federal_reserve.fomc,variant.2006,2006-03-21/2006-05-10,legal.us.federal_reserve.fomc_rules.section_3,The selected occurrences define the opening decision and next-cycle boundary.,12-structure-outline-bernankey-mvp-cycle.md:551-615
-sovereign.afghanistan,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.albania,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.algeria,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.angola,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.argentina,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.australia,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.austria,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.bahamas,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.bahrain,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.bangladesh,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.barbados,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.belgium,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.benin,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.bhutan,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.bolivia,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.botswana,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.brazil,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.bulgaria,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.burkina_faso,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Known as Upper Volta on the profile date; same legal subject.,https://en.wikipedia.org/wiki/Member_states_of_the_United_Nations
-sovereign.burundi,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.cambodia,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Known as Democratic Kampuchea on the profile date; same legal subject.,https://en.wikipedia.org/wiki/Member_states_of_the_United_Nations
-sovereign.cameroon,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.canada,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.cape_verde,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.central_african_republic,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Known as Central African Empire on the profile date; same legal subject.,https://en.wikipedia.org/wiki/Member_states_of_the_United_Nations
-sovereign.chad,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.chile,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.china,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.colombia,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.comoros,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.congo,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.costa_rica,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.cote_divoire,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Known as Ivory Coast on the profile date; same legal subject.,https://en.wikipedia.org/wiki/Member_states_of_the_United_Nations
-sovereign.cuba,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.cyprus,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.czechoslovakia,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.denmark,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.djibouti,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.dominica,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.dominican_republic,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.drc,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Known as Zaire on the profile date; same legal subject.,https://en.wikipedia.org/wiki/Member_states_of_the_United_Nations
-sovereign.east_germany,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.ecuador,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.egypt,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.el_salvador,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.equatorial_guinea,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.eswatini,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Known as Swaziland on the profile date; same legal subject.,https://en.wikipedia.org/wiki/Member_states_of_the_United_Nations
-sovereign.ethiopia,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.fiji,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.finland,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.france,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.gabon,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.gambia,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.germany,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Federal Republic of Germany before the 1990 accession of the GDR; same legal subject.,https://en.wikipedia.org/wiki/Member_states_of_the_United_Nations
-sovereign.ghana,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.greece,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.grenada,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.guatemala,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.guinea,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.guinea_bissau,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.guyana,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.haiti,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.holy_see,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.honduras,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.hungary,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.iceland,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.india,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.indonesia,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.iran,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.iraq,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.ireland,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.israel,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.italy,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.jamaica,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.japan,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.jordan,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.kenya,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.kiribati,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.kuwait,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.laos,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.lebanon,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.lesotho,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.liberia,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.libya,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.liechtenstein,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.luxembourg,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.madagascar,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.malawi,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.malaysia,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.maldives,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.mali,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.malta,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.mauritania,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.mauritius,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.mexico,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.monaco,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.mongolia,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.morocco,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.mozambique,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.myanmar,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Known as Socialist Republic of the Union of Burma on the profile date; same legal subject.,https://en.wikipedia.org/wiki/Member_states_of_the_United_Nations
-sovereign.nauru,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.nepal,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.netherlands,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.new_zealand,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.nicaragua,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.niger,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.nigeria,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.north_korea,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.north_yemen,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.norway,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.oman,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.pakistan,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.panama,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.papua_new_guinea,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.paraguay,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.peru,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.philippines,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.poland,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.portugal,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.qatar,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.romania,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.rwanda,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.saint_lucia,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.samoa,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Known as Western Samoa on the profile date; same legal subject.,https://en.wikipedia.org/wiki/Member_states_of_the_United_Nations
-sovereign.san_marino,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.sao_tome_and_principe,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.saudi_arabia,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.senegal,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.seychelles,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.sierra_leone,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.singapore,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.solomon_islands,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.somalia,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.south_africa,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.south_korea,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.south_yemen,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.spain,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.sri_lanka,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.sudan,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.suriname,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.sweden,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.switzerland,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.syria,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.tanzania,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.thailand,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.togo,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.tonga,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.trinidad_and_tobago,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.tunisia,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.turkey,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.tuvalu,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.uae,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Known as United Arab Emirates on the profile date; same legal subject.,https://en.wikipedia.org/wiki/Member_states_of_the_United_Nations
-sovereign.uganda,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.united_kingdom,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.united_states,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.uruguay,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.ussr,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.venezuela,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.vietnam,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.yugoslavia,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
-sovereign.zambia,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.afghanistan,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.albania,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.algeria,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.angola,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.argentina,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.australia,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.austria,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.bahamas,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.bahrain,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.bangladesh,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.barbados,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.belgium,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.benin,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.bhutan,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.bolivia,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.botswana,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.brazil,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.bulgaria,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.burkina_faso,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Known as Upper Volta on the profile date; same legal subject.,https://en.wikipedia.org/wiki/Member_states_of_the_United_Nations
+sovereign.burundi,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.cambodia,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Known as Democratic Kampuchea on the profile date; same legal subject.,https://en.wikipedia.org/wiki/Member_states_of_the_United_Nations
+sovereign.cameroon,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.canada,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.cape_verde,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.central_african_republic,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Known as Central African Empire on the profile date; same legal subject.,https://en.wikipedia.org/wiki/Member_states_of_the_United_Nations
+sovereign.chad,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.chile,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.china,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.colombia,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.comoros,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.congo,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.costa_rica,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.cote_divoire,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Known as Ivory Coast on the profile date; same legal subject.,https://en.wikipedia.org/wiki/Member_states_of_the_United_Nations
+sovereign.cuba,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.cyprus,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.czechoslovakia,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.denmark,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.djibouti,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.dominica,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.dominican_republic,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.drc,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Known as Zaire on the profile date; same legal subject.,https://en.wikipedia.org/wiki/Member_states_of_the_United_Nations
+sovereign.east_germany,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.ecuador,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.egypt,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.el_salvador,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.equatorial_guinea,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.eswatini,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Known as Swaziland on the profile date; same legal subject.,https://en.wikipedia.org/wiki/Member_states_of_the_United_Nations
+sovereign.ethiopia,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.fiji,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.finland,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.france,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.gabon,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.gambia,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.germany,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Federal Republic of Germany before the 1990 accession of the GDR; same legal subject.,https://en.wikipedia.org/wiki/Member_states_of_the_United_Nations
+sovereign.ghana,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.greece,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.grenada,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.guatemala,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.guinea,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.guinea_bissau,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.guyana,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.haiti,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.holy_see,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.honduras,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.hungary,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.iceland,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.india,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.indonesia,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.iran,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.iraq,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.ireland,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.israel,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.italy,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.jamaica,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.japan,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.jordan,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.kenya,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.kiribati,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.kuwait,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.laos,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.lebanon,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.lesotho,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.liberia,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.libya,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.liechtenstein,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.luxembourg,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.madagascar,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.malawi,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.malaysia,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.maldives,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.mali,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.malta,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.mauritania,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.mauritius,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.mexico,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.monaco,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.mongolia,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.morocco,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.mozambique,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.myanmar,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Known as Socialist Republic of the Union of Burma on the profile date; same legal subject.,https://en.wikipedia.org/wiki/Member_states_of_the_United_Nations
+sovereign.nauru,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.nepal,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.netherlands,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.new_zealand,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.nicaragua,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.niger,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.nigeria,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.north_korea,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.north_yemen,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.norway,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.oman,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.pakistan,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.panama,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.papua_new_guinea,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.paraguay,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.peru,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.philippines,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.poland,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.portugal,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.qatar,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.romania,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.rwanda,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.saint_lucia,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.samoa,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Known as Western Samoa on the profile date; same legal subject.,https://en.wikipedia.org/wiki/Member_states_of_the_United_Nations
+sovereign.san_marino,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.sao_tome_and_principe,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.saudi_arabia,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.senegal,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.seychelles,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.sierra_leone,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.singapore,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.solomon_islands,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.somalia,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.south_africa,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.south_korea,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.south_yemen,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.spain,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.sri_lanka,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.sudan,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.suriname,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.sweden,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.switzerland,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.syria,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.tanzania,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.thailand,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.togo,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.tonga,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.trinidad_and_tobago,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.tunisia,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.turkey,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.tuvalu,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.uae,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Known as United Arab Emirates on the profile date; same legal subject.,https://en.wikipedia.org/wiki/Member_states_of_the_United_Nations
+sovereign.uganda,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.united_kingdom,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.united_states,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.uruguay,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.ussr,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.venezuela,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.vietnam,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.yugoslavia,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
+sovereign.zambia,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Roster sovereign on the profile date.,doc:mandate.m4-proving-lens
 staff.us.federal_reserve.communications,variant.2006,2006-02-01/2006-12-31,inst.us.federal_reserve.board,Only bounded access methods and capacity are initialized.,12-structure-outline-bernankey-mvp-cycle.md:397-415
 staff.us.federal_reserve.markets,variant.2006,2006-02-01/2006-12-31,inst.us.federal_reserve.board,Only dealer-capacity evidence one follow-up and one displaced deliverable are initialized.,12-structure-outline-bernankey-mvp-cycle.md:388-457
 staff.us.federal_reserve.monetary_affairs,variant.2006,2006-02-01/2006-12-31,inst.us.federal_reserve.board,Only bounded policy methods capacity and one assessment dissent are initialized.,12-structure-outline-bernankey-mvp-cycle.md:388-457
-system.gb.petroleum.operations,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://cdn.ca9.uscourts.gov/datastore/library/2013/02/26/California_crude-oil.pdf
-system.gb.petroleum.policy,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://cdn.ca9.uscourts.gov/datastore/library/2013/02/26/California_crude-oil.pdf
-system.iq.petroleum.operations,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://cdn.ca9.uscourts.gov/datastore/library/2013/02/26/California_crude-oil.pdf
-system.iq.petroleum.policy,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://cdn.ca9.uscourts.gov/datastore/library/2013/02/26/California_crude-oil.pdf
-system.ir.petroleum.operations,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://cdn.ca9.uscourts.gov/datastore/library/2013/02/26/California_crude-oil.pdf
-system.ir.petroleum.policy,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://cdn.ca9.uscourts.gov/datastore/library/2013/02/26/California_crude-oil.pdf
-system.jp.petroleum.operations,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
-system.jp.petroleum.policy,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
-system.kw.petroleum.operations,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://cdn.ca9.uscourts.gov/datastore/library/2013/02/26/California_crude-oil.pdf
-system.kw.petroleum.policy,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://cdn.ca9.uscourts.gov/datastore/library/2013/02/26/California_crude-oil.pdf
-system.sa.petroleum.operations,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://cdn.ca9.uscourts.gov/datastore/library/2013/02/26/California_crude-oil.pdf
-system.sa.petroleum.policy,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://cdn.ca9.uscourts.gov/datastore/library/2013/02/26/California_crude-oil.pdf
-system.su.petroleum.operations,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://cdn.ca9.uscourts.gov/datastore/library/2013/02/26/California_crude-oil.pdf
-system.su.petroleum.policy,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://cdn.ca9.uscourts.gov/datastore/library/2013/02/26/California_crude-oil.pdf
-system.us.petroleum.operations,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=MCRFPUS2&f=A
-system.us.petroleum.policy,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=MCRFPUS2&f=A
-system.ve.petroleum.operations,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://cdn.ca9.uscourts.gov/datastore/library/2013/02/26/California_crude-oil.pdf
-system.ve.petroleum.policy,variant.1979,1979-08-06/1979-09-18,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://cdn.ca9.uscourts.gov/datastore/library/2013/02/26/California_crude-oil.pdf
+system.gb.petroleum.operations,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://cdn.ca9.uscourts.gov/datastore/library/2013/02/26/California_crude-oil.pdf
+system.gb.petroleum.policy,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://cdn.ca9.uscourts.gov/datastore/library/2013/02/26/California_crude-oil.pdf
+system.iq.petroleum.operations,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://cdn.ca9.uscourts.gov/datastore/library/2013/02/26/California_crude-oil.pdf
+system.iq.petroleum.policy,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://cdn.ca9.uscourts.gov/datastore/library/2013/02/26/California_crude-oil.pdf
+system.ir.petroleum.operations,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://cdn.ca9.uscourts.gov/datastore/library/2013/02/26/California_crude-oil.pdf
+system.ir.petroleum.policy,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://cdn.ca9.uscourts.gov/datastore/library/2013/02/26/California_crude-oil.pdf
+system.jp.petroleum.operations,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
+system.jp.petroleum.policy,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
+system.kw.petroleum.operations,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://cdn.ca9.uscourts.gov/datastore/library/2013/02/26/California_crude-oil.pdf
+system.kw.petroleum.policy,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://cdn.ca9.uscourts.gov/datastore/library/2013/02/26/California_crude-oil.pdf
+system.sa.petroleum.operations,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://cdn.ca9.uscourts.gov/datastore/library/2013/02/26/California_crude-oil.pdf
+system.sa.petroleum.policy,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://cdn.ca9.uscourts.gov/datastore/library/2013/02/26/California_crude-oil.pdf
+system.su.petroleum.operations,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://cdn.ca9.uscourts.gov/datastore/library/2013/02/26/California_crude-oil.pdf
+system.su.petroleum.policy,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://cdn.ca9.uscourts.gov/datastore/library/2013/02/26/California_crude-oil.pdf
+system.us.petroleum.operations,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=MCRFPUS2&f=A
+system.us.petroleum.policy,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=MCRFPUS2&f=A
+system.ve.petroleum.operations,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://cdn.ca9.uscourts.gov/datastore/library/2013/02/26/California_crude-oil.pdf
+system.ve.petroleum.policy,variant.1979,1979-08-06/1979-12-31,profile.volcker_1979,Effective in the Volcker 1979 opening.,https://cdn.ca9.uscourts.gov/datastore/library/2013/02/26/California_crude-oil.pdf

@@ -1,0 +1,39 @@
+{
+  "instrument_id": "legal.us.executive_order.12170",
+  "title": "Executive Order 12170, Blocking Iranian Government Property",
+  "source_url": "https://archives.federalregister.gov/issue_slice/1979/11/15/65729-65731.pdf",
+  "note": "Issued 08:10 EST 1979-11-14 under IEEPA (FRBNY Circular 8681). The Treasury Secretary holds the delegated powers; the New York Fed executes on accounts it holds, and the order reaches U.S. banks' foreign branches.",
+  "clauses": [
+    {
+      "clause_id": "clause.eo12170.reserve_bank_execution",
+      "effective_from": "1979-11-14T08:10:00-05:00",
+      "effective_until": "2100-01-01T00:00:00-05:00",
+      "authorized_subjects": [
+        "inst.us.federal_reserve.new_york"
+      ],
+      "target_owners": [
+        "institution.ir.central_bank"
+      ],
+      "permitted_effects": [
+        "sanctions.execute_block"
+      ],
+      "requires_certified_fomc_decision": false
+    },
+    {
+      "clause_id": "clause.eo12170.foreign_branch_reach",
+      "effective_from": "1979-11-14T08:10:00-05:00",
+      "effective_until": "2100-01-01T00:00:00-05:00",
+      "authorized_subjects": [
+        "office.us.federal_reserve.board_chair"
+      ],
+      "target_owners": [
+        "institution.ir.central_bank"
+      ],
+      "permitted_effects": [
+        "sanctions.coordinate_foreign_branches"
+      ],
+      "requires_certified_fomc_decision": false,
+      "note": "The Chair coordinates with Treasury and the banks on foreign-branch compliance; this is not an independent blocking power."
+    }
+  ]
+}

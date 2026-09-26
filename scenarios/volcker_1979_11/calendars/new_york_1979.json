@@ -1,0 +1,29 @@
+{
+  "calendar_id": "calendar.us.new_york",
+  "offsets": [
+    {
+      "from_utc": "1979-04-29T07:00:00Z",
+      "offset_minutes": -240
+    },
+    {
+      "from_utc": "1979-10-28T06:00:00Z",
+      "offset_minutes": -300
+    },
+    {
+      "from_utc": "1980-04-27T07:00:00Z",
+      "offset_minutes": -240
+    }
+  ],
+  "holidays": [
+    "1979-09-03",
+    "1979-10-08",
+    "1979-11-12",
+    "1979-11-22",
+    "1979-12-25"
+  ],
+  "session_open": "09:00",
+  "session_close": "16:00",
+  "settlement_cutoff": "15:00",
+  "settlement_lag_business_days": 0,
+  "source": "Uniform Time Act of 1966 as amended (daylight saving 1979-04-29 to 1979-10-28); Federal Reserve holiday schedule 1979"
+}

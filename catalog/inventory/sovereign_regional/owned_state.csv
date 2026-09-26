@@ -1,4 +1,5 @@
 state_id,owner_id,state_kind,value_domain,unit,conserved,witness_kind,completeness_state,provenance
+state.institution.ir.central_bank.us_dollar_assets,institution.ir.central_bank,condition,"Iranian official dollar assets at the New York Fed and U.S. banks, blocking status, and posture",NONE,false,sanctions channel witness,probe_complete,https://www.csmonitor.com/1989/0914/enew.html
 state.system.gb.petroleum.operations.operations,system.gb.petroleum.operations,condition,"capacity, outages, terminals, inventory, and realized output",NONE,false,petroleum transition witness,probe_complete,doc:mandate.m4-proving-lens
 state.system.gb.petroleum.policy.posture,system.gb.petroleum.policy,condition,"production target, export commitment, and official price",NONE,false,petroleum transition witness,probe_complete,https://cdn.ca9.uscourts.gov/datastore/library/2013/02/26/California_crude-oil.pdf
 state.system.iq.petroleum.operations.operations,system.iq.petroleum.operations,condition,"capacity, outages, terminals, inventory, and realized output",NONE,false,petroleum transition witness,probe_complete,doc:mandate.m4-proving-lens

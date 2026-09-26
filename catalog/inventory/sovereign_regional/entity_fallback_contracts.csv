@@ -1,4 +1,5 @@
 catalog_id,preserves_or_loses,boundary_item,provenance
+institution.ir.central_bank,lose,scenario.fallback.FAIL,doc:mandate.m4-proving-lens
 sovereign.afghanistan,lose,scenario.fallback.FAIL,doc:mandate.m4-proving-lens
 sovereign.albania,lose,scenario.fallback.FAIL,doc:mandate.m4-proving-lens
 sovereign.algeria,lose,scenario.fallback.FAIL,doc:mandate.m4-proving-lens

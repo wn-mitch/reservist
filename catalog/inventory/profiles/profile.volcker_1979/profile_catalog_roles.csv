@@ -202,7 +202,7 @@ profile.volcker_1979,institution.iq.finance_ministry,reference,NONE,NONE,Researc
 profile.volcker_1979,institution.iq.foreign_ministry,reference,NONE,NONE,Researched 1979 role holder or Fed body; identity retained for reference.,doc:mandate.m4-proving-lens
 profile.volcker_1979,institution.iq.oil_ministry,reference,NONE,NONE,Researched 1979 role holder or Fed body; identity retained for reference.,doc:mandate.m4-proving-lens
 profile.volcker_1979,institution.iq.revolutionary_command_council,reference,NONE,NONE,Researched 1979 role holder or Fed body; identity retained for reference.,doc:mandate.m4-proving-lens
-profile.volcker_1979,institution.ir.central_bank,reference,NONE,NONE,Researched 1979 role holder or Fed body; identity retained for reference.,doc:mandate.m4-proving-lens
+profile.volcker_1979,institution.ir.central_bank,slice_candidate,NONE,NONE,Selected in the November 1979 instance as the sanctions channel state owner.,doc:mandate.m4-proving-lens
 profile.volcker_1979,institution.ir.finance_ministry,reference,NONE,NONE,Researched 1979 role holder or Fed body; identity retained for reference.,doc:mandate.m4-proving-lens
 profile.volcker_1979,institution.ir.foreign_ministry,reference,NONE,NONE,Researched 1979 role holder or Fed body; identity retained for reference.,doc:mandate.m4-proving-lens
 profile.volcker_1979,institution.ir.interim_government,reference,NONE,NONE,Researched 1979 role holder or Fed body; identity retained for reference.,doc:mandate.m4-proving-lens
@@ -283,6 +283,7 @@ profile.volcker_1979,institution.ve.foreign_ministry,reference,NONE,NONE,Researc
 profile.volcker_1979,institution.ve.presidency,reference,NONE,NONE,Researched 1979 role holder or Fed body; identity retained for reference.,doc:mandate.m4-proving-lens
 profile.volcker_1979,instrument.cross_border.capital_controls,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
 profile.volcker_1979,legal.us.dodd_frank,excluded,NONE,NONE,Not reviewed for the 1979 profile.,doc:mandate.m4-proving-lens
+profile.volcker_1979,legal.us.executive_order.12170,slice_candidate,NONE,NONE,Selected in the November 1979 instance; source of the blocking authority.,doc:mandate.m4-proving-lens
 profile.volcker_1979,legal.us.federal_reserve.act.section_12a,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
 profile.volcker_1979,legal.us.federal_reserve.act.section_14,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens
 profile.volcker_1979,legal.us.federal_reserve.domestic_authorization.1979,slice_candidate,NONE,NONE,Selected in the Volcker 1979 opening.,doc:mandate.m4-proving-lens

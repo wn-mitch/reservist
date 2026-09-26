@@ -1,0 +1,315 @@
+[
+  {
+    "package_id": "CONTINUE_PATH_FULL",
+    "proposing_subject": "office.us.federal_reserve.fomc_chair",
+    "policy_actions": [
+      "desk.set_reserves_path"
+    ],
+    "communication_commitment": null,
+    "authority_requirements": [
+      "clause.fra.12a.fomc_direction",
+      "clause.fomc.rules.section3.vote"
+    ],
+    "known_downside": "Money growth near the top of its range leaves the reserve path exposed to an oil-driven price surge.",
+    "activation_state": "PREPARED",
+    "revision_history": [],
+    "action_parameters": {
+      "desk.set_reserves_path": {
+        "nonborrowed_path": "38.88",
+        "tolerance_low_bp": 1150,
+        "tolerance_high_bp": 1550
+      }
+    },
+    "directive_terms": {
+      "expiry_time": "1980-01-08T09:30:00-05:00",
+      "authority_refs": [
+        "clause.fra.14.reserve_bank_open_market_power",
+        "clause.domestic_authorization.1979.paragraph1"
+      ]
+    },
+    "constituent_actions": [
+      {
+        "action_id": "sanctions.execute_block",
+        "owner_id": "inst.us.federal_reserve.new_york",
+        "authority_refs": [
+          "clause.eo12170.reserve_bank_execution",
+          "clause.fra.14e.foreign_official_accounts"
+        ],
+        "parameters": {
+          "target_owner": "institution.ir.central_bank"
+        },
+        "decision_time": "1979-11-14T08:30:00-05:00",
+        "position_rules": []
+      },
+      {
+        "action_id": "sanctions.coordinate_foreign_branches",
+        "owner_id": "office.us.federal_reserve.board_chair",
+        "authority_refs": [
+          "clause.eo12170.foreign_branch_reach"
+        ],
+        "parameters": {
+          "target_owner": "institution.ir.central_bank"
+        },
+        "decision_time": "1979-11-14T08:40:00-05:00",
+        "position_rules": []
+      }
+    ],
+    "position_rules": [
+      {
+        "belief": "aggregates_emphasis",
+        "position": "OPPOSE",
+        "stated_basis": "The Committee should not have left funds-rate control.",
+        "below": 0.55
+      }
+    ]
+  },
+  {
+    "package_id": "CONTINUE_PATH_NO_COORDINATION",
+    "proposing_subject": "office.us.federal_reserve.fomc_chair",
+    "policy_actions": [
+      "desk.set_reserves_path"
+    ],
+    "communication_commitment": null,
+    "authority_requirements": [
+      "clause.fra.12a.fomc_direction",
+      "clause.fomc.rules.section3.vote"
+    ],
+    "known_downside": "Money growth near the top of its range leaves the reserve path exposed to an oil-driven price surge.",
+    "activation_state": "PREPARED",
+    "revision_history": [],
+    "action_parameters": {
+      "desk.set_reserves_path": {
+        "nonborrowed_path": "38.88",
+        "tolerance_low_bp": 1150,
+        "tolerance_high_bp": 1550
+      }
+    },
+    "directive_terms": {
+      "expiry_time": "1980-01-08T09:30:00-05:00",
+      "authority_refs": [
+        "clause.fra.14.reserve_bank_open_market_power",
+        "clause.domestic_authorization.1979.paragraph1"
+      ]
+    },
+    "constituent_actions": [
+      {
+        "action_id": "sanctions.execute_block",
+        "owner_id": "inst.us.federal_reserve.new_york",
+        "authority_refs": [
+          "clause.eo12170.reserve_bank_execution",
+          "clause.fra.14e.foreign_official_accounts"
+        ],
+        "parameters": {
+          "target_owner": "institution.ir.central_bank"
+        },
+        "decision_time": "1979-11-14T08:30:00-05:00",
+        "position_rules": []
+      }
+    ],
+    "position_rules": [
+      {
+        "belief": "aggregates_emphasis",
+        "position": "OPPOSE",
+        "stated_basis": "The Committee should not have left funds-rate control.",
+        "below": 0.55
+      }
+    ]
+  },
+  {
+    "package_id": "CONTINUE_PATH_DELAYED",
+    "proposing_subject": "office.us.federal_reserve.fomc_chair",
+    "policy_actions": [
+      "desk.set_reserves_path"
+    ],
+    "communication_commitment": null,
+    "authority_requirements": [
+      "clause.fra.12a.fomc_direction",
+      "clause.fomc.rules.section3.vote"
+    ],
+    "known_downside": "Money growth near the top of its range leaves the reserve path exposed to an oil-driven price surge.",
+    "activation_state": "PREPARED",
+    "revision_history": [],
+    "action_parameters": {
+      "desk.set_reserves_path": {
+        "nonborrowed_path": "38.88",
+        "tolerance_low_bp": 1150,
+        "tolerance_high_bp": 1550
+      }
+    },
+    "directive_terms": {
+      "expiry_time": "1980-01-08T09:30:00-05:00",
+      "authority_refs": [
+        "clause.fra.14.reserve_bank_open_market_power",
+        "clause.domestic_authorization.1979.paragraph1"
+      ]
+    },
+    "constituent_actions": [
+      {
+        "action_id": "sanctions.execute_block",
+        "owner_id": "inst.us.federal_reserve.new_york",
+        "authority_refs": [
+          "clause.eo12170.reserve_bank_execution",
+          "clause.fra.14e.foreign_official_accounts"
+        ],
+        "parameters": {
+          "target_owner": "institution.ir.central_bank"
+        },
+        "decision_time": "1979-11-16T09:30:00-05:00",
+        "position_rules": []
+      },
+      {
+        "action_id": "sanctions.coordinate_foreign_branches",
+        "owner_id": "office.us.federal_reserve.board_chair",
+        "authority_refs": [
+          "clause.eo12170.foreign_branch_reach"
+        ],
+        "parameters": {
+          "target_owner": "institution.ir.central_bank"
+        },
+        "decision_time": "1979-11-16T09:30:00-05:00",
+        "position_rules": []
+      }
+    ],
+    "position_rules": [
+      {
+        "belief": "aggregates_emphasis",
+        "position": "OPPOSE",
+        "stated_basis": "The Committee should not have left funds-rate control.",
+        "below": 0.55
+      }
+    ]
+  },
+  {
+    "package_id": "SLOWER_PATH_FULL",
+    "proposing_subject": "office.us.federal_reserve.fomc_chair",
+    "policy_actions": [
+      "desk.set_reserves_path"
+    ],
+    "communication_commitment": null,
+    "authority_requirements": [
+      "clause.fra.12a.fomc_direction",
+      "clause.fomc.rules.section3.vote"
+    ],
+    "known_downside": "A slower path pushes the funds rate toward the top of its range while output weakens.",
+    "activation_state": "PREPARED",
+    "revision_history": [],
+    "action_parameters": {
+      "desk.set_reserves_path": {
+        "nonborrowed_path": "38.48",
+        "tolerance_low_bp": 1150,
+        "tolerance_high_bp": 1550
+      }
+    },
+    "directive_terms": {
+      "expiry_time": "1980-01-08T09:30:00-05:00",
+      "authority_refs": [
+        "clause.fra.14.reserve_bank_open_market_power",
+        "clause.domestic_authorization.1979.paragraph1"
+      ]
+    },
+    "constituent_actions": [
+      {
+        "action_id": "sanctions.execute_block",
+        "owner_id": "inst.us.federal_reserve.new_york",
+        "authority_refs": [
+          "clause.eo12170.reserve_bank_execution",
+          "clause.fra.14e.foreign_official_accounts"
+        ],
+        "parameters": {
+          "target_owner": "institution.ir.central_bank"
+        },
+        "decision_time": "1979-11-14T08:30:00-05:00",
+        "position_rules": []
+      },
+      {
+        "action_id": "sanctions.coordinate_foreign_branches",
+        "owner_id": "office.us.federal_reserve.board_chair",
+        "authority_refs": [
+          "clause.eo12170.foreign_branch_reach"
+        ],
+        "parameters": {
+          "target_owner": "institution.ir.central_bank"
+        },
+        "decision_time": "1979-11-14T08:40:00-05:00",
+        "position_rules": []
+      }
+    ],
+    "position_rules": [
+      {
+        "belief": "aggregates_emphasis",
+        "position": "OPPOSE",
+        "stated_basis": "The Committee should not have left funds-rate control.",
+        "below": 0.55
+      },
+      {
+        "belief": "recession_risk",
+        "position": "OPPOSE",
+        "stated_basis": "A slower path risks a sharper downturn.",
+        "at_least": 0.8
+      }
+    ]
+  },
+  {
+    "package_id": "RETURN_TO_BAND",
+    "proposing_subject": "office.us.federal_reserve.fomc_chair",
+    "policy_actions": [
+      "desk.set_rate_band"
+    ],
+    "communication_commitment": null,
+    "authority_requirements": [
+      "clause.fra.12a.fomc_direction",
+      "clause.fomc.rules.section3.vote"
+    ],
+    "known_downside": "Returning to a funds-rate band six weeks after October 6 would read as abandoning the new procedure.",
+    "activation_state": "PREPARED",
+    "revision_history": [],
+    "action_parameters": {
+      "desk.set_rate_band": {
+        "low_bp": 1300,
+        "high_bp": 1400
+      }
+    },
+    "directive_terms": {
+      "expiry_time": "1980-01-08T09:30:00-05:00",
+      "authority_refs": [
+        "clause.fra.14.reserve_bank_open_market_power",
+        "clause.domestic_authorization.1979.paragraph1"
+      ]
+    },
+    "constituent_actions": [
+      {
+        "action_id": "sanctions.execute_block",
+        "owner_id": "inst.us.federal_reserve.new_york",
+        "authority_refs": [
+          "clause.eo12170.reserve_bank_execution",
+          "clause.fra.14e.foreign_official_accounts"
+        ],
+        "parameters": {
+          "target_owner": "institution.ir.central_bank"
+        },
+        "decision_time": "1979-11-14T08:30:00-05:00",
+        "position_rules": []
+      },
+      {
+        "action_id": "sanctions.coordinate_foreign_branches",
+        "owner_id": "office.us.federal_reserve.board_chair",
+        "authority_refs": [
+          "clause.eo12170.foreign_branch_reach"
+        ],
+        "parameters": {
+          "target_owner": "institution.ir.central_bank"
+        },
+        "decision_time": "1979-11-14T08:40:00-05:00",
+        "position_rules": []
+      }
+    ],
+    "position_rules": [
+      {
+        "belief": "aggregates_emphasis",
+        "position": "OPPOSE",
+        "stated_basis": "The Committee is committed to the reserves procedure.",
+        "at_least": 0.7
+      }
+    ]
+  }
+]

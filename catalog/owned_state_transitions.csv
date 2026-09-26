@@ -38,6 +38,12 @@ state.inst.us.leveraged_funds.cash,accounting_entry,12-structure-outline-bernank
 state.inst.us.leveraged_funds.collateral_encumbrance,accounting_entry,12-structure-outline-bernankey-mvp-cycle.md:299-319
 state.inst.us.leveraged_funds.repo_obligation,accounting_entry,12-structure-outline-bernankey-mvp-cycle.md:299-319
 state.inst.us.leveraged_funds.treasury,accounting_entry,12-structure-outline-bernankey-mvp-cycle.md:299-319
+state.institution.ir.central_bank.us_dollar_assets,advance_day,https://www.csmonitor.com/1989/0914/enew.html
+state.institution.ir.central_bank.us_dollar_assets,coordinate_foreign_branches,https://www.csmonitor.com/1989/0914/enew.html
+state.institution.ir.central_bank.us_dollar_assets,execute_block,https://www.csmonitor.com/1989/0914/enew.html
+state.institution.ir.central_bank.us_dollar_assets,record_order,https://www.csmonitor.com/1989/0914/enew.html
+state.institution.ir.central_bank.us_dollar_assets,record_withdrawal_intent,https://www.csmonitor.com/1989/0914/enew.html
+state.legal.us.executive_order.12170.effective_clauses,initialize_effective_clauses,https://archives.federalregister.gov/issue_slice/1979/11/15/65729-65731.pdf
 state.legal.us.federal_reserve.act.section_12a.effective_clauses,initialize_effective_clauses,12-structure-outline-bernankey-mvp-cycle.md:195-205
 state.legal.us.federal_reserve.act.section_14.effective_clauses,initialize_effective_clauses,12-structure-outline-bernankey-mvp-cycle.md:195-205
 state.legal.us.federal_reserve.domestic_authorization.1979.effective_clauses,record_effective_clauses,https://www.federalreserve.gov/monetarypolicy/files/fomcropa19790814.pdf
