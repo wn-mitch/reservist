@@ -143,6 +143,13 @@ pub fn validate_scenario_with_catalog(
     let initialization = InitializationBundle::load(&dir.join("initialization.json"))?;
     let tape = reservist_core::canon::load_json(dir.join("tape/releases.json"))?;
     let authority = authority_content(dir)?;
+    crate::templates::validate(
+        dir,
+        &manifest.value,
+        &reservist_core::canon::load_json(dir.join("initialization.json"))?,
+        &tape,
+        &authority,
+    )?;
     validate_documents(
         &manifest,
         &catalog_slice,
@@ -253,6 +260,14 @@ pub fn seal_scenario(dir: &Path, catalog_dir: &Path) -> Result<String, ContentEr
         &mut manifest_value,
         "catalog_definition_hash",
         string(&catalog_slice, "catalog_definition_hash", "catalog_slice")?.to_owned(),
+    )?;
+    crate::templates::seal(dir, &mut manifest_value)?;
+    crate::templates::validate(
+        dir,
+        &manifest_value,
+        &initialization_value,
+        &tape,
+        &authority,
     )?;
     let manifest_hash = manifest_content_hash(&manifest_value);
     set_hash(&mut manifest_value, "manifest_content_hash", manifest_hash)?;

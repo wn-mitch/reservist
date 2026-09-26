@@ -10,7 +10,10 @@ A scenario template defines reusable mechanism, channel, stage, product, and
 transition requirements without supplying rolling current truth. A dated
 instance binds the template to a historical prefix, source cutoff, period law,
 infrastructure, accounts, observations, provider modes, opening state, and
-frozen identity. Templates are never directly playable.
+frozen identity. Templates are never directly playable. Sealing an instance
+freezes its template's identity; an instance whose template later changes
+fails validation and is resealed as a new instance rather than silently
+inheriting the change.
 
 Preset composition cannot grant authority, knowledge, capability, or operational access absent from the selected period and institution. Counterfactual appointments remain constrained by effective law, staff, relationships, and operational knowledge. Historical roleplay uses researched combinations; controlled doctrine experiments may offer compatible alternatives.
 

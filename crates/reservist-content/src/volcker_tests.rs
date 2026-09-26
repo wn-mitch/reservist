@@ -161,3 +161,42 @@ fn petroleum_and_crude_run_weekly_with_distinct_evidence() {
     let crude = &run.state_snapshot["crude_market"]["history"];
     assert_eq!(crude.as_array().unwrap().len(), 3);
 }
+
+fn instance_parts() -> (std::path::PathBuf, Value, Value, Value, Value) {
+    let dir = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../../scenarios/volcker_1979");
+    let load = |name: &str| reservist_core::canon::load_json(dir.join(name)).unwrap();
+    (
+        dir.clone(),
+        load("manifest.json"),
+        load("initialization.json"),
+        load("tape/releases.json"),
+        crate::frozen::authority_content(&dir).unwrap(),
+    )
+}
+
+#[test]
+fn a_dated_instance_must_meet_its_frozen_template() {
+    let (dir, manifest, init, tape, authority) = instance_parts();
+    crate::templates::validate(&dir, &manifest, &init, &tape, &authority).unwrap();
+
+    let mut stale = manifest.clone();
+    stale["template_hash"] = Value::from("sha256:stale");
+    assert!(crate::templates::validate(&dir, &stale, &init, &tape, &authority).is_err());
+
+    let mut undated = manifest.clone();
+    undated["source_cutoff"] = Value::from("2026-9-26");
+    assert!(crate::templates::validate(&dir, &undated, &init, &tape, &authority).is_err());
+
+    let mut no_energy = init.clone();
+    no_energy["scheduled_events"]
+        .as_array_mut()
+        .unwrap()
+        .retain(|event| event["work_kind"] != "energy.clear_week");
+    let error =
+        crate::templates::validate(&dir, &manifest, &no_energy, &tape, &authority).unwrap_err();
+    assert!(error.message.contains("energy.clear_week"), "{error}");
+
+    let mut undeclared = manifest.clone();
+    undeclared["external_channels"] = serde_json::json!([]);
+    assert!(crate::templates::validate(&dir, &undeclared, &init, &tape, &authority).is_err());
+}

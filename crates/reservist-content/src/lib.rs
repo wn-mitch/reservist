@@ -19,6 +19,7 @@ mod source_comparison;
 mod sovereign;
 #[cfg(test)]
 mod sovereign_tests;
+mod templates;
 
 #[cfg(test)]
 mod m2_dialogue_tests;

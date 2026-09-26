@@ -1,0 +1,26 @@
+{
+  "template_id": "template.volcker_lens",
+  "title": "Volcker-era inflation and energy crisis",
+  "required_selected": [
+    "person.us.paul_vulture",
+    "body.us.federal_reserve.fomc",
+    "inst.us.federal_reserve.board",
+    "inst.us.federal_reserve.new_york",
+    "market.us.federal_funds",
+    "market.global.crude",
+    "system.sa.petroleum.policy",
+    "system.sa.petroleum.operations"
+  ],
+  "required_channels": [
+    {"channel_id": "channel.energy_supply", "modes": ["RECORDED"]}
+  ],
+  "required_work_kinds": [
+    "fomc.meeting",
+    "reserves.clear_week",
+    "reserves.publish_week",
+    "petroleum.realize_week",
+    "energy.clear_week"
+  ],
+  "required_calendars": ["calendar.us.new_york"],
+  "notes": "Reusable requirements for dated Volcker-lens instances; owns no opening values, schedules, or outcomes."
+}
